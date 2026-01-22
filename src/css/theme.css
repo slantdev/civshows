@@ -1,0 +1,73 @@
+@theme {
+  --color-civ-blue-50: #f4f8fb;
+  --color-civ-blue-100: #eaf1f7;
+  --color-civ-blue-200: #ccdced;
+  --color-civ-blue-300: #adc7e2;
+  --color-civ-blue-400: #709dcd;
+  --color-civ-blue-500: #3374B8;
+  --color-civ-blue-600: #285c93;
+  --color-civ-blue-700: #1e456e;
+  --color-civ-blue-800: #142e49;
+  --color-civ-blue-900: #0a1724;
+  --color-civ-blue-950: #050b12;
+
+  --color-civ-orange-50: #fdf8f5;
+  --color-civ-orange-100: #fcf2eb;
+  --color-civ-orange-200: #f8e0ce;
+  --color-civ-orange-300: #f5ceb0;
+  --color-civ-orange-400: #eda975;
+  --color-civ-orange-500: #E6853B;
+  --color-civ-orange-600: #b86a2f;
+  --color-civ-orange-700: #8a4f23;
+  --color-civ-orange-800: #5c3517;
+  --color-civ-orange-900: #2d1a0b;
+  --color-civ-orange-950: #160d05;
+
+  --color-civ-green-50: #f6faf6;
+  --color-civ-green-100: #edf6ee;
+  --color-civ-green-200: #d3ead5;
+  --color-civ-green-300: #b8ddbc;
+  --color-civ-green-400: #83c48a;
+  --color-civ-green-500: #4FAC58;
+  --color-civ-green-600: #3f8946;
+  --color-civ-green-700: #2f6734;
+  --color-civ-green-800: #1f4423;
+  --color-civ-green-900: #0f2211;
+  --color-civ-green-950: #071108;
+
+  --color-civ-yellow-50: #fdfbf5;
+  --color-civ-yellow-100: #fcf8ec;
+  --color-civ-yellow-200: #f7eecf;
+  --color-civ-yellow-300: #f3e3b3;
+  --color-civ-yellow-400: #eacf7a;
+  --color-civ-yellow-500: #E1BB41;
+  --color-civ-yellow-600: #b49534;
+  --color-civ-yellow-700: #877027;
+  --color-civ-yellow-800: #5a4a1a;
+  --color-civ-yellow-900: #2c250c;
+  --color-civ-yellow-950: #161206;
+
+  --color-civ-purple-50: #f9f7fb;
+  --color-civ-purple-100: #f4eff7;
+  --color-civ-purple-200: #e4d7eb;
+  --color-civ-purple-300: #d4bfe0;
+  --color-civ-purple-400: #b48fc9;
+  --color-civ-purple-500: #9460B2;
+  --color-civ-purple-600: #764c8e;
+  --color-civ-purple-700: #58396a;
+  --color-civ-purple-800: #3b2647;
+  --color-civ-purple-900: #1d1323;
+  --color-civ-purple-950: #0e0911;
+
+  --color-civ-red-50: #fdf5f4;
+  --color-civ-red-100: #fbecea;
+  --color-civ-red-200: #f6cfcb;
+  --color-civ-red-300: #f0b3ad;
+  --color-civ-red-400: #e57a6f;
+  --color-civ-red-500: #DB4232;
+  --color-civ-red-600: #af3428;
+  --color-civ-red-700: #83271e;
+  --color-civ-red-800: #571a14;
+  --color-civ-red-900: #2b0d09;
+  --color-civ-red-950: #150604;
+}

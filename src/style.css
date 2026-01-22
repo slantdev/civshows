@@ -1,1 +1,4 @@
 @import "tailwindcss";
+
+/* Custom Theme Configuration */
+@import "./css/theme.css";

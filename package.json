@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "rm -rf assets/js assets/css && vite build"
   },
   "author": "",
   "license": "ISC",
