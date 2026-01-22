@@ -1,37 +1,90 @@
-import { defineConfig } from 'vite';
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from "vite";
+import tailwindcss from "@tailwindcss/vite";
+import browserSync from "browser-sync";
+import fs from "fs";
+import path from "path";
+import { networkInterfaces } from "os";
+
+function getNetworkIp() {
+  const nets = networkInterfaces();
+  for (const name of Object.keys(nets)) {
+    for (const net of nets[name]) {
+      if (net.family === 'IPv4' && !net.internal) {
+        return net.address;
+      }
+    }
+  }
+  return 'localhost';
+}
+
+const writeHotFile = () => ({
+  name: 'write-hot-file',
+  configureServer(server) {
+    const hotFilePath = path.resolve(process.cwd(), 'hot');
+    
+    server.httpServer?.on('listening', () => {
+      const port = server.config.server.port;
+      const ip = getNetworkIp();
+      const url = `http://${ip}:${port}`;
+      fs.writeFileSync(hotFilePath, url);
+    });
+
+    server.httpServer?.on('close', () => {
+      if (fs.existsSync(hotFilePath)) {
+        fs.unlinkSync(hotFilePath);
+      }
+    });
+  }
+});
 
 export default defineConfig({
   plugins: [
     tailwindcss(),
+    writeHotFile(),
+    {
+      name: "browser-sync",
+      apply: "serve",
+      configureServer(server) {
+        const bs = browserSync.create();
+        bs.init({
+          proxy: "http://civshows.local",
+          https: false,
+          files: ["**/*.php"],
+          notify: false,
+          open: true,
+          port: 3005
+        });
+      },
+    },
   ],
   build: {
-    outDir: 'assets',
+    outDir: "assets",
     emptyOutDir: false,
-    manifest: true,
     rollupOptions: {
-      input: 'src/main.js',
+      input: {
+        main: "./src/main.js",
+      },
       output: {
-        entryFileNames: 'js/[name]-[hash].js',
-        assetFileNames: (assetInfo) => {
-          if (assetInfo.name && assetInfo.name.endsWith('.css')) {
-            return 'css/[name]-[hash][extname]';
+        entryFileNames: "js/[name].js",
+        chunkFileNames: "js/[name].js",
+        assetFileNames: ({ name }) => {
+          if (/\.css$/.test(name ?? "")) {
+            return "css/[name].[ext]";
           }
-          return 'img/[name]-[hash][extname]';
+          return "[name].[ext]";
         },
       },
     },
   },
   server: {
-    cors: true,
     strictPort: true,
-    port: 3000,
-    origin: 'http://localhost:3000',
-    hmr: {
-      host: 'localhost',
-    },
-    proxy: {
-      '/': 'http://civshows.local', // Simple proxy, though usually WP needs the dev server entry point
+    port: 5174,
+    host: true, // Listen on all local IPs
+    cors: {
+      origin: '*', // Allow all origins
+      methods: ['GET', 'POST', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization'],
+      credentials: true,
     },
   },
 });

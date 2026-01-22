@@ -7,10 +7,8 @@
 </head>
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<div id="page" class="site">
-    <header class="site-header">
-        <h1 class="text-3xl font-bold underline">
-            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
-        </h1>
-    </header>
-    <div id="content" class="site-content">
+<div id="page" class="site flex flex-col min-h-screen">
+    
+    <?php get_template_part( 'template-parts/global/site-header' ); ?>
+
+    <div id="content" class="site-content flex-grow">

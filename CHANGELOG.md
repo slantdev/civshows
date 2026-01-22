@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-01-20
+### Added
+- Modular header system in `template-parts/global/site-header.php`.
+- Theme setup in `inc/setup.php` with support for custom menus, custom logos, and title tags.
+
+### Changed
+- Enhanced Vite configuration with BrowserSync for PHP auto-reload and `hot` file for dynamic dev server detection.
+- Updated `inc/enqueue.php` to handle `hot` file logic and simplified production enqueuing (unhashed assets).
+- Switched Vite dev port to `5174` to avoid local conflicts.
+
 ## [1.0.1] - 2026-01-20
 ### Added
 - Custom Tailwind CSS color palette (Blue, Orange, Green, Yellow, Purple, Red) with graded steps (50-950) in `src/css/theme.css`.
