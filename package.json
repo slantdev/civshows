@@ -1,0 +1,17 @@
+{
+  "name": "civ-shows-theme",
+  "version": "1.0.0",
+  "description": "Custom WordPress theme for CIV Shows",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "tailwindcss": "^4.0.0",
+    "vite": "^6.0.0"
+  }
+}
