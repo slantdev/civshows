@@ -15,11 +15,13 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
       <a href="#" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
-        <img src="https://placehold.co/600x400/1e456e/FFFFFF?text=Sandown+Bg" alt="Melbourne Show Background" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-
+        <div class="absolute inset-0 w-full h-full">
+          <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/CIVSS25_Day3-03.jpg' ?>" alt="Melbourne Show Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          <div class="absolute inset-0 bg-black/40 w-full h-full"></div>
+        </div>
         <div class="relative h-full flex flex-col justify-end">
           <div class="p-6 grow flex items-end justify-start">
-            <img src="https://placehold.co/250x120/ffffff/3374B8?text=Melbourne+Logo" alt="Melbourne Show Logo" class="w-2/3 h-auto drop-shadow-lg">
+            <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/logo-shows/melbourne.png' ?>" alt="Melbourne Show Logo" class="w-2/3 h-auto drop-shadow-lg">
           </div>
 
           <div class="bg-civ-orange-500 px-6 py-4 flex justify-between items-center text-white relative z-10">
@@ -35,10 +37,13 @@
       </a>
 
       <a href="#" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
-        <img src="https://placehold.co/600x400/5a4a1a/FFFFFF?text=Bendigo+Bg" alt="Bendigo Show Background" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <div class="absolute inset-0 w-full h-full">
+          <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/CIVSS25_Day3-31.jpg' ?>" alt="Bendigo Show Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          <div class="absolute inset-0 bg-black/40 w-full h-full"></div>
+        </div>
         <div class="relative h-full flex flex-col justify-end">
           <div class="p-6 grow flex items-end justify-start">
-            <img src="https://placehold.co/250x120/ffffff/E1BB41?text=Bendigo+Logo" alt="Bendigo Show Logo" class="w-2/3 h-auto drop-shadow-lg">
+            <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/logo-shows/bendigo.png' ?>" alt="Bendigo Show Logo" class="w-2/3 h-auto drop-shadow-lg">
           </div>
           <div class="bg-civ-yellow-500 px-6 py-4 flex justify-between items-center text-civ-blue-900 relative z-10">
             <div>
@@ -53,10 +58,13 @@
       </a>
 
       <a href="#" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
-        <img src="https://placehold.co/600x400/3b2647/FFFFFF?text=Geelong+Bg" alt="Geelong Show Background" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <div class="absolute inset-0 w-full h-full">
+          <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/CIVSS25_Day4-121.jpg' ?>" alt="Geelong Show Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          <div class="absolute inset-0 bg-black/40 w-full h-full"></div>
+        </div>
         <div class="relative h-full flex flex-col justify-end">
           <div class="p-6 grow flex items-end justify-start">
-            <img src="https://placehold.co/250x120/ffffff/9460B2?text=Geelong+Logo" alt="Geelong Show Logo" class="w-2/3 h-auto drop-shadow-lg">
+            <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/logo-shows/geelong.png' ?>" alt="Geelong Show Logo" class="w-2/3 h-auto drop-shadow-lg">
           </div>
           <div class="bg-civ-purple-500 px-6 py-4 flex justify-between items-center text-white relative z-10">
             <div>
@@ -71,10 +79,14 @@
       </a>
 
       <a href="#" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
-        <img src="https://placehold.co/600x400/1e456e/FFFFFF?text=Supershow+Bg" alt="Supershow Background" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <div class="absolute inset-0 w-full h-full">
+          <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/Melbourne-@GAZiPHOTO_@Caravan-Industry-Victoria-.jpg' ?>" alt="Supershow Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          <div class="absolute inset-0 bg-black/40 w-full h-full"></div>
+        </div>
+
         <div class="relative h-full flex flex-col justify-end">
           <div class="p-6 grow flex items-end justify-start">
-            <img src="https://placehold.co/250x120/ffffff/3374B8?text=Supershow+Logo" alt="Supershow Logo" class="w-2/3 h-auto drop-shadow-lg">
+            <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/logo-shows/victorian.png' ?>" alt="Supershow Logo" class="w-2/3 h-auto drop-shadow-lg">
           </div>
           <div class="bg-civ-blue-400 px-6 py-4 flex justify-between items-center text-white relative z-10">
             <div>
@@ -89,10 +101,13 @@
       </a>
 
       <a href="#" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
-        <img src="https://placehold.co/600x400/571a14/FFFFFF?text=Border+Bg" alt="Border Show Background" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+        <div class="absolute inset-0 w-full h-full">
+          <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/Border-DJI_20240830142858_0012_D-scaled.jpg' ?>" alt="Border Show Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          <div class="absolute inset-0 bg-black/40 w-full h-full"></div>
+        </div>
         <div class="relative h-full flex flex-col justify-end">
           <div class="p-6 grow flex items-end justify-start">
-            <img src="https://placehold.co/250x120/ffffff/DB4232?text=Border+Logo" alt="Border Show Logo" class="w-2/3 h-auto drop-shadow-lg">
+            <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/logo-shows/border.png' ?>" alt="Border Show Logo" class="w-2/3 h-auto drop-shadow-lg">
           </div>
           <div class="bg-civ-red-500 px-6 py-4 flex justify-between items-center text-white relative z-10">
             <div>
