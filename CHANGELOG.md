@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2026-01-20
+### Added
+- Featured Gallery component (`template-parts/components/featured-gallery.php`).
+- Integrated `@fancyapps/ui` (Fancybox) for lightbox functionality.
+- Added Fancybox CSS import to `src/style.css`.
+- Initialized Fancybox in `src/main.js`.
+
 ## [1.5.0] - 2026-01-20
 ### Added
 - Subscribe component (`template-parts/components/subscribe.php`).

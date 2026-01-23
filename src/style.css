@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
-/* Swiper CSS */
+/* Third Party CSS */
 @import "swiper/css/bundle";
+@import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 /* Custom Theme Configuration */
 @import "./css/theme.css";

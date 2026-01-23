@@ -1,5 +1,6 @@
 import './style.css';
 import Swiper from 'swiper/bundle';
+import { Fancybox } from "@fancyapps/ui";
 
 /**
  * Home Hero Slider
@@ -224,6 +225,24 @@ const initInteractiveSelect = () => {
 document.addEventListener('DOMContentLoaded', () => {
   initHomeHero();
   initInteractiveSelect();
+  
+  // Fancybox initialization
+  Fancybox.bind("[data-fancybox]", {
+    // Basic Options
+    groupAll: true, // Group all items with the same data-fancybox name
+    Thumbs: false,  // Hide the thumbnail strip (per your screenshot)
+    Toolbar: {
+      display: {
+        left: [],
+        middle: ["infobar"], // Shows "2 / 15" counter
+        right: ["close"],
+      },
+    },
+    // Customize the "Infobar" (Counter) to match your design
+    l10n: {
+      COUNTER: "%d / %d", // Format: 1 / 15
+    },
+  });
 });
 
 console.log('CIV Shows Theme Loaded');
