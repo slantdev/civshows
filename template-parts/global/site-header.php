@@ -6,24 +6,24 @@
 
 ?>
 
-<header class="site-header w-full fixed top-0 z-50">
+<header id="site-header" class="site-header w-full fixed top-0 z-50 transition-all duration-300">
 
-  <div class="h-10 w-full bg-civ-blue-500"></div>
+  <div id="topbar" class="topbar h-10 w-full bg-civ-blue-500 transition-all duration-300 overflow-hidden"></div>
 
-  <div class="bg-transparent w-full">
+  <div id="main-header" class="main-header bg-transparent w-full transition-all duration-300">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
-      <div class="flex items-center relative py-4 xl:py-6 xl:space-x-12">
+      <div class="flex items-center relative py-4 xl:py-6 xl:space-x-12 transition-all duration-300" id="header-inner">
 
         <div class="site-branding relative z-10 shrink-0">
           <a href="#" class="block">
-            <div class="w-24 h-24 md:w-32 md:h-32 xl:w-40 xl:h-40 flex items-center justify-center overflow-hidden">
+            <div id="logo-container" class="w-24 h-24 md:w-32 md:h-32 xl:w-40 xl:h-40 flex items-center justify-center overflow-hidden transition-all duration-300">
               <img src="<?php echo get_stylesheet_directory_uri() . "/assets/images/logo.png" ?>" alt=" Caravan Industry Victoria" class="w-full h-full object-cover">
             </div>
           </a>
         </div>
 
-        <div class="flex justify-end grow border-b border-white/40 py-4 -translate-y-1/2">
+        <div id="main-nav-wrapper" class="main-nav-wrapper flex justify-end grow border-b border-white/40 py-4 -translate-y-1/2 transition-all duration-300">
 
           <!-- Navigation -->
           <nav class="site-navigation hidden md:flex items-center gap-4 lg:gap-6">
@@ -205,28 +205,80 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+
+    // Mega Menu Logic
+
     const links = document.querySelectorAll('.megamenu-link');
+
     const contents = document.querySelectorAll('.megamenu-content');
 
+
+
     links.forEach(link => {
+
       link.addEventListener('mouseenter', () => {
-        // 1. Hide all content panels
+
         contents.forEach(content => content.classList.add('hidden'));
 
-        // 2. Get the target ID
         const targetId = link.getAttribute('data-target');
+
         const targetContent = document.getElementById(targetId);
 
-        // 3. Show the target content
         if (targetContent) {
+
           targetContent.classList.remove('hidden');
+
         }
 
-        // Optional: Add active styling to the hovered link persistently if needed
-        // (CSS :hover handles most of this, but for "active state" visual persistence:)
         links.forEach(l => l.classList.remove('text-civ-orange-500'));
+
         link.classList.add('text-civ-orange-500');
+
       });
+
     });
+
+
+
+    // Scroll Logic
+
+    const header = document.getElementById('site-header');
+    const topbar = document.getElementById('topbar');
+    const mainHeader = document.getElementById('main-header');
+    const logoContainer = document.getElementById('logo-container');
+    const headerInner = document.getElementById('header-inner');
+    const mainNavWrapper = document.getElementById('main-nav-wrapper');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        // Scrolled State
+        topbar.style.height = '0.5rem'; // Shrink topbar
+        mainHeader.classList.remove('bg-transparent');
+        mainHeader.classList.add('bg-black/80', 'backdrop-blur-sm', 'shadow-md');
+
+        logoContainer.classList.remove('w-24', 'h-24', 'md:w-32', 'md:h-32', 'xl:w-40', 'xl:h-40');
+        logoContainer.classList.add('w-16', 'h-16', 'md:w-20', 'md:h-20');
+
+        headerInner.classList.remove('py-4', 'xl:py-6');
+        headerInner.classList.add('py-2');
+
+        mainNavWrapper.classList.remove('-translate-y-1/2', 'border-b', 'border-white/40');
+
+      } else {
+        // Original State
+        topbar.style.height = ''; // Revert to CSS default (h-10)
+        mainHeader.classList.add('bg-transparent');
+        mainHeader.classList.remove('bg-black/90', 'backdrop-blur-sm', 'shadow-md');
+
+        logoContainer.classList.add('w-24', 'h-24', 'md:w-32', 'md:h-32', 'xl:w-40', 'xl:h-40');
+        logoContainer.classList.remove('w-16', 'h-16', 'md:w-20', 'md:h-20');
+
+        headerInner.classList.add('py-4', 'xl:py-6');
+        headerInner.classList.remove('py-2');
+
+        mainNavWrapper.classList.add('-translate-y-1/2', 'border-b', 'border-white/40');
+      }
+    });
+
   });
 </script>

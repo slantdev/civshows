@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.4.0] - 2026-01-20
+### Added
+- Dynamic scroll interaction for `site-header` (shrinking topbar, blurring background, resizing logo).
+- ID attributes to header elements for JavaScript targeting.
+
+### Changed
+- Refactored `shows-cards-grid.php`:
+    - Replaced fixed height `h-72` with dynamic `aspect-5/4`.
+    - Repositioned card logos to bottom-left with `w-2/3` width.
+    - Updated typography: removed `text-sm/xs`, switched to `font-semibold`.
+    - Updated Tailwind syntax to v4 conventions.
+- Updated header scroll logic to toggle `main-nav-wrapper` classes.
+
 ## [1.3.0] - 2026-01-20
 ### Added
 - Interactive Select component (`template-parts/components/interactive-select.php`) with dynamic Swiper content.
