@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-01-20
+### Added
+- Home Hero Slider component (`template-parts/components/home-hero-slider.php`) with Swiper.js integration.
+- `src/css/components.css` for component-specific styles.
+- Roboto font from Google Fonts.
+
+### Changed
+- Disabled Gutenberg Block Editor in `inc/setup.php` (reverted to Classic Editor).
+- Refactored component styles out of `src/style.css`.
+- Updated `src/main.js` to initialize Home Hero slider logic.
+
 ## [1.1.0] - 2026-01-20
 ### Added
 - Modular header system in `template-parts/global/site-header.php`.

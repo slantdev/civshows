@@ -1,0 +1,14 @@
+/* Component Styles */
+.slide-thumb-wrapper {
+  @apply opacity-70 hover:opacity-100 bg-black/20;
+  .slide-thumb-indicator {
+    @apply bg-white/20;
+  }
+  .swiper-slide-thumb-active & {
+    @apply opacity-100 bg-black/80;
+    
+    .slide-thumb-indicator {
+      @apply bg-civ-orange-500;
+    }
+  }
+}

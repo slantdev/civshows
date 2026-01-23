@@ -5,3 +5,4 @@ hot
 *copy*
 .vite
 *.log
+/assets/images/demo

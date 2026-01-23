@@ -7,6 +7,9 @@ function civ_enqueue_scripts() {
   $theme_version = wp_get_theme()->get( 'Version' );
   $hot_file = get_theme_file_path( 'hot' );
 
+  // Enqueue Google Fonts: Roboto
+  wp_enqueue_style( 'civ-fonts', 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap', [], null );
+
   if ( file_exists( $hot_file ) ) {
     // Vite Development Mode
     $vite_dev_server = file_get_contents( $hot_file );

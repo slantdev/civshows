@@ -1,4 +1,6 @@
 @theme {
+  --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
   --color-civ-blue-50: #f4f8fb;
   --color-civ-blue-100: #eaf1f7;
   --color-civ-blue-200: #ccdced;

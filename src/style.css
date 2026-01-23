@@ -1,4 +1,10 @@
 @import "tailwindcss";
 
+/* Swiper CSS */
+@import "swiper/css/bundle";
+
 /* Custom Theme Configuration */
 @import "./css/theme.css";
+
+/* Component Styles */
+@import "./css/components.css";
