@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.7.0] - 2026-01-20
+### Added
+- CTA Promo component (`template-parts/components/cta-promo.php`).
+- Modular Site Navigation (`template-parts/global/site-navigation.php`).
+- Modular Site Footer (`template-parts/global/site-footer.php`).
+
+### Changed
+- Extracted navigation logic from `site-header.php` to `site-navigation.php`.
+- Updated `footer.php` to use `template-parts/global/site-footer.php`.
+
 ## [1.6.0] - 2026-01-20
 ### Added
 - Featured Gallery component (`template-parts/components/featured-gallery.php`).

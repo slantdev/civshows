@@ -13,5 +13,6 @@ get_template_part('template-parts/components/interactive-select');
 get_template_part('template-parts/components/shows-cards-grid');
 get_template_part('template-parts/components/subscribe');
 get_template_part('template-parts/components/featured-gallery');
+get_template_part('template-parts/components/cta-promo');
 
 get_footer();

@@ -1,10 +1,9 @@
     </div><!-- #content -->
 
-    <footer class="site-footer p-4 bg-gray-100 mt-8">
-        <p>&copy; <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?></p>
-    </footer>
-</div><!-- #page -->
+    <?php get_template_part('template-parts/global/site-footer'); ?>
+    </div><!-- #page -->
 
-<?php wp_footer(); ?>
-</body>
-</html>
+    <?php wp_footer(); ?>
+    </body>
+
+    </html>
