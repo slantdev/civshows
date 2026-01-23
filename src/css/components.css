@@ -12,3 +12,12 @@
     }
   }
 }
+
+/* Interactive Select Pagination */
+.swiper-pagination-bullet {
+  @apply bg-white opacity-50;
+}
+
+.swiper-pagination-bullet-active {
+  @apply opacity-100 bg-white;
+}
