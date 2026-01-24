@@ -222,9 +222,33 @@ const initInteractiveSelect = () => {
   });
 };
 
+/**
+ * Exibitor Special
+ */
+const initExhibitorSpecial = () => {
+
+  const specialsSwiper = new Swiper('.specials-slider', {
+    loop: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    effect: 'fade', // Optional: Fading effect looks nice for single slides
+    fadeEffect: {
+      crossFade: true
+    },
+  });
+
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   initHomeHero();
   initInteractiveSelect();
+  initExhibitorSpecial();
   
   // Fancybox initialization
   Fancybox.bind("[data-fancybox]", {

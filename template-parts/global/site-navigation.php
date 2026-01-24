@@ -39,7 +39,7 @@
           <div class="col-span-4 py-10 bg-white border-r border-gray-100">
             <ul class="space-y-0">
               <li>
-                <a href="#"
+                <a href="/shows/melbourne-leisurefest/"
                   class="megamenu-link flex items-center justify-between w-full py-4 pl-6 pr-4 border-b border-gray-100 text-sm font-bold text-gray-700 hover:text-civ-orange-500 hover:bg-gray-50 transition-all group/link"
                   data-target="content-1">
                   MELBOURNE CARAVAN & CAMPING LEISUREFEST
@@ -85,10 +85,10 @@
           <div class="col-span-5 bg-gray-50 p-10 flex">
 
             <div id="content-1" class="megamenu-content w-full">
-              <img src="https://placehold.co/600x250/3374B8/FFFFFF?text=Melbourne+Show" alt="Melbourne Show" class="w-full h-48 object-cover mb-6 shadow-sm">
+              <img src="<?php echo get_stylesheet_directory_uri() . "/assets/images/demo/logo-shows/melbourne.png" ?>" alt="Melbourne Show" class="w-full h-auto mb-6">
               <h3 class="text-2xl font-semibold text-civ-orange-500 mb-2">Melbourne Caravan & Camping Leisurefest</h3>
               <p class="font-medium text-gray-900 mb-6">18 - 21 September 2025, Sandown Racecourse</p>
-              <a href="#" class="inline-flex items-center font-medium text-black border-b border-black hover:text-civ-orange-500 hover:border-civ-orange-500 transition-colors">
+              <a href="/shows/melbourne-leisurefest/" class="inline-flex items-center font-medium text-black border-b border-black hover:text-civ-orange-500 hover:border-civ-orange-500 transition-colors">
                 Learn More
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -97,7 +97,7 @@
             </div>
 
             <div id="content-2" class="megamenu-content w-full hidden">
-              <img src="https://placehold.co/600x250/E6853B/FFFFFF?text=Border+Show" alt="Border Show" class="w-full h-48 object-cover mb-6 shadow-sm">
+              <img src="<?php echo get_stylesheet_directory_uri() . "/assets/images/demo/logo-shows/border.png" ?>" alt="Border Show" class="w-full h-auto mb-6">
               <h3 class="text-2xl font-semibold text-civ-orange-500 mb-2">Border Caravan & Camping Leisurefest</h3>
               <p class="font-medium text-gray-900 mb-6">7 - 9 November 2025, Wodonga Racecourse</p>
               <a href="#" class="inline-flex items-center font-medium text-black border-b border-black hover:text-civ-orange-500 hover:border-civ-orange-500 transition-colors">
@@ -109,7 +109,7 @@
             </div>
 
             <div id="content-3" class="megamenu-content w-full hidden">
-              <img src="https://placehold.co/600x250/4FAC58/FFFFFF?text=Bendigo+Show" alt="Bendigo Show" class="w-full h-48 object-cover mb-6 shadow-sm">
+              <img src="<?php echo get_stylesheet_directory_uri() . "/assets/images/demo/logo-shows/bendigo.png" ?>" alt="Bendigo Show" class="w-full h-auto mb-6">
               <h3 class="text-2xl font-semibold text-civ-orange-500 mb-2">The Bendigo Caravan & Camping Leisurefest</h3>
               <p class="font-medium text-gray-900 mb-6">21 - 23 November 2025, Bendigo Racecourse</p>
               <a href="#" class="inline-flex items-center font-medium text-black border-b border-black hover:text-civ-orange-500 hover:border-civ-orange-500 transition-colors">
@@ -121,7 +121,7 @@
             </div>
 
             <div id="content-4" class="megamenu-content w-full hidden">
-              <img src="https://placehold.co/600x250/9460B2/FFFFFF?text=Victorian+Supershow" alt="Supershow" class="w-full h-48 object-cover mb-6 shadow-sm">
+              <img src="<?php echo get_stylesheet_directory_uri() . "/assets/images/demo/logo-shows/victorian.png" ?>" alt="Supershow" class="w-full h-auto mb-6">
               <h3 class="text-2xl font-semibold text-civ-orange-500 mb-2">Victorian Caravan & Camping Supershow</h3>
               <p class="font-medium text-gray-900 mb-6">18 - 22 February 2026, Melbourne Showgrounds</p>
               <a href="#" class="inline-flex items-center font-medium text-black border-b border-black hover:text-civ-orange-500 hover:border-civ-orange-500 transition-colors">
