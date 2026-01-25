@@ -15,12 +15,12 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-18">
 
       <div class="group flex flex-col">
-        <a href="https://placehold.co/1600x1200/1e456e/FFFFFF?text=Large+Image+1"
+        <a href="<?php echo get_stylesheet_directory_uri() . "/assets/images/demo/featured1.jpg" ?>"
           data-fancybox="featured-gallery"
           data-caption="<h3 class='font-semibold text-lg mb-2'>South Melbourne's BIGGEST Show</h3><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>"
           class="relative w-full aspect-4/5 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 block cursor-zoom-in">
 
-          <img src="https://placehold.co/800x1000/1e456e/FFFFFF?text=Family+At+Show" alt="Geelong Leisurefest" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <img src="<?php echo get_stylesheet_directory_uri() . "/assets/images/demo/featured1.jpg" ?>" alt="Geelong Leisurefest" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
 
           <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent"></div>
 
@@ -57,12 +57,12 @@
       </div>
 
       <div class="group flex flex-col">
-        <a href="https://placehold.co/1600x1200/b86a2f/FFFFFF?text=Large+Image+2"
+        <a href="<?php echo get_stylesheet_directory_uri() . "/assets/images/demo/featured2.jpg" ?>"
           data-fancybox="featured-gallery"
           data-caption="<h3 class='font-semibold text-lg mb-2'>Western Melbourne's BIGGEST Show</h3><p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>"
           class="relative w-full aspect-4/5 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 block cursor-zoom-in">
 
-          <img src="https://placehold.co/800x1000/b86a2f/FFFFFF?text=Couple+Inspecting+RV" alt="Bendigo Leisurefest" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <img src="<?php echo get_stylesheet_directory_uri() . "/assets/images/demo/featured2.jpg" ?>" alt="Bendigo Leisurefest" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
 
           <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent"></div>
 

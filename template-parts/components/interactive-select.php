@@ -7,7 +7,7 @@
 
 <section id="interactive-select" class="w-full bg-civ-blue-500 relative transition-all duration-500 ease-in-out">
 
-  <div class="container mx-auto px-4 py-16 relative z-20">
+  <div class="container mx-auto px-4 xl:px-8 py-16 relative z-20">
 
     <div class="flex flex-col md:flex-row items-center justify-center text-white text-3xl md:text-4xl font-light gap-3">
 

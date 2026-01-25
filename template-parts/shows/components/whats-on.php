@@ -12,7 +12,7 @@
     <div class="flex flex-col lg:flex-row items-end justify-between gap-12 mb-12">
 
       <div class="w-full lg:w-1/2 relative z-10">
-        <h2 class="text-3xl md:text-5xl font-extrabold text-black mb-6">What's On!</h2>
+        <h2 class="text-3xl md:text-5xl font-bold text-black mb-6">What's On!</h2>
         <p class="text-gray-700 text-sm md:text-base leading-relaxed mb-10 max-w-xl">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
         </p>
@@ -31,7 +31,7 @@
           </button>
 
           <div class="flex items-center gap-2 cursor-pointer group ml-4">
-            <span class="font-extrabold text-black uppercase text-sm group-hover:text-civ-orange-500 transition-colors">Thursday 18th October</span>
+            <span class="font-bold text-black uppercase text-sm group-hover:text-civ-orange-500 transition-colors">Thursday 18th October</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-civ-blue-500 group-hover:text-civ-orange-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
             </svg>
@@ -53,13 +53,13 @@
 
         <div class="w-full md:w-1/3 shrink-0 relative rounded-md overflow-hidden aspect-video md:aspect-auto">
           <img src="https://placehold.co/600x400/1e456e/FFFFFF?text=Picnic+Event" alt="Event Image" class="w-full h-full object-cover">
-          <div class="absolute bottom-0 left-0 bg-white text-civ-blue-600 font-extrabold text-[10px] sm:text-xs uppercase py-2 px-4 rounded-tr-md">
+          <div class="absolute bottom-0 left-4 bg-white text-civ-blue-600 font-bold text-[10px] sm:text-xs uppercase py-2 px-4 rounded-t-md">
             18 October 2025: 3:00 PM
           </div>
         </div>
 
         <div class="flex flex-col justify-center w-full">
-          <h3 class="text-xl md:text-2xl font-extrabold text-black mb-3 leading-tight">
+          <h3 class="text-xl xl:text-3xl font-bold text-black mb-3 leading-tight">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
           </h3>
           <p class="text-gray-600 text-sm leading-relaxed mb-6">
@@ -84,13 +84,13 @@
 
         <div class="w-full md:w-1/3 shrink-0 relative rounded-md overflow-hidden aspect-video md:aspect-auto">
           <img src="https://placehold.co/600x400/222/FFFFFF?text=Microphone" alt="Event Image" class="w-full h-full object-cover">
-          <div class="absolute bottom-0 left-0 bg-white text-civ-blue-600 font-extrabold text-[10px] sm:text-xs uppercase py-2 px-4 rounded-tr-md">
+          <div class="absolute bottom-0 left-4 bg-white text-civ-blue-600 font-bold text-[10px] sm:text-xs uppercase py-2 px-4 rounded-t-md">
             18 October 2025: 5:00 PM
           </div>
         </div>
 
         <div class="flex flex-col justify-center w-full">
-          <h3 class="text-xl md:text-2xl font-extrabold text-black mb-3 leading-tight">
+          <h3 class="text-xl xl:text-3xl font-bold text-black mb-3 leading-tight">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
           </h3>
           <p class="text-gray-600 text-sm leading-relaxed mb-6">
@@ -112,13 +112,13 @@
 
         <div class="w-full md:w-1/3 shrink-0 relative rounded-md overflow-hidden aspect-video md:aspect-auto">
           <img src="https://placehold.co/600x400/444/FFFFFF?text=Party+Lights" alt="Event Image" class="w-full h-full object-cover">
-          <div class="absolute bottom-0 left-0 bg-white text-civ-blue-600 font-extrabold text-[10px] sm:text-xs uppercase py-2 px-4 rounded-tr-md">
+          <div class="absolute bottom-0 left-4 bg-white text-civ-blue-600 font-bold text-[10px] sm:text-xs uppercase py-2 px-4 rounded-t-md">
             18 October 2025: 7:00 PM
           </div>
         </div>
 
         <div class="flex flex-col justify-center w-full">
-          <h3 class="text-xl md:text-2xl font-extrabold text-black mb-3 leading-tight">
+          <h3 class="text-xl xl:text-3xl font-bold text-black mb-3 leading-tight">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry.
           </h3>
           <p class="text-gray-600 text-sm leading-relaxed mb-6">

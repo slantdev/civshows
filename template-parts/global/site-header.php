@@ -13,7 +13,7 @@
   <div id="main-header" class="main-header bg-transparent w-full transition-all duration-300">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
-      <div class="flex items-center relative py-4 xl:py-6 xl:space-x-12 transition-all duration-300" id="header-inner">
+      <div class="flex items-center relative py-4 xl:py-6 xl:gap-x-14 transition-all duration-300" id="header-inner">
 
         <div class="site-branding relative z-10 shrink-0">
           <a href="/" class="block">

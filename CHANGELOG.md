@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.0] - 2026-01-20
+### Added
+- Exhibit With Us page template (`page-templates/exhibit.php`) and component (`template-parts/components/exhibit-with-us.php`).
+- New Show components: `video-slider.php` and `image-text.php`.
+- `initVideoSlider` logic in `src/main.js`.
+- Entrance animations for Megamenu in `site-navigation.php`.
+
+### Changed
+- Refined `Home Hero Slider`: adjusted autoplay speed and layout spacing.
+- Refined `Interactive Select`: updated button hover states and background colors.
+- Refined `Featured Gallery`: replaced placeholder images with demo assets.
+- Refined `What's On`: adjusted typography and date tag positioning.
+- Updated `site-header` layout with improved spacing (`gap-x-14`).
+- Updated `content-single.php` to dynamically load new show components.
+
 ## [1.8.0] - 2026-01-20
 ### Added
 - Single post template for 'Shows' (`single-shows.php`).

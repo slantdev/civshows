@@ -17,10 +17,10 @@
         <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo get_stylesheet_directory_uri() . "/assets/images/demo/DJI_20240830142858_0012_D-scaled.jpg" ?>');">
           <div class="absolute inset-0 bg-linear-to-b via-30% from-black/90 to-black/60 via-black/70"></div>
         </div>
-        <div class="container mx-auto px-4 relative z-10 grid grid-cols-1 md:grid-cols-12 h-full items-center">
+        <div class="container mx-auto px-4 xl:px-8 relative z-10 grid grid-cols-1 md:grid-cols-12 h-full items-center">
           <div class="hidden md:block md:col-span-4 xl:col-span-5"></div>
           <div class="col-span-1 md:col-span-8 xl:col-span-7 text-white pl-8 md:pl-16">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 uppercase italic" data-swiper-parallax="-400">Bendigo Leisurefest 2025</h1>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4" data-swiper-parallax="-400">Bendigo Leisurefest 2025</h1>
             <p class="text-lg md:text-xl mb-8 max-w-2xl font-light" data-swiper-parallax="-700">
               21 - 23 November 2025 - Bendigo Racecourse: Victoria's biggest showcase of caravans, campers, and outdoor adventure.
             </p>
@@ -36,10 +36,10 @@
         <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo get_stylesheet_directory_uri() . "/assets/images/demo/CIVSS25_Day3-03.jpg" ?>');">
           <div class="absolute inset-0 bg-linear-to-b via-30% from-black/90 to-black/60 via-black/70"></div>
         </div>
-        <div class="container mx-auto px-4 relative z-10 grid grid-cols-1 md:grid-cols-12 h-full items-center">
+        <div class="container mx-auto px-4 xl:px-8 relative z-10 grid grid-cols-1 md:grid-cols-12 h-full items-center">
           <div class="hidden md:block md:col-span-4 xl:col-span-5"></div>
           <div class="col-span-1 md:col-span-8 xl:col-span-7 text-white pl-8 md:pl-16">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 uppercase italic" data-swiper-parallax="-400">Geelong Leisurefest</h1>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4" data-swiper-parallax="-400">Geelong Leisurefest</h1>
             <p class="text-lg md:text-xl mb-8 max-w-2xl font-light" data-swiper-parallax="-700">
               28 - 30 November 2025 - Geelong Racecourse: Victoria's biggest showcase of caravans, campers, and outdoor adventure.
             </p>
@@ -55,10 +55,10 @@
         <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo get_stylesheet_directory_uri() . "/assets/images/demo/Melbourne-@GAZiPHOTO_@Caravan-Industry-Victoria-.jpg" ?>');">
           <div class="absolute inset-0 bg-linear-to-b via-30% from-black/90 to-black/60 via-black/70"></div>
         </div>
-        <div class="container mx-auto px-4 relative z-10 grid grid-cols-1 md:grid-cols-12 h-full items-center">
+        <div class="container mx-auto px-4 xl:px-8 relative z-10 grid grid-cols-1 md:grid-cols-12 h-full items-center">
           <div class="hidden md:block md:col-span-4 xl:col-span-5"></div>
           <div class="col-span-1 md:col-span-8 xl:col-span-7 text-white pl-8 md:pl-16">
-            <h1 class="text-4xl md:text-6xl font-bold mb-4 uppercase italic" data-swiper-parallax="-400">Victorian Leisurefest 2026</h1>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4" data-swiper-parallax="-400">Victorian Leisurefest 2026</h1>
             <p class="text-lg md:text-xl mb-8 max-w-2xl font-light" data-swiper-parallax="-700">
               18 - 20 February 2026 - Melbourne Showgrounds: Victoria's biggest showcase of caravans, campers, and outdoor adventure.
             </p>
@@ -72,7 +72,7 @@
   </div>
 
   <!-- Thumbs Vertical Navigation -->
-  <div class="absolute top-0 bottom-0 left-0 z-20 container mx-auto px-4 xl:pt-64 pointer-events-none">
+  <div class="absolute top-0 bottom-0 left-0 z-20 container mx-auto px-4 xl:px-8 xl:pt-64 pointer-events-none">
     <div class="h-full grid grid-cols-1 md:grid-cols-12 items-center">
       <div class="hidden md:flex md:col-span-4 lg:col-span-4 flex-col justify-center h-full pointer-events-auto pl-6">
         <div class="swiper thumbs-slider w-full max-w-96 overflow-visible!">

@@ -30,7 +30,7 @@ const initHomeHero = () => {
       swiper: thumbsSwiper,
     },
     autoplay: {
-      delay: 5000,
+      delay: 6000,
       disableOnInteraction: false,
     },
     on: {
@@ -199,13 +199,13 @@ const initInteractiveSelect = () => {
       data.forEach(item => {
         const slideHTML = `
           <div class="swiper-slide h-auto">
-            <div class="border border-white/30 rounded-lg p-8 h-full flex flex-col items-start hover:bg-civ-blue-600 transition-colors">
+            <div class="border border-white/30 rounded-lg p-8 h-full flex flex-col items-start bg-civ-blue-600 transition-colors">
               <h3 class="text-[1.75rem] font-bold text-white mb-4 leading-tight">${item.title}</h3>
               <div class="grow">
                 <p class="text-white font-bold mb-1">${item.date}</p>
                 <p class="text-white/80">${item.loc}</p>
               </div>
-              <button class="mt-8 bg-white text-civ-blue-600 font-bold text-sm px-6 py-3 uppercase hover:bg-gray-100 transition-colors cursor-pointer">
+              <button class="mt-8 bg-white text-civ-blue-600 font-bold text-sm px-6 py-3 uppercase hover:bg-gray-300 transition-colors cursor-pointer">
                 ${item.btn}
               </button>
             </div>
@@ -245,10 +245,28 @@ const initExhibitorSpecial = () => {
 
 };
 
+const initVideoSlider = () => {
+
+  const townSwiper = new Swiper('.town-slider', {
+    loop: true,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: '.town-next',
+      prevEl: '.town-prev',
+    },
+    pagination: {
+      el: '.town-pagination',
+      clickable: true,
+    },
+  });
+
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   initHomeHero();
   initInteractiveSelect();
   initExhibitorSpecial();
+  initVideoSlider();
   
   // Fancybox initialization
   Fancybox.bind("[data-fancybox]", {

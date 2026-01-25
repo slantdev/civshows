@@ -40,24 +40,24 @@
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row items-stretch md:items-center">
 
-        <div class="text-white font-bold uppercase py-4 px-4 text-sm tracking-wide md:w-auto shrink-0 grow flex items-center justify-center md:justify-start">
-          Melbourne Leisurefest
+        <div class="text-white font-bold uppercase py-4 px-4 tracking-wide md:w-auto shrink-0 grow flex items-center justify-center md:justify-start">
+          <a href="/shows/melbourne-leisurefest/" class="hover:underline">Melbourne Leisurefest</a>
         </div>
 
         <div class="overflow-x-auto">
           <ul class="flex items-center whitespace-nowrap bg-white text-civ-blue-900 text-xs md:text-sm font-bold uppercase tracking-tight divide-x divide-gray-300 border-r border-gray-300">
 
             <li class="h-full">
-              <a href="/shows/melbourne-leisurefest/" class="block py-4 px-6 hover:text-civ-orange-500 hover:bg-civ-orange-100 transition-colors">
+              <a href="/shows/melbourne-leisurefest/tickets/" class="block py-4 xl:py-5 px-6 xl:px-8 2xl:px-10 hover:text-civ-orange-500 hover:bg-civ-orange-100 transition-colors">
                 Tickets
               </a>
             </li>
-            <li><a href="/shows/melbourne-leisurefest/visitor-information/" class="block py-4 px-6 hover:text-civ-orange-500 hover:bg-civ-orange-100 transition-colors">Visitor Information</a></li>
-            <li><a href="/shows/melbourne-leisurefest/exhibitors/" class="block py-4 px-6 hover:text-civ-orange-500 hover:bg-civ-orange-100 transition-colors">Exhibitors</a></li>
-            <li><a href="/shows/melbourne-leisurefest/gallery/" class="block py-4 px-6 hover:text-civ-orange-500 hover:bg-civ-orange-100 transition-colors">Gallery</a></li>
-            <li><a href="/shows/melbourne-leisurefest/win/" class="block py-4 px-6 hover:text-civ-orange-500 hover:bg-civ-orange-100 transition-colors">Win!!</a></li>
-            <li><a href="/shows/melbourne-leisurefest/map-visitor-guide/" class="block py-4 px-6 hover:text-civ-orange-500 hover:bg-civ-orange-100 transition-colors">Map & Visitor Guide</a></li>
-            <li><a href="/shows/melbourne-leisurefest/whats-on/" class="block py-4 px-6 hover:text-civ-orange-500 hover:bg-civ-orange-100 transition-colors">What's On</a></li>
+            <li><a href="/shows/melbourne-leisurefest/visitor-information/" class="block py-4 xl:py-5 px-6 xl:px-8 2xl:px-10 hover:text-civ-orange-500 hover:bg-civ-orange-100 transition-colors">Visitor Information</a></li>
+            <li><a href="/shows/melbourne-leisurefest/exhibitors/" class="block py-4 xl:py-5 px-6 xl:px-8 2xl:px-10 hover:text-civ-orange-500 hover:bg-civ-orange-100 transition-colors">Exhibitors</a></li>
+            <li><a href="/shows/melbourne-leisurefest/gallery/" class="block py-4 xl:py-5 px-6 xl:px-8 2xl:px-10 hover:text-civ-orange-500 hover:bg-civ-orange-100 transition-colors">Gallery</a></li>
+            <li><a href="/shows/melbourne-leisurefest/win/" class="block py-4 xl:py-5 px-6 xl:px-8 2xl:px-10 hover:text-civ-orange-500 hover:bg-civ-orange-100 transition-colors">Win!!</a></li>
+            <li><a href="/shows/melbourne-leisurefest/map-guide/" class="block py-4 xl:py-5 px-6 xl:px-8 2xl:px-10 hover:text-civ-orange-500 hover:bg-civ-orange-100 transition-colors">Map & Visitor Guide</a></li>
+            <li><a href="/shows/melbourne-leisurefest/whats-on/" class="block py-4 xl:py-5 px-6 xl:px-8 2xl:px-10 hover:text-civ-orange-500 hover:bg-civ-orange-100 transition-colors">What's On</a></li>
 
           </ul>
         </div>

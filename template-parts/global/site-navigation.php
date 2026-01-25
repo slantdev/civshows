@@ -20,7 +20,7 @@
         </svg>
       </a>
 
-      <div class="absolute top-full left-0 w-full bg-white shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform origin-top">
+      <div class="absolute top-full left-0 w-full bg-white shadow-2xl opacity-0 invisible translate-y-12 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50 transform origin-top">
 
         <div class="grid grid-cols-12 min-h-[450px]">
 
@@ -140,7 +140,7 @@
 
     <span class="text-white/60">|</span>
 
-    <a href="#" class="text-white font-medium uppercase text-sm tracking-wide hover:text-civ-orange-500 transition-colors">
+    <a href="/exhibit-with-us" class="text-white font-medium uppercase text-sm tracking-wide hover:text-civ-orange-500 transition-colors">
       Exhibit With Us
     </a>
 
