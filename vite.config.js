@@ -33,6 +33,12 @@ const writeHotFile = () => ({
         fs.unlinkSync(hotFilePath);
       }
     });
+  },
+  buildStart() {
+    const hotFilePath = path.resolve(process.cwd(), 'hot');
+    if (fs.existsSync(hotFilePath)) {
+      fs.unlinkSync(hotFilePath);
+    }
   }
 });
 
