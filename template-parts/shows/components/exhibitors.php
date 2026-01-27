@@ -6,7 +6,7 @@
 
 ?>
 
-<section class="w-full bg-gray-100 py-16 md:py-24">
+<section class="w-full bg-white py-16 md:py-24">
   <div class="container mx-auto px-4">
 
     <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
@@ -16,21 +16,21 @@
         <p class="text-gray-700 text-sm md:text-base leading-relaxed mb-8 max-w-2xl">
           Explore the biggest brands and the latest products on off at the Melbourne Caravan & Camping Leisurefest. Come along to see the latest in caravans, camper trailers, motorhomes, and 4x4, plus a plethora of camping equipment, gadgets, and accessories bound to excite even the most seasoned outdoor lover!
         </p>
-        <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold uppercase text-xs py-3 px-8 rounded-sm transition-colors shadow-sm">
+        <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold uppercase text-sm py-3 px-8 rounded-sm transition-colors shadow-sm">
           Download Map
         </button>
       </div>
 
       <div class="w-full lg:w-5/12 flex justify-center lg:justify-end -mb-28">
-        <div class="w-full max-w-md aspect-square rounded-full overflow-hidden relative">
-          <img src="https://placehold.co/800x800/1e456e/FFFFFF?text=Family+at+Expo" alt="Family at Exhibition" class="absolute inset-0 w-full h-full object-cover">
+        <div class="w-full max-w-xl aspect-square rounded-full overflow-hidden relative">
+          <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/01.jpg" alt="Family at Exhibition" class="absolute inset-0 w-full h-full object-cover">
         </div>
       </div>
     </div>
 
-    <div class="bg-white p-6 md:p-8 rounded-lg shadow-sm mb-12 z-30 relative">
+    <div class="bg-gray-50 p-6 md:p-8 rounded-lg border border-gray-200 shadow-sm mb-12 z-30 relative">
 
-      <div class="flex flex-col lg:flex-row gap-6 items-end lg:items-center border-b border-gray-100 pb-8 mb-6">
+      <div class="flex flex-col lg:flex-row gap-6 items-end lg:items-center border-b border-gray-200 pb-8 mb-6">
 
         <div class="w-full lg:w-5/12 space-y-2">
           <label class="font-extrabold text-sm uppercase text-black">Find By Category</label>
@@ -69,7 +69,7 @@
         <div class="w-full lg:w-5/12 space-y-2">
           <label class="font-extrabold text-sm uppercase text-black">Find By Keyword</label>
           <div class="flex">
-            <input type="text" placeholder="Search by Name, State, Postcode ..." class="w-full border border-gray-300 border-r-0 rounded-l px-4 py-3 text-sm focus:outline-none focus:border-civ-orange-500">
+            <input type="text" placeholder="Search by Name, State, Postcode ..." class="w-full bg-white border border-gray-300 border-r-0 rounded-l px-4 py-3 text-sm focus:outline-none focus:border-civ-orange-500">
             <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold uppercase text-sm px-6 rounded-r transition-colors">
               Search
             </button>
@@ -107,13 +107,13 @@
         </div>
         <div class="p-6 flex flex-col grow">
           <h3 class="font-extrabold text-lg text-civ-blue-900 mb-1">Brand Name</h3>
-          <p class="text-xs text-gray-500 italic mb-3">Category</p>
-          <p class="text-xs text-gray-600 mb-6 leading-relaxed grow">
+          <p class="text-sm text-gray-500 italic mb-3">Category</p>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed grow">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
           <div class="space-y-1 mt-auto">
-            <p class="text-xs font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
-            <p class="text-xs font-bold text-black">Site:</p>
+            <p class="text-sm font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
+            <p class="text-sm font-bold text-black">Site:</p>
           </div>
         </div>
       </div>
@@ -124,13 +124,13 @@
         </div>
         <div class="p-6 flex flex-col grow">
           <h3 class="font-extrabold text-lg text-civ-blue-900 mb-1">Brand Name</h3>
-          <p class="text-xs text-gray-500 italic mb-3">Category</p>
-          <p class="text-xs text-gray-600 mb-6 leading-relaxed grow">
+          <p class="text-sm text-gray-500 italic mb-3">Category</p>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed grow">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
           <div class="space-y-1 mt-auto">
-            <p class="text-xs font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
-            <p class="text-xs font-bold text-black">Site:</p>
+            <p class="text-sm font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
+            <p class="text-sm font-bold text-black">Site:</p>
           </div>
         </div>
       </div>
@@ -141,13 +141,13 @@
         </div>
         <div class="p-6 flex flex-col grow">
           <h3 class="font-extrabold text-lg text-civ-blue-900 mb-1">Brand Name</h3>
-          <p class="text-xs text-gray-500 italic mb-3">Category</p>
-          <p class="text-xs text-gray-600 mb-6 leading-relaxed grow">
+          <p class="text-sm text-gray-500 italic mb-3">Category</p>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed grow">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
           <div class="space-y-1 mt-auto">
-            <p class="text-xs font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
-            <p class="text-xs font-bold text-black">Site:</p>
+            <p class="text-sm font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
+            <p class="text-sm font-bold text-black">Site:</p>
           </div>
         </div>
       </div>
@@ -158,13 +158,13 @@
         </div>
         <div class="p-6 flex flex-col grow">
           <h3 class="font-extrabold text-lg text-civ-blue-900 mb-1">Brand Name</h3>
-          <p class="text-xs text-gray-500 italic mb-3">Category</p>
-          <p class="text-xs text-gray-600 mb-6 leading-relaxed grow">
+          <p class="text-sm text-gray-500 italic mb-3">Category</p>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed grow">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </p>
           <div class="space-y-1 mt-auto">
-            <p class="text-xs font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
-            <p class="text-xs font-bold text-black">Site:</p>
+            <p class="text-sm font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
+            <p class="text-sm font-bold text-black">Site:</p>
           </div>
         </div>
       </div>
@@ -175,13 +175,13 @@
         </div>
         <div class="p-6 flex flex-col grow">
           <h3 class="font-extrabold text-lg text-civ-blue-900 mb-1">Brand Name</h3>
-          <p class="text-xs text-gray-500 italic mb-3">Category</p>
-          <p class="text-xs text-gray-600 mb-6 leading-relaxed grow">
+          <p class="text-sm text-gray-500 italic mb-3">Category</p>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed grow">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
           <div class="space-y-1 mt-auto">
-            <p class="text-xs font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
-            <p class="text-xs font-bold text-black">Site:</p>
+            <p class="text-sm font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
+            <p class="text-sm font-bold text-black">Site:</p>
           </div>
         </div>
       </div>
@@ -191,13 +191,13 @@
         </div>
         <div class="p-6 flex flex-col grow">
           <h3 class="font-extrabold text-lg text-civ-blue-900 mb-1">Brand Name</h3>
-          <p class="text-xs text-gray-500 italic mb-3">Category</p>
-          <p class="text-xs text-gray-600 mb-6 leading-relaxed grow">
+          <p class="text-sm text-gray-500 italic mb-3">Category</p>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed grow">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
           <div class="space-y-1 mt-auto">
-            <p class="text-xs font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
-            <p class="text-xs font-bold text-black">Site:</p>
+            <p class="text-sm font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
+            <p class="text-sm font-bold text-black">Site:</p>
           </div>
         </div>
       </div>
@@ -207,13 +207,13 @@
         </div>
         <div class="p-6 flex flex-col grow">
           <h3 class="font-extrabold text-lg text-civ-blue-900 mb-1">Brand Name</h3>
-          <p class="text-xs text-gray-500 italic mb-3">Category</p>
-          <p class="text-xs text-gray-600 mb-6 leading-relaxed grow">
+          <p class="text-sm text-gray-500 italic mb-3">Category</p>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed grow">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
           <div class="space-y-1 mt-auto">
-            <p class="text-xs font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
-            <p class="text-xs font-bold text-black">Site:</p>
+            <p class="text-sm font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
+            <p class="text-sm font-bold text-black">Site:</p>
           </div>
         </div>
       </div>
@@ -223,13 +223,13 @@
         </div>
         <div class="p-6 flex flex-col grow">
           <h3 class="font-extrabold text-lg text-civ-blue-900 mb-1">Brand Name</h3>
-          <p class="text-xs text-gray-500 italic mb-3">Category</p>
-          <p class="text-xs text-gray-600 mb-6 leading-relaxed grow">
+          <p class="text-sm text-gray-500 italic mb-3">Category</p>
+          <p class="text-sm text-gray-600 mb-6 leading-relaxed grow">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
           <div class="space-y-1 mt-auto">
-            <p class="text-xs font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
-            <p class="text-xs font-bold text-black">Site:</p>
+            <p class="text-sm font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
+            <p class="text-sm font-bold text-black">Site:</p>
           </div>
         </div>
       </div>
@@ -237,7 +237,7 @@
     </div>
 
     <div class="flex justify-center">
-      <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold uppercase text-xs py-3 px-12 rounded-sm transition-colors shadow-sm">
+      <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold uppercase text-sm py-3 px-12 rounded-sm transition-colors shadow-sm">
         Load More
       </button>
     </div>

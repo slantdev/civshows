@@ -19,7 +19,7 @@
 
       <div class="flex flex-col">
         <div class="relative w-full aspect-video rounded-lg overflow-hidden group cursor-pointer shadow-sm hover:shadow-xl transition-shadow duration-300">
-          <img src="https://placehold.co/800x450/1e456e/FFFFFF?text=2024+Show+Recap" alt="2024 Show Recap" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/02.jpg" alt="2024 Show Recap" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
 
           <div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
 
@@ -33,7 +33,7 @@
         </div>
 
         <div class="mt-8">
-          <h3 class="text-2xl font-bold text-civ-orange-500 mb-4">2024 Melbourne Caravan & Camping Leisurefest</h3>
+          <h3 class="text-2xl font-bold mb-4">2024 Melbourne Caravan & Camping Leisurefest</h3>
           <p class="text-gray-800 text-sm mb-6 leading-relaxed">
             Here's a quick recap of the 2023 Melbourne Caravan & Camping Leisurefest at Sandown Racecourse!
           </p>
@@ -45,7 +45,7 @@
 
       <div class="flex flex-col">
         <div class="relative w-full aspect-video rounded-lg overflow-hidden group cursor-pointer shadow-sm hover:shadow-xl transition-shadow duration-300">
-          <img src="https://placehold.co/800x450/b86a2f/FFFFFF?text=2023+Show+Recap" alt="2023 Show Recap" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/04.jpg" alt="2023 Show Recap" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
 
           <div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors"></div>
 
@@ -59,7 +59,7 @@
         </div>
 
         <div class="mt-8">
-          <h3 class="text-2xl font-bold text-civ-orange-500 mb-4">2023 Melbourne Caravan & Camping Leisurefest</h3>
+          <h3 class="text-2xl font-bold mb-4">2023 Melbourne Caravan & Camping Leisurefest</h3>
           <p class="text-gray-800 text-sm mb-6 leading-relaxed">
             Here's a quick recap of the 2023 Melbourne Caravan & Camping Leisurefest at Sandown Racecourse!
           </p>

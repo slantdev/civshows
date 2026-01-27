@@ -8,7 +8,7 @@
 <section class="flex flex-col md:flex-row w-full min-h-[500px]">
 
   <div class="w-full md:w-1/2 relative bg-gray-800">
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/Melbourne-@GAZiPHOTO_@Caravan-Industry-Victoria-.jpg' ?>');">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/contact.jpg' ?>');">
       <div class="absolute inset-0 bg-black/50"></div>
     </div>
 

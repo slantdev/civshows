@@ -21,17 +21,17 @@
 
     <div class="space-y-6 mb-12">
       <div>
-        <h4 class="font-bold text-sm uppercase text-black mb-1">When</h4>
+        <h4 class="font-bold uppercase text-black mb-1">When</h4>
         <p class="text-gray-700">Thursday 18 – Sunday 21 September 2025</p>
       </div>
 
       <div>
-        <h4 class="font-bold text-sm uppercase text-black mb-1">Where</h4>
+        <h4 class="font-bold uppercase text-black mb-1">Where</h4>
         <p class="text-gray-700 mb-2">
           Sandown Racecourse,<br>
           591-659 Princes Hwy, Springvale VIC 3171
         </p>
-        <a href="#" class="inline-block text-civ-orange-500 font-bold text-sm hover:text-civ-orange-600 transition-colors uppercase">
+        <a href="#" class="inline-block text-civ-orange-500 font-bold hover:text-civ-orange-600 transition-colors uppercase">
           &gt; Get Directions
         </a>
       </div>
@@ -45,10 +45,10 @@
       <div class="space-y-4">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div class="flex items-center gap-8 w-full sm:w-auto">
-            <span class="text-gray-800 text-sm font-medium w-48">Thursday 18 September 2025</span>
-            <span class="text-gray-600 text-sm">9:00am to 4:00pm</span>
+            <span class="text-gray-800 font-medium w-60">Thursday 18 September 2025</span>
+            <span class="text-gray-600">9:00am to 4:00pm</span>
           </div>
-          <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white text-xs font-bold uppercase py-2 px-4 rounded-sm flex items-center gap-2 transition-colors shrink-0">
+          <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-sm text-white font-bold uppercase py-2 px-4 rounded-sm flex items-center gap-2 transition-colors shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
@@ -58,10 +58,10 @@
 
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div class="flex items-center gap-8 w-full sm:w-auto">
-            <span class="text-gray-800 text-sm font-medium w-48">Friday 19 September 2025</span>
-            <span class="text-gray-600 text-sm">9:00am to 4:00pm</span>
+            <span class="text-gray-800 font-medium w-60">Friday 19 September 2025</span>
+            <span class="text-gray-600">9:00am to 4:00pm</span>
           </div>
-          <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white text-xs font-bold uppercase py-2 px-4 rounded-sm flex items-center gap-2 transition-colors shrink-0">
+          <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-sm text-white font-bold uppercase py-2 px-4 rounded-sm flex items-center gap-2 transition-colors shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
@@ -71,10 +71,10 @@
 
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div class="flex items-center gap-8 w-full sm:w-auto">
-            <span class="text-gray-800 text-sm font-medium w-48">Saturday 20 September 2025</span>
-            <span class="text-gray-600 text-sm">9:00am to 5:00pm</span>
+            <span class="text-gray-800 font-medium w-60">Saturday 20 September 2025</span>
+            <span class="text-gray-600">9:00am to 5:00pm</span>
           </div>
-          <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white text-xs font-bold uppercase py-2 px-4 rounded-sm flex items-center gap-2 transition-colors shrink-0">
+          <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-sm text-white font-bold uppercase py-2 px-4 rounded-sm flex items-center gap-2 transition-colors shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
@@ -84,10 +84,10 @@
 
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div class="flex items-center gap-8 w-full sm:w-auto">
-            <span class="text-gray-800 text-sm font-medium w-48">Sunday 21 September 2025</span>
-            <span class="text-gray-600 text-sm">9:00am to 4:00pm</span>
+            <span class="text-gray-800 font-medium w-60">Sunday 21 September 2025</span>
+            <span class="text-gray-600">9:00am to 4:00pm</span>
           </div>
-          <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white text-xs font-bold uppercase py-2 px-4 rounded-sm flex items-center gap-2 transition-colors shrink-0">
+          <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-sm text-white font-bold uppercase py-2 px-4 rounded-sm flex items-center gap-2 transition-colors shrink-0">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
@@ -102,7 +102,7 @@
 
     <div>
       <h3 class="font-extrabold text-lg uppercase text-black mb-6">Getting There</h3>
-      <p class="text-gray-700 text-sm mb-8">
+      <p class="text-gray-700 mb-8">
         Getting to the Melbourne Caravan & Camping Leisurefest is easy by car or public transport.
       </p>
 
@@ -115,8 +115,8 @@
             </svg>
           </div>
           <div>
-            <h4 class="font-bold text-sm uppercase text-black mb-1">Car Parking Information</h4>
-            <p class="text-xs text-gray-700 leading-relaxed">
+            <h4 class="font-bold uppercase text-black mb-1">Car Parking Information</h4>
+            <p class="text-gray-700 leading-relaxed">
               There is free parking available at the Sandown Racecourse for all days of the show! We will have car parking staff to help and direct you to available parking locations throughout the show period.
             </p>
           </div>
@@ -132,8 +132,8 @@
             </svg>
           </div>
           <div>
-            <h4 class="font-bold text-sm uppercase text-black mb-1">Disabled Parking & Access</h4>
-            <p class="text-xs text-gray-700 leading-relaxed">
+            <h4 class="font-bold uppercase text-black mb-1">Disabled Parking & Access</h4>
+            <p class="text-gray-700 leading-relaxed">
               Dedicated disabled parking spaces are available at the Sandown Racecourse. The Sandown Racecourse is a fully accessible venue with disabled access to all pavilions and buildings.
             </p>
           </div>
@@ -147,8 +147,8 @@
             </svg>
           </div>
           <div>
-            <h4 class="font-bold text-sm uppercase text-black mb-1">Public Transport Information</h4>
-            <p class="text-xs text-gray-700 leading-relaxed">
+            <h4 class="font-bold uppercase text-black mb-1">Public Transport Information</h4>
+            <p class="text-gray-700 leading-relaxed">
               Trains will be available on all days of the show! The closest station is Sandown Park. To plan your journey on public transport to the Sandown Racecourse, use Public Transport Victoria's Journey Planner.
             </p>
           </div>

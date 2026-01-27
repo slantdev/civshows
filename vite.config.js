@@ -61,6 +61,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: "./src/main.js",
+        "admin-style": "./src/css/admin-style.css",
+        "acf-layouts": "./src/css/acf-layouts.css",
       },
       output: {
         entryFileNames: "js/[name].js",

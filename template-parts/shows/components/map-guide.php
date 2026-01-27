@@ -7,7 +7,7 @@
 ?>
 
 <section class="w-full bg-white py-16 md:py-24">
-  <div class="container mx-auto px-4">
+  <div class="container mx-auto px-4 xl:px-8">
 
     <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 mb-20 lg:mb-32">
 
@@ -30,7 +30,7 @@
 
       <div class="w-full lg:w-1/2 flex justify-center lg:justify-end">
         <div class="w-full max-w-lg shadow-lg border border-gray-100 rounded-lg overflow-hidden">
-          <img src="https://placehold.co/800x500/f1f5f9/334155?text=Event+Map+Preview" alt="Event Map" class="w-full h-auto object-cover">
+          <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/f1.jpg' ?>" alt="Event Map" class="w-full h-auto object-cover">
         </div>
       </div>
 
@@ -51,8 +51,8 @@
       </div>
 
       <div class="w-full lg:w-1/2 flex justify-center lg:justify-end">
-        <div class="w-full max-w-xs shadow-2xl rounded-sm transform rotate-2 hover:rotate-0 transition-transform duration-300">
-          <img src="https://placehold.co/400x550/1e456e/FFFFFF?text=Show+Guide+Cover" alt="Show Guide Cover" class="w-full h-auto object-cover">
+        <div class="w-full max-w-xs shadow-2xl rounded-sm transition-transform duration-300">
+          <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/f2.jpg' ?>" alt="Show Guide Cover" class="w-full h-auto object-cover">
         </div>
       </div>
 

@@ -25,7 +25,7 @@
         <div class="swiper-wrapper">
 
           <div class="swiper-slide relative aspect-16/10 group cursor-pointer">
-            <img src="https://placehold.co/1000x625/333/999?text=Show+Highlight+Video" alt="Show Highlight" class="w-full h-full object-cover">
+            <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/02.jpg" alt="Show Highlight" class="w-full h-full object-cover">
 
             <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
 
@@ -39,7 +39,7 @@
           </div>
 
           <div class="swiper-slide relative aspect-16/10 group cursor-pointer">
-            <img src="https://placehold.co/1000x625/1e456e/FFFFFF?text=Slide+2" alt="Slide 2" class="w-full h-full object-cover">
+            <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/04.jpg" alt="Slide 2" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
             <div class="absolute inset-0 flex items-center justify-center">
               <div class="w-20 h-20 md:w-24 md:h-24 rounded-full border-[5px] border-white flex items-center justify-center pl-2 transition-transform duration-300 transform group-hover:scale-110">

@@ -40,8 +40,8 @@
       </div>
 
       <div class="w-full lg:w-5/12 flex justify-center lg:justify-end -mb-28">
-        <div class="w-full max-w-md aspect-square rounded-full overflow-hidden relative">
-          <img src="https://placehold.co/800x800/222/FFF?text=Happy+People" alt="Event Atmosphere" class="absolute inset-0 w-full h-full object-cover">
+        <div class="w-full max-w-xl aspect-square rounded-full overflow-hidden relative">
+          <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/06.jpg" alt="Event Atmosphere" class="absolute inset-0 w-full h-full object-cover">
         </div>
       </div>
 
@@ -52,7 +52,7 @@
       <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex flex-col md:flex-row gap-6 md:gap-8 shadow-sm hover:shadow-md transition-shadow z-30 relative">
 
         <div class="w-full md:w-1/3 shrink-0 relative rounded-md overflow-hidden aspect-video md:aspect-auto">
-          <img src="https://placehold.co/600x400/1e456e/FFFFFF?text=Picnic+Event" alt="Event Image" class="w-full h-full object-cover">
+          <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/04.jpg" alt="Event Image" class="w-full h-full object-cover">
           <div class="absolute bottom-0 left-4 bg-white text-civ-blue-600 font-bold text-[10px] sm:text-xs uppercase py-2 px-4 rounded-t-md">
             18 October 2025: 3:00 PM
           </div>
@@ -83,7 +83,7 @@
       <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex flex-col md:flex-row gap-6 md:gap-8 shadow-sm hover:shadow-md transition-shadow">
 
         <div class="w-full md:w-1/3 shrink-0 relative rounded-md overflow-hidden aspect-video md:aspect-auto">
-          <img src="https://placehold.co/600x400/222/FFFFFF?text=Microphone" alt="Event Image" class="w-full h-full object-cover">
+          <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/03-scaled.jpg" alt="Event Image" class="w-full h-full object-cover">
           <div class="absolute bottom-0 left-4 bg-white text-civ-blue-600 font-bold text-[10px] sm:text-xs uppercase py-2 px-4 rounded-t-md">
             18 October 2025: 5:00 PM
           </div>
@@ -111,7 +111,7 @@
       <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex flex-col md:flex-row gap-6 md:gap-8 shadow-sm hover:shadow-md transition-shadow">
 
         <div class="w-full md:w-1/3 shrink-0 relative rounded-md overflow-hidden aspect-video md:aspect-auto">
-          <img src="https://placehold.co/600x400/444/FFFFFF?text=Party+Lights" alt="Event Image" class="w-full h-full object-cover">
+          <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/05.jpg" alt="Event Image" class="w-full h-full object-cover">
           <div class="absolute bottom-0 left-4 bg-white text-civ-blue-600 font-bold text-[10px] sm:text-xs uppercase py-2 px-4 rounded-t-md">
             18 October 2025: 7:00 PM
           </div>

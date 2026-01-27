@@ -11,8 +11,8 @@
     <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
 
       <div class="w-full lg:w-5/12">
-        <div class="relative w-full max-w-md aspect-square rounded-full overflow-hidden shadow-none">
-          <img src="https://placehold.co/800x800/222/FFF?text=Speakers+at+Event" alt="Event Speakers" class="w-full h-full object-cover">
+        <div class="relative w-full max-w-lg aspect-square rounded-full overflow-hidden shadow-none">
+          <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/05.jpg" alt="Event Speakers" class="w-full h-full object-cover">
         </div>
       </div>
 

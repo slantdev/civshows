@@ -6,17 +6,17 @@
 
 ?>
 
-<section class="w-full bg-gray-100 py-16 md:py-24">
+<section class="w-full bg-white py-16 md:py-24">
   <div class="container mx-auto px-4">
 
     <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
 
       <div class="w-full lg:w-5/12">
-        <div class="w-full rounded-lg shadow-sm overflow-hidden mb-4">
-          <img src="https://placehold.co/800x600/E6853B/FFFFFF?text=Passport+to+Freedom+Major+Prize" alt="Win a Dreamhaven Caravan" class="w-full h-auto object-cover">
+        <div class="w-full rounded-lg overflow-hidden mb-4">
+          <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/08.jpeg" alt="Win a Dreamhaven Caravan" class="w-full h-auto object-cover">
         </div>
 
-        <a href="#" class="block text-xs text-gray-500 underline mb-6 hover:text-gray-700">
+        <a href="#" class="block text-gray-500 underline mb-6 hover:text-gray-700">
           > View Terms And Conditions
         </a>
 
@@ -27,16 +27,16 @@
 
       <div class="w-full lg:w-7/12">
 
-        <h2 class="text-2xl md:text-4xl font-extrabold text-black mb-6 leading-tight">
+        <h2 class="text-2xl md:text-4xl font-bold text-black mb-6 leading-tight">
           The 2025 Melbourne Caravan & Camping Leisurefest Passport to Freedom Competition®
         </h2>
 
-        <p class="text-civ-blue-500 font-bold uppercase text-sm mb-1">Major Prize</p>
-        <h3 class="text-2xl font-extrabold text-black mb-4">
+        <p class="text-civ-blue-500 font-bold uppercase mb-1">Major Prize</p>
+        <h3 class="text-2xl font-bold text-black mb-4">
           <span class="text-red-600 italic">DREAMHAVEN</span> 15 Series Tourline Caravan
         </h3>
 
-        <div class="text-sm md:text-base text-gray-800 space-y-4 mb-8 leading-relaxed">
+        <div class="md:text-base text-gray-800 space-y-4 mb-8 leading-relaxed">
           <p>
             The major prize is a brand new, unreleased <span class="font-bold">Dreamhaven 15 Series Tourline Caravan.</span>
           </p>
@@ -57,10 +57,10 @@
               </svg>
             </div>
             <div>
-              <p class="text-sm text-gray-800 font-bold mb-1">
+              <p class="text-gray-800 font-bold mb-1">
                 There are now MORE chances to win in the Passport to Freedom Competition!
               </p>
-              <p class="text-xs text-gray-700 leading-relaxed">
+              <p class="text-gray-700 leading-relaxed">
                 Purchase your ticket and opt in to get one entry<br>
                 Attend the show & scan the QR codes located at the Passport to Freedom Checkpoints
               </p>
@@ -74,8 +74,8 @@
               </svg>
             </div>
             <div>
-              <p class="text-sm text-gray-800 font-bold mb-1">1. Ticket Purchase & Opt-In</p>
-              <p class="text-xs text-gray-700 leading-relaxed">
+              <p class="text-gray-800 font-bold mb-1">1. Ticket Purchase & Opt-In</p>
+              <p class="text-gray-700 leading-relaxed">
                 Purchase a ticket to the event via the official ticket page opt in to the marketing database during the ticket purchase process. By completing these steps, you will gain 1 entry into the competition.
               </p>
             </div>
@@ -88,9 +88,9 @@
               </svg>
             </div>
             <div>
-              <p class="text-sm text-gray-800 font-bold mb-1">2. App Participation</p>
+              <p class="text-gray-800 font-bold mb-1">2. App Participation</p>
 
-              <div class="text-xs text-gray-700 leading-relaxed mb-2">
+              <div class="text-gray-700 leading-relaxed mb-2">
                 <span class="font-bold">Download the Caravan Industry Victoria App, available at:</span>
                 <ul class="list-[lower-alpha] ml-4 mt-1 space-y-0.5">
                   <li>Apple App Store</li>
@@ -98,7 +98,7 @@
                 </ul>
               </div>
 
-              <div class="text-xs text-gray-700 leading-relaxed">
+              <div class="text-gray-700 leading-relaxed">
                 <span class="font-bold">Attend the event and use the Caravan Industry Victoria App to:</span>
                 <ul class="list-[lower-alpha] ml-4 mt-1 space-y-1">
                   <li>Locate the QR Code Checkpoints around the event. The locations of these checkpoints are displayed on the event map within the app.</li>

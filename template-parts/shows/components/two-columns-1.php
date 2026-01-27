@@ -5,10 +5,10 @@
  */
 
 ?>
-<section class="w-full bg-gray-100 py-16 md:py-24">
+<section class="w-full bg-white py-16 md:py-24">
   <div class="container mx-auto px-4">
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mb-20 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mb-20">
 
       <div>
         <h2 class="text-3xl md:text-5xl font-extrabold text-black mb-8">Ticket Information</h2>
@@ -27,7 +27,7 @@
           Ticket On Sale Soon
         </a>
 
-        <div class="text-sm text-gray-700 space-y-4 mb-8">
+        <div class="text-gray-700 space-y-4 mb-8">
           <p class="font-bold">
             Tickets are available by card purchase on ONLY. We will have ticketing staff to assist you to make a ticket purchase but there are no cash sales.
           </p>
@@ -39,8 +39,8 @@
         </div>
 
         <div>
-          <h3 class="font-bold text-sm uppercase mb-2">Condition of Entry</h3>
-          <div class="text-sm text-gray-700 space-y-2">
+          <h3 class="font-bold uppercase mb-2">Condition of Entry</h3>
+          <div class="text-gray-700 space-y-2">
             <p>Alcohol must not be brought into the venue.</p>
             <p>No bare feet.</p>
             <p>All dogs including certified guide or companion animals are welcome. No animals other than pet dogs and guide/companion animals required for persons with disabilities and as certified by law are permitted within the event grounds at any time.</p>
@@ -48,9 +48,9 @@
         </div>
       </div>
 
-      <div class="flex justify-center lg:justify-end">
-        <div class="w-full max-w-md aspect-square rounded-full overflow-hidden shadow-xl border-4 border-white">
-          <img src="https://placehold.co/800x800/1e456e/FFFFFF?text=Crowd+at+Show" alt="Crowd at Melbourne Leisurefest" class="w-full h-full object-cover">
+      <div class="ml-auto">
+        <div class="w-full max-w-lg aspect-square rounded-full overflow-hidden">
+          <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/02.jpg" alt="Crowd at Melbourne Leisurefest" class="w-full h-full object-cover">
         </div>
       </div>
 
@@ -72,7 +72,7 @@
                 </svg>
               </div>
             </div>
-            <p class="text-sm text-gray-700 leading-relaxed">
+            <p class="text-gray-700 leading-relaxed">
               Tickets are available by card purchase on ONLY. We will have ticketing staff to assist you to make a ticket purchase but there are no cash sales. Have your tickets ready to scan when you proceed to the entry gate!
             </p>
           </li>
@@ -85,7 +85,7 @@
                 </svg>
               </div>
             </div>
-            <p class="text-sm text-gray-700 leading-relaxed">
+            <p class="text-gray-700 leading-relaxed">
               Download the Caravan Industry Victoria App which has the entry into the Passport to Freedom Competition, map, exhibitor list, visitor guide and so much more!
             </p>
           </li>
@@ -98,7 +98,7 @@
                 </svg>
               </div>
             </div>
-            <p class="text-sm text-gray-700 leading-relaxed">
+            <p class="text-gray-700 leading-relaxed">
               Make a list of the Exhibitors you really want to see.<br>
               <a href="#" class="underline hover:text-civ-orange-500">See here!</a>
             </p>
@@ -112,7 +112,7 @@
                 </svg>
               </div>
             </div>
-            <p class="text-sm text-gray-700 leading-relaxed">
+            <p class="text-gray-700 leading-relaxed">
               Check the best way to get to the Sandown Racecourse from your location.<br>
               <a href="#" class="underline hover:text-civ-orange-500">> GET DIRECTIONS</a>
             </p>
@@ -126,7 +126,7 @@
                 </svg>
               </div>
             </div>
-            <p class="text-sm text-gray-700 leading-relaxed">
+            <p class="text-gray-700 leading-relaxed">
               Peak times are: 9:00 am – 11:30 am so try plan an early arrival or later in the day.
             </p>
           </li>
@@ -139,7 +139,7 @@
                 </svg>
               </div>
             </div>
-            <p class="text-sm text-gray-700 leading-relaxed">
+            <p class="text-gray-700 leading-relaxed">
               Be sunsmart and rainsmart- bring sunglasses, hats, sunscreen and an umbrella just in case!
             </p>
           </li>
@@ -152,7 +152,7 @@
                 </svg>
               </div>
             </div>
-            <p class="text-sm text-gray-700 leading-relaxed">
+            <p class="text-gray-700 leading-relaxed">
               Stay up-to-date with event news, subscribe to our newsletter.
             </p>
           </li>
@@ -165,28 +165,28 @@
         <div class="border-t border-gray-300">
 
           <div class="flex items-center justify-between py-6 border-b border-gray-300 bg-gray-100 md:bg-gray-200/50 px-4">
-            <span class="font-bold text-black text-sm md:text-base">Oztix Privacy Policy</span>
+            <span class="font-bold text-black md:text-base">Oztix Privacy Policy</span>
             <a href="#" class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold text-xs uppercase py-2 px-4 rounded-sm transition-colors whitespace-nowrap">
               View Policy
             </a>
           </div>
 
           <div class="flex items-center justify-between py-6 border-b border-gray-300 bg-gray-100 md:bg-gray-200/50 px-4">
-            <span class="font-bold text-black text-sm md:text-base">Oztix Terms & Conditions</span>
+            <span class="font-bold text-black md:text-base">Oztix Terms & Conditions</span>
             <a href="#" class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold text-xs uppercase py-2 px-4 rounded-sm transition-colors whitespace-nowrap">
               View Policy
             </a>
           </div>
 
           <div class="flex items-center justify-between py-6 border-b border-gray-300 bg-gray-100 md:bg-gray-200/50 px-4">
-            <span class="font-bold text-black text-sm md:text-base">Caravan Industry Victoria Privacy Policy</span>
+            <span class="font-bold text-black md:text-base">Caravan Industry Victoria Privacy Policy</span>
             <a href="#" class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold text-xs uppercase py-2 px-4 rounded-sm transition-colors whitespace-nowrap">
               View Policy
             </a>
           </div>
 
           <div class="flex items-center justify-between py-6 border-b border-gray-300 bg-gray-100 md:bg-gray-200/50 px-4">
-            <span class="font-bold text-black text-sm md:text-base">Conditions of Sale & Entry</span>
+            <span class="font-bold text-black md:text-base">Conditions of Sale & Entry</span>
             <a href="#" class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold text-xs uppercase py-2 px-4 rounded-sm transition-colors whitespace-nowrap">
               View Policy
             </a>

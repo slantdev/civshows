@@ -16,7 +16,7 @@
 
       <a href="#" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
         <div class="absolute inset-0 w-full h-full">
-          <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/CIVSS25_Day3-03.jpg' ?>" alt="Melbourne Show Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/CIVSS25_Day3-03.jpeg' ?>" alt="Melbourne Show Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
           <div class="absolute inset-0 bg-black/40 w-full h-full"></div>
         </div>
         <div class="relative h-full flex flex-col justify-end">
@@ -38,7 +38,7 @@
 
       <a href="#" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
         <div class="absolute inset-0 w-full h-full">
-          <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/CIVSS25_Day3-31.jpg' ?>" alt="Bendigo Show Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/CIVSS25_Day3-31.jpeg' ?>" alt="Bendigo Show Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
           <div class="absolute inset-0 bg-black/40 w-full h-full"></div>
         </div>
         <div class="relative h-full flex flex-col justify-end">
@@ -59,7 +59,7 @@
 
       <a href="#" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
         <div class="absolute inset-0 w-full h-full">
-          <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/CIVSS25_Day4-121.jpg' ?>" alt="Geelong Show Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/CIVSS25_Day4-121.jpeg' ?>" alt="Geelong Show Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
           <div class="absolute inset-0 bg-black/40 w-full h-full"></div>
         </div>
         <div class="relative h-full flex flex-col justify-end">
@@ -80,7 +80,7 @@
 
       <a href="#" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
         <div class="absolute inset-0 w-full h-full">
-          <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/Melbourne-@GAZiPHOTO_@Caravan-Industry-Victoria-.jpg' ?>" alt="Supershow Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/Melbourne-@GAZiPHOTO_@Caravan-Industry-Victoria.jpeg' ?>" alt="Supershow Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
           <div class="absolute inset-0 bg-black/40 w-full h-full"></div>
         </div>
 
@@ -102,7 +102,7 @@
 
       <a href="#" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
         <div class="absolute inset-0 w-full h-full">
-          <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/Border-DJI_20240830142858_0012_D-scaled.jpg' ?>" alt="Border Show Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/Border-DJI_20240830142858_0012_D-scaled.jpeg' ?>" alt="Border Show Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
           <div class="absolute inset-0 bg-black/40 w-full h-full"></div>
         </div>
         <div class="relative h-full flex flex-col justify-end">

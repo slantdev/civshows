@@ -14,7 +14,7 @@
     <div class="swiper-wrapper">
       <!-- Slide 1 -->
       <div class="swiper-slide relative flex items-center justify-center xl:pt-64">
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo get_stylesheet_directory_uri() . "/assets/images/demo/DJI_20240830142858_0012_D-scaled.jpg" ?>');">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo get_stylesheet_directory_uri() . "/assets/images/demo/DJI_20240830142858_0012_D-scaled.jpeg" ?>');">
           <div class="absolute inset-0 bg-linear-to-b via-30% from-black/90 to-black/60 via-black/70"></div>
         </div>
         <div class="container mx-auto px-4 xl:px-8 relative z-10 grid grid-cols-1 md:grid-cols-12 h-full items-center">
@@ -33,7 +33,7 @@
 
       <!-- Slide 2 -->
       <div class="swiper-slide relative flex items-center justify-center xl:pt-64">
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo get_stylesheet_directory_uri() . "/assets/images/demo/CIVSS25_Day3-03.jpg" ?>');">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo get_stylesheet_directory_uri() . "/assets/images/demo/CIVSS25_Day3-03.jpeg" ?>');">
           <div class="absolute inset-0 bg-linear-to-b via-30% from-black/90 to-black/60 via-black/70"></div>
         </div>
         <div class="container mx-auto px-4 xl:px-8 relative z-10 grid grid-cols-1 md:grid-cols-12 h-full items-center">
@@ -52,7 +52,7 @@
 
       <!-- Slide 3 -->
       <div class="swiper-slide relative flex items-center justify-center xl:pt-64">
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo get_stylesheet_directory_uri() . "/assets/images/demo/Melbourne-@GAZiPHOTO_@Caravan-Industry-Victoria-.jpg" ?>');">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo get_stylesheet_directory_uri() . "/assets/images/demo/Melbourne-@GAZiPHOTO_@Caravan-Industry-Victoria.jpeg" ?>');">
           <div class="absolute inset-0 bg-linear-to-b via-30% from-black/90 to-black/60 via-black/70"></div>
         </div>
         <div class="container mx-auto px-4 xl:px-8 relative z-10 grid grid-cols-1 md:grid-cols-12 h-full items-center">

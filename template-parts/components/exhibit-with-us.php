@@ -58,8 +58,8 @@
         </div>
 
         <div class="w-full lg:w-1/2 order-1 lg:order-2">
-          <div class="w-full max-w-md aspect-square rounded-full overflow-hidden shadow-none h-auto ml-auto">
-            <img src="https://placehold.co/800x800/222/FFF?text=Happy+Attendees" alt="Event Overview" class="w-full h-full object-cover">
+          <div class="w-full max-w-lg aspect-square rounded-full overflow-hidden shadow-none h-auto ml-auto">
+            <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/10.jpg" alt="Event Overview" class="w-full h-full object-cover">
           </div>
         </div>
 
@@ -72,8 +72,8 @@
       <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
         <div class="w-full lg:w-1/2 flex justify-center lg:justify-start">
-          <div class="w-full max-w-md aspect-square rounded-full overflow-hidden shadow-none">
-            <img src="https://placehold.co/800x800/1e456e/FFF?text=Speakers+Stage" alt="About the Event" class="w-full h-full object-cover">
+          <div class="w-full max-w-lg aspect-square rounded-full overflow-hidden shadow-none">
+            <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/05.jpg" alt="About the Event" class="w-full h-full object-cover">
           </div>
         </div>
 
@@ -116,8 +116,8 @@
         </div>
 
         <div class="w-full lg:w-1/2 flex justify-center lg:justify-end order-1 lg:order-2">
-          <div class="w-full max-w-md aspect-square rounded-full overflow-hidden shadow-none">
-            <img src="https://placehold.co/800x800/b86a2f/FFF?text=Venue+Aerial+View" alt="Bendigo Racecourse" class="w-full h-full object-cover">
+          <div class="w-full max-w-lg aspect-square rounded-full overflow-hidden shadow-none">
+            <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/11.jpg" alt="Bendigo Racecourse" class="w-full h-full object-cover">
           </div>
         </div>
 
@@ -130,8 +130,8 @@
       <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
         <div class="w-full lg:w-1/2 flex justify-center lg:justify-start">
-          <div class="w-full max-w-md aspect-square rounded-full overflow-hidden shadow-none">
-            <img src="https://placehold.co/800x800/1e456e/FFF?text=CIV+Team" alt="Caravan Industry Victoria" class="w-full h-full object-cover">
+          <div class="w-full max-w-lg aspect-square rounded-full overflow-hidden shadow-none">
+            <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/06.jpg" alt="Caravan Industry Victoria" class="w-full h-full object-cover">
           </div>
         </div>
 

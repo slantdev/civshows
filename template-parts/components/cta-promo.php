@@ -21,14 +21,14 @@
       </div>
 
       <div class="w-full md:w-2/3 text-white text-center md:text-left">
-        <div class="prose prose-lg">
-          <h2 class="text-3xl md:text-4xl xl:text-[38px] font-medium mb-6 leading-[1.1]">
+        <div class="prose prose-lg text-white">
+          <h2 class="text-3xl md:text-4xl xl:text-[38px] text-white font-medium mb-6 leading-[1.1]">
             Turn Your Next Caravan Purchase, Service or Repair Into a Chance to Win
           </h2>
           <p class="text-lg mb-8 leading-relaxed opacity-90">
             Every time you buy, service, or repair your caravan or RV with a participating Caravan Industry Victoria member, you’re not just gearing up for your next adventure — you’re also scoring an entry into our massive $50,000 prize pool!
           </p>
-          <a href="#" class="inline-block bg-civ-blue-500 hover:bg-civ-blue-600 text-white font-bold uppercase py-3 px-10 rounded-md transition-colors text-sm tracking-wider">
+          <a href="#" class="inline-block bg-civ-blue-500 hover:bg-civ-blue-600 text-white font-bold uppercase no-underline py-3 px-10 rounded-md transition-colors text-sm tracking-wider">
             Learn More
           </a>
         </div>

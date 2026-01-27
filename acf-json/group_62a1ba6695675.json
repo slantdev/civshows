@@ -98,14 +98,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "help-advice"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "campaign"
+                "value": "shows"
             }
         ]
     ],
@@ -125,8 +118,8 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
+    "modified": 1769408351,
     "acfe_categories": {
         "pages": "Pages"
-    },
-    "modified": 1769336974
+    }
 }

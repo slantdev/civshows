@@ -12,6 +12,14 @@ if (is_single('melbourne-leisurefest')) {
   get_template_part('template-parts/components/cta-promo');
 }
 
+if (is_single('border-leisurefest')) {
+  get_template_part('template-parts/shows/components/page-header');
+  get_template_part('template-parts/shows/components/video-slider');
+  get_template_part('template-parts/shows/components/image-text');
+  get_template_part('template-parts/components/subscribe');
+  get_template_part('template-parts/components/cta-promo');
+}
+
 if (is_single('tickets')) {
   get_template_part('template-parts/shows/components/page-header');
   get_template_part('template-parts/shows/components/two-columns-1');

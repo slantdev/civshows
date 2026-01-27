@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.11.0] - 2026-01-20
+### Changed
+- Dynamic `page-header.php`:
+    - Implemented parent-child navigation logic for 'Shows' post type.
+    - Added dynamic logo display based on ACF settings.
+    - Configured automatic inheritance of header settings (backgrounds, titles) from parent show pages.
+    - Added active state styling for the current page in the secondary navigation.
+- Refactored `inc/enqueue.php` to handle granular admin styles loading.
+
 ## [1.10.0] - 2026-01-20
 ### Added
 - Installed `postcss-nested` for SCSS-like nesting support.
