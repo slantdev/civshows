@@ -13,14 +13,14 @@
 
     <div class="group static">
 
-      <a href="#" class="flex items-center text-white font-medium uppercase text-sm tracking-wide group-hover:text-civ-orange-500 transition-colors py-8">
+      <a href="#" class="flex items-center text-white font-medium uppercase text-sm tracking-wide group-hover:text-shadow-md transition duration-500 py-8">
         Our Shows
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:text-civ-orange-500 transition-colors transform group-hover:-rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1 group-hover:text-shadow-md transition duration-500 transform group-hover:-rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
           <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
         </svg>
       </a>
 
-      <div class="absolute top-full left-0 w-full bg-white shadow-2xl opacity-0 invisible translate-y-12 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 z-50 transform origin-top">
+      <div class="absolute top-full left-0 w-full bg-white shadow-2xl opacity-0 invisible translate-y-12 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-500 z-50 transform origin-top">
 
         <div class="grid grid-cols-12 min-h-[450px]">
 
@@ -140,19 +140,19 @@
 
     <span class="text-white/60">|</span>
 
-    <a href="/exhibit-with-us" class="text-white font-medium uppercase text-sm tracking-wide hover:text-civ-orange-500 transition-colors">
+    <a href="/exhibit-with-us" class="text-white font-medium uppercase text-sm tracking-wide hover:text-shadow-md transition">
       Exhibit With Us
     </a>
 
     <span class="text-white/60">|</span>
 
-    <a href="#" class="text-white font-medium uppercase text-sm tracking-wide hover:text-civ-orange-500 transition-colors">
+    <a href="#" class="text-white font-medium uppercase text-sm tracking-wide hover:text-shadow-md transition">
       About CIV
     </a>
 
     <span class="text-white/60">|</span>
 
-    <a href="#" class="text-white font-medium uppercase text-sm tracking-wide hover:text-civ-orange-500 transition-colors">
+    <a href="#" class="text-white font-medium uppercase text-sm tracking-wide hover:text-shadow-md transition">
       Contact Us
     </a>
 
