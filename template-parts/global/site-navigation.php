@@ -49,7 +49,7 @@
                 </a>
               </li>
               <li>
-                <a href="#"
+                <a href="/shows/border-leisurefest/"
                   class="megamenu-link flex items-center justify-between w-full py-4 pl-6 pr-4 border-b border-gray-100 text-sm font-bold text-gray-700 hover:text-civ-orange-500 hover:bg-gray-50 transition-all group/link"
                   data-target="content-2">
                   BORDER CARAVAN & CAMPING LEISUREFEST
@@ -59,7 +59,7 @@
                 </a>
               </li>
               <li>
-                <a href="#"
+                <a href="/shows/bendigo-leisurefest/"
                   class="megamenu-link flex items-center justify-between w-full py-4 pl-6 pr-4 border-b border-gray-100 text-sm font-bold text-gray-700 hover:text-civ-orange-500 hover:bg-gray-50 transition-all group/link"
                   data-target="content-3">
                   THE BENDIGO CARAVAN & CAMPING LEISUREFEST
@@ -69,7 +69,7 @@
                 </a>
               </li>
               <li>
-                <a href="#"
+                <a href="/shows/victorian-leisurefest/"
                   class="megamenu-link flex items-center justify-between w-full py-4 pl-6 pr-4 border-b border-gray-100 text-sm font-bold text-gray-700 hover:text-civ-orange-500 hover:bg-gray-50 transition-all group/link"
                   data-target="content-4">
                   VICTORIAN CARAVAN & CAMPING SUPERSHOW

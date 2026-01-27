@@ -14,7 +14,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <a href="#" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
+      <a href="/shows/melbourne-leisurefest/" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
         <div class="absolute inset-0 w-full h-full">
           <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/CIVSS25_Day3-03.jpeg' ?>" alt="Melbourne Show Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
           <div class="absolute inset-0 bg-black/40 w-full h-full"></div>
@@ -36,7 +36,7 @@
         </div>
       </a>
 
-      <a href="#" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
+      <a href="/shows/bendigo-leisurefest/" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
         <div class="absolute inset-0 w-full h-full">
           <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/CIVSS25_Day3-31.jpeg' ?>" alt="Bendigo Show Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
           <div class="absolute inset-0 bg-black/40 w-full h-full"></div>
@@ -57,7 +57,7 @@
         </div>
       </a>
 
-      <a href="#" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
+      <a href="/shows/geelong-leisurefest/" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
         <div class="absolute inset-0 w-full h-full">
           <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/CIVSS25_Day4-121.jpeg' ?>" alt="Geelong Show Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
           <div class="absolute inset-0 bg-black/40 w-full h-full"></div>
@@ -78,7 +78,7 @@
         </div>
       </a>
 
-      <a href="#" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
+      <a href="/shows/victorian-leisurefest/" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
         <div class="absolute inset-0 w-full h-full">
           <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/Melbourne-@GAZiPHOTO_@Caravan-Industry-Victoria.jpeg' ?>" alt="Supershow Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
           <div class="absolute inset-0 bg-black/40 w-full h-full"></div>
@@ -100,7 +100,7 @@
         </div>
       </a>
 
-      <a href="#" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
+      <a href="/shows/border-leisurefest/" class="group relative aspect-5/4 rounded-2xl overflow-hidden block shadow-md hover:shadow-xl transition-shadow">
         <div class="absolute inset-0 w-full h-full">
           <img src="<?php echo get_stylesheet_directory_uri() . '/assets/images/demo/Border-DJI_20240830142858_0012_D-scaled.jpeg' ?>" alt="Border Show Background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
           <div class="absolute inset-0 bg-black/40 w-full h-full"></div>
