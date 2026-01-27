@@ -262,11 +262,46 @@ const initVideoSlider = () => {
 
 };
 
+/**
+ * Exhibitor Filters (Dynamic Subcategories)
+ */
+const initExhibitorFilters = () => {
+  const categorySelect = document.getElementById('filter-category');
+  const subCategorySelect = document.getElementById('filter-subcategory');
+
+  if (!categorySelect || !subCategorySelect || !window.exhibitorCategories) return;
+
+  categorySelect.addEventListener('change', (e) => {
+    const selectedSlug = e.target.value;
+    
+    // Reset Sub Category
+    subCategorySelect.innerHTML = '<option value="">All Sub Categories</option>';
+    subCategorySelect.disabled = true;
+    subCategorySelect.classList.add('disabled:opacity-50');
+
+    if (selectedSlug && window.exhibitorCategories[selectedSlug]) {
+      const children = window.exhibitorCategories[selectedSlug].children;
+
+      if (children && children.length > 0) {
+        children.forEach(child => {
+          const option = document.createElement('option');
+          option.value = child.slug;
+          option.textContent = child.name;
+          subCategorySelect.appendChild(option);
+        });
+        subCategorySelect.disabled = false;
+        subCategorySelect.classList.remove('disabled:opacity-50');
+      }
+    }
+  });
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   initHomeHero();
   initInteractiveSelect();
   initExhibitorSpecial();
   initVideoSlider();
+  initExhibitorFilters();
   
   // Fancybox initialization
   Fancybox.bind("[data-fancybox]", {

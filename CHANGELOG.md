@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.13.0] - 2026-01-20
+### Added
+- Dynamic Exhibitors Grid (`template-parts/shows/components/exhibitors.php`) powered by `WP_Query`.
+- Frontend filtering logic in `src/main.js` (`initExhibitorFilters`) for dynamic sub-category population.
+- Global `window.exhibitorCategories` object injection for category data.
+
+### Changed
+- Refactored `exhibitors.php` to use `WP_Query` and ACF fields (`phone_number`, `website_link`, `exhibitor_logo`).
+
 ## [1.12.0] - 2026-01-20
 ### Added
 - Pushed full suite of demo images to `assets/images/demo/`.

@@ -6,6 +6,10 @@
   height: initial;
 } */
 
+table.fixed {
+  position: static!important;
+}
+
 #poststuff {
   .acf-layout {
     @apply font-sans;

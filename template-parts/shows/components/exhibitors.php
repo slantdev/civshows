@@ -4,7 +4,58 @@
  * Component: Exhibitors
  */
 
+// Exhibitors Query
+$args = array(
+  'post_type'      => 'exhibitors',
+  'posts_per_page' => 12,
+  'orderby'        => 'title',
+  'order'          => 'ASC',
+  'post_status'    => 'publish',
+);
+
+$exhibitors_query = new WP_Query($args);
+
+// --- Fetch Categories for Filter ---
+$parent_terms = get_terms([
+  'taxonomy'   => 'exhibitor-category',
+  'parent'     => 0,
+  'hide_empty' => true,
+]);
+
+$categories_data = [];
+if (!is_wp_error($parent_terms)) {
+  foreach ($parent_terms as $parent) {
+    $children = get_terms([
+      'taxonomy'   => 'exhibitor-category',
+      'parent'     => $parent->term_id,
+      'hide_empty' => false, // Show children even if empty for navigation purposes
+    ]);
+
+    $child_data = [];
+    if (!is_wp_error($children)) {
+      foreach ($children as $child) {
+        $child_data[] = [
+          'id'   => $child->term_id,
+          'name' => $child->name,
+          'slug' => $child->slug
+        ];
+      }
+    }
+
+    $categories_data[$parent->slug] = [ // Use slug as key for cleaner JS
+      'id'       => $parent->term_id,
+      'name'     => $parent->name,
+      'children' => $child_data
+    ];
+  }
+}
+
+// Pass data to JS via a global variable (quickest for this component context)
+// In a larger app, wp_localize_script is better, but this works well for component-specific data.
 ?>
+<script>
+  window.exhibitorCategories = <?php echo json_encode($categories_data); ?>;
+</script>
 
 <section class="w-full bg-white py-16 md:py-24">
   <div class="container mx-auto px-4">
@@ -36,10 +87,11 @@
           <label class="font-extrabold text-sm uppercase text-black">Find By Category</label>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div class="relative">
-              <select class="w-full bg-white border border-gray-300 text-gray-700 text-sm rounded px-4 py-3 appearance-none focus:outline-none focus:border-civ-orange-500">
-                <option>All Categories</option>
-                <option>Caravans</option>
-                <option>Motorhomes</option>
+              <select id="filter-category" class="w-full bg-white border border-gray-300 text-gray-700 text-sm rounded px-4 py-3 appearance-none focus:outline-none focus:border-civ-orange-500 cursor-pointer">
+                <option value="">All Categories</option>
+                <?php foreach ($categories_data as $slug => $cat) : ?>
+                  <option value="<?php echo esc_attr($slug); ?>"><?php echo esc_html($cat['name']); ?></option>
+                <?php endforeach; ?>
               </select>
               <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -48,10 +100,8 @@
               </div>
             </div>
             <div class="relative">
-              <select class="w-full bg-white border border-gray-300 text-gray-700 text-sm rounded px-4 py-3 appearance-none focus:outline-none focus:border-civ-orange-500">
-                <option>All Sub Categories</option>
-                <option>Off-Road</option>
-                <option>Family</option>
+              <select id="filter-subcategory" class="w-full bg-white border border-gray-300 text-gray-700 text-sm rounded px-4 py-3 appearance-none focus:outline-none focus:border-civ-orange-500 cursor-pointer disabled:opacity-50" disabled>
+                <option value="">All Sub Categories</option>
               </select>
               <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -101,138 +151,74 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
 
-      <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col h-full border border-gray-100">
-        <div class="h-48 overflow-hidden bg-gray-200">
-          <img src="https://placehold.co/600x400/333/FFF?text=Brand+Image+1" alt="Exhibitor" class="w-full h-full object-cover transition-transform hover:scale-105 duration-500">
-        </div>
-        <div class="p-6 flex flex-col grow">
-          <h3 class="font-extrabold text-lg text-civ-blue-900 mb-1">Brand Name</h3>
-          <p class="text-sm text-gray-500 italic mb-3">Category</p>
-          <p class="text-sm text-gray-600 mb-6 leading-relaxed grow">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <div class="space-y-1 mt-auto">
-            <p class="text-sm font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
-            <p class="text-sm font-bold text-black">Site:</p>
-          </div>
-        </div>
-      </div>
+      <?php if ($exhibitors_query->have_posts()) : ?>
+        <?php while ($exhibitors_query->have_posts()) : $exhibitors_query->the_post(); ?>
+          <?php
+          // Data Retrieval
+          $phone = get_field('phone_number');
+          $website = get_field('website_link');
+          $logo_array = get_field('exhibitor_logo');
+          $terms = get_the_terms(get_the_ID(), 'exhibitor-category');
+          $categories = '';
 
-      <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col h-full border border-gray-100">
-        <div class="h-48 overflow-hidden bg-gray-200">
-          <img src="https://placehold.co/600x400/555/FFF?text=Brand+Image+2" alt="Exhibitor" class="w-full h-full object-cover transition-transform hover:scale-105 duration-500">
-        </div>
-        <div class="p-6 flex flex-col grow">
-          <h3 class="font-extrabold text-lg text-civ-blue-900 mb-1">Brand Name</h3>
-          <p class="text-sm text-gray-500 italic mb-3">Category</p>
-          <p class="text-sm text-gray-600 mb-6 leading-relaxed grow">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <div class="space-y-1 mt-auto">
-            <p class="text-sm font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
-            <p class="text-sm font-bold text-black">Site:</p>
-          </div>
-        </div>
-      </div>
+          if ($terms && !is_wp_error($terms)) {
+            $cat_names = wp_list_pluck($terms, 'name');
+            $categories = implode(', ', $cat_names);
+          }
 
-      <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col h-full border border-gray-100">
-        <div class="h-48 overflow-hidden bg-gray-200">
-          <img src="https://placehold.co/600x400/777/FFF?text=Brand+Image+3" alt="Exhibitor" class="w-full h-full object-cover transition-transform hover:scale-105 duration-500">
-        </div>
-        <div class="p-6 flex flex-col grow">
-          <h3 class="font-extrabold text-lg text-civ-blue-900 mb-1">Brand Name</h3>
-          <p class="text-sm text-gray-500 italic mb-3">Category</p>
-          <p class="text-sm text-gray-600 mb-6 leading-relaxed grow">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
-          <div class="space-y-1 mt-auto">
-            <p class="text-sm font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
-            <p class="text-sm font-bold text-black">Site:</p>
-          </div>
-        </div>
-      </div>
+          // Truncate content for excerpt-like feel
+          $content = get_the_content();
+          $excerpt = wp_trim_words($content, 20, '...');
+          ?>
 
-      <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col h-full border border-gray-100">
-        <div class="h-48 overflow-hidden bg-gray-200">
-          <img src="https://placehold.co/600x400/999/FFF?text=Brand+Image+4" alt="Exhibitor" class="w-full h-full object-cover transition-transform hover:scale-105 duration-500">
-        </div>
-        <div class="p-6 flex flex-col grow">
-          <h3 class="font-extrabold text-lg text-civ-blue-900 mb-1">Brand Name</h3>
-          <p class="text-sm text-gray-500 italic mb-3">Category</p>
-          <p class="text-sm text-gray-600 mb-6 leading-relaxed grow">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </p>
-          <div class="space-y-1 mt-auto">
-            <p class="text-sm font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
-            <p class="text-sm font-bold text-black">Site:</p>
-          </div>
-        </div>
-      </div>
+          <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col h-full border border-gray-100">
+            <div class="h-48 overflow-hidden bg-gray-200 flex items-center justify-center">
+              <?php if ($logo_array && !empty($logo_array['url'])) : ?>
+                <img src="<?php echo esc_url($logo_array['url']); ?>" alt="<?php the_title_attribute(); ?>" class="w-full h-full object-contain transition-transform hover:scale-105 duration-500">
+              <?php else : ?>
+                <!-- Fallback Image -->
+                <div class="w-full h-full bg-black flex items-center justify-center text-white/50">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+              <?php endif; ?>
+            </div>
 
-      <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col h-full border border-gray-100">
-        <div class="h-48 overflow-hidden bg-gray-200">
-          <img src="https://placehold.co/600x400/222/FFF?text=Brand+Image+5" alt="Exhibitor" class="w-full h-full object-cover transition-transform hover:scale-105 duration-500">
-        </div>
-        <div class="p-6 flex flex-col grow">
-          <h3 class="font-extrabold text-lg text-civ-blue-900 mb-1">Brand Name</h3>
-          <p class="text-sm text-gray-500 italic mb-3">Category</p>
-          <p class="text-sm text-gray-600 mb-6 leading-relaxed grow">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
-          <div class="space-y-1 mt-auto">
-            <p class="text-sm font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
-            <p class="text-sm font-bold text-black">Site:</p>
+            <div class="p-6 flex flex-col grow">
+              <h3 class="font-extrabold text-lg text-civ-blue-900 mb-1"><?php the_title(); ?></h3>
+              <?php if ($categories) : ?>
+                <p class="text-sm text-gray-500 italic mb-3"><?php echo esc_html($categories); ?></p>
+              <?php endif; ?>
+
+              <p class="text-sm text-gray-600 mb-6 leading-relaxed grow">
+                <?php echo esc_html($excerpt); ?>
+              </p>
+
+              <div class="space-y-1 mt-auto">
+                <?php if ($phone) : ?>
+                  <p class="text-sm font-bold text-black">Phone: <span class="font-normal text-gray-600"><?php echo esc_html($phone); ?></span></p>
+                <?php endif; ?>
+
+                <?php if ($website) : ?>
+                  <p class="text-sm font-bold text-black">
+                    Site:
+                    <a href="<?php echo esc_url($website); ?>" target="_blank" rel="noopener noreferrer" class="font-normal text-civ-orange-500 hover:underline break-all">
+                      <?php echo esc_html(parse_url($website, PHP_URL_HOST) ?: 'Visit Website'); ?>
+                    </a>
+                  </p>
+                <?php endif; ?>
+              </div>
+            </div>
           </div>
+
+        <?php endwhile; ?>
+        <?php wp_reset_postdata(); ?>
+      <?php else : ?>
+        <div class="col-span-full text-center py-12 text-gray-500">
+          <p class="text-xl">No exhibitors found.</p>
         </div>
-      </div>
-      <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col h-full border border-gray-100">
-        <div class="h-48 overflow-hidden bg-gray-200">
-          <img src="https://placehold.co/600x400/444/FFF?text=Brand+Image+6" alt="Exhibitor" class="w-full h-full object-cover transition-transform hover:scale-105 duration-500">
-        </div>
-        <div class="p-6 flex flex-col grow">
-          <h3 class="font-extrabold text-lg text-civ-blue-900 mb-1">Brand Name</h3>
-          <p class="text-sm text-gray-500 italic mb-3">Category</p>
-          <p class="text-sm text-gray-600 mb-6 leading-relaxed grow">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
-          <div class="space-y-1 mt-auto">
-            <p class="text-sm font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
-            <p class="text-sm font-bold text-black">Site:</p>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col h-full border border-gray-100">
-        <div class="h-48 overflow-hidden bg-gray-200">
-          <img src="https://placehold.co/600x400/666/FFF?text=Brand+Image+7" alt="Exhibitor" class="w-full h-full object-cover transition-transform hover:scale-105 duration-500">
-        </div>
-        <div class="p-6 flex flex-col grow">
-          <h3 class="font-extrabold text-lg text-civ-blue-900 mb-1">Brand Name</h3>
-          <p class="text-sm text-gray-500 italic mb-3">Category</p>
-          <p class="text-sm text-gray-600 mb-6 leading-relaxed grow">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
-          <div class="space-y-1 mt-auto">
-            <p class="text-sm font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
-            <p class="text-sm font-bold text-black">Site:</p>
-          </div>
-        </div>
-      </div>
-      <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col h-full border border-gray-100">
-        <div class="h-48 overflow-hidden bg-gray-200">
-          <img src="https://placehold.co/600x400/888/FFF?text=Brand+Image+8" alt="Exhibitor" class="w-full h-full object-cover transition-transform hover:scale-105 duration-500">
-        </div>
-        <div class="p-6 flex flex-col grow">
-          <h3 class="font-extrabold text-lg text-civ-blue-900 mb-1">Brand Name</h3>
-          <p class="text-sm text-gray-500 italic mb-3">Category</p>
-          <p class="text-sm text-gray-600 mb-6 leading-relaxed grow">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </p>
-          <div class="space-y-1 mt-auto">
-            <p class="text-sm font-bold text-black">Phone: <span class="font-normal text-gray-600">(03) 9867 4567</span></p>
-            <p class="text-sm font-bold text-black">Site:</p>
-          </div>
-        </div>
-      </div>
+      <?php endif; ?>
 
     </div>
 
