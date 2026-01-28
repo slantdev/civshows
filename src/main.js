@@ -263,37 +263,109 @@ const initVideoSlider = () => {
 };
 
 /**
- * Exhibitor Filters (Dynamic Subcategories)
+ * Exhibitor Filters & Load More
  */
 const initExhibitorFilters = () => {
   const categorySelect = document.getElementById('filter-category');
-  const subCategorySelect = document.getElementById('filter-subcategory');
+  const searchInput = document.getElementById('filter-search');
+  const searchBtn = document.getElementById('btn-search');
+  const filterNew = document.getElementById('filter-new');
+  const filterSpecial = document.getElementById('filter-special');
+  const grid = document.getElementById('exhibitors-grid');
+  const loadMoreBtn = document.getElementById('load-more-exhibitors');
 
-  if (!categorySelect || !subCategorySelect || !window.exhibitorCategories) return;
+  if (!grid || !window.civAjax) return;
 
-  categorySelect.addEventListener('change', (e) => {
-    const selectedSlug = e.target.value;
-    
-    // Reset Sub Category
-    subCategorySelect.innerHTML = '<option value="">All Sub Categories</option>';
-    subCategorySelect.disabled = true;
-    subCategorySelect.classList.add('disabled:opacity-50');
+  let currentPage = 1;
+  let maxPages = loadMoreBtn ? parseInt(loadMoreBtn.dataset.maxPages) : 1;
+  let isLoading = false;
 
-    if (selectedSlug && window.exhibitorCategories[selectedSlug]) {
-      const children = window.exhibitorCategories[selectedSlug].children;
+  const fetchExhibitors = (reset = false) => {
+    if (isLoading) return;
+    isLoading = true;
 
-      if (children && children.length > 0) {
-        children.forEach(child => {
-          const option = document.createElement('option');
-          option.value = child.slug;
-          option.textContent = child.name;
-          subCategorySelect.appendChild(option);
-        });
-        subCategorySelect.disabled = false;
-        subCategorySelect.classList.remove('disabled:opacity-50');
-      }
+    if (reset) {
+      currentPage = 0;
+      grid.style.opacity = '0.5';
+      grid.style.transition = 'opacity 0.2s';
     }
-  });
+
+    const formData = new FormData();
+    formData.append('action', 'civ_load_more_exhibitors');
+    formData.append('nonce', window.civAjax.nonce);
+    formData.append('page', reset ? 0 : currentPage);
+    formData.append('category', categorySelect ? categorySelect.value : '');
+    formData.append('search', searchInput ? searchInput.value : '');
+    formData.append('is_new', filterNew && filterNew.checked ? 'true' : 'false');
+    formData.append('has_special', filterSpecial && filterSpecial.checked ? 'true' : 'false');
+
+    if (loadMoreBtn) {
+      loadMoreBtn.textContent = 'Loading...';
+      loadMoreBtn.disabled = true;
+    }
+
+    fetch(window.civAjax.url, {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        if (reset) {
+          grid.innerHTML = data.data.html;
+          if (!data.data.html.trim()) {
+             grid.innerHTML = '<div class="col-span-full text-center py-12 text-gray-500"><p class="text-xl">No exhibitors found.</p></div>';
+          }
+          currentPage = 1;
+        } else {
+          grid.insertAdjacentHTML('beforeend', data.data.html);
+          currentPage++;
+        }
+
+        maxPages = data.data.max_pages;
+
+        if (loadMoreBtn) {
+          loadMoreBtn.textContent = 'Load More';
+          loadMoreBtn.disabled = false;
+          
+          if (currentPage >= maxPages) {
+            loadMoreBtn.style.display = 'none';
+          } else {
+            loadMoreBtn.style.display = 'inline-block';
+          }
+        }
+      }
+    })
+    .catch(err => console.error(err))
+    .finally(() => {
+      isLoading = false;
+      grid.style.opacity = '1';
+    });
+  };
+
+  // Event Listeners
+  if (categorySelect) {
+    categorySelect.addEventListener('change', () => fetchExhibitors(true));
+  }
+
+  if (searchBtn && searchInput) {
+    searchBtn.addEventListener('click', () => fetchExhibitors(true));
+    searchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') fetchExhibitors(true);
+    });
+  }
+
+  if (filterNew) {
+    filterNew.addEventListener('change', () => fetchExhibitors(true));
+  }
+
+  if (filterSpecial) {
+    filterSpecial.addEventListener('change', () => fetchExhibitors(true));
+  }
+
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', () => fetchExhibitors(false));
+  }
 };
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -15,46 +15,20 @@ $args = array(
 
 $exhibitors_query = new WP_Query($args);
 
-// --- Fetch Categories for Filter ---
+// --- Fetch Categories for Filter (Top Level Only) ---
 $parent_terms = get_terms([
   'taxonomy'   => 'exhibitor-category',
   'parent'     => 0,
   'hide_empty' => true,
 ]);
 
-$categories_data = [];
-if (!is_wp_error($parent_terms)) {
-  foreach ($parent_terms as $parent) {
-    $children = get_terms([
-      'taxonomy'   => 'exhibitor-category',
-      'parent'     => $parent->term_id,
-      'hide_empty' => false, // Show children even if empty for navigation purposes
-    ]);
-
-    $child_data = [];
-    if (!is_wp_error($children)) {
-      foreach ($children as $child) {
-        $child_data[] = [
-          'id'   => $child->term_id,
-          'name' => $child->name,
-          'slug' => $child->slug
-        ];
-      }
-    }
-
-    $categories_data[$parent->slug] = [ // Use slug as key for cleaner JS
-      'id'       => $parent->term_id,
-      'name'     => $parent->name,
-      'children' => $child_data
-    ];
-  }
-}
-
-// Pass data to JS via a global variable (quickest for this component context)
-// In a larger app, wp_localize_script is better, but this works well for component-specific data.
+// Pass data to JS
 ?>
 <script>
-  window.exhibitorCategories = <?php echo json_encode($categories_data); ?>;
+  window.civAjax = {
+    url: "<?php echo admin_url('admin-ajax.php'); ?>",
+    nonce: "<?php echo wp_create_nonce('civ_exhibitors_nonce'); ?>"
+  };
 </script>
 
 <section class="w-full bg-white py-16 md:py-24">
@@ -84,30 +58,20 @@ if (!is_wp_error($parent_terms)) {
       <div class="flex flex-col lg:flex-row gap-6 items-end lg:items-center border-b border-gray-200 pb-8 mb-6">
 
         <div class="w-full lg:w-5/12 space-y-2">
-          <label class="font-extrabold text-sm uppercase text-black">Find By Category</label>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="relative">
-              <select id="filter-category" class="w-full bg-white border border-gray-300 text-gray-700 text-sm rounded px-4 py-3 appearance-none focus:outline-none focus:border-civ-orange-500 cursor-pointer">
-                <option value="">All Categories</option>
-                <?php foreach ($categories_data as $slug => $cat) : ?>
-                  <option value="<?php echo esc_attr($slug); ?>"><?php echo esc_html($cat['name']); ?></option>
+          <label class="font-bold text-sm uppercase text-black block mb-1">Find By Category</label>
+          <div class="relative">
+            <select id="filter-category" class="w-full bg-white border border-gray-300 text-gray-700 text-sm rounded px-4 py-3 appearance-none focus:outline-none focus:border-civ-orange-500 cursor-pointer">
+              <option value="">All Categories</option>
+              <?php if (!is_wp_error($parent_terms)) : ?>
+                <?php foreach ($parent_terms as $term) : ?>
+                  <option value="<?php echo esc_attr($term->slug); ?>"><?php echo esc_html($term->name); ?></option>
                 <?php endforeach; ?>
-              </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
-                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                </svg>
-              </div>
-            </div>
-            <div class="relative">
-              <select id="filter-subcategory" class="w-full bg-white border border-gray-300 text-gray-700 text-sm rounded px-4 py-3 appearance-none focus:outline-none focus:border-civ-orange-500 cursor-pointer disabled:opacity-50" disabled>
-                <option value="">All Sub Categories</option>
-              </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
-                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                  <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                </svg>
-              </div>
+              <?php endif; ?>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
+              <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+              </svg>
             </div>
           </div>
         </div>
@@ -117,10 +81,10 @@ if (!is_wp_error($parent_terms)) {
         </div>
 
         <div class="w-full lg:w-5/12 space-y-2">
-          <label class="font-extrabold text-sm uppercase text-black">Find By Keyword</label>
+          <label class="font-bold text-sm uppercase text-black block mb-1">Find By Keyword</label>
           <div class="flex">
-            <input type="text" placeholder="Search by Name, State, Postcode ..." class="w-full bg-white border border-gray-300 border-r-0 rounded-l px-4 py-3 text-sm focus:outline-none focus:border-civ-orange-500">
-            <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold uppercase text-sm px-6 rounded-r transition-colors">
+            <input type="text" id="filter-search" placeholder="Search by Exhibitor Name" class="w-full bg-white border border-gray-300 border-r-0 rounded-l px-4 py-3 text-sm focus:outline-none focus:border-civ-orange-500">
+            <button id="btn-search" class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold uppercase text-sm px-6 rounded-r transition-colors">
               Search
             </button>
           </div>
@@ -132,86 +96,28 @@ if (!is_wp_error($parent_terms)) {
 
         <label class="flex items-center gap-3 cursor-pointer group">
           <div class="relative">
-            <input type="checkbox" class="sr-only peer">
+            <input type="checkbox" id="filter-new" class="sr-only peer">
             <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-civ-orange-500"></div>
           </div>
-          <span class="text-sm font-bold text-black group-hover:text-civ-orange-500 transition-colors">New To The Show</span>
+          <span class="text-sm font-semibold text-black group-hover:text-civ-orange-500 transition-colors">New To The Show</span>
         </label>
 
         <label class="flex items-center gap-3 cursor-pointer group">
           <div class="relative">
-            <input type="checkbox" class="sr-only peer">
+            <input type="checkbox" id="filter-special" class="sr-only peer">
             <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-civ-orange-500"></div>
           </div>
-          <span class="text-sm font-bold text-black group-hover:text-civ-orange-500 transition-colors">Has show specials!</span>
+          <span class="text-sm font-semibold text-black group-hover:text-civ-orange-500 transition-colors">Has show specials!</span>
         </label>
 
       </div>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+    <div id="exhibitors-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
 
       <?php if ($exhibitors_query->have_posts()) : ?>
         <?php while ($exhibitors_query->have_posts()) : $exhibitors_query->the_post(); ?>
-          <?php
-          // Data Retrieval
-          $phone = get_field('phone_number');
-          $website = get_field('website_link');
-          $logo_array = get_field('exhibitor_logo');
-          $terms = get_the_terms(get_the_ID(), 'exhibitor-category');
-          $categories = '';
-
-          if ($terms && !is_wp_error($terms)) {
-            $cat_names = wp_list_pluck($terms, 'name');
-            $categories = implode(', ', $cat_names);
-          }
-
-          // Truncate content for excerpt-like feel
-          $content = get_the_content();
-          $excerpt = wp_trim_words($content, 20, '...');
-          ?>
-
-          <div class="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col h-full border border-gray-100">
-            <div class="h-48 overflow-hidden bg-gray-200 flex items-center justify-center">
-              <?php if ($logo_array && !empty($logo_array['url'])) : ?>
-                <img src="<?php echo esc_url($logo_array['url']); ?>" alt="<?php the_title_attribute(); ?>" class="w-full h-full object-contain transition-transform hover:scale-105 duration-500">
-              <?php else : ?>
-                <!-- Fallback Image -->
-                <div class="w-full h-full bg-gray-500 flex items-center justify-center text-white/50">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
-              <?php endif; ?>
-            </div>
-
-            <div class="p-6 flex flex-col grow">
-              <h3 class="font-extrabold text-lg text-civ-blue-900 mb-1"><?php the_title(); ?></h3>
-              <?php if ($categories) : ?>
-                <p class="text-sm text-gray-500 italic mb-3"><?php echo esc_html($categories); ?></p>
-              <?php endif; ?>
-
-              <p class="text-sm text-gray-600 mb-6 leading-relaxed grow">
-                <?php echo esc_html($excerpt); ?>
-              </p>
-
-              <div class="space-y-1 mt-auto">
-                <?php if ($phone) : ?>
-                  <p class="text-sm font-bold text-black">Phone: <span class="font-normal text-gray-600"><?php echo esc_html($phone); ?></span></p>
-                <?php endif; ?>
-
-                <?php if ($website) : ?>
-                  <p class="text-sm font-bold text-black">
-                    Site:
-                    <a href="<?php echo esc_url($website); ?>" target="_blank" rel="noopener noreferrer" class="font-normal text-civ-orange-500 hover:underline break-all">
-                      <?php echo esc_html(parse_url($website, PHP_URL_HOST) ?: 'Visit Website'); ?>
-                    </a>
-                  </p>
-                <?php endif; ?>
-              </div>
-            </div>
-          </div>
-
+          <?php get_template_part('template-parts/shows/components/card', 'exhibitor'); ?>
         <?php endwhile; ?>
         <?php wp_reset_postdata(); ?>
       <?php else : ?>
@@ -222,11 +128,16 @@ if (!is_wp_error($parent_terms)) {
 
     </div>
 
-    <div class="flex justify-center">
-      <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold uppercase text-sm py-3 px-12 rounded-sm transition-colors shadow-sm">
-        Load More
-      </button>
-    </div>
+    <?php if ($exhibitors_query->max_num_pages > 1) : ?>
+      <div class="flex justify-center">
+        <button id="load-more-exhibitors"
+          data-page="1"
+          data-max-pages="<?php echo esc_attr($exhibitors_query->max_num_pages); ?>"
+          class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold uppercase text-sm py-3 px-12 rounded-sm cursor-pointer transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed">
+          Load More
+        </button>
+      </div>
+    <?php endif; ?>
 
   </div>
 </section>

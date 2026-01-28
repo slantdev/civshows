@@ -24,3 +24,8 @@ require get_theme_file_path('/inc/template-tags.php');
  * Load AJAX Handlers.
  */
 require get_theme_file_path('/inc/ajax-handlers.php');
+
+/**
+ * Load Exhibitors Import.
+ */
+require get_theme_file_path('/inc/exhibitors.php');

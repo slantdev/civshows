@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.14.0] - 2026-01-20
+### Added
+- AJAX "Load More" functionality (`inc/ajax-handlers.php`, `src/main.js`) with support for filtering.
+- Reusable `card-exhibitor.php` template part.
+- Filters logic for "New to the Show" and "Show Specials" (checking `tags` ACF field).
+- Visual feedback (opacity transition) for grid filtering.
+
+### Changed
+- Refined Search Filter to target `post_title` only using `posts_search` hook.
+- Removed Sub-Category filter dropdown from `exhibitors.php`.
+- Corrected ACF field references in `exhibitors.php` (fixed typo in `exhibitor_bio`).
+
 ## [1.13.0] - 2026-01-20
 ### Added
 - Dynamic Exhibitors Grid (`template-parts/shows/components/exhibitors.php`) powered by `WP_Query`.
