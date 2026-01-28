@@ -1,13 +1,13 @@
 {
     "key": "group_69560519d7067",
-    "title": "Exhibitors",
+    "title": "Exhibitor Details",
     "fields": [
         {
-            "key": "field_6979a9fdf3a64",
-            "label": "Exhibitor ID",
-            "name": "exhibitor_id",
+            "key": "field_697a1508605a0",
+            "label": "Identity",
+            "name": "exhibitor_identity",
             "aria-label": "",
-            "type": "text",
+            "type": "group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,19 +16,70 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
+            "layout": "block",
+            "acfe_seamless_style": 1,
+            "sub_fields": [
+                {
+                    "key": "field_6978346b62f41",
+                    "label": "Logo",
+                    "name": "exhibitor_logo",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "br-1",
+                        "id": ""
+                    },
+                    "uploader": "",
+                    "return_format": "array",
+                    "library": "all",
+                    "acfe_thumbnail": 0,
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "allow_in_bindings": 0,
+                    "preview_size": "thumbnail"
+                },
+                {
+                    "key": "field_6979a9fdf3a64",
+                    "label": "ID",
+                    "name": "exhibitor_id",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "49",
+                        "class": "bl-0",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ],
+            "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large"
         },
         {
-            "key": "field_6978346b62f41",
-            "label": "Exhibitor Logo",
-            "name": "exhibitor_logo",
+            "key": "field_697a13e4605bf",
+            "label": "Description",
+            "name": "exhibitor_description",
             "aria-label": "",
-            "type": "image",
+            "type": "group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -37,44 +88,60 @@
                 "class": "",
                 "id": ""
             },
-            "uploader": "",
-            "return_format": "array",
-            "library": "all",
-            "acfe_thumbnail": 0,
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "allow_in_bindings": 0,
-            "preview_size": "medium"
-        },
-        {
-            "key": "field_69786078117ff",
-            "label": "Exhibitor Bio",
-            "name": "exhibitor_bio",
-            "aria-label": "",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "allow_in_bindings": 0,
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
+            "layout": "block",
+            "acfe_seamless_style": 1,
+            "sub_fields": [
+                {
+                    "key": "field_697a137a605be",
+                    "label": "Headline",
+                    "name": "exhibitor_headline",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69786078117ff",
+                    "label": "Bio",
+                    "name": "exhibitor_bio",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 0,
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 1,
+                    "delay": 0
+                }
+            ],
+            "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large"
         },
         {
             "key": "field_697860b211800",
-            "label": "Exhibitor Contact",
+            "label": "Contact",
             "name": "exhibitor_contact",
             "aria-label": "",
             "type": "group",
@@ -173,7 +240,7 @@
         {
             "key": "field_6978356184c04",
             "label": "Tags",
-            "name": "tags",
+            "name": "exhibitor_tags",
             "aria-label": "",
             "type": "checkbox",
             "instructions": "",
@@ -200,7 +267,7 @@
         {
             "key": "field_697a108534d09",
             "label": "Shows",
-            "name": "shows",
+            "name": "exhibitor_shows",
             "aria-label": "",
             "type": "relationship",
             "instructions": "",
@@ -218,11 +285,7 @@
                 "publish"
             ],
             "taxonomy": "",
-            "filters": [
-                "search",
-                "post_type",
-                "taxonomy"
-            ],
+            "filters": "",
             "return_format": "object",
             "acfe_bidirectional": {
                 "acfe_bidirectional_enabled": "0"
@@ -251,7 +314,8 @@
     "instruction_placement": "label",
     "hide_on_screen": [
         "the_content",
-        "excerpt"
+        "excerpt",
+        "featured_image"
     ],
     "active": true,
     "description": "",
@@ -263,7 +327,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1769607449,
+    "modified": 1769619943,
     "acfe_categories": {
         "settings": "Settings"
     }

@@ -9,7 +9,10 @@
 $exhibitor_contact = get_field('exhibitor_contact');
 $phone = $exhibitor_contact['phone_number'] ?? '';
 $website = $exhibitor_contact['website_link'] ?? '';
-$logo_array = get_field('exhibitor_logo') ?? [];
+
+$exhibitor_identity = get_field('exhibitor_identity');
+$logo_array = $exhibitor_identity['exhibitor_logo'] ?? [];
+
 $terms = get_the_terms(get_the_ID(), 'exhibitor-category');
 $categories = '';
 
@@ -19,7 +22,8 @@ if ($terms && !is_wp_error($terms)) {
 }
 
 // Truncate content for excerpt-like feel
-$content = get_field('exhibitor_bio');
+$exhibitor_description = get_field('exhibitor_description');
+$content = $exhibitor_description['exhibitor_bio'] ?? '';
 $excerpt = wp_trim_words($content, 20, '...');
 ?>
 

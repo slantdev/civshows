@@ -15,7 +15,7 @@ add_action('admin_menu', function () {
 });
 
 /**
- * 2. Render the Admin Upload Form
+ * 2. Render the Admin Upload Form (Updated with Loading Indicator)
  */
 function render_exhibitor_import_page()
 {
@@ -24,25 +24,68 @@ function render_exhibitor_import_page()
     <h1>Import Exhibitors from CSV</h1>
 
     <?php
+    // 1. Process CSV if submitted
     if (isset($_POST['exhibitor_import_nonce']) && wp_verify_nonce($_POST['exhibitor_import_nonce'], 'import_exhibitors')) {
       process_exhibitor_csv();
     }
     ?>
 
-    <div class="card" style="max-width: 600px; padding: 20px; margin-top: 20px;">
-      <p>Upload a CSV file (delimiter: <strong>;</strong>) to import exhibitors.</p>
-      <p><strong>Matching Logic:</strong> The script first tries to match by <code>Exhibitor_ID</code>. If not found, it attempts to match by <code>Exhibitor_Name</code>.</p>
-      <p><strong>Required Columns:</strong> <code>Exhibitor_Name</code>, <code>Main_Category_1</code></p>
-      <p><strong>Optional Columns:</strong> <code>Exhibitor_ID</code>, <code>Main_Category_2</code>, <code>Logo_URL</code>, <code>Website</code>, <code>Instagram</code>, <code>Facebook</code></p>
+    <div class="card" style="max-width: 600px; padding: 20px; margin-top: 20px; position: relative;">
 
-      <form method="post" enctype="multipart/form-data">
+      <p>Upload a CSV file (delimiter: <strong>;</strong>) to import exhibitors.</p>
+      <p><strong>Required Columns:</strong> <code>Exhibitor_Name</code>, <code>Main_Category_1</code></p>
+      <p><strong>Optional Columns:</strong> <code>Exhibitor_ID</code>, <code>Exhibitor_Headline</code>, <code>Bio</code>, <code>Main_Category_2</code>, <code>Logo_URL</code>, <code>Website</code>, <code>Instagram</code>, <code>Facebook</code></p>
+
+      <form method="post" enctype="multipart/form-data" id="exhibitor-import-form">
         <?php wp_nonce_field('import_exhibitors', 'exhibitor_import_nonce'); ?>
         <input type="file" name="csv_file" required accept=".csv">
         <br><br>
         <input type="submit" name="submit" class="button button-primary" value="Start Import">
       </form>
+
+      <div id="import-loading-overlay" style="display:none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.85); z-index: 10; align-items: center; justify-content: center; flex-direction: column; text-align: center;">
+        <div class="spinner"></div>
+        <p style="margin-top: 15px; font-weight: bold; font-size: 14px; color: #0073aa;">Importing Data...<br>Please do not close this window.</p>
+      </div>
+
     </div>
   </div>
+
+  <style>
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #0073aa;
+      /* WP Blue */
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+      var form = document.getElementById('exhibitor-import-form');
+      var overlay = document.getElementById('import-loading-overlay');
+
+      if (form) {
+        form.addEventListener('submit', function() {
+          // Show the overlay when form is submitted
+          overlay.style.display = 'flex';
+        });
+      }
+    });
+  </script>
 <?php
 }
 
@@ -146,25 +189,23 @@ function process_exhibitor_csv()
       $row[$key] = isset($data[$index]) ? trim($data[$index]) : '';
     }
 
+    // 1. Data Retrieval
     $title = isset($row['Exhibitor_Name']) ? $row['Exhibitor_Name'] : '';
     $csv_exhibitor_id = isset($row['Exhibitor_ID']) ? trim($row['Exhibitor_ID']) : '';
 
     if (empty($title)) continue;
 
-    // --- 1. Find Post (Logic: ID Match -> Title Match -> New) ---
+    // 2. Find Post (ID Match -> Title Match -> New)
     $post_id = 0;
 
-    // A. Try to find by Exhibitor_ID
     if (!empty($csv_exhibitor_id)) {
       $post_id = get_exhibitor_by_id($csv_exhibitor_id);
     }
 
-    // B. Fallback: Try to find by Title if ID didn't match
     if (!$post_id) {
       $post_id = post_exists($title, '', '', 'exhibitors');
     }
 
-    // Prepare Post Data
     $post_data = array(
       'post_title'   => $title,
       'post_type'    => 'exhibitors',
@@ -180,7 +221,7 @@ function process_exhibitor_csv()
 
     if (is_wp_error($post_id)) continue;
 
-    // --- 2. Update Taxonomy (Multiple Main Categories) ---
+    // 3. Taxonomy
     $term_ids = array();
     $category_columns = ['Main_Category_1', 'Main_Category_2'];
 
@@ -201,15 +242,40 @@ function process_exhibitor_csv()
       wp_set_object_terms($post_id, array_unique($term_ids), 'exhibitor-category');
     }
 
-    // --- 3. Update ACF Fields ---
+    // 4. Update ACF Fields
     if (function_exists('update_field')) {
-      // Save the Unique ID so we can match it next time
-      if (!empty($csv_exhibitor_id)) {
-        update_field('exhibitor_id', $csv_exhibitor_id, $post_id);
+
+      // --- A. Exhibitor Identity Group ---
+      // Construct array from scratch.
+      $identity_data = array(
+        'exhibitor_id' => $csv_exhibitor_id
+      );
+
+      // Handle Logo
+      $logo_url = isset($row['Logo_URL']) ? trim($row['Logo_URL']) : '';
+      if (!empty($logo_url)) {
+        $image_id = sideload_exhibitor_logo($logo_url, $post_id);
+        if ($image_id) {
+          $identity_data['exhibitor_logo'] = $image_id;
+        }
       }
 
-      update_field('exhibitor_bio', $row['Bio'] ?? '', $post_id);
+      // Update the Group
+      update_field('exhibitor_identity', $identity_data, $post_id);
 
+
+      // --- B. Exhibitor Description Group ---
+      // Construct array from scratch
+      $desc_data = array(
+        'exhibitor_bio'      => isset($row['Bio']) ? $row['Bio'] : '',
+        'exhibitor_headline' => isset($row['Exhibitor_Headline']) ? $row['Exhibitor_Headline'] : ''
+      );
+
+      // Update the Group
+      update_field('exhibitor_description', $desc_data, $post_id);
+
+
+      // --- C. Exhibitor Contact Group ---
       $website   = format_exhibitor_url($row['Website'] ?? '');
       $instagram = format_exhibitor_url($row['Instagram'] ?? '');
       $facebook  = format_exhibitor_url($row['Facebook'] ?? '');
@@ -222,15 +288,6 @@ function process_exhibitor_csv()
       );
 
       update_field('exhibitor_contact', $contact_data, $post_id);
-
-      // Image Handling
-      $logo_url = isset($row['Logo_URL']) ? trim($row['Logo_URL']) : '';
-      if (!empty($logo_url)) {
-        $image_id = sideload_exhibitor_logo($logo_url, $post_id);
-        if ($image_id) {
-          update_field('exhibitor_logo', $image_id, $post_id);
-        }
-      }
     }
 
     $success_count++;

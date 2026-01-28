@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.15.0] - 2026-01-20
+### Added
+- "Reset Filters" button to Exhibitors component.
+- `checkFiltersState` logic in `main.js` to conditionally show/hide the reset button.
+- Support for `postcss-prefix-selector` to scope ACF layouts.
+
+### Changed
+- Migrated admin stylesheets to use granular Tailwind v4 imports (no Preflight).
+- Updated `page-header.php` logic for parent post inheritance.
+
 ## [1.14.0] - 2026-01-20
 ### Added
 - AJAX "Load More" functionality (`inc/ajax-handlers.php`, `src/main.js`) with support for filtering.

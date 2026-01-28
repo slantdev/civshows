@@ -76,11 +76,11 @@ $parent_terms = get_terms([
           </div>
         </div>
 
-        <div class="hidden lg:flex items-center justify-center font-bold text-gray-400 text-sm uppercase px-2 h-12 mt-6">
+        <div class="hidden lg:flex shrink-0 items-center justify-center font-bold text-gray-400 text-sm uppercase px-2 h-12 mt-6">
           &mdash; OR &mdash;
         </div>
 
-        <div class="w-full lg:w-5/12 space-y-2">
+        <div class="w-full lg:w-7/12 space-y-2">
           <label class="font-bold text-sm uppercase text-black block mb-1">Find By Keyword</label>
           <div class="flex">
             <input type="text" id="filter-search" placeholder="Search by Exhibitor Name" class="w-full bg-white border border-gray-300 border-r-0 rounded-l px-4 py-3 text-sm focus:outline-none focus:border-civ-orange-500">
@@ -109,6 +109,10 @@ $parent_terms = get_terms([
           </div>
           <span class="text-sm font-semibold text-black group-hover:text-civ-orange-500 transition-colors">Has show specials!</span>
         </label>
+
+        <button id="btn-reset-filters" class="text-sm font-semibold text-gray-500 hover:text-civ-orange-500 transition-colors uppercase ml-auto cursor-pointer hidden">
+          Reset Filters
+        </button>
 
       </div>
     </div>

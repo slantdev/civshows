@@ -280,7 +280,24 @@ const initExhibitorFilters = () => {
   let maxPages = loadMoreBtn ? parseInt(loadMoreBtn.dataset.maxPages) : 1;
   let isLoading = false;
 
+  const resetBtn = document.getElementById('btn-reset-filters');
+
+  const checkFiltersState = () => {
+    if (!resetBtn) return;
+    const hasFilter = (categorySelect && categorySelect.value !== '') ||
+                      (searchInput && searchInput.value !== '') ||
+                      (filterNew && filterNew.checked) ||
+                      (filterSpecial && filterSpecial.checked);
+    
+    if (hasFilter) {
+      resetBtn.classList.remove('hidden');
+    } else {
+      resetBtn.classList.add('hidden');
+    }
+  };
+
   const fetchExhibitors = (reset = false) => {
+    checkFiltersState();
     if (isLoading) return;
     isLoading = true;
 
@@ -365,6 +382,17 @@ const initExhibitorFilters = () => {
 
   if (loadMoreBtn) {
     loadMoreBtn.addEventListener('click', () => fetchExhibitors(false));
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      if (categorySelect) categorySelect.value = '';
+      if (searchInput) searchInput.value = '';
+      if (filterNew) filterNew.checked = false;
+      if (filterSpecial) filterSpecial.checked = false;
+      fetchExhibitors(true);
+      checkFiltersState();
+    });
   }
 };
 

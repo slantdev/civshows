@@ -53,9 +53,18 @@ table.fixed {
         margin-bottom: 0;
       }
     }
+    &.bt-1 {
+      border-top: 1px solid #eeeeee;
+    }
+    &.br-1 {
+      border-right: 1px solid #eeeeee;
+    }        
     &.bb-1 {
       border-bottom: 1px solid #eeeeee;
     }
+    &.bl-1 {
+      border-left: 1px solid #eeeeee;
+    }    
     &.bt-0 {
       @apply border-t-0!;
       &.acfe-field-group-layout-row {

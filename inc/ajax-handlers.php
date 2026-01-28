@@ -1,4 +1,5 @@
 <?php
+
 /**
  * AJAX Handlers
  */
@@ -6,29 +7,31 @@
 /**
  * Filter to restrict search to Post Title only
  */
-function civ_title_search_filter($search, $wp_query) {
-    global $wpdb;
-    if (empty($search)) return $search;
-    
-    $q = $wp_query->query_vars;
-    $n = !empty($q['exact']) ? '' : '%';
-    
-    $search = array();
-    
-    foreach ((array) $q['search_terms'] as $term) {
-        $term = esc_sql($wpdb->esc_like($term));
-        $search[] = "($wpdb->posts.post_title LIKE '{$n}{$term}{$n}')";
-    }
-    
-    if (!is_user_logged_in()) {
-        $search[] = "($wpdb->posts.post_password = '')";
-    }
-    
-    return " AND " . implode(" AND ", $search) . " ";
+function civ_title_search_filter($search, $wp_query)
+{
+  global $wpdb;
+  if (empty($search)) return $search;
+
+  $q = $wp_query->query_vars;
+  $n = !empty($q['exact']) ? '' : '%';
+
+  $search = array();
+
+  foreach ((array) $q['search_terms'] as $term) {
+    $term = esc_sql($wpdb->esc_like($term));
+    $search[] = "($wpdb->posts.post_title LIKE '{$n}{$term}{$n}')";
+  }
+
+  if (!is_user_logged_in()) {
+    $search[] = "($wpdb->posts.post_password = '')";
+  }
+
+  return " AND " . implode(" AND ", $search) . " ";
 }
 
 // Load More Exhibitors
-function civ_load_more_exhibitors() {
+function civ_load_more_exhibitors()
+{
   check_ajax_referer('civ_exhibitors_nonce', 'nonce');
 
   $paged = isset($_POST['page']) ? intval($_POST['page']) + 1 : 1;
@@ -64,12 +67,12 @@ function civ_load_more_exhibitors() {
     add_filter('posts_search', 'civ_title_search_filter', 10, 2);
   }
 
-  // Meta Query for Checkboxes (ACF field 'tags')
+  // Meta Query for Checkboxes (ACF field 'exhibitor_tags')
   $meta_query = array();
-  
+
   if ($is_new) {
     $meta_query[] = array(
-      'key'     => 'tags',
+      'key'     => 'exhibitor_tags',
       'value'   => '"new"', // Serialized ACF checkbox value
       'compare' => 'LIKE'
     );
@@ -77,7 +80,7 @@ function civ_load_more_exhibitors() {
 
   if ($has_special) {
     $meta_query[] = array(
-      'key'     => 'tags',
+      'key'     => 'exhibitor_tags',
       'value'   => '"specials"', // Serialized ACF checkbox value
       'compare' => 'LIKE'
     );

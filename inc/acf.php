@@ -114,3 +114,15 @@ function civ_acf_input_admin_footer()
 <?php
 }
 add_action('acf/input/admin_footer', 'civ_acf_input_admin_footer');
+
+/**
+ * Filter ACF Relationship field to show only Top Level posts of 'shows' custom post type
+ */
+add_filter('acf/fields/relationship/query/name=exhibitor_shows', function ($args, $field, $post_id) {
+
+  // Set post_parent to 0. 
+  // This strictly retrieves posts that do not have a parent.
+  $args['post_parent'] = 0;
+
+  return $args;
+}, 10, 3);
