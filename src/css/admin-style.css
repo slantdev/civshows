@@ -281,3 +281,8 @@ table.fixed {
     }
   }
 }
+
+/* Exhibitor Admin Columns */
+.column-exhibitor_id {
+  width: 100px;
+}

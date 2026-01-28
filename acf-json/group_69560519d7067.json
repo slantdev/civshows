@@ -48,26 +48,26 @@
                     "preview_size": "thumbnail"
                 },
                 {
-                    "key": "field_6979a9fdf3a64",
-                    "label": "ID",
-                    "name": "exhibitor_id",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "49",
-                        "class": "bl-0",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "maxlength": "",
-                    "allow_in_bindings": 0,
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": ""
-                }
+                                "key": "field_6979a9fdf3a64",
+                                "label": "ID",
+                                "name": "exhibitor_id",
+                                "aria-label": "",
+                                "type": "text",
+                                "instructions": "",
+                                "required": 0,
+                                "conditional_logic": 0,
+                                "wrapper": {
+                                    "width": "49",
+                                    "class": "bl-0",
+                                    "id": ""
+                                },
+                                "default_value": "",
+                                "maxlength": "",
+                                "allow_in_bindings": 0,
+                                "placeholder": "",
+                                "prepend": "",
+                                "append": "",
+                                "acfe_admin_column_enabled": 1                }
             ],
             "acfe_group_modal": 0,
             "acfe_group_modal_close": 0,

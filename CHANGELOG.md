@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.16.0] - 2026-01-20
+### Added
+- Admin Columns for Exhibitors:
+    - Added "Exhibitor ID" column (sortable).
+    - Added "Shows" column (clickable for filtering).
+    - Added "Exhibitor Category" filter dropdown to admin list.
+- CSS for admin columns (fixed width for ID).
+
+### Changed
+- Updated Exhibitors component (`exhibitors.php` & `card-exhibitor.php`) to match new ACF field structure (`exhibitor_identity`, `exhibitor_description`, `exhibitor_contact`).
+- Reordered Exhibitor admin columns for better usability.
+
 ## [1.15.0] - 2026-01-20
 ### Added
 - "Reset Filters" button to Exhibitors component.
