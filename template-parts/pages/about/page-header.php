@@ -141,8 +141,6 @@ $child_query = new WP_Query($child_args);
             <ul class="flex items-center space-x-2">
               <li><a href="<?php echo home_url(); ?>" class="hover:underline">Home</a></li>
               <li>/</li>
-              <li>Our Shows</li>
-              <li>/</li>
               <li><span class="font-bold"><?php echo get_the_title(); ?></span></li>
             </ul>
           </nav>
