@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.17.0] - 2026-01-30
+### Added
+- Dynamic Header Logo in `template-parts/global/site-header.php` using ACF `header_logo` option field.
+- Dynamic Site Navigation in `template-parts/global/site-navigation.php` using ACF `mega_menu` option field.
+- Recursive Mega Menu rendering logic supporting:
+    - Standard Mega Menus with featured content and dynamic headings.
+    - Standard Dropdowns.
+    - Dynamic dividers (`|`) between top-level items.
+
+### Changed
+- Updated `site-header.php` to use `home_url('/')` for the branding link.
+- Refined `site-navigation.php` JS to correctly handle hover states for multiple dynamic menu items.
+
 ## [1.16.0] - 2026-01-20
 ### Added
 - Admin Columns for Exhibitors:

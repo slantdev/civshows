@@ -74,11 +74,13 @@ function civ_admin_styles()
     $vite_dev_server = file_get_contents($hot_file);
     $vite_dev_server = trim($vite_dev_server);
 
+    wp_enqueue_style('admin_css', "$vite_dev_server/src/css/admin-style.css", [], null);
+
     if (
       ($current_page->post_type === 'page' && ($pagenow === 'post-new.php' || $pagenow === 'post.php')) ||
       ($current_page->post_type === 'shows' && ($pagenow === 'post-new.php' || $pagenow === 'post.php'))
     ) {
-      wp_enqueue_style('admin_css', "$vite_dev_server/src/css/admin-style.css", [], null);
+      //wp_enqueue_style('admin_css', "$vite_dev_server/src/css/admin-style.css", [], null);
       wp_enqueue_style('acf_layouts', "$vite_dev_server/src/css/acf-layouts.css", [], null);
     }
   } else {
