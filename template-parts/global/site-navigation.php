@@ -146,7 +146,7 @@
 
     <span class="text-white/60">|</span>
 
-    <a href="#" class="text-white font-medium uppercase text-sm tracking-wide hover:text-shadow-md transition">
+    <a href="/about-civ" class="text-white font-medium uppercase text-sm tracking-wide hover:text-shadow-md transition">
       About CIV
     </a>
 
