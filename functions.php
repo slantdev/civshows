@@ -26,6 +26,11 @@ require get_theme_file_path('/inc/template-tags.php');
 require get_theme_file_path('/inc/ajax-handlers.php');
 
 /**
+ * Page Builder Logic
+ */
+require get_theme_file_path('/inc/page-builder.php');
+
+/**
  * Load Exhibitors Import.
  */
 require get_theme_file_path('/inc/exhibitors.php');

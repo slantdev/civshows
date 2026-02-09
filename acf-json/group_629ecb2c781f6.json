@@ -147,15 +147,12 @@
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
-                        "class": "",
+                        "class": "hidden",
                         "id": ""
                     },
                     "layout": "block",
                     "acfe_seamless_style": 0,
                     "acfe_group_modal": 0,
-                    "acfe_group_modal_close": 0,
-                    "acfe_group_modal_button": "",
-                    "acfe_group_modal_size": "large",
                     "sub_fields": [
                         {
                             "key": "field_6602a45c44075",
@@ -301,7 +298,10 @@
                                 }
                             ]
                         }
-                    ]
+                    ],
+                    "acfe_group_modal_close": 0,
+                    "acfe_group_modal_button": "",
+                    "acfe_group_modal_size": "large"
                 }
             ]
         },
@@ -340,31 +340,7 @@
             "layout": "block",
             "acfe_seamless_style": 0,
             "acfe_group_modal": 0,
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large",
             "sub_fields": [
-                {
-                    "key": "field_6602e2a216e6a",
-                    "label": "Background Color",
-                    "name": "background_color",
-                    "aria-label": "",
-                    "type": "color_picker",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "enable_opacity": 0,
-                    "return_format": "string",
-                    "custom_palette_source": "",
-                    "palette_colors": "",
-                    "show_color_wheel": true
-                },
                 {
                     "key": "field_6602e2bc16e6b",
                     "label": "Background Image",
@@ -375,12 +351,13 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "33.33",
                         "class": "",
                         "id": ""
                     },
                     "uploader": "",
                     "return_format": "array",
+                    "library": "all",
                     "acfe_thumbnail": 0,
                     "min_width": "",
                     "min_height": "",
@@ -389,66 +366,13 @@
                     "max_height": "",
                     "max_size": "",
                     "mime_types": "",
-                    "preview_size": "thumbnail",
-                    "library": "all"
-                }
-            ]
-        },
-        {
-            "key": "field_6607fb466c256",
-            "label": "Background Ornament",
-            "name": "background_ornament",
-            "aria-label": "",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "acfe_seamless_style": 0,
-            "acfe_group_modal": 0,
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large",
-            "sub_fields": [
-                {
-                    "key": "field_6607fb466c258",
-                    "label": "Ornament Shape",
-                    "name": "ornament_shape",
-                    "aria-label": "",
-                    "type": "select",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "33.33",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "none": "None",
-                        "logo": "CPSV Logo"
-                    },
-                    "default_value": "none",
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_custom": 0,
-                    "search_placeholder": "",
-                    "allow_null": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": "",
-                    "create_options": 0,
-                    "save_options": 0
+                    "allow_in_bindings": 1,
+                    "preview_size": "thumbnail"
                 },
                 {
-                    "key": "field_6607fb466c257",
-                    "label": "Ornament Color",
-                    "name": "ornament_color",
+                    "key": "field_6602e2a216e6a",
+                    "label": "Background Color",
+                    "name": "background_color",
                     "aria-label": "",
                     "type": "color_picker",
                     "instructions": "",
@@ -462,16 +386,18 @@
                     "default_value": "",
                     "enable_opacity": 0,
                     "return_format": "string",
+                    "allow_in_bindings": 1,
+                    "show_custom_palette": 0,
+                    "show_color_wheel": 1,
                     "custom_palette_source": "",
-                    "palette_colors": "",
-                    "show_color_wheel": true
+                    "palette_colors": ""
                 },
                 {
-                    "key": "field_6607fbfa6c259",
-                    "label": "Ornament Position",
-                    "name": "ornament_position",
+                    "key": "field_697d185528eca",
+                    "label": "Background Overlay",
+                    "name": "background_overlay",
                     "aria-label": "",
-                    "type": "select",
+                    "type": "color_picker",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -480,26 +406,19 @@
                         "class": "",
                         "id": ""
                     },
-                    "choices": {
-                        "default": "Default",
-                        "top_left": "Top Left",
-                        "top_right": "Top Right",
-                        "bottom_left": "Bottom Left",
-                        "bottom_right": "Bottom Right"
-                    },
-                    "default_value": "default",
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": "",
-                    "allow_custom": 0,
-                    "search_placeholder": "",
-                    "create_options": 0,
-                    "save_options": 0
+                    "default_value": "",
+                    "enable_opacity": 1,
+                    "return_format": "string",
+                    "allow_in_bindings": 1,
+                    "show_custom_palette": 0,
+                    "show_color_wheel": 1,
+                    "custom_palette_source": "",
+                    "palette_colors": ""
                 }
-            ]
+            ],
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large"
         },
         {
             "key": "field_6602e26e16e68",
@@ -705,15 +624,12 @@
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
-                        "class": "",
+                        "class": "hidden",
                         "id": ""
                     },
                     "layout": "block",
                     "acfe_seamless_style": 0,
                     "acfe_group_modal": 0,
-                    "acfe_group_modal_close": 0,
-                    "acfe_group_modal_button": "",
-                    "acfe_group_modal_size": "large",
                     "sub_fields": [
                         {
                             "key": "field_6602e3fc16e75",
@@ -745,7 +661,10 @@
                             "create_options": 0,
                             "save_options": 0
                         }
-                    ]
+                    ],
+                    "acfe_group_modal_close": 0,
+                    "acfe_group_modal_button": "",
+                    "acfe_group_modal_size": "large"
                 }
             ]
         }
@@ -775,9 +694,9 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
+    "modified": 1769805996,
     "acfe_categories": {
         "layout": "Layout",
         "settings": "Settings"
-    },
-    "modified": 1769339018
+    }
 }

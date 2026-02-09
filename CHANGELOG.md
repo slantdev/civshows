@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.18.0] - 2026-02-09
+### Added
+- Modular Page Builder system:
+    - New `inc/page-builder.php` to handle flexible content rendering logic.
+    - Integrated `page-builder.php` into `functions.php`.
+    - New `page.php` template using the Page Builder.
+    - New Section templates: `one_column.php` and `two_columns.php` in `template-parts/sections/`.
+    - New Component system in `template-parts/components/components.php` for modular component rendering within sections.
+    - New Heading component in `template-parts/components/heading.php`.
+    - New global `section-settings.php` for shared section configurations (backgrounds, padding, etc.).
+- Enhanced Background Settings:
+    - Added "Background Overlay" color picker to section settings.
+    - Support for background images and colors in `section-settings.php`.
+- Flexible Column Settings:
+    - Implemented alignment and max-width controls for columns in `one_column.php`.
+
+### Changed
+- Refactored ACF Flexible Content:
+    - Renamed `section` field to `section_builder` for better clarity.
+    - Refactored Column Settings into a dedicated group with improved field layout.
+    - Updated Heading component to use Tailwind-based color defaults and removed redundant advanced settings.
+- Admin UI Improvements:
+    - Enhanced ACF Flexible Content styling in `admin-style.css` (better layout handles and active state highlighting).
+
 ## [1.17.0] - 2026-01-30
 ### Added
 - Dynamic Header Logo in `template-parts/global/site-header.php` using ACF `header_logo` option field.

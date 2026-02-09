@@ -1,9 +1,9 @@
 {
-    "key": "group_62a17b306405b",
-    "title": "Layout - Page Header",
+    "key": "group_69882a1e1fc41",
+    "title": "Layout - Our Shows Page Header",
     "fields": [
         {
-            "key": "field_6602f0ddfc33b",
+            "key": "field_69882a1e372af",
             "label": "Enable Page Header",
             "name": "enable_page_header",
             "aria-label": "",
@@ -23,7 +23,7 @@
             "ui": 1
         },
         {
-            "key": "field_659c2ba01b8a3",
+            "key": "field_69882a1e372ca",
             "label": "Page Header Settings",
             "name": "page_header_settings",
             "aria-label": "",
@@ -33,7 +33,7 @@
             "conditional_logic": [
                 [
                     {
-                        "field": "field_6602f0ddfc33b",
+                        "field": "field_69882a1e372af",
                         "operator": "==",
                         "value": "1"
                     }
@@ -52,7 +52,7 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
-                    "key": "field_6602f35b9d969",
+                    "key": "field_69882a1e3a27a",
                     "label": "Title",
                     "name": "title",
                     "aria-label": "",
@@ -73,7 +73,7 @@
                     "acfe_group_modal_size": "large",
                     "sub_fields": [
                         {
-                            "key": "field_664b8fd3f3238",
+                            "key": "field_69882a1e3bdab",
                             "label": "Show Title",
                             "name": "show_title",
                             "aria-label": "",
@@ -93,7 +93,7 @@
                             "ui": 1
                         },
                         {
-                            "key": "field_6602f3649d96a",
+                            "key": "field_69882a1e3bdb4",
                             "label": "Title",
                             "name": "title",
                             "aria-label": "",
@@ -103,7 +103,7 @@
                             "conditional_logic": [
                                 [
                                     {
-                                        "field": "field_664b8fd3f3238",
+                                        "field": "field_69882a1e3bdab",
                                         "operator": "==",
                                         "value": "1"
                                     }
@@ -121,7 +121,7 @@
                             "append": ""
                         },
                         {
-                            "key": "field_6602f3719d96b",
+                            "key": "field_69882a1e3bdbb",
                             "label": "Title Color",
                             "name": "title_color",
                             "aria-label": "",
@@ -131,7 +131,7 @@
                             "conditional_logic": [
                                 [
                                     {
-                                        "field": "field_664b8fd3f3238",
+                                        "field": "field_69882a1e3bdab",
                                         "operator": "==",
                                         "value": "1"
                                     }
@@ -154,7 +154,7 @@
                     ]
                 },
                 {
-                    "key": "field_6977097b385f1",
+                    "key": "field_69882a1e3a282",
                     "label": "Subtitle",
                     "name": "subtitle",
                     "aria-label": "",
@@ -169,9 +169,13 @@
                     },
                     "layout": "block",
                     "acfe_seamless_style": 1,
+                    "acfe_group_modal": 0,
+                    "acfe_group_modal_close": 0,
+                    "acfe_group_modal_button": "",
+                    "acfe_group_modal_size": "large",
                     "sub_fields": [
                         {
-                            "key": "field_6977097b385f2",
+                            "key": "field_69882a1e4a525",
                             "label": "Show Subtitle",
                             "name": "show_subtitle",
                             "aria-label": "",
@@ -192,7 +196,7 @@
                             "ui": 1
                         },
                         {
-                            "key": "field_6977097b385f3",
+                            "key": "field_69882a1e4a52e",
                             "label": "Subtitle",
                             "name": "subtitle",
                             "aria-label": "",
@@ -202,7 +206,7 @@
                             "conditional_logic": [
                                 [
                                     {
-                                        "field": "field_6977097b385f2",
+                                        "field": "field_69882a1e4a525",
                                         "operator": "==",
                                         "value": "1"
                                     }
@@ -222,7 +226,7 @@
                             "new_lines": "br"
                         },
                         {
-                            "key": "field_6977097b385f4",
+                            "key": "field_69882a1e4a535",
                             "label": "Subtitle Color",
                             "name": "subtitle_color",
                             "aria-label": "",
@@ -232,7 +236,7 @@
                             "conditional_logic": [
                                 [
                                     {
-                                        "field": "field_6977097b385f2",
+                                        "field": "field_69882a1e4a525",
                                         "operator": "==",
                                         "value": "1"
                                     }
@@ -252,14 +256,10 @@
                             "custom_palette_source": "",
                             "palette_colors": ""
                         }
-                    ],
-                    "acfe_group_modal": 0,
-                    "acfe_group_modal_close": 0,
-                    "acfe_group_modal_button": "",
-                    "acfe_group_modal_size": "large"
+                    ]
                 },
                 {
-                    "key": "field_69770f81acef2",
+                    "key": "field_69882a1e3a289",
                     "label": "Show Logo",
                     "name": "show_logo",
                     "aria-label": "",
@@ -274,9 +274,13 @@
                     },
                     "layout": "block",
                     "acfe_seamless_style": 1,
+                    "acfe_group_modal": 0,
+                    "acfe_group_modal_close": 0,
+                    "acfe_group_modal_button": "",
+                    "acfe_group_modal_size": "large",
                     "sub_fields": [
                         {
-                            "key": "field_69770f81acef3",
+                            "key": "field_69882a1e57ad9",
                             "label": "Show Logo",
                             "name": "show_logo",
                             "aria-label": "",
@@ -297,7 +301,7 @@
                             "ui": 1
                         },
                         {
-                            "key": "field_69770f81acef4",
+                            "key": "field_69882a1e57aea",
                             "label": "Logo Image",
                             "name": "logo_image",
                             "aria-label": "",
@@ -307,7 +311,7 @@
                             "conditional_logic": [
                                 [
                                     {
-                                        "field": "field_69770f81acef3",
+                                        "field": "field_69882a1e57ad9",
                                         "operator": "==",
                                         "value": "1"
                                     }
@@ -332,14 +336,10 @@
                             "allow_in_bindings": 0,
                             "preview_size": "thumbnail"
                         }
-                    ],
-                    "acfe_group_modal": 0,
-                    "acfe_group_modal_close": 0,
-                    "acfe_group_modal_button": "",
-                    "acfe_group_modal_size": "large"
+                    ]
                 },
                 {
-                    "key": "field_6602f65db791a",
+                    "key": "field_69882a1e3a290",
                     "label": "Breadcrumbs",
                     "name": "breadcrumbs",
                     "aria-label": "",
@@ -360,7 +360,7 @@
                     "acfe_group_modal_size": "large",
                     "sub_fields": [
                         {
-                            "key": "field_6602f671b791b",
+                            "key": "field_69882a1e9185a",
                             "label": "Show Breadcrumbs",
                             "name": "show_breadcrumbs",
                             "aria-label": "",
@@ -380,7 +380,7 @@
                             "ui": 1
                         },
                         {
-                            "key": "field_6602f687b791c",
+                            "key": "field_69882a1e91863",
                             "label": "Breadcrumbs Text Color",
                             "name": "breadcrumbs_text_color",
                             "aria-label": "",
@@ -390,7 +390,7 @@
                             "conditional_logic": [
                                 [
                                     {
-                                        "field": "field_6602f671b791b",
+                                        "field": "field_69882a1e9185a",
                                         "operator": "==",
                                         "value": "1"
                                     }
@@ -411,7 +411,7 @@
                             "palette_colors": ""
                         },
                         {
-                            "key": "field_6602f6adb791d",
+                            "key": "field_69882a1e9186a",
                             "label": "Separator Color",
                             "name": "separator_color",
                             "aria-label": "",
@@ -421,7 +421,7 @@
                             "conditional_logic": [
                                 [
                                     {
-                                        "field": "field_6602f671b791b",
+                                        "field": "field_69882a1e9185a",
                                         "operator": "==",
                                         "value": "1"
                                     }
@@ -444,7 +444,7 @@
                     ]
                 },
                 {
-                    "key": "field_659c2c7ea3241",
+                    "key": "field_69882a1e3a297",
                     "label": "Background",
                     "name": "background",
                     "aria-label": "",
@@ -465,7 +465,7 @@
                     "acfe_group_modal_size": "large",
                     "sub_fields": [
                         {
-                            "key": "field_697707d35061d",
+                            "key": "field_69882a1eda3f3",
                             "label": "Background Image",
                             "name": "background_image",
                             "aria-label": "",
@@ -480,9 +480,13 @@
                             },
                             "layout": "block",
                             "acfe_seamless_style": 1,
+                            "acfe_group_modal": 0,
+                            "acfe_group_modal_close": 0,
+                            "acfe_group_modal_button": "",
+                            "acfe_group_modal_size": "large",
                             "sub_fields": [
                                 {
-                                    "key": "field_6977087550621",
+                                    "key": "field_69882a1edc792",
                                     "label": "Background Desktop",
                                     "name": "background_desktop",
                                     "aria-label": "",
@@ -497,9 +501,13 @@
                                     },
                                     "layout": "block",
                                     "acfe_seamless_style": 1,
+                                    "acfe_group_modal": 0,
+                                    "acfe_group_modal_close": 0,
+                                    "acfe_group_modal_button": "",
+                                    "acfe_group_modal_size": "large",
                                     "sub_fields": [
                                         {
-                                            "key": "field_659c2d02a3244",
+                                            "key": "field_69882a1edde57",
                                             "label": "Background Desktop",
                                             "name": "background_desktop",
                                             "aria-label": "",
@@ -527,7 +535,7 @@
                                             "preview_size": "thumbnail"
                                         },
                                         {
-                                            "key": "field_659c3757092f0",
+                                            "key": "field_69882a1edde85",
                                             "label": "Background Position",
                                             "name": "background_position",
                                             "aria-label": "",
@@ -564,14 +572,10 @@
                                             "allow_custom": 0,
                                             "search_placeholder": ""
                                         }
-                                    ],
-                                    "acfe_group_modal": 0,
-                                    "acfe_group_modal_close": 0,
-                                    "acfe_group_modal_button": "",
-                                    "acfe_group_modal_size": "large"
+                                    ]
                                 },
                                 {
-                                    "key": "field_697708a350623",
+                                    "key": "field_69882a1edc79e",
                                     "label": "Background Mobile",
                                     "name": "background_mobile",
                                     "aria-label": "",
@@ -586,9 +590,13 @@
                                     },
                                     "layout": "block",
                                     "acfe_seamless_style": 1,
+                                    "acfe_group_modal": 0,
+                                    "acfe_group_modal_close": 0,
+                                    "acfe_group_modal_button": "",
+                                    "acfe_group_modal_size": "large",
                                     "sub_fields": [
                                         {
-                                            "key": "field_697708a350624",
+                                            "key": "field_69882a1f1ba83",
                                             "label": "Background Mobile",
                                             "name": "background_mobile",
                                             "aria-label": "",
@@ -616,7 +624,7 @@
                                             "preview_size": "thumbnail"
                                         },
                                         {
-                                            "key": "field_697708a350625",
+                                            "key": "field_69882a1f1ba8b",
                                             "label": "Background Position",
                                             "name": "background_position",
                                             "aria-label": "",
@@ -653,20 +661,12 @@
                                             "allow_custom": 0,
                                             "search_placeholder": ""
                                         }
-                                    ],
-                                    "acfe_group_modal": 0,
-                                    "acfe_group_modal_close": 0,
-                                    "acfe_group_modal_button": "",
-                                    "acfe_group_modal_size": "large"
+                                    ]
                                 }
-                            ],
-                            "acfe_group_modal": 0,
-                            "acfe_group_modal_close": 0,
-                            "acfe_group_modal_button": "",
-                            "acfe_group_modal_size": "large"
+                            ]
                         },
                         {
-                            "key": "field_697708385061f",
+                            "key": "field_69882a1eda40c",
                             "label": "Background Colors",
                             "name": "background_colors",
                             "aria-label": "",
@@ -681,9 +681,13 @@
                             },
                             "layout": "block",
                             "acfe_seamless_style": 1,
+                            "acfe_group_modal": 0,
+                            "acfe_group_modal_close": 0,
+                            "acfe_group_modal_button": "",
+                            "acfe_group_modal_size": "large",
                             "sub_fields": [
                                 {
-                                    "key": "field_6977084650620",
+                                    "key": "field_69882a1f2081b",
                                     "label": "Background Color",
                                     "name": "background_color",
                                     "aria-label": "",
@@ -706,7 +710,7 @@
                                     "palette_colors": ""
                                 },
                                 {
-                                    "key": "field_6602f5b4a1e93",
+                                    "key": "field_69882a1f2082a",
                                     "label": "Background Overlay",
                                     "name": "background_overlay",
                                     "aria-label": "",
@@ -728,11 +732,7 @@
                                     "custom_palette_source": "",
                                     "palette_colors": ""
                                 }
-                            ],
-                            "acfe_group_modal": 0,
-                            "acfe_group_modal_close": 0,
-                            "acfe_group_modal_button": "",
-                            "acfe_group_modal_size": "large"
+                            ]
                         }
                     ]
                 }
@@ -764,7 +764,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1770530719,
+    "modified": 1770531413,
     "acfe_categories": {
         "layout": "Layout"
     }

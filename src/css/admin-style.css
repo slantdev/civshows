@@ -270,13 +270,21 @@ table.fixed {
 }
 
 .acf-flexible-content {
+  .acf-flexible-content .layout
   .layout {
     .acf-fc-layout-handle {
-      @apply bg-gray-100;
+      @apply bg-[#f9f9f9];
       .acf-fc-layout-order {
         @apply bg-white;
         border: 1px solid #b5bcc2;
         line-height: 18px;
+      }
+    }
+    &.active-layout {
+      > .acf-fc-layout-actions-wrap {
+        .acf-fc-layout-handle {
+          @apply bg-[#2271b1];
+        }
       }
     }
   }
