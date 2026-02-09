@@ -14,6 +14,11 @@ $heading_comp = is_array($field) ? $field : get_sub_field($field ?: 'heading');
 
 if (!$heading_comp) return;
 
+// Generate a stable ID based on Post ID and a static counter
+static $heading_count = 0;
+$heading_count++;
+$heading_id = 'heading-' . get_the_ID() . '-' . $heading_count;
+
 // Extracting heading details
 $heading_data = $heading_comp['heading'] ?? [];
 $heading_text = $heading_data['heading_text'] ?? '';
@@ -107,5 +112,5 @@ $final_classes = implode(' ', $class_list);
 
 // Outputting heading if heading text exists
 if ($heading_text) {
-  echo '<' . esc_attr($html_tag) . ' class="' . esc_attr($final_classes) . '" style="' . esc_attr($text_style) . '">' . wp_kses_post($heading_text) . '</' . esc_attr($html_tag) . '>';
+  echo '<' . esc_attr($html_tag) . ' id="' . esc_attr($heading_id) . '" class="' . esc_attr($final_classes) . '" style="' . esc_attr($text_style) . '">' . wp_kses_post($heading_text) . '</' . esc_attr($html_tag) . '>';
 }

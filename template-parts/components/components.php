@@ -7,12 +7,12 @@ $field = isset($args['field']) && is_array($args['field']) ? $args['field'] : []
 if (!empty($field)) {
   foreach ($field as $layout) {
     $acf_fc_layout = $layout['acf_fc_layout'] ?? '';
-    
+
     // Outputting component template if layout is set
     if ($acf_fc_layout) {
       $template = 'template-parts/components/' . $acf_fc_layout;
-      
-      echo '<div class="component-wrapper mb-8 last:mb-0">';
+
+      echo '<div class="component-wrapper">';
       get_template_part($template, '', array('field' => $layout));
       echo '</div>';
     }

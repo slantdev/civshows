@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.19.0] - 2026-02-09
+### Added
+- Stable ID generation system for modular components (Accordion, Heading, Buttons) using Post ID and static counters to ensure consistent CSS targeting.
+- Advanced Accordion Component:
+    - Support for custom colors (header, background, borders, icons) across default and opened states using CSS variables.
+    - Improved accessibility and grouping with the `name` attribute.
+- Enhanced Buttons Component:
+    - Fully refactored for Tailwind CSS v4 (removed DaisyUI dependencies).
+    - Support for nested ACF groups: Button Presets and Advanced Custom Styles.
+    - New `button_rounded` option for granular control over border-radius.
+    - Advanced custom styling with default and hover state color pickers.
+    - Optimized layout with vertical alignment (`items-center`) and responsive gap handling.
+
+### Changed
+- Updated ACF field groups for Accordion and Buttons to support new design controls.
+- Refined `components.php` to remove redundant margins, delegating spacing to sections.
+- Updated `heading.php` to support stable element IDs.
+
 ## [1.18.0] - 2026-02-09
 ### Added
 - Modular Page Builder system:
