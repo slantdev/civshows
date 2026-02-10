@@ -113,12 +113,14 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "default_value": "#4b5563",
+                            "default_value": "#111827",
                             "enable_opacity": 0,
                             "return_format": "string",
+                            "allow_in_bindings": 1,
+                            "show_custom_palette": 0,
+                            "show_color_wheel": 1,
                             "custom_palette_source": "",
-                            "palette_colors": "",
-                            "show_color_wheel": true
+                            "palette_colors": ""
                         }
                     ]
                 }
@@ -150,8 +152,8 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
+    "modified": 1770665428,
     "acfe_categories": {
         "components": "Components"
-    },
-    "modified": 1769336973
+    }
 }

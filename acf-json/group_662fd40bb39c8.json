@@ -34,7 +34,7 @@
                 "id": ""
             },
             "acfe_repeater_stylised_button": 0,
-            "layout": "table",
+            "layout": "block",
             "pagination": 0,
             "min": 0,
             "max": 0,
@@ -47,7 +47,7 @@
                     "label": "Icon",
                     "name": "icon",
                     "aria-label": "",
-                    "type": "icon-picker",
+                    "type": "icon_picker",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -56,7 +56,17 @@
                         "class": "",
                         "id": ""
                     },
-                    "initial_value": "",
+                    "tabs": [
+                        "dashicons",
+                        "media_library"
+                    ],
+                    "return_format": "string",
+                    "allow_in_bindings": 0,
+                    "library": "all",
+                    "default_value": {
+                        "type": null,
+                        "value": null
+                    },
                     "parent_repeater": "field_662fd40c01cd9"
                 },
                 {
@@ -313,8 +323,8 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
+    "modified": 1770666198,
     "acfe_categories": {
         "components": "Components"
-    },
-    "modified": 1769336973
+    }
 }

@@ -54,7 +54,7 @@ $accordion_id = 'accordion-' . $stable_id;
 
 // Outputting accordion if repeater exists
 if ($accordion_repeater) { ?>
-  <div id="<?php echo $accordion_id ?>" class="relative space-y-2" <?php echo $style_attr; ?>>
+  <div id="<?php echo $accordion_id ?>" class="relative space-y-2 mb-6" <?php echo $style_attr; ?>>
     <?php
     foreach ($accordion_repeater as $accordion) :
       $title = $accordion['title'] ?? '';

@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.21.0] - 2026-02-09
+### Added
+- Dynamic Home Hero Slider Section:
+    - Fully refactored to use ACF `home_hero_slider` group and repeater.
+    - Supports dynamic background images, overlays, and content per slide.
+    - Integrated modular `button.php` component with parallax support.
+- Dynamic Interactive Select Section:
+    - Refactored to pull options and card data from ACF.
+    - Implemented a JSON-based data passing mechanism to JavaScript.
+    - Support for custom label text and colors.
+- Architecture:
+    - Updated `src/main.js` to support multiple instances of Interactive Select.
+    - Switched from ID-based to class-based scoping in component JS for better modularity.
+
+### Changed
+- Enhanced `button.php` component to support custom HTML attributes via `$args['attributes']`.
+- Optimized `content_editor.php`, `image.php`, and `lead_text.php` with stable IDs and improved Tailwind CSS v4 implementations.
+- Refined `two_columns.php` section with automatic ID generation and improved layout ratios.
+
 ## [1.19.0] - 2026-02-09
 ### Added
 - Stable ID generation system for modular components (Accordion, Heading, Buttons) using Post ID and static counters to ensure consistent CSS targeting.

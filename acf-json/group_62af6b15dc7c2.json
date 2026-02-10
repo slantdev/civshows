@@ -62,16 +62,12 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "15",
-                "class": "label-hidden",
+                "width": "",
+                "class": "",
                 "id": ""
             },
             "layout": "block",
             "acfe_seamless_style": 1,
-            "acfe_group_modal": 0,
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
                     "key": "field_66064330b5754",
@@ -450,7 +446,11 @@
                     ],
                     "acfe_seamless_style": 0
                 }
-            ]
+            ],
+            "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large"
         }
     ],
     "location": [
@@ -478,7 +478,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1770655268,
+    "modified": 1770697354,
     "acfe_categories": {
         "components": "Components"
     }

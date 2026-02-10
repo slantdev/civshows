@@ -34,7 +34,7 @@ const initHomeHero = () => {
       disableOnInteraction: false,
     },
     on: {
-      slideChangeTransitionStart: function() {
+      slideChangeTransitionStart: function () {
         isGrowPhase = !isGrowPhase;
       },
       autoplayTimeLeft(s, time, progress) {
@@ -50,16 +50,16 @@ const initHomeHero = () => {
         }
       },
       slideChange() {
-         if (!progressBar) return;
-         if (isGrowPhase) {
-           progressBar.style.top = "0";
-           progressBar.style.bottom = "auto";
-           progressBar.style.height = "0%";
-         } else {
-           progressBar.style.top = "auto";
-           progressBar.style.bottom = "0";
-           progressBar.style.height = "100%";
-         }
+        if (!progressBar) return;
+        if (isGrowPhase) {
+          progressBar.style.top = "0";
+          progressBar.style.bottom = "auto";
+          progressBar.style.height = "0%";
+        } else {
+          progressBar.style.top = "auto";
+          progressBar.style.bottom = "0";
+          progressBar.style.height = "100%";
+        }
       }
     }
   });
@@ -69,155 +69,96 @@ const initHomeHero = () => {
  * Interactive Select
  */
 const initInteractiveSelect = () => {
-  const section = document.getElementById('interactive-select');
-  if (!section) return;
+  const sections = document.querySelectorAll('.section-interactive-select');
+  if (!sections.length) return;
 
-  // --- 1. Data Source ---
-  const contentData = {
-    bendigo: [
-      {
-        title: "Bendigo Leisurefest 2025",
-        date: "18 - 21 September 2025",
-        loc: "Bendigo Racecourse",
-        btn: "TICKET ON SALE SOON"
+  sections.forEach(section => {
+    // --- 1. Data Source ---
+    const contentData = JSON.parse(section.getAttribute('data-interactive-content') || '{}');
+
+    // --- 2. Element References ---
+    const trigger = section.querySelector('.dropdown-trigger');
+    const menu = section.querySelector('.dropdown-menu');
+    const selectedText = section.querySelector('.selected-text');
+    const expandedContent = section.querySelector('.expanded-content');
+    const swiperWrapper = section.querySelector('.swiper-wrapper');
+    const options = section.querySelectorAll('.option-btn');
+
+    // --- 3. Initialize Swiper ---
+    let cardSwiper = new Swiper(section.querySelector('.card-slider'), {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      watchOverflow: true,
+      pagination: {
+        el: section.querySelector('.swiper-pagination'),
+        clickable: true,
       },
-      {
-        title: "Exhibitor List",
-        date: "Explore over 200 exhibitors",
-        loc: "Outdoor & Indoor",
-        btn: "VIEW LIST"
+      navigation: {
+        nextEl: section.querySelector('.swiper-button-next'),
+        prevEl: section.querySelector('.swiper-button-prev'),
       },
-      {
-        title: "Visitor Information",
-        date: "Plan your trip",
-        loc: "Parking & Maps",
-        btn: "READ MORE"
-      },
-      {
-        title: "Highlights",
-        date: "What's on",
-        loc: "Entertainment Stage",
-        btn: "SEE SCHEDULE"
+      breakpoints: {
+        640: {
+          slidesPerView: 2
+        },
+        1024: {
+          slidesPerView: 3
+        },
       }
-    ],
-    geelong: [
-      {
-        title: "Geelong Leisurefest 2025",
-        date: "18 - 21 September 2025",
-        loc: "Geelong Racecourse",
-        btn: "TICKET ON SALE SOON"
-      },
-      {
-        title: "Camping Accessories",
-        date: "Huge discounts available",
-        loc: "Hall A",
-        btn: "BROWSE DEALS"
-      },
-      {
-        title: "Kids Zone",
-        date: "Family Friendly Fun",
-        loc: "Lawn Area",
-        btn: "LEARN MORE"
-      }
-    ],
-    border: [
-      {
-        title: "Border Leisurefest Info",
-        date: "Coming Soon 2025",
-        loc: "Wodonga Racecourse",
-        btn: "COMING SOON"
-      },
-      {
-        title: "Places to Stay",
-        date: "Accommodation Partners",
-        loc: "Albury / Wodonga",
-        btn: "BOOK NOW"
-      }
-    ]
-  };
+    });
 
-  // --- 2. Element References ---
-  const trigger = document.getElementById('dropdown-trigger');
-  const menu = document.getElementById('dropdown-menu');
-  const selectedText = document.getElementById('selected-text');
-  const expandedContent = document.getElementById('expanded-content');
-  const swiperWrapper = document.getElementById('swiper-wrapper');
-  const options = document.querySelectorAll('.option-btn');
+    // --- 4. Dropdown Logic ---
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu();
+    });
 
-  // --- 3. Initialize Swiper ---
-  let cardSwiper = new Swiper('.card-slider', {
-    slidesPerView: 1,
-    spaceBetween: 20,
-    watchOverflow: true,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      640: {
-        slidesPerView: 2
-      },
-      1024: {
-        slidesPerView: 3
-      },
-    }
-  });
-
-  // --- 4. Dropdown Logic ---
-  trigger.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleMenu();
-  });
-
-  document.addEventListener('click', () => {
-    menu.classList.add('opacity-0', 'invisible', '-translate-y-2');
-  });
-
-  function toggleMenu() {
-    const isOpen = !menu.classList.contains('invisible');
-    if (isOpen) {
+    document.addEventListener('click', () => {
       menu.classList.add('opacity-0', 'invisible', '-translate-y-2');
-    } else {
-      menu.classList.remove('opacity-0', 'invisible', '-translate-y-2');
+    });
+
+    function toggleMenu() {
+      const isOpen = !menu.classList.contains('invisible');
+      if (isOpen) {
+        menu.classList.add('opacity-0', 'invisible', '-translate-y-2');
+      } else {
+        menu.classList.remove('opacity-0', 'invisible', '-translate-y-2');
+      }
     }
-  }
 
-  // --- 5. Selection & Content Update Logic ---
-  options.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const value = e.target.getAttribute('data-value');
-      const text = e.target.textContent.trim();
-      const data = contentData[value];
+    // --- 5. Selection & Content Update Logic ---
+    options.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const value = e.target.getAttribute('data-value');
+        const text = e.target.textContent.trim();
+        const data = contentData[value]?.cards || [];
 
-      selectedText.textContent = text;
-      swiperWrapper.innerHTML = '';
+        selectedText.textContent = text;
+        swiperWrapper.innerHTML = '';
 
-      data.forEach(item => {
-        const slideHTML = `
-          <div class="swiper-slide h-auto">
-            <div class="border border-white/30 rounded-lg p-8 h-full flex flex-col items-start bg-civ-blue-600 transition-colors">
-              <h3 class="text-[1.75rem] font-bold text-white mb-4 leading-tight">${item.title}</h3>
-              <div class="grow">
-                <p class="text-white font-bold mb-1">${item.date}</p>
-                <p class="text-white/80">${item.loc}</p>
+        data.forEach(item => {
+          const slideHTML = `
+            <div class="swiper-slide h-auto">
+              <div class="border border-white/30 rounded-lg p-8 h-full flex flex-col items-start bg-civ-blue-600 transition-colors">
+                <h3 class="text-[1.75rem] font-bold text-white mb-4 leading-tight">${item.title}</h3>
+                <div class="grow">
+                  <p class="text-white font-bold mb-1">${item.subtitle}</p>
+                  <p class="text-white/80">${item.category}</p>
+                </div>
+                <a href="${item.btn_url}" target="${item.btn_target}" class="mt-8 bg-white text-civ-blue-600 font-bold text-sm px-6 py-3 uppercase hover:bg-gray-300 transition-colors cursor-pointer inline-block">
+                  ${item.btn_text}
+                </a>
               </div>
-              <button class="mt-8 bg-white text-civ-blue-600 font-bold text-sm px-6 py-3 uppercase hover:bg-gray-300 transition-colors cursor-pointer">
-                ${item.btn}
-              </button>
             </div>
-          </div>
-        `;
-        swiperWrapper.insertAdjacentHTML('beforeend', slideHTML);
-      });
+          `;
+          swiperWrapper.insertAdjacentHTML('beforeend', slideHTML);
+        });
 
-      cardSwiper.update();
-      cardSwiper.slideTo(0);
-      expandedContent.classList.remove('max-h-0', 'opacity-0');
-      expandedContent.classList.add('max-h-[800px]', 'opacity-100');
+        cardSwiper.update();
+        cardSwiper.slideTo(0);
+        expandedContent.classList.remove('max-h-0', 'opacity-0');
+        expandedContent.classList.add('max-h-[800px]', 'opacity-100');
+      });
     });
   });
 };
@@ -285,10 +226,10 @@ const initExhibitorFilters = () => {
   const checkFiltersState = () => {
     if (!resetBtn) return;
     const hasFilter = (categorySelect && categorySelect.value !== '') ||
-                      (searchInput && searchInput.value !== '') ||
-                      (filterNew && filterNew.checked) ||
-                      (filterSpecial && filterSpecial.checked);
-    
+      (searchInput && searchInput.value !== '') ||
+      (filterNew && filterNew.checked) ||
+      (filterSpecial && filterSpecial.checked);
+
     if (hasFilter) {
       resetBtn.classList.remove('hidden');
     } else {
@@ -325,39 +266,39 @@ const initExhibitorFilters = () => {
       method: 'POST',
       body: formData
     })
-    .then(response => response.json())
-    .then(data => {
-      if (data.success) {
-        if (reset) {
-          grid.innerHTML = data.data.html;
-          if (!data.data.html.trim()) {
-             grid.innerHTML = '<div class="col-span-full text-center py-12 text-gray-500"><p class="text-xl">No exhibitors found.</p></div>';
-          }
-          currentPage = 1;
-        } else {
-          grid.insertAdjacentHTML('beforeend', data.data.html);
-          currentPage++;
-        }
-
-        maxPages = data.data.max_pages;
-
-        if (loadMoreBtn) {
-          loadMoreBtn.textContent = 'Load More';
-          loadMoreBtn.disabled = false;
-          
-          if (currentPage >= maxPages) {
-            loadMoreBtn.style.display = 'none';
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          if (reset) {
+            grid.innerHTML = data.data.html;
+            if (!data.data.html.trim()) {
+              grid.innerHTML = '<div class="col-span-full text-center py-12 text-gray-500"><p class="text-xl">No exhibitors found.</p></div>';
+            }
+            currentPage = 1;
           } else {
-            loadMoreBtn.style.display = 'inline-block';
+            grid.insertAdjacentHTML('beforeend', data.data.html);
+            currentPage++;
+          }
+
+          maxPages = data.data.max_pages;
+
+          if (loadMoreBtn) {
+            loadMoreBtn.textContent = 'Load More';
+            loadMoreBtn.disabled = false;
+
+            if (currentPage >= maxPages) {
+              loadMoreBtn.style.display = 'none';
+            } else {
+              loadMoreBtn.style.display = 'inline-block';
+            }
           }
         }
-      }
-    })
-    .catch(err => console.error(err))
-    .finally(() => {
-      isLoading = false;
-      grid.style.opacity = '1';
-    });
+      })
+      .catch(err => console.error(err))
+      .finally(() => {
+        isLoading = false;
+        grid.style.opacity = '1';
+      });
   };
 
   // Event Listeners
@@ -402,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initExhibitorSpecial();
   initVideoSlider();
   initExhibitorFilters();
-  
+
   // Fancybox initialization
   Fancybox.bind("[data-fancybox]", {
     // Basic Options
