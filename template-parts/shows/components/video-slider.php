@@ -24,30 +24,12 @@
       <div class="swiper town-slider rounded-xl overflow-hidden shadow-sm bg-gray-200">
         <div class="swiper-wrapper">
 
-          <div class="swiper-slide relative aspect-16/10 group cursor-pointer">
-            <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/02.jpg" alt="Show Highlight" class="w-full h-full object-cover">
-
-            <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
-
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="w-20 h-20 md:w-24 md:h-24 rounded-full border-[5px] border-white flex items-center justify-center pl-2 transition-transform duration-300 transform group-hover:scale-110">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 md:h-12 md:w-12 text-white fill-current" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-            </div>
+          <div class="swiper-slide relative aspect-video group cursor-pointer [&_iframe]:aspect-video [&_iframe]:w-full [&_iframe]:h-full">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/hNbnZpFc35s?si=F286unlJ1mUaLxTe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
 
-          <div class="swiper-slide relative aspect-16/10 group cursor-pointer">
+          <div class="swiper-slide relative aspect-video group cursor-pointer [&_iframe]:aspect-video [&_iframe]:w-full [&_iframe]:h-full">
             <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/04.jpg" alt="Slide 2" class="w-full h-full object-cover">
-            <div class="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors"></div>
-            <div class="absolute inset-0 flex items-center justify-center">
-              <div class="w-20 h-20 md:w-24 md:h-24 rounded-full border-[5px] border-white flex items-center justify-center pl-2 transition-transform duration-300 transform group-hover:scale-110">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 md:h-12 md:w-12 text-white fill-current" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </div>
-            </div>
           </div>
 
         </div>

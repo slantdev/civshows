@@ -37,6 +37,9 @@ table.fixed {
 
 .acf-fields {
   > .acf-field {
+    select {
+      @apply min-w-24;
+    }
     &.hide-group-label,
     &.label-hidden {
       @apply pt-0;
@@ -189,6 +192,9 @@ table.fixed {
             }
           }
         }
+      }
+      &.group-flex {
+        @apply flex;
       }
     }
   }

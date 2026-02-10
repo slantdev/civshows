@@ -19,12 +19,14 @@ $section_id_attr = 'id="' . esc_attr($section_id) . '"';
 $section_class_name = 'section-two-columns-' . uniqid();
 
 // Data
-$two_columns = get_sub_field('two_columns');
-$left_components = $two_columns['left_column_components_components'] ?? [];
+$two_columns      = get_sub_field('two_columns');
+$columns_settings = $two_columns['columns_settings'] ?? [];
+$left_components  = $two_columns['left_column_components_components'] ?? [];
 $right_components = $two_columns['right_column_components_components'] ?? [];
 
 // Column Settings & Width Mapping
-$column_ratio = $two_columns['column_settings'] ?? 'half';
+$column_ratio  = $columns_settings['column_ratio'] ?? 'half';
+$max_width_key = $columns_settings['max_width'] ?? 'default';
 
 $ratio_map = [
   'half'             => ['w-full lg:w-1/2', 'w-full lg:w-1/2'],
@@ -38,9 +40,23 @@ $ratio_map = [
 
 [$col_left_width, $col_right_width] = $ratio_map[$column_ratio] ?? $ratio_map['half'];
 
+// Max Width Mapping
+$max_width_map = [
+  'none'    => 'max-w-none',
+  'xs'      => 'max-w-screen-xs',
+  'sm'      => 'max-w-screen-sm',
+  'md'      => 'max-w-screen-md',
+  'lg'      => 'max-w-screen-lg',
+  'xl'      => 'max-w-screen-xl',
+  '2xl'     => 'max-w-screen-2xl',
+  'default' => '',
+];
+$mw_class = $max_width_map[$max_width_key] ?? '';
+
 // Container Classes
 $container_classes = array_filter([
   'container mx-auto px-4 sm:px-6 lg:px-8',
+  $mw_class
 ]);
 $final_container_class = implode(' ', $container_classes);
 
@@ -53,7 +69,7 @@ $final_container_class = implode(' ', $container_classes);
   <div class="section-container relative z-10 <?php echo esc_attr($section_container_class); ?>">
     <div class="<?php echo esc_attr($final_container_class); ?>">
       <div class="section-content flex flex-col lg:flex-row gap-8 xl:gap-20">
-        
+
         <div class="column-left <?php echo esc_attr($col_left_width); ?>">
           <?php get_template_part('template-parts/components/components', '', array('field' => $left_components)); ?>
         </div>

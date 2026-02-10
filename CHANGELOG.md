@@ -5,6 +5,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.22.0] - 2026-02-09
+### Added
+- New Modular Components:
+    - `background.php`: Centralized component for handling background images, colors, positions, and overlays.
+    - `media_slider.php`: Refactored slider component supporting dynamic video (external/self-hosted) and image repeaters.
+- New Dynamic Sections:
+    - `shows_cards.php`: Fully dynamic grid section for show cards.
+    - `subscribe.php`: Two-column subscription section with background and heading integration.
+    - `featured_gallery.php`: Dynamic gallery support with unique lightbox grouping.
+- Global Settings:
+    - Modular background integration in `section-settings.php` using the new background component.
+
+### Changed
+- Refactored ACF Field Groups:
+    - Standardized naming conventions for all Section and Component groups.
+    - Refactored `Two Columns` section settings for improved layout control (ratios and max-width).
+    - Added `font_weight` control to the `Heading` component.
+- Component Optimizations:
+    - `Image`: Updated for Tailwind CSS v4 native aspect-ratio and alignment.
+    - `Heading`: Added support for dynamic font-weight mapping.
+    - `Content Editor` & `Lead Text`: Enhanced with stable IDs and prose-specific color synchronization.
+- JavaScript Enhancements:
+    - Transitioned to instance-based initialization for `Media Slider` and `Interactive Select`.
+    - Improved modularity by using class-scoped element selection.
+
 ## [1.21.0] - 2026-02-09
 ### Added
 - Dynamic Home Hero Slider Section:

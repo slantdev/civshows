@@ -40,7 +40,7 @@
                 "acfe_flexible_modal_title": "Add Section",
                 "acfe_flexible_modal_size": "full",
                 "acfe_flexible_modal_col": "5",
-                "acfe_flexible_modal_categories": ""
+                "acfe_flexible_modal_categories": "1"
             },
             "acfe_flexible_modal_settings": {
                 "acfe_flexible_modal_settings_enabled": "0",
@@ -85,14 +85,16 @@
                     ],
                     "min": "",
                     "max": "",
+                    "acfe_flexible_category": [
+                        "Custom Container"
+                    ],
                     "acfe_flexible_render_template": "acf-layouts\/one_column.php",
                     "acfe_flexible_render_style": "",
                     "acfe_flexible_render_script": "",
                     "acfe_flexible_modal_edit_size": "",
                     "acfe_flexible_thumbnail": "",
                     "acfe_flexible_settings": false,
-                    "acfe_flexible_settings_size": false,
-                    "acfe_flexible_category": false
+                    "acfe_flexible_settings_size": false
                 },
                 "layout_660391c96d910": {
                     "key": "layout_660391c96d910",
@@ -130,14 +132,16 @@
                     ],
                     "min": "",
                     "max": "",
+                    "acfe_flexible_category": [
+                        "Custom Container"
+                    ],
                     "acfe_flexible_render_template": "acf-layouts\/two_columns.php",
                     "acfe_flexible_render_style": "",
                     "acfe_flexible_render_script": "",
                     "acfe_flexible_modal_edit_size": "full",
                     "acfe_flexible_thumbnail": "",
                     "acfe_flexible_settings": false,
-                    "acfe_flexible_settings_size": false,
-                    "acfe_flexible_category": false
+                    "acfe_flexible_settings_size": false
                 },
                 "layout_698aafd7c2014": {
                     "key": "layout_698aafd7c2014",
@@ -175,14 +179,16 @@
                     ],
                     "min": "",
                     "max": "",
+                    "acfe_flexible_category": [
+                        "Templates"
+                    ],
                     "acfe_flexible_render_template": "",
                     "acfe_flexible_render_style": "",
                     "acfe_flexible_render_script": "",
                     "acfe_flexible_modal_edit_size": "",
                     "acfe_flexible_thumbnail": "",
                     "acfe_flexible_settings": false,
-                    "acfe_flexible_settings_size": false,
-                    "acfe_flexible_category": false
+                    "acfe_flexible_settings_size": false
                 },
                 "layout_698abac20b87a": {
                     "key": "layout_698abac20b87a",
@@ -220,14 +226,157 @@
                     ],
                     "min": "",
                     "max": "",
+                    "acfe_flexible_category": [
+                        "Templates"
+                    ],
                     "acfe_flexible_render_template": "",
                     "acfe_flexible_render_style": "",
                     "acfe_flexible_render_script": "",
                     "acfe_flexible_modal_edit_size": "",
                     "acfe_flexible_thumbnail": "",
                     "acfe_flexible_settings": false,
-                    "acfe_flexible_settings_size": false,
-                    "acfe_flexible_category": false
+                    "acfe_flexible_settings_size": false
+                },
+                "layout_698ac677fdf5f": {
+                    "key": "layout_698ac677fdf5f",
+                    "name": "shows_cards",
+                    "label": "Shows Cards",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_698ac677fdf61",
+                            "label": "Shows Cards",
+                            "name": "shows_cards",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_698ac41227289"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0,
+                            "acfe_seamless_style": 0,
+                            "acfe_clone_modal": 0,
+                            "acfe_clone_modal_close": 0,
+                            "acfe_clone_modal_button": "",
+                            "acfe_clone_modal_size": "large"
+                        }
+                    ],
+                    "min": "",
+                    "max": "",
+                    "acfe_flexible_category": [
+                        "Templates"
+                    ],
+                    "acfe_flexible_render_template": "",
+                    "acfe_flexible_render_style": "",
+                    "acfe_flexible_render_script": "",
+                    "acfe_flexible_modal_edit_size": "",
+                    "acfe_flexible_thumbnail": "",
+                    "acfe_flexible_settings": false,
+                    "acfe_flexible_settings_size": false
+                },
+                "layout_698ae0d6fcf4d": {
+                    "key": "layout_698ae0d6fcf4d",
+                    "name": "subscribe",
+                    "label": "Subscribe",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_698ae0d6fcf4f",
+                            "label": "Subscribe",
+                            "name": "subscribe",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_698adfba1e065"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0,
+                            "acfe_seamless_style": 0,
+                            "acfe_clone_modal": 0,
+                            "acfe_clone_modal_close": 0,
+                            "acfe_clone_modal_button": "",
+                            "acfe_clone_modal_size": "large"
+                        }
+                    ],
+                    "min": "",
+                    "max": "",
+                    "acfe_flexible_category": [
+                        "Templates"
+                    ],
+                    "acfe_flexible_render_template": "",
+                    "acfe_flexible_render_style": "",
+                    "acfe_flexible_render_script": "",
+                    "acfe_flexible_modal_edit_size": "xlarge",
+                    "acfe_flexible_thumbnail": "",
+                    "acfe_flexible_settings": false,
+                    "acfe_flexible_settings_size": false
+                },
+                "layout_698b85b605483": {
+                    "key": "layout_698b85b605483",
+                    "name": "featured_gallery",
+                    "label": "Featured Gallery",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_698b85b605485",
+                            "label": "Featured Gallery",
+                            "name": "featured_gallery",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "group_698b84b38d5e9"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0,
+                            "acfe_seamless_style": 0,
+                            "acfe_clone_modal": 0,
+                            "acfe_clone_modal_close": 0,
+                            "acfe_clone_modal_button": "",
+                            "acfe_clone_modal_size": "large"
+                        }
+                    ],
+                    "min": "",
+                    "max": "",
+                    "acfe_flexible_category": [
+                        "Templates"
+                    ],
+                    "acfe_flexible_render_template": "",
+                    "acfe_flexible_render_style": "",
+                    "acfe_flexible_render_script": "",
+                    "acfe_flexible_modal_edit_size": "",
+                    "acfe_flexible_thumbnail": "",
+                    "acfe_flexible_settings": false,
+                    "acfe_flexible_settings_size": false
                 }
             },
             "min": "",
@@ -278,7 +427,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1770699490,
+    "modified": 1770751861,
     "acfe_categories": {
         "flexible-content": "Flexible Content"
     }

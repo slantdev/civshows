@@ -42,23 +42,11 @@ $section_padding_top = $spacing_top_map[$spacing_top] ?? $spacing_top_map['defau
 $section_padding_bottom = $spacing_bottom_map[$spacing_bottom] ?? $spacing_bottom_map['default'];
 $section_container_class = $section_padding_top . ' ' . $section_padding_bottom  . ' ';
 
-// Background - Color/Image
-$background_settings = $section_settings['background'] ?? [];
-$section_background_image = $background_settings['background_image']['url'] ?? '';
-$section_background_color = $background_settings['background_color'] ?? '';
-$section_background_overlay = $background_settings['background_overlay'] ?? '';
-
-if ($section_background_color) {
-  $section_style .= "background-color: " . esc_attr($section_background_color) . ";";
-}
-
-if ($section_background_image) {
-  $section_style .= "background-image: url(" . esc_url($section_background_image) . "); background-size: cover; background-repeat: no-repeat; background-position: center;";
-}
-
-// Background Overlay (generated as a separate div to sit on top of image)
-if ($section_background_overlay) {
-  $section_overlay_markup = '<div class="absolute inset-0 pointer-events-none z-0" style="background-color: ' . esc_attr($section_background_overlay) . ';"></div>';
+// Background Component Integration
+if (!empty($section_settings['background_settings'])) {
+  ob_start();
+  get_template_part('template-parts/components/background', '', ['field' => $section_settings['background_settings']]);
+  $section_overlay_markup = ob_get_clean();
 }
 
 // Text & Link

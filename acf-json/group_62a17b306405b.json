@@ -1,6 +1,6 @@
 {
     "key": "group_62a17b306405b",
-    "title": "Layout - Page Header",
+    "title": "Section - Page Header",
     "fields": [
         {
             "key": "field_6602f0ddfc33b",
@@ -764,7 +764,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1770530719,
+    "modified": 1770739638,
     "acfe_categories": {
         "layout": "Layout"
     }

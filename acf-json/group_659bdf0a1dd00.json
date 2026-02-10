@@ -1,6 +1,6 @@
 {
     "key": "group_659bdf0a1dd00",
-    "title": "Layout - One Column",
+    "title": "Section - One Column",
     "fields": [
         {
             "key": "field_659bdf0a3a40a",
@@ -260,7 +260,7 @@
     "acfe_form": 1,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1770533547,
+    "modified": 1770739654,
     "acfe_categories": {
         "layout": "Layout"
     }

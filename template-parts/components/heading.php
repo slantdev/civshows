@@ -36,6 +36,7 @@ if (!in_array($html_tag, $allowed_tags)) {
 }
 
 $text_size = $settings['text_size'] ?? 'default';
+$font_weight = $settings['font_weight'] ?? 'default';
 $alignment = $settings['alignment'] ?? '';
 $margin_top = $settings['margins']['margin_top'] ?? 'none';
 $margin_bottom = $settings['margins']['margin_bottom'] ?? 'default';
@@ -66,6 +67,19 @@ if ($text_size) {
     "5xl" => 'text-4xl xl:text-5xl'
   ];
   $text_size_class = $text_size_classes[$text_size] ?? $text_size_class;
+}
+
+if ($font_weight) {
+  $text_weight_classes = [
+    "default" => 'font-semibold',
+    "thin" => 'font-thin',
+    "normal" => 'font-normal',
+    "medium" => 'font-medium',
+    "semibold" => 'font-semibold',
+    "bold" => 'font-bold',
+    "black" => 'font-black'
+  ];
+  $text_weight_class = $text_weight_classes[$font_weight] ?? $text_weight_class;
 }
 
 if ($alignment) {

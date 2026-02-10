@@ -4,7 +4,7 @@
     "fields": [
         {
             "key": "field_6606547c9bf5f",
-            "label": "(Column 9\/12)",
+            "label": "(Column 8\/12)",
             "name": "",
             "aria-label": "",
             "type": "acfe_column",
@@ -16,8 +16,9 @@
                 "class": "",
                 "id": ""
             },
-            "columns": "9\/12",
-            "endpoint": 0
+            "columns": "8\/12",
+            "endpoint": 0,
+            "allow_in_bindings": 1
         },
         {
             "key": "field_698a309663458",
@@ -89,7 +90,7 @@
         },
         {
             "key": "field_660654869bf60",
-            "label": "(Column 3\/12)",
+            "label": "(Column 4\/12)",
             "name": "",
             "aria-label": "",
             "type": "acfe_column",
@@ -101,8 +102,9 @@
                 "class": "",
                 "id": ""
             },
-            "columns": "3\/12",
-            "endpoint": 0
+            "columns": "4\/12",
+            "endpoint": 0,
+            "allow_in_bindings": 1
         },
         {
             "key": "field_660651e00182f",
@@ -316,7 +318,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1770665250,
+    "modified": 1770739472,
     "acfe_categories": {
         "components": "Components"
     }

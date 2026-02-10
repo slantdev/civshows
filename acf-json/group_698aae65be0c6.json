@@ -1,6 +1,6 @@
 {
     "key": "group_698aae65be0c6",
-    "title": "Layout - Home Hero Slider",
+    "title": "Section - Home Hero Slider",
     "fields": [
         {
             "key": "field_698aae65bf404",
@@ -310,7 +310,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1770698873,
+    "modified": 1770739667,
     "acfe_categories": {
         "layout": "Layout"
     }

@@ -1,6 +1,6 @@
 {
     "key": "group_660390dee1c4e",
-    "title": "Layout - Two Columns",
+    "title": "Section - Two Columns",
     "fields": [
         {
             "key": "field_660390df7d0c5",
@@ -44,43 +44,104 @@
             "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
-                    "key": "field_66045243ac564",
-                    "label": "Column Settings",
-                    "name": "column_settings",
+                    "key": "field_698b5889f2ba0",
+                    "label": "Columns Settings",
+                    "name": "columns_settings",
                     "aria-label": "",
-                    "type": "select",
+                    "type": "group",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "",
-                        "class": "field-inline-flex bb-1",
+                        "class": "bb-1 label-hidden",
                         "id": ""
                     },
-                    "choices": {
-                        "## Two": "## Two",
-                        "half": "1\/2 + 1\/2",
-                        "## Three": "## Three",
-                        "one_two_third": "1\/3 + 2\/3",
-                        "two_one_third": "2\/3 + 1\/3",
-                        "## Four": "## Four",
-                        "one_three_fourth": "1\/4 + 3\/4",
-                        "three_one_fourth": "3\/4 + 1\/4",
-                        "## Five": "## Five",
-                        "two_three_five": "2\/5 + 3\/5",
-                        "three_two_five": "3\/5 + 2\/5"
-                    },
-                    "default_value": false,
-                    "return_format": "value",
-                    "multiple": 0,
-                    "allow_null": 0,
-                    "ui": 0,
-                    "ajax": 0,
-                    "placeholder": "",
-                    "allow_custom": 0,
-                    "search_placeholder": "",
-                    "create_options": 0,
-                    "save_options": 0
+                    "layout": "block",
+                    "acfe_seamless_style": 1,
+                    "sub_fields": [
+                        {
+                            "key": "field_66045243ac564",
+                            "label": "Column Ratio",
+                            "name": "column_ratio",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "field-inline-flex bt-0",
+                                "id": ""
+                            },
+                            "choices": {
+                                "## Two": "## Two",
+                                "half": "1\/2 + 1\/2",
+                                "## Three": "## Three",
+                                "one_two_third": "1\/3 + 2\/3",
+                                "two_one_third": "2\/3 + 1\/3",
+                                "## Four": "## Four",
+                                "one_three_fourth": "1\/4 + 3\/4",
+                                "three_one_fourth": "3\/4 + 1\/4",
+                                "## Five": "## Five",
+                                "two_three_five": "2\/5 + 3\/5",
+                                "three_two_five": "3\/5 + 2\/5"
+                            },
+                            "default_value": false,
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 1,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0,
+                            "allow_custom": 0,
+                            "search_placeholder": ""
+                        },
+                        {
+                            "key": "field_698b5808c4cc8",
+                            "label": "Max Width",
+                            "name": "max_width",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "field-inline-flex bt-0",
+                                "id": ""
+                            },
+                            "choices": {
+                                "default": "Default",
+                                "none": "None",
+                                "xs": "XS",
+                                "sm": "SM",
+                                "md": "MD",
+                                "lg": "LG",
+                                "xl": "XL",
+                                "2xl": "2XL"
+                            },
+                            "default_value": false,
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 1,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0,
+                            "allow_custom": 0,
+                            "search_placeholder": ""
+                        }
+                    ],
+                    "acfe_group_modal": 0,
+                    "acfe_group_modal_close": 0,
+                    "acfe_group_modal_button": "",
+                    "acfe_group_modal_size": "large"
                 },
                 {
                     "key": "field_660391419fd66",
@@ -291,8 +352,8 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
+    "modified": 1770741078,
     "acfe_categories": {
         "layout": "Layout"
-    },
-    "modified": 1769336974
+    }
 }

@@ -186,21 +186,31 @@ const initExhibitorSpecial = () => {
 
 };
 
-const initVideoSlider = () => {
+const initMediaSlider = () => {
+  const wrappers = document.querySelectorAll('.media-slider-wrapper');
+  if (!wrappers.length) return;
 
-  const townSwiper = new Swiper('.town-slider', {
-    loop: true,
-    spaceBetween: 20,
-    navigation: {
-      nextEl: '.town-next',
-      prevEl: '.town-prev',
-    },
-    pagination: {
-      el: '.town-pagination',
-      clickable: true,
-    },
+  wrappers.forEach(wrapper => {
+    const slider = wrapper.querySelector('.media-slider');
+    const prevEl = wrapper.querySelector('.media-prev');
+    const nextEl = wrapper.querySelector('.media-next');
+    const paginationEl = wrapper.querySelector('.media-pagination');
+
+    if (!slider) return;
+
+    new Swiper(slider, {
+      loop: true,
+      spaceBetween: 20,
+      navigation: {
+        nextEl: nextEl,
+        prevEl: prevEl,
+      },
+      pagination: {
+        el: paginationEl,
+        clickable: true,
+      },
+    });
   });
-
 };
 
 /**
@@ -341,13 +351,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initHomeHero();
   initInteractiveSelect();
   initExhibitorSpecial();
-  initVideoSlider();
+  initMediaSlider();
   initExhibitorFilters();
 
   // Fancybox initialization
   Fancybox.bind("[data-fancybox]", {
     // Basic Options
-    groupAll: true, // Group all items with the same data-fancybox name
+    //groupAll: true, // Group all items with the same data-fancybox name
     Thumbs: false,  // Hide the thumbnail strip (per your screenshot)
     Toolbar: {
       display: {

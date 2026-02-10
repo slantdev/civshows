@@ -25,7 +25,7 @@
             "sub_fields": [
                 {
                     "key": "field_660375fa995fd",
-                    "label": "Background Image",
+                    "label": "BG Image",
                     "name": "background_image",
                     "aria-label": "",
                     "type": "image",
@@ -34,7 +34,7 @@
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "25",
-                        "class": "br-1",
+                        "class": "br-0",
                         "id": ""
                     },
                     "uploader": "",
@@ -53,7 +53,7 @@
                 },
                 {
                     "key": "field_66037631995ff",
-                    "label": "Background Position",
+                    "label": "BG Position",
                     "name": "background_position",
                     "aria-label": "",
                     "type": "select",
@@ -62,7 +62,7 @@
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "25",
-                        "class": "bl-0 br-1",
+                        "class": "bl-0 br-0",
                         "id": ""
                     },
                     "choices": {
@@ -91,7 +91,7 @@
                 },
                 {
                     "key": "field_6603761d995fe",
-                    "label": "Background Color",
+                    "label": "BG Color",
                     "name": "background_color",
                     "aria-label": "",
                     "type": "color_picker",
@@ -100,7 +100,7 @@
                     "conditional_logic": 0,
                     "wrapper": {
                         "width": "25",
-                        "class": "bl-0 br-1",
+                        "class": "bl-0 br-0",
                         "id": ""
                     },
                     "default_value": "",
@@ -114,7 +114,7 @@
                 },
                 {
                     "key": "field_6603766d99600",
-                    "label": "Background Overlay",
+                    "label": "BG Overlay",
                     "name": "background_overlay",
                     "aria-label": "",
                     "type": "color_picker",
@@ -126,7 +126,7 @@
                         "class": "bl-0",
                         "id": ""
                     },
-                    "default_value": "rgba(243,241,239,0.6)",
+                    "default_value": "",
                     "enable_opacity": 1,
                     "return_format": "string",
                     "allow_in_bindings": 1,
@@ -163,7 +163,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1769790936,
+    "modified": 1770755651,
     "acfe_categories": {
         "components": "Components"
     }

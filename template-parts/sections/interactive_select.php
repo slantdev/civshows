@@ -33,7 +33,7 @@ foreach ($options_repeater as $index => $option) {
   $option_label = $option['option_label'] ?? '';
   $option_slug  = sanitize_title($option_label) . '-' . $index;
   $cards        = $option['option_cards'] ?? [];
-  
+
   $card_data = [];
   foreach ($cards as $card) {
     $btn_link = $card['button_link'] ?? [];
@@ -54,15 +54,14 @@ foreach ($options_repeater as $index => $option) {
 }
 ?>
 
-<section <?php echo $section_id_attr; ?> 
-  class="section-interactive-select w-full bg-civ-blue-500 relative transition-all duration-500 ease-in-out" 
+<section <?php echo $section_id_attr; ?>
+  class="section-interactive-select w-full bg-civ-blue-500 relative transition-all duration-500 ease-in-out"
   style="<?php echo esc_attr($section_style); ?>"
-  data-interactive-content='<?php echo esc_attr(json_encode($interactive_data)); ?>'
->
+  data-interactive-content='<?php echo esc_attr(json_encode($interactive_data)); ?>'>
 
   <?php echo $section_overlay_markup; ?>
 
-  <div class="container mx-auto px-4 xl:px-8 py-16 relative z-20">
+  <div class="container mx-auto px-4 xl:px-8 relative z-20 <?php echo esc_attr($section_container_class); ?>">
 
     <div class="flex flex-col md:flex-row items-center justify-center text-3xl md:text-4xl font-light gap-3" style="color: <?php echo esc_attr($label_color); ?>;">
 
@@ -71,7 +70,7 @@ foreach ($options_repeater as $index => $option) {
       <div class="relative group dropdown-container">
 
         <button class="dropdown-trigger flex items-center gap-4 border-b-2 border-white/50 pb-1 hover:border-white transition-colors cursor-pointer text-left min-w-[300px] justify-between">
-          <span class="selected-text font-normal">Select an option</span>
+          <span class="selected-text font-normal"></span>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" />
           </svg>
