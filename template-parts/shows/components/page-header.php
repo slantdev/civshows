@@ -128,7 +128,7 @@ $child_query = new WP_Query($child_args);
 
       <div class="w-full md:w-1/2 flex items-center justify-center">
         <?php if ($show_logo && $logo_url): ?>
-          <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr($title_text); ?>" class="max-w-full h-auto">
+          <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr($title_text); ?>" class="max-w-96 h-auto">
         <?php endif; ?>
       </div>
     </div>
@@ -144,6 +144,10 @@ $child_query = new WP_Query($child_args);
               <li>/</li>
               <li>Our Shows</li>
               <li>/</li>
+              <?php if ($parent_id !== $current_id) : ?>
+                <li><a href="<?php echo get_permalink($parent_id); ?>" class="hover:underline"><?php echo get_the_title($parent_id); ?></a></li>
+                <li>/</li>
+              <?php endif; ?>
               <li><span class="font-bold"><?php echo get_the_title(); ?></span></li>
             </ul>
           </nav>
