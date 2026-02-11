@@ -214,6 +214,68 @@ const initMediaSlider = () => {
 };
 
 /**
+ * Google Maps
+ */
+const initGoogleMaps = () => {
+  const mapElements = document.querySelectorAll('.acf-map');
+  if (!mapElements.length) return;
+
+  const initMap = (el) => {
+    const markers = el.querySelectorAll('.marker');
+    const args = {
+      zoom: parseInt(el.getAttribute('data-zoom')) || 16,
+      center: { lat: 0, lng: 0 },
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    const map = new google.maps.Map(el, args);
+    map.markers = [];
+
+    markers.forEach(markerEl => {
+      const lat = parseFloat(markerEl.getAttribute('data-lat'));
+      const lng = parseFloat(markerEl.getAttribute('data-lng'));
+      const latLng = { lat, lng };
+
+      const marker = new google.maps.Marker({
+        position: latLng,
+        map: map
+      });
+
+      map.markers.push(marker);
+
+      if (markerEl.innerHTML.trim()) {
+        const infowindow = new google.maps.InfoWindow({
+          content: markerEl.innerHTML
+        });
+
+        marker.addListener('click', () => {
+          infowindow.open(map, marker);
+        });
+      }
+    });
+
+    centerMap(map);
+  };
+
+  const centerMap = (map) => {
+    const bounds = new google.maps.LatLngBounds();
+    map.markers.forEach(marker => {
+      bounds.extend(marker.position);
+    });
+
+    if (map.markers.length === 1) {
+      map.setCenter(bounds.getCenter());
+    } else {
+      map.fitBounds(bounds);
+    }
+  };
+
+  if (typeof google !== 'undefined') {
+    mapElements.forEach(el => initMap(el));
+  }
+};
+
+/**
  * Exhibitor Filters & Load More
  */
 const initExhibitorFilters = () => {
@@ -352,6 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initInteractiveSelect();
   initExhibitorSpecial();
   initMediaSlider();
+  initGoogleMaps();
   initExhibitorFilters();
 
   // Fancybox initialization

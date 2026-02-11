@@ -12,17 +12,35 @@ table.fixed {
 
 #poststuff {
   .acf-layout {
-    @apply font-sans;
+    @apply font-sans text-[16px] leading-normal;
+    h2 {
+      @apply p-0;
+    }
+    p {
+      @apply text-[16px] leading-normal;
+    }
+    .container {
+      @apply w-auto;
+    }
+    .prose :where(p):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+      @apply my-[1.5em];
+    }
+    .prose :where(.prose > :first-child):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+      @apply mt-0;
+    }
   }
 }
 
 .layout {
   > .acfe-fc-placeholder {
+    *, ::after, ::before, ::backdrop, ::file-selector-button {
+      @apply box-border;
+    }
     > a {
       @apply z-30!;
     }
     .acfe-fc-overlay {
-      @apply z-20!;
+      @apply z-20! hidden;
     }
     .acfe-fc-overlay.-hover,
     &:hover .acfe-fc-overlay {

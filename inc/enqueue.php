@@ -11,13 +11,22 @@ function civ_enqueue_scripts()
   // Enqueue Google Fonts: Roboto
   wp_enqueue_style('civ-fonts', 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap', [], null);
 
+  // Enqueue Google Maps API if key exists
+  $google_maps_api_key = get_field('other_settings', 'option')['google_maps']['google_maps_api_key'] ?? '';
+  if (empty($google_maps_api_key) && defined('GOOGLE_MAPS_API_KEY')) {
+    $google_maps_api_key = constant('GOOGLE_MAPS_API_KEY');
+  }
+  if ($google_maps_api_key) {
+    wp_enqueue_script('google-maps', "https://maps.googleapis.com/maps/api/js?key={$google_maps_api_key}", [], null, true);
+  }
+
   if (file_exists($hot_file)) {
     // Vite Development Mode
     $vite_dev_server = file_get_contents($hot_file);
     $vite_dev_server = trim($vite_dev_server);
 
     wp_enqueue_script('vite-client', "$vite_dev_server/@vite/client", [], null, true);
-    wp_enqueue_script('civ-main', "$vite_dev_server/src/main.js", [], null, true);
+    wp_enqueue_script('civ-main', "$vite_dev_server/src/main.js", ['google-maps'], null, true);
 
     // Inject module type
     add_filter('script_loader_tag', function ($tag, $handle, $src) {
@@ -39,7 +48,7 @@ function civ_enqueue_scripts()
 
     // Enqueue JS
     if (file_exists(get_theme_file_path('assets/js/main.js'))) {
-      wp_enqueue_script('civ-main', $js_file, [], $theme_version, true);
+      wp_enqueue_script('civ-main', $js_file, ['google-maps'], $theme_version, true);
     }
   }
 }

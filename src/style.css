@@ -5,3 +5,8 @@
 @import "./css/components.css";
 
 @plugin "@tailwindcss/typography";
+
+/* Google Maps Fix */
+.acf-map img {
+  max-width: none !important;
+}

@@ -22,7 +22,7 @@ if (! defined('ABSPATH')) {
 function civ_acf_google_map_api($api)
 {
   // Get API key from Theme Settings
-  $api_key = get_field('google_maps_api_key', 'option');
+  $api_key = get_field('other_settings', 'option')['google_maps']['google_maps_api_key'] ?? '';
 
   // Fallback Key (Must be defined in wp-config.php for security)
   if (empty($api_key) && defined('GOOGLE_MAPS_API_KEY')) {
@@ -134,7 +134,7 @@ add_filter('acf/fields/relationship/query/name=exhibitor_shows', function ($args
 // 1. Add & Reorder Column Headers
 add_filter('manage_edit-exhibitors_columns', function ($columns) {
   $new_columns = [];
-  
+
   // Standard WP columns we want to keep/reposition
   $cb = $columns['cb'];
   $title = $columns['title'];
@@ -167,7 +167,7 @@ add_action('manage_exhibitors_posts_custom_column', function ($column, $post_id)
         // Handle both Post Object and ID return formats
         $show_id = is_object($show) ? $show->ID : $show;
         $show_title = is_object($show) ? $show->post_title : get_the_title($show);
-        
+
         $url = add_query_arg([
           'post_type' => 'exhibitors',
           'admin_filter_show' => $show_id
@@ -198,7 +198,7 @@ add_action('pre_get_posts', function ($query) {
     // Sorting by ID
     if ($query->get('orderby') === 'exhibitor_id') {
       $query->set('meta_key', 'exhibitor_id');
-      $query->set('orderby', 'meta_value'); 
+      $query->set('orderby', 'meta_value');
     }
 
     // Filtering by Show (Relationship Field)

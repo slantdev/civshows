@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.23.0] - 2026-02-09
+### Added
+- Dynamic Visitor Information (Shows) Section:
+    - Implemented `visitor_information_shows.php` pulling data from ACF.
+    - Integrated Google Maps API support for frontend display.
+    - Integrated modular component support for the right column.
+- Google Maps Integration:
+    - Added `initGoogleMaps` logic in `src/main.js` to automatically render maps for `.acf-map` elements.
+    - Added CSS fix for Google Maps images in `src/style.css`.
+    - Configured script dependencies in `inc/enqueue.php` to ensure the Maps API is loaded before initialization.
+
+### Changed
+- Refined `Interactive Select` template to remove the default placeholder text.
+- Enhanced `Featured Gallery` template with unique grouping for Fancybox lightboxes.
+
 ## [1.22.0] - 2026-02-09
 ### Added
 - New Modular Components:
