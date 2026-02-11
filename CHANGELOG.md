@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.24.0] - 2026-02-09
+### Added
+- Refactored `video.php` component:
+    - Integrated with ACF `video` group supporting external and self-hosted sources.
+    - Implemented native Tailwind CSS v4 responsive aspect-ratio container.
+    - Added stable ID generation for specific element targeting.
+
+### Changed
+- Optimized `Visitor Information (Shows)` section:
+    - Refined container spacing and padding for better responsive alignment.
+- Refined `Component` Flexible Content field group:
+    - Cleaned up redundant layouts and standardized naming.
+    - Updated `Media Slider` and `Video` layout definitions to align with optimized component architecture.
+- Site Header:
+    - Updated navigation template part reference.
+
 ## [1.23.0] - 2026-02-09
 ### Added
 - Dynamic Visitor Information (Shows) Section:

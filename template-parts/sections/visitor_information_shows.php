@@ -45,9 +45,9 @@ $components = $right_column['components'] ?? [];
   </div>
 
   <!-- Right Column: Components -->
-  <div class="w-full lg:w-7/12 relative px-6 py-12 md:px-12 md:py-16 lg:px-20 lg:py-24 flex flex-col justify-center">
+  <div class="w-full lg:w-7/12 relative">
 
-    <div class="section-container relative z-10 <?php echo esc_attr($section_container_class); ?>">
+    <div class="section-container relative z-10 px-6 md:px-12 lg:px-20 <?php echo esc_attr($section_container_class); ?>">
       <div class="section-content">
         <?php get_template_part('template-parts/components/components', '', array('field' => $components)); ?>
       </div>

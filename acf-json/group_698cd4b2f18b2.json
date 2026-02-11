@@ -1,0 +1,137 @@
+{
+    "key": "group_698cd4b2f18b2",
+    "title": "Component - Video",
+    "fields": [
+        {
+            "key": "field_698cd4b304bdb",
+            "label": "Video",
+            "name": "video",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "label-hidden",
+                "id": ""
+            },
+            "layout": "block",
+            "acfe_seamless_style": 1,
+            "sub_fields": [
+                {
+                    "key": "field_698cd4b30ca7b",
+                    "label": "External or Self Hosted",
+                    "name": "external_or_self_hosted",
+                    "aria-label": "",
+                    "type": "button_group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "label-hidden pad-t-15",
+                        "id": ""
+                    },
+                    "choices": {
+                        "external": "External",
+                        "self-hosted": "Self Hosted"
+                    },
+                    "default_value": "external",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "layout": "horizontal"
+                },
+                {
+                    "key": "field_698cd4b30ca94",
+                    "label": "Embed External Video",
+                    "name": "embed_external_video",
+                    "aria-label": "",
+                    "type": "oembed",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_698cd4b30ca7b",
+                                "operator": "==",
+                                "value": "external"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "label-hidden pad-t-15",
+                        "id": ""
+                    },
+                    "width": "",
+                    "height": "",
+                    "allow_in_bindings": 0
+                },
+                {
+                    "key": "field_698cd4b30ca9b",
+                    "label": "Self Hosted Video",
+                    "name": "self_hosted_video",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_698cd4b30ca7b",
+                                "operator": "==",
+                                "value": "self-hosted"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "label-hidden pad-t-15",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 0,
+                    "tabs": "all",
+                    "toolbar": "basic",
+                    "media_upload": 1,
+                    "delay": 0
+                }
+            ],
+            "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1770837243,
+    "acfe_categories": {
+        "components": "Components"
+    }
+}

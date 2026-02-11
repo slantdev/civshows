@@ -26,7 +26,8 @@ $logo_url = $logo_field['header_logo']['site_logo']['url'] ?? get_stylesheet_dir
           </a>
         </div>
 
-        <?php get_template_part('template-parts/global/site-navigation-copy'); ?>
+        <!-- Temporary -->
+        <?php get_template_part('template-parts/global/site-navigation'); ?>
 
       </div>
     </div>
