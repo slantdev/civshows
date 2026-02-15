@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.29.0] - 2026-02-09
+### Fixed
+- `button.php`: Corrected the `$size_map` array structure by restoring missing `'px'` keys for `md`, `lg`, and `default` sizes, fully resolving the "Undefined array key" warning.
+
+### Added
+- New Modular Components:
+    - `spacer.php`: Dynamic vertical spacing with optional horizontal line support.
+    - `text.php`: versatile paragraph/text component with customizable HTML tags.
+    - `table.php`: fully dynamic table component supporting modular sub-components in cells.
+- Icon Integration:
+    - Integrated `heroicons` via npm and implemented a dynamic icon scanner for the ACF Icon Picker.
+
+### Changed
+- Refactored `button.php` to include icon support and serves as the unified source for all button renderings.
+- Optimized `icons_list.php` with improved responsive padding and typography controls.
+
 ## [1.28.0] - 2026-02-09
 ### Fixed
 - `button.php`: Resolved "Undefined array key 'px'" warning by implementing strict validation and fallbacks for the size mapping logic.

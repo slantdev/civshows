@@ -49,9 +49,9 @@ $rounded_key  = $preset['button_rounded'] ?? 'default';
 $size_map = [
   'xs'      => ['px' => 'px-3 py-1', 'text' => 'text-xs', 'icon' => 12],
   'sm'      => ['px' => 'px-4 py-1.5', 'text' => 'text-sm', 'icon' => 16],
-  'md'      => ['px-6 py-2.5', 'text' => 'text-base', 'icon' => 20],
-  'lg'      => ['px-8 py-3.5', 'text' => 'text-lg', 'icon' => 24],
-  'default' => ['px-6 py-2.5', 'text' => 'text-base', 'icon' => 20],
+  'md'      => ['px' => 'px-6 py-2.5', 'text' => 'text-base', 'icon' => 20],
+  'lg'      => ['px' => 'px-8 py-3.5', 'text' => 'text-lg', 'icon' => 24],
+  'default' => ['px' => 'px-6 py-2.5', 'text' => 'text-base', 'icon' => 20],
 ];
 // Ensure $size_key is a valid key, otherwise fallback to 'default'
 if (!is_string($size_key) || !isset($size_map[$size_key])) {
