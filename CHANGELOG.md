@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.26.0] - 2026-02-09
+### Added
+- New Modular Components:
+    - `spacer.php`: Flexible spacer component with preset sizes, custom pixel values, and optional horizontal lines.
+    - `text.php`: Standard text component for paragraph content with flexible HTML tags and styling.
+    - `table.php`: Dynamic table component supporting 2-4 columns and multiple styling presets.
+- Dynamic Icon System:
+    - Integrated `heroicons` via npm.
+    - Refactored `civ_add_heroicons_icons` in `inc/acf.php` to dynamically scan and populate icons.
+    - Enhanced `civ_icon()` helper in `inc/template-tags.php` for robust SVG attribute injection and group mapping.
+
+### Changed
+- Refactored Buttons System:
+    - Integrated icon support directly into `button.php`.
+    - Refactored `buttons.php` repeater to delegate rendering to the single button component for better DRY compliance.
+    - Added proportional icon sizing and customizable icon positioning.
+- Optimized `icons_list.php`:
+    - Implemented dynamic padding for circled icons based on size.
+    - Refactored to use modular icon and typography settings.
+- Refined Table Component:
+    - Updated `table_title` to use the modular `text.php` component via ACF cloning.
+
 ## [1.25.0] - 2026-02-09
 ### Added
 - Hierarchical Breadcrumbs in `page-header.php`:

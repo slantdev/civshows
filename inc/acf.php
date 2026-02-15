@@ -261,3 +261,40 @@ add_action('restrict_manage_posts', function () {
     }
   }
 });
+
+/**
+ * Add Heroicons tab to ACF Icon Picker
+ */
+function civ_acf_icon_picker_tabs($tabs)
+{
+  $tabs['heroicons_solid'] = 'Heroicons Solid';
+
+  return $tabs;
+}
+add_filter('acf/fields/icon_picker/tabs', 'civ_acf_icon_picker_tabs');
+
+function civ_add_heroicons_icons(array $icons): array
+{
+  $icons_path = get_template_directory() . '/assets/icons/heroicons/solid/';
+  $base_url   = get_template_directory_uri() . '/assets/icons/heroicons/solid/';
+
+  // Scan directory for SVG files
+  $files = glob($icons_path . '*.svg');
+
+  if ($files) {
+    foreach ($files as $file) {
+      $filename = basename($file);
+      $key      = str_replace('.svg', '', $filename);
+      $label    = ucwords(str_replace(['-', '_'], ' ', $key));
+
+      $icons[] = [
+        'url'   => $base_url . $filename,
+        'key'   => $key,
+        'label' => $label,
+      ];
+    }
+  }
+
+  return $icons;
+}
+add_filter('acf/fields/icon_picker/heroicons_solid/icons', 'civ_add_heroicons_icons');

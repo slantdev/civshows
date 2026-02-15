@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@fancyapps/ui": "^6.1.9",
+    "heroicons": "^2.2.0",
     "swiper": "^12.0.3"
   }
 }

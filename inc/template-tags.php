@@ -104,60 +104,62 @@ function civ_get_block_classes($extra_classes = '')
  * 
  * @param array $atts {
  *     @type string $icon   Icon filename (without extension).
- *     @type string $group  Subdirectory name (default: 'utility').
- *     @type int    $size   Width/Height in pixels (default: 16).
+ *     @type string $group  Subdirectory name or tab key (default: 'utility').
+ *     @type int    $size   Width/Height in pixels.
  *     @type string $class  Additional CSS classes.
  *     @type string $label  Aria label for accessibility.
  * }
- * @return string|void SVG markup or void if not found.
+ * @return string SVG markup or empty string if not found.
  */
 function civ_icon($atts = array())
 {
-
   $atts = shortcode_atts(array(
-    'icon'  => false,
+    'icon'  => '',
     'group' => 'utility',
-    'size'  => 16,
-    'class' => false,
-    'label' => false,
+    'size'  => false,
+    'class' => '',
+    'label' => '',
   ), $atts);
 
   if (empty($atts['icon'])) {
-    return;
+    return '';
   }
 
-  // Path to SVG
-  $icon_path = get_template_directory() . '/assets/icons/' . $atts['group'] . '/' . $atts['icon'] . '.svg';
+  // Map ACF Icon Picker tab keys to folder paths
+  $group_map = [
+    'heroicons_solid' => 'heroicons/solid',
+    'heroicons_outline' => 'heroicons/outline',
+  ];
 
-  if (! file_exists($icon_path)) {
-    return;
+  $group_path = $group_map[$atts['group']] ?? str_replace('_', '/', $atts['group']);
+  $icon_path  = get_template_directory() . '/assets/icons/' . $group_path . '/' . $atts['icon'] . '.svg';
+
+  if (!file_exists($icon_path)) {
+    return '';
   }
 
-  $icon = file_get_contents($icon_path);
-
-  // Build Class Attribute
-  $class = 'svg-icon';
-  if (! empty($atts['class'])) {
-    $class .= ' ' . esc_attr($atts['class']);
-  }
-
-  // Inject attributes into <svg> tag
-  if (false !== $atts['size']) {
-    $repl = sprintf('<svg class="%s" width="%d" height="%d" aria-hidden="true" role="img" focusable="false" ', $class, $atts['size'], $atts['size']);
-    $svg  = preg_replace('/^<svg /', $repl, trim($icon));
-  } else {
-    $svg = preg_replace('/^<svg /', '<svg class="' . $class . '"', trim($icon));
-  }
+  $svg = file_get_contents($icon_path);
 
   // Clean up whitespace
   $svg = preg_replace("/([\n\t]+)/", ' ', $svg);
   $svg = preg_replace('/>\s*</', '><', $svg);
 
-  // Add Aria Label if present
-  if (! empty($atts['label'])) {
-    $svg = str_replace('<svg class', '<svg aria-label="' . esc_attr($atts['label']) . '" class', $svg);
-    $svg = str_replace('aria-hidden="true"', '', $svg);
+  // Prepare attributes
+  $classes = 'svg-icon ' . $atts['class'];
+  $attrs = sprintf(' class="%s" role="img" focusable="false"', esc_attr(trim($classes)));
+
+  if ($atts['size']) {
+    $attrs .= sprintf(' width="%d" height="%d"', $atts['size'], $atts['size']);
   }
+
+  if ($atts['label']) {
+    $attrs .= sprintf(' aria-label="%s"', esc_attr($atts['label']));
+  } else {
+    $attrs .= ' aria-hidden="true"';
+  }
+
+  // Inject attributes into the opening <svg> tag
+  $svg = preg_replace('/<svg/', '<svg' . $attrs, $svg, 1);
 
   return $svg;
 }

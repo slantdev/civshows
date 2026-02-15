@@ -8,5 +8,10 @@
 
 /* Google Maps Fix */
 .acf-map img {
-  max-width: none !important;
+  @apply max-w-none!;
 }
+
+/* Tailwind Prose Fix */
+/* .prose :where(strong):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+  @apply text-inherit;
+} */

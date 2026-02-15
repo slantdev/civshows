@@ -73,3 +73,7 @@
   --color-civ-red-900: #2b0d09;
   --color-civ-red-950: #150604;
 }
+
+@utility prose {
+  --tw-prose-bold: inherit;
+}

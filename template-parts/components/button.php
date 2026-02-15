@@ -4,7 +4,7 @@
  * Button Component (Single)
  * 
  * Optimized for Tailwind CSS v4 and adjusted to project standards.
- * Supports nested ACF groups for Presets and Custom Styles.
+ * Supports nested ACF groups for Presets, Custom Styles, and Icons.
  */
 
 $field = $args['field'] ?? '';
@@ -47,13 +47,13 @@ $rounded_key  = $preset['button_rounded'] ?? 'default';
 
 // Size Mapping
 $size_map = [
-  'xs'      => 'px-3 py-1 text-xs',
-  'sm'      => 'px-4 py-1.5 text-sm',
-  'md'      => 'px-6 py-2.5 text-base',
-  'lg'      => 'px-8 py-3.5 text-lg',
-  'default' => 'px-6 py-2.5 text-base',
+  'xs'      => ['px' => 'px-3 py-1', 'text' => 'text-xs', 'icon' => 12],
+  'sm'      => ['px' => 'px-4 py-1.5', 'text' => 'text-sm', 'icon' => 16],
+  'md'      => ['px-6 py-2.5', 'text' => 'text-base', 'icon' => 20],
+  'lg'      => ['px-8 py-3.5', 'text' => 'text-lg', 'icon' => 24],
+  'default' => ['px-6 py-2.5', 'text' => 'text-base', 'icon' => 20],
 ];
-$size_class = $size_map[$size_key] ?? $size_map['default'];
+$size_data = $size_map[$size_key] ?? $size_map['default'];
 
 // Rounded Mapping
 $rounded_map = [
@@ -87,7 +87,7 @@ $styles_map = [
 ];
 
 $button_style_class = $styles_map[$style_key] ?? $styles_map['blue'];
-$inline_style = '';
+$btn_vars = [];
 
 // Handle Custom Style Group
 if ($style_key === 'custom') {
@@ -95,7 +95,6 @@ if ($style_key === 'custom') {
   $default_state = $custom_style['default_state'] ?? [];
   $hover_state = $custom_style['hover_state'] ?? [];
 
-  $btn_vars = [];
   // Default State Vars
   if ($default_state['button_bg_color']) $btn_vars[] = "--btn-bg: {$default_state['button_bg_color']}";
   if ($default_state['button_border_color']) $btn_vars[] = "--btn-border: {$default_state['button_border_color']}";
@@ -106,28 +105,54 @@ if ($style_key === 'custom') {
   if ($hover_state['button_border_color']) $btn_vars[] = "--btn-border-hover: {$hover_state['button_border_color']}";
   if ($hover_state['button_text_color']) $btn_vars[] = "--btn-text-hover: {$hover_state['button_text_color']}";
 
-  if (!empty($btn_vars)) {
-    $inline_style = implode('; ', $btn_vars);
-    $button_style_class = 'bg-[var(--btn-bg)] border-[var(--btn-border)] text-[var(--btn-text)] hover:bg-[var(--btn-bg-hover)] hover:border-[var(--btn-border-hover)] hover:text-[var(--btn-text-hover)]';
+  $button_style_class = 'bg-[var(--btn-bg)] border-[var(--btn-border)] text-[var(--btn-text)] hover:bg-[var(--btn-bg-hover)] hover:border-[var(--btn-border-hover)] hover:text-[var(--btn-text-hover)]';
+}
+
+// Handle Icon Group
+$icon_markup = '';
+$icon_settings = $more_settings['button_icon'] ?? [];
+if (!empty($icon_settings['add_button_icon'])) {
+  $icon_group    = $icon_settings['icon_group'] ?? [];
+  $icon_data     = $icon_group['icon'] ?? [];
+  $icon_name     = $icon_data['value'] ?? '';
+  $icon_set      = $icon_data['type'] ?? 'utility';
+  $icon_color    = $icon_group['icon_color'] ?? '';
+  $icon_pos      = $icon_group['icon_position'] ?? 'left';
+
+  if ($icon_name) {
+    if ($icon_color) $btn_vars[] = "--btn-icon-color: {$icon_color}";
+    $icon_markup = civ_icon([
+      'icon'  => $icon_name,
+      'group' => $icon_set,
+      'size'  => $size_data['icon'],
+      'class' => 'text-[var(--btn-icon-color,inherit)] transition-colors'
+    ]);
   }
 }
 
+$inline_style = !empty($btn_vars) ? 'style="' . esc_attr(implode('; ', $btn_vars)) . '"' : '';
+
 $final_button_classes = array_filter([
-  'inline-flex items-center justify-center border-2 font-semibold transition-all duration-300 transform active:scale-95 hover:shadow-lg',
-  $size_class,
+  'inline-flex items-center justify-center border-2 font-semibold transition-all duration-300 transform active:scale-95 hover:shadow-lg gap-2',
+  $size_data['px'],
+  $size_data['text'],
   $rounded_class,
   $button_style_class,
   $class
 ]);
 
-echo sprintf(
-  '<a id="%1$s" href="%2$s" class="%3$s" style="%4$s" target="%5$s" title="%6$s"%8$s><span>%7$s</span></a>',
-  esc_attr($button_id_attr),
-  esc_url($url),
-  esc_attr(implode(' ', $final_button_classes)),
-  esc_attr($inline_style),
-  esc_attr($target),
-  esc_attr($title),
-  esc_html($title),
-  $attr_string
-);
+?>
+
+<a id="<?php echo esc_attr($button_id_attr); ?>" 
+   href="<?php echo esc_url($url); ?>" 
+   class="<?php echo esc_attr(implode(' ', $final_button_classes)); ?>" 
+   <?php echo $inline_style; ?> 
+   target="<?php echo esc_attr($target); ?>" 
+   title="<?php echo esc_attr($title); ?>" 
+   <?php echo $attr_string; ?>>
+  
+  <?php if ($icon_markup && $icon_pos === 'left') echo $icon_markup; ?>
+  <span><?php echo esc_html($title); ?></span>
+  <?php if ($icon_markup && $icon_pos === 'right') echo $icon_markup; ?>
+
+</a>
