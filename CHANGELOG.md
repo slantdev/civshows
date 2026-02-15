@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.28.0] - 2026-02-09
+### Fixed
+- `button.php`: Resolved "Undefined array key 'px'" warning by implementing strict validation and fallbacks for the size mapping logic.
+
+### Added
+- Modular Icon System:
+    - Integrated `heroicons` via npm and refactored the ACF Icon Picker to dynamically load SVGs from theme assets.
+- New Modular Components:
+    - `spacer.php`: Flexible vertical spacing with optional horizontal lines.
+    - `text.php`: versatile text/paragraph component with HTML tag selection.
+    - `table.php`: Dynamic table component supporting modular sub-components in cells.
+
+### Changed
+- Refactored `button.php` to serve as the unified source of truth for both single buttons and button repeaters.
+- Updated `icons_list.php` to use dynamic sizing and improved typography settings.
+
 ## [1.27.0] - 2026-02-09
 ### Added
 - New Modular Components:

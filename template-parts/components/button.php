@@ -53,7 +53,11 @@ $size_map = [
   'lg'      => ['px-8 py-3.5', 'text' => 'text-lg', 'icon' => 24],
   'default' => ['px-6 py-2.5', 'text' => 'text-base', 'icon' => 20],
 ];
-$size_data = $size_map[$size_key] ?? $size_map['default'];
+// Ensure $size_key is a valid key, otherwise fallback to 'default'
+if (!is_string($size_key) || !isset($size_map[$size_key])) {
+  $size_key = 'default';
+}
+$size_data = $size_map[$size_key];
 
 // Rounded Mapping
 $rounded_map = [
@@ -143,14 +147,14 @@ $final_button_classes = array_filter([
 
 ?>
 
-<a id="<?php echo esc_attr($button_id_attr); ?>" 
-   href="<?php echo esc_url($url); ?>" 
-   class="<?php echo esc_attr(implode(' ', $final_button_classes)); ?>" 
-   <?php echo $inline_style; ?> 
-   target="<?php echo esc_attr($target); ?>" 
-   title="<?php echo esc_attr($title); ?>" 
-   <?php echo $attr_string; ?>>
-  
+<a id="<?php echo esc_attr($button_id_attr); ?>"
+  href="<?php echo esc_url($url); ?>"
+  class="<?php echo esc_attr(implode(' ', $final_button_classes)); ?>"
+  <?php echo $inline_style; ?>
+  target="<?php echo esc_attr($target); ?>"
+  title="<?php echo esc_attr($title); ?>"
+  <?php echo $attr_string; ?>>
+
   <?php if ($icon_markup && $icon_pos === 'left') echo $icon_markup; ?>
   <span><?php echo esc_html($title); ?></span>
   <?php if ($icon_markup && $icon_pos === 'right') echo $icon_markup; ?>
