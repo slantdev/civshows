@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.27.0] - 2026-02-09
+### Added
+- New Modular Components:
+    - `spacer.php`: Flexible spacer component with support for custom sizes and horizontal lines.
+    - `text.php`: Standardized text component for flexible paragraph and heading rendering.
+    - `table.php`: Dynamic table component supporting modular sub-components.
+
+### Fixed
+- Navigation Scroll Logic:
+    - Extracted scroll styling into a reusable `handleScroll` function.
+    - Added an immediate initialization call on page load to ensure the header state is correct after a page refresh.
+
+### Changed
+- Enhanced `button.php` component with SVG icon support and customizable alignment.
+- Refactored `buttons.php` repeater to delegate individual rendering to the single button component.
+
 ## [1.26.0] - 2026-02-09
 ### Added
 - New Modular Components:

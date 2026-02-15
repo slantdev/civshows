@@ -212,7 +212,7 @@ $menu_items = $menu_data['menu_items'] ?? [];
     const headerInner = document.getElementById('header-inner');
     const mainNavWrapper = document.getElementById('main-nav-wrapper');
 
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
       if (window.scrollY > 50) {
         // Scrolled State
         topbar.style.height = '0.5rem'; // Shrink topbar
@@ -241,6 +241,9 @@ $menu_items = $menu_data['menu_items'] ?? [];
 
         mainNavWrapper.classList.add('-translate-y-1/2', 'border-b', 'border-white/40');
       }
-    });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check on load
   });
 </script>
