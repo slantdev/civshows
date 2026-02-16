@@ -92,7 +92,7 @@
                     "label": "Gallery",
                     "name": "gallery",
                     "aria-label": "",
-                    "type": "repeater",
+                    "type": "relationship",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -101,50 +101,26 @@
                         "class": "",
                         "id": ""
                     },
-                    "acfe_repeater_stylised_button": 1,
-                    "layout": "row",
-                    "pagination": 0,
-                    "min": 0,
-                    "max": 0,
-                    "collapsed": "",
-                    "button_label": "Add Gallery",
-                    "rows_per_page": 20,
-                    "sub_fields": [
-                        {
-                            "key": "field_698b853cce8d5",
-                            "label": "Select Gallery",
-                            "name": "select_gallery",
-                            "aria-label": "",
-                            "type": "relationship",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "post_type": [
-                                "shows"
-                            ],
-                            "post_status": "",
-                            "taxonomy": "",
-                            "filters": [
-                                "search"
-                            ],
-                            "return_format": "object",
-                            "acfe_bidirectional": {
-                                "acfe_bidirectional_enabled": "0"
-                            },
-                            "min": "",
-                            "max": "",
-                            "allow_in_bindings": 0,
-                            "elements": "",
-                            "bidirectional": 0,
-                            "bidirectional_target": [],
-                            "parent_repeater": "field_698b84b3a8386"
-                        }
-                    ]
+                    "post_type": [
+                        "gallery"
+                    ],
+                    "post_status": [
+                        "publish"
+                    ],
+                    "taxonomy": "",
+                    "filters": [
+                        "search"
+                    ],
+                    "return_format": "object",
+                    "acfe_bidirectional": {
+                        "acfe_bidirectional_enabled": "0"
+                    },
+                    "min": "",
+                    "max": "",
+                    "allow_in_bindings": 0,
+                    "elements": "",
+                    "bidirectional": 0,
+                    "bidirectional_target": []
                 }
             ],
             "acfe_group_modal": 0,
@@ -225,7 +201,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1770751346,
+    "modified": 1771227579,
     "acfe_categories": {
         "layout": "Layout"
     }

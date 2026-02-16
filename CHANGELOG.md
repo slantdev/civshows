@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.30.0] - 2026-02-09
+### Added
+- **Gallery CPT Integration:**
+    - Created `inc/gallery.php` for Gallery CPT admin logic (columns, relationship-based show filters).
+    - New `template-parts/components/gallery.php` component with dynamic image/video support and customizable grid columns.
+    - Implemented premium "Card" layout for featured items with backdrop-blurred play buttons.
+- **Robust Video Helper:**
+    - Added `civ_get_video_data()` in `inc/template-tags.php` to handle platform detection (YouTube/Vimeo) and high-quality thumbnail extraction with Vimeo API caching.
+- **Fancybox Lightbox Integration:**
+    - Standardized Fancybox support across `gallery`, `video`, and `media_slider` components.
+    - Switched from live iframes to optimized static thumbnails for significant performance gains.
+
+### Changed
+- **Architectural Refactoring:**
+    - Migrated all exhibitor-related logic from `inc/acf.php` to a dedicated `inc/exhibitors.php`.
+    - Refactored `template-parts/sections/featured_gallery.php` to be fully dynamic, integrating with the Gallery CPT and respecting global section settings.
+- **Tailwind CSS v4 Optimization:**
+    - Updated `icons_list.php` and other components to use modern shorthand variable syntax (e.g., `text-(--color)`).
+- **Git Workflow Update:** Updated `GEMINI.md` to reflect that changelog updates and pushes now require explicit user instruction.
+
 ## [1.29.0] - 2026-02-09
 ### Fixed
 - `button.php`: Corrected the `$size_map` array structure by restoring missing `'px'` keys for `md`, `lg`, and `default` sizes, fully resolving the "Undefined array key" warning.

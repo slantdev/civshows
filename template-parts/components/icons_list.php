@@ -87,7 +87,7 @@ if ($repeater) : ?>
         // Container classes for the icon
         $icon_container_classes = array_filter([
           'icon-wrapper shrink-0 flex items-center justify-center transition-all',
-          $style_key === 'circled' ? 'rounded-full bg-[var(--icon-bg)] ' . $padding_class : '',
+          $style_key === 'circled' ? 'rounded-full bg-(--icon-bg) ' . $padding_class : '',
         ]);
       ?>
         <div class="flex items-start gap-3 lg:gap-4 group">
@@ -98,7 +98,7 @@ if ($repeater) : ?>
                 'icon'  => $icon_name,
                 'group' => $icon_group,
                 'size'  => $icon_pixel_size,
-                'class' => 'text-[var(--icon-color)] w-auto h-auto'
+                'class' => 'text-(--icon-color) w-auto h-auto'
               ]); ?>
             </div>
           <?php endif; ?>

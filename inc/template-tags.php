@@ -113,6 +113,8 @@ function civ_get_block_classes($extra_classes = '')
  */
 function civ_icon($atts = array())
 {
+  static $icon_cache = [];
+
   $atts = shortcode_atts(array(
     'icon'  => '',
     'group' => 'utility',
@@ -121,32 +123,38 @@ function civ_icon($atts = array())
     'label' => '',
   ), $atts);
 
-  if (empty($atts['icon'])) {
-    return '';
-  }
+  if (empty($atts['icon'])) return '';
 
   // Map ACF Icon Picker tab keys to folder paths
   $group_map = [
-    'heroicons_solid' => 'heroicons/solid',
+    'heroicons_solid'   => 'heroicons/solid',
     'heroicons_outline' => 'heroicons/outline',
   ];
 
   $group_path = $group_map[$atts['group']] ?? str_replace('_', '/', $atts['group']);
   $icon_path  = get_template_directory() . '/assets/icons/' . $group_path . '/' . $atts['icon'] . '.svg';
 
-  if (!file_exists($icon_path)) {
-    return '';
+  // Return cached version if available (without instance-specific attributes)
+  $cache_key = $group_path . ':' . $atts['icon'];
+  if (!isset($icon_cache[$cache_key])) {
+    if (!file_exists($icon_path)) {
+      $icon_cache[$cache_key] = false;
+      return '';
+    }
+    $svg = file_get_contents($icon_path);
+    // Basic cleanup
+    $svg = preg_replace("/([\n\t]+)/", ' ', $svg);
+    $svg = preg_replace('/>\s*</', '><', $svg);
+    $icon_cache[$cache_key] = $svg;
   }
 
-  $svg = file_get_contents($icon_path);
+  if (!$icon_cache[$cache_key]) return '';
 
-  // Clean up whitespace
-  $svg = preg_replace("/([\n\t]+)/", ' ', $svg);
-  $svg = preg_replace('/>\s*</', '><', $svg);
+  $svg = $icon_cache[$cache_key];
 
-  // Prepare attributes
-  $classes = 'svg-icon ' . $atts['class'];
-  $attrs = sprintf(' class="%s" role="img" focusable="false"', esc_attr(trim($classes)));
+  // Prepare instance-specific attributes
+  $classes = trim('svg-icon ' . $atts['class']);
+  $attrs   = sprintf(' class="%s" role="img" focusable="false"', esc_attr($classes));
 
   if ($atts['size']) {
     $attrs .= sprintf(' width="%d" height="%d"', $atts['size'], $atts['size']);
@@ -159,9 +167,62 @@ function civ_icon($atts = array())
   }
 
   // Inject attributes into the opening <svg> tag
-  $svg = preg_replace('/<svg/', '<svg' . $attrs, $svg, 1);
+  return preg_replace('/<svg/', '<svg' . $attrs, $svg, 1);
+}
 
-  return $svg;
+/**
+ * Get Video Metadata (YouTube/Vimeo)
+ * 
+ * @param string $url The video or embed URL.
+ * @return array|false Array of metadata or false if not supported.
+ */
+function civ_get_video_data($url)
+{
+  if (empty($url)) return false;
+
+  $data = [
+    'id'        => '',
+    'platform'  => '',
+    'thumbnail' => '',
+    'fallback'  => '',
+    'url'       => $url
+  ];
+
+  // YouTube
+  if (preg_match('/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i', $url, $match)) {
+    $data['id']        = $match[1];
+    $data['platform']  = 'youtube';
+    $data['thumbnail'] = "https://img.youtube.com/vi/{$data['id']}/maxresdefault.jpg";
+    $data['fallback']  = "https://img.youtube.com/vi/{$data['id']}/hqdefault.jpg";
+    return $data;
+  }
+
+  // Vimeo
+  if (preg_match('/vimeo\.com\/(?:video\/)?([0-9]+)/i', $url, $match)) {
+    $data['id']       = $match[1];
+    $data['platform'] = 'vimeo';
+
+    // Check transient cache first
+    $cache_key = 'vimeo_thumb_' . $data['id'];
+    $cached_thumb = get_transient($cache_key);
+
+    if ($cached_thumb) {
+      $data['thumbnail'] = $cached_thumb;
+    } else {
+      // Fetch from Vimeo API
+      $response = wp_remote_get("https://vimeo.com/api/v2/video/{$data['id']}.json");
+      if (!is_wp_error($response)) {
+        $body = json_decode(wp_remote_retrieve_body($response), true);
+        if (!empty($body[0]['thumbnail_large'])) {
+          $data['thumbnail'] = $body[0]['thumbnail_large'];
+          set_transient($cache_key, $data['thumbnail'], DAY_IN_SECONDS);
+        }
+      }
+    }
+    return $data;
+  }
+
+  return false;
 }
 
 /**

@@ -83,13 +83,15 @@ function civ_admin_styles()
     $vite_dev_server = file_get_contents($hot_file);
     $vite_dev_server = trim($vite_dev_server);
 
-    wp_enqueue_style('admin_css', "$vite_dev_server/src/css/admin-style.css", [], null);
+    //wp_enqueue_style('admin_css', "$vite_dev_server/src/css/admin-style.css", [], null);
 
     if (
       ($current_page->post_type === 'page' && ($pagenow === 'post-new.php' || $pagenow === 'post.php')) ||
-      ($current_page->post_type === 'shows' && ($pagenow === 'post-new.php' || $pagenow === 'post.php'))
+      ($current_page->post_type === 'shows' && ($pagenow === 'post-new.php' || $pagenow === 'post.php')) ||
+      ($current_page->post_type === 'gallery' && ($pagenow === 'post-new.php' || $pagenow === 'post.php')) ||
+      ($current_page->post_type === 'exhibitors' && ($pagenow === 'post-new.php' || $pagenow === 'post.php'))
     ) {
-      //wp_enqueue_style('admin_css', "$vite_dev_server/src/css/admin-style.css", [], null);
+      wp_enqueue_style('admin_css', "$vite_dev_server/src/css/admin-style.css", [], null);
       wp_enqueue_style('acf_layouts', "$vite_dev_server/src/css/acf-layouts.css", [], null);
     }
   } else {
@@ -97,14 +99,19 @@ function civ_admin_styles()
     $admin_css_path = get_theme_file_path('assets/css/admin-style.css');
     $acf_css_path = get_theme_file_path('assets/css/acf-layouts.css');
 
-    if (file_exists($admin_css_path)) {
-      wp_enqueue_style('admin_css', get_theme_file_uri('assets/css/admin-style.css'), [], $theme_version);
-    }
+    // if (file_exists($admin_css_path)) {
+    //   wp_enqueue_style('admin_css', get_theme_file_uri('assets/css/admin-style.css'), [], $theme_version);
+    // }
 
     if (
       ($current_page->post_type === 'page' && ($pagenow === 'post-new.php' || $pagenow === 'post.php')) ||
-      ($current_page->post_type === 'shows' && ($pagenow === 'post-new.php' || $pagenow === 'post.php'))
+      ($current_page->post_type === 'shows' && ($pagenow === 'post-new.php' || $pagenow === 'post.php')) ||
+      ($current_page->post_type === 'gallery' && ($pagenow === 'post-new.php' || $pagenow === 'post.php')) ||
+      ($current_page->post_type === 'exhibitors' && ($pagenow === 'post-new.php' || $pagenow === 'post.php'))
     ) {
+      if (file_exists($admin_css_path)) {
+        wp_enqueue_style('admin_css', get_theme_file_uri('assets/css/admin-style.css'), [], $theme_version);
+      }
       if (file_exists($acf_css_path)) {
         wp_enqueue_style('acf_layouts', get_theme_file_uri('assets/css/acf-layouts.css'), [], $theme_version);
       }

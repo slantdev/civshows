@@ -31,6 +31,11 @@ require get_theme_file_path('/inc/ajax-handlers.php');
 require get_theme_file_path('/inc/page-builder.php');
 
 /**
+ * Load Gallery Import.
+ */
+require get_theme_file_path('/inc/gallery.php');
+
+/**
  * Load Exhibitors Import.
  */
 require get_theme_file_path('/inc/exhibitors.php');

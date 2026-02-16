@@ -38,26 +38,70 @@ $is_slider  = $item_count > 1;
 
       <?php foreach ($repeater as $item) :
         $type = $item['media_type'] ?? 'video';
+        $video_url = '';
+        $thumbnail_url = '';
+        $fallback_url = '';
+        $image_url = '';
+
+        if ($type === 'video') {
+          $video_group = $item['video_group'] ?? [];
+          $source      = $video_group['external_or_self_hosted'] ?? 'external';
+
+          if ($source === 'external') {
+            $embed_code = $video_group['embed_external_video'] ?? '';
+            preg_match('/src="([^"]+)"/', $embed_code, $match);
+            $raw_url = $match[1] ?? '';
+
+            $video_data = civ_get_video_data($raw_url);
+            if ($video_data) {
+              $video_url     = $video_data['url'];
+              $thumbnail_url = $video_data['thumbnail'];
+              $fallback_url  = $video_data['fallback'];
+            } else {
+              $video_url = $raw_url;
+            }
+          } else {
+            preg_match('/src="([^"]+)"/', $video_group['self_hosted_video'] ?? '', $match);
+            $video_url = $match[1] ?? '';
+          }
+        } else {
+          $image_group = $item['image_group'] ?? [];
+          $image_url   = $image_group['image']['url'] ?? '';
+        }
       ?>
-        <div class="swiper-slide relative aspect-video group cursor-pointer [&_iframe]:aspect-video [&_iframe]:w-full [&_iframe]:h-full [&_video]:w-full [&_video]:h-full [&_video]:object-cover">
+        <div class="swiper-slide relative aspect-video group cursor-pointer bg-gray-900 overflow-hidden">
 
-          <?php if ($type === 'video') :
-            $video_group = $item['video_group'] ?? [];
-            $source      = $video_group['external_or_self_hosted'] ?? 'external';
+          <a href="<?php echo esc_url($type === 'video' ? $video_url : $image_url); ?>" 
+             data-fancybox="<?php echo esc_attr($slider_id); ?>" 
+             class="w-full h-full block relative">
 
-            if ($source === 'external') :
-              echo $video_group['embed_external_video'];
-            else :
-              echo do_shortcode($video_group['self_hosted_video']);
-            endif;
+            <?php if ($type === 'video') : ?>
+              <!-- Play Button -->
+              <div class="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+                <div class="w-12 h-12 md:w-16 md:h-16 bg-civ-orange-500 rounded-full flex items-center justify-center text-white shadow-xl transition-transform duration-300 group-hover:scale-110">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+              </div>
 
-          else :
-            $image_group = $item['image_group'] ?? [];
-            $image       = $image_group['image'] ?? [];
-            if (!empty($image['url'])) : ?>
-              <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt'] ?? ''); ?>" class="w-full h-full object-cover">
-          <?php endif;
-          endif; ?>
+              <?php if ($thumbnail_url) : ?>
+                <img src="<?php echo esc_url($thumbnail_url); ?>" 
+                     class="w-full h-full object-cover opacity-80 transition-all duration-500 group-hover:opacity-60 group-hover:scale-105"
+                     <?php if ($fallback_url) echo 'onerror="this.src=\'' . esc_url($fallback_url) . '\'; this.onerror=null;"'; ?>>
+              <?php else : ?>
+                <div class="w-full h-full opacity-60 transition-opacity duration-500 group-hover:opacity-40 [&_iframe]:w-full [&_iframe]:h-full [&_video]:w-full [&_video]:h-full [&_video]:object-cover pointer-events-none">
+                  <?php if ($source === 'external') echo $video_group['embed_external_video'] ?? ''; else echo do_shortcode($video_group['self_hosted_video'] ?? ''); ?>
+                </div>
+              <?php endif; ?>
+
+            <?php else : ?>
+              <?php if ($image_url) : ?>
+                <img src="<?php echo esc_url($image_url); ?>" 
+                     alt="<?php echo esc_attr($item['image_group']['image']['alt'] ?? ''); ?>" 
+                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+              <?php endif; ?>
+            <?php endif; ?>
+
+          </a>
 
         </div>
       <?php endforeach; ?>

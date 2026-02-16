@@ -23,7 +23,7 @@ Custom WordPress theme development environment using Vite and Tailwind CSS.
 2. **Styling:** Use Tailwind utility classes whenever possible.
 3. **PHP:** Ensure all PHP files are compatible with the latest WordPress version.
 4. **Versioning:** Always update the `Version:` header in `style.css` when adding a new entry to `CHANGELOG.md`.
-5. **Git Workflow:** Push changes to the repository immediately after completing a task or significant sub-task.
+5. **Git Workflow:** Only update `CHANGELOG.md` and push changes to the repository when explicitly instructed by the user.
 
 ## Coding Standards & Patterns
 
