@@ -40,7 +40,7 @@ table.fixed {
       @apply z-30!;
     }
     .acfe-fc-overlay {
-      @apply z-20! hidden;
+      @apply z-20!;
     }
     .acfe-fc-overlay.-hover,
     &:hover .acfe-fc-overlay {
