@@ -14,10 +14,12 @@ $section_id_attr = $section_id ? 'id="' . esc_attr($section_id) . '"' : '';
 $section_class   = 'section-exhibitors-shows-' . uniqid();
 
 // Data Extraction
-$ex_comp    = get_sub_field('exhibitors_shows');
-$exhibitors = $ex_comp['exhibitors'] ?? [];
+// $ex_comp    = get_sub_field('exhibitors_shows');
+$exhibitors = get_sub_field('exhibitors');
 $intro      = $exhibitors['intro'] ?? [];
 $ex_image   = $intro['image'] ?? [];
+
+//preint_r($exhibitors);
 
 // Exhibitors Query (Initial Load)
 $args = array(
@@ -63,7 +65,7 @@ $parent_terms = get_terms([
 
           <?php if (!empty($intro['description'])) : ?>
             <div class="mb-8">
-              <?php get_template_part('template-parts/components/lead_text', null, ['field' => $intro['description']]); ?>
+              <?php get_template_part('template-parts/components/content_editor', null, ['field' => $intro['description']]); ?>
             </div>
           <?php endif; ?>
 
@@ -74,22 +76,21 @@ $parent_terms = get_terms([
           <?php endif; ?>
         </div>
 
-        <div class="w-full lg:w-5/12 flex justify-center lg:justify-end -mb-28 lg:-mb-32">
-          <div class="w-full max-w-xl aspect-square rounded-full overflow-hidden relative shadow-xl border-8 border-white">
-            <?php 
-            $img_data = $ex_image['image'] ?? [];
-            $img_id   = $img_data['image_source']['id'] ?? '';
-            if ($img_id) {
+        <?php
+        $img_data = $ex_image['image'] ?? [];
+        $img_id   = $img_data['image_source']['id'] ?? '';
+        if ($img_id) :
+        ?>
+          <div class="w-full lg:w-5/12 flex justify-center lg:justify-end -mb-28 lg:-mb-32">
+            <div class="w-full max-w-xl aspect-square rounded-full overflow-hidden relative shadow-xl border-8 border-white">
+              <?php
               echo wp_get_attachment_image($img_id, 'large', false, [
                 'class' => 'absolute inset-0 w-full h-full object-cover'
               ]);
-            } else {
-              // Fallback placeholder
-              echo '<img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/01.jpg" class="absolute inset-0 w-full h-full object-cover" alt="Exhibitors">';
-            }
-            ?>
+              ?>
+            </div>
           </div>
-        </div>
+        <?php endif; ?>
       </div>
 
       <!-- Filter Controls -->

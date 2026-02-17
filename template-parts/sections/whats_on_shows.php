@@ -14,10 +14,11 @@ $section_id_attr = $section_id ? 'id="' . esc_attr($section_id) . '"' : '';
 $section_class   = 'section-whats-on-shows-' . uniqid();
 
 // Data Extraction
-$wo_comp    = get_sub_field('whats_on_shows');
-$whats_on   = $wo_comp['whats_on'] ?? [];
+$whats_on   = get_sub_field('whats_on');
 $intro      = $whats_on['intro'] ?? [];
 $wo_image   = $intro['image'] ?? [];
+
+//preint_r($whats_on);
 
 ?>
 
@@ -40,7 +41,7 @@ $wo_image   = $intro['image'] ?? [];
 
           <?php if (!empty($intro['description'])) : ?>
             <div class="mb-10">
-              <?php get_template_part('template-parts/components/lead_text', null, ['field' => $intro['description']]); ?>
+              <?php get_template_part('template-parts/components/content_editor', null, ['field' => $intro['description']]); ?>
             </div>
           <?php endif; ?>
 
@@ -66,21 +67,21 @@ $wo_image   = $intro['image'] ?? [];
           </div>
         </div>
 
-        <div class="w-full lg:w-5/12 flex justify-center lg:justify-end -mb-28 lg:-mb-32">
-          <div class="w-full max-w-xl aspect-square rounded-full overflow-hidden relative shadow-xl border-8 border-white bg-gray-100">
-            <?php 
-            $img_data = $wo_image['image'] ?? [];
-            $img_id   = $img_data['image_source']['id'] ?? '';
-            if ($img_id) {
+        <?php
+        $img_data = $wo_image['image'] ?? [];
+        $img_id   = $img_data['image_source']['id'] ?? '';
+        if ($img_id) :
+        ?>
+          <div class="w-full lg:w-5/12 flex justify-center lg:justify-end -mb-28 lg:-mb-32">
+            <div class="w-full max-w-xl aspect-square rounded-full overflow-hidden relative shadow-xl border-8 border-white">
+              <?php
               echo wp_get_attachment_image($img_id, 'large', false, [
                 'class' => 'absolute inset-0 w-full h-full object-cover'
               ]);
-            } else {
-              echo '<img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/06.jpg" alt="Event Atmosphere" class="absolute inset-0 w-full h-full object-cover">';
-            }
-            ?>
+              ?>
+            </div>
           </div>
-        </div>
+        <?php endif; ?>
 
       </div>
 
