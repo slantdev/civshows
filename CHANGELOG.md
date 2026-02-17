@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.31.0] - 2026-02-09
+### Added
+- **New Modular Sections:**
+    - `exhibitors_shows.php`: Refactored to be fully dynamic with ACF integration and modular components.
+    - `whats_on_shows.php`: Refactored with dynamic intro area and circular image support.
+- **ACF Extended Layout Standard:**
+    - Standardized `acf-layouts/` directory by uncommenting and activating all layout includes.
+    - Added `whats_on_shows.php` layout wrapper.
+
+### Changed
+- **Component Refinement:**
+    - Improved visual styling for circular images in modular sections with refined shadows and borders.
+    - Synchronized field access patterns for nested ACF groups in cloned layouts.
+
 ## [1.30.0] - 2026-02-09
 ### Added
 - **Gallery CPT Integration:**

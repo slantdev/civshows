@@ -53,7 +53,7 @@ foreach ($posts as $post_obj) :
 
     // Card Style for Videos
     if ($style === 'card') : ?>
-      <div id="<?php echo esc_attr($item_id); ?>" class="gallery-video-cards grid <?php echo esc_attr($grid_cols_class); ?> gap-4 lg:gap-8 my-6 lg:my-8 <?php echo esc_attr($class); ?>">
+      <div id="<?php echo esc_attr($item_id); ?>" class="gallery-video-cards grid <?php echo esc_attr($grid_cols_class); ?> gap-4 lg:gap-8 mb-6 lg:mb-8 <?php echo esc_attr($class); ?>">
         <?php foreach ($videos as $v_item) :
           $v_data  = $v_item['video'] ?? [];
           $title   = $v_item['title'] ?? '';
@@ -70,7 +70,7 @@ foreach ($posts as $post_obj) :
             $embed_code = $v_data['embed_external_video'] ?? '';
             preg_match('/src="([^"]+)"/', $embed_code, $match);
             $raw_url = $match[1] ?? '';
-            
+
             $video_data = civ_get_video_data($raw_url);
             if ($video_data) {
               $video_url     = $video_data['url'];
@@ -85,11 +85,11 @@ foreach ($posts as $post_obj) :
           }
         ?>
           <div class="flex flex-col">
-            <a href="<?php echo esc_url($video_url); ?>" 
-               data-fancybox="gallery-video-<?php echo $post_id; ?>"
-               data-caption="<?php echo esc_attr($title); ?>"
-               class="aspect-video w-full rounded-xl overflow-hidden shadow-sm bg-gray-900 group relative block hover:shadow-xl transition-shadow duration-300">
-              
+            <a href="<?php echo esc_url($video_url); ?>"
+              data-fancybox="gallery-video-<?php echo $post_id; ?>"
+              data-caption="<?php echo esc_attr($title); ?>"
+              class="aspect-video w-full rounded-xl overflow-hidden shadow-sm bg-gray-900 group relative block hover:shadow-xl transition-shadow duration-300">
+
               <!-- Play Button Overlay -->
               <div class="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
                 <div class="w-20 h-20 rounded-full border-4 border-white flex items-center justify-center pl-1 group-hover:scale-110 transition-transform duration-300 backdrop-blur-sm bg-white/10">
@@ -103,13 +103,14 @@ foreach ($posts as $post_obj) :
               <div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors z-10"></div>
 
               <?php if ($thumbnail_url) : ?>
-                <img src="<?php echo esc_url($thumbnail_url); ?>" 
-                     alt="<?php echo esc_attr($title); ?>" 
-                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                     <?php if ($fallback_url) echo 'onerror="this.src=\'' . esc_url($fallback_url) . '\'; this.onerror=null;"'; ?>>
+                <img src="<?php echo esc_url($thumbnail_url); ?>"
+                  alt="<?php echo esc_attr($title); ?>"
+                  class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  <?php if ($fallback_url) echo 'onerror="this.src=\'' . esc_url($fallback_url) . '\'; this.onerror=null;"'; ?>>
               <?php else : ?>
                 <div class="w-full h-full opacity-60 transition-opacity duration-500 group-hover:opacity-40 [&_iframe]:w-full [&_iframe]:h-full [&_video]:w-full [&_video]:h-full [&_video]:object-cover pointer-events-none">
-                  <?php if ($source === 'external') echo $v_data['embed_external_video'] ?? ''; else echo do_shortcode($v_data['self_hosted_video'] ?? ''); ?>
+                  <?php if ($source === 'external') echo $v_data['embed_external_video'] ?? '';
+                  else echo do_shortcode($v_data['self_hosted_video'] ?? ''); ?>
                 </div>
               <?php endif; ?>
             </a>
@@ -137,12 +138,13 @@ foreach ($posts as $post_obj) :
         <?php endforeach; ?>
       </div>
 
-    <?php else : // Grid Style for Videos ?>
-      <div id="<?php echo esc_attr($item_id); ?>" class="gallery-video-grid grid <?php echo esc_attr($grid_cols_class); ?> gap-4 lg:gap-8 my-6 lg:my-8 <?php echo esc_attr($class); ?>">
+    <?php else : // Grid Style for Videos 
+    ?>
+      <div id="<?php echo esc_attr($item_id); ?>" class="gallery-video-grid grid <?php echo esc_attr($grid_cols_class); ?> gap-4 lg:gap-8 mb-6 lg:mb-8 <?php echo esc_attr($class); ?>">
         <?php foreach ($videos as $v_item) :
           $v_data = $v_item['video'] ?? [];
           $source = $v_data['external_or_self_hosted'] ?? 'external';
-          
+
           $video_url = '';
           $thumbnail_url = '';
           $fallback_url = '';
@@ -151,7 +153,7 @@ foreach ($posts as $post_obj) :
             $embed_code = $v_data['embed_external_video'] ?? '';
             preg_match('/src="([^"]+)"/', $embed_code, $match);
             $raw_url = $match[1] ?? '';
-            
+
             $video_data = civ_get_video_data($raw_url);
             if ($video_data) {
               $video_url     = $video_data['url'];
@@ -165,10 +167,10 @@ foreach ($posts as $post_obj) :
             $video_url = $match[1] ?? '';
           }
         ?>
-          <a href="<?php echo esc_url($video_url); ?>" 
-             data-fancybox="gallery-video-<?php echo $post_id; ?>"
-             class="aspect-video w-full rounded-lg overflow-hidden shadow-sm bg-gray-900 group relative block hover:shadow-xl transition-shadow duration-300">
-            
+          <a href="<?php echo esc_url($video_url); ?>"
+            data-fancybox="gallery-video-<?php echo $post_id; ?>"
+            class="aspect-video w-full rounded-lg overflow-hidden shadow-sm bg-gray-900 group relative block hover:shadow-xl transition-shadow duration-300">
+
             <!-- Play Button Overlay -->
             <div class="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
               <div class="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-white flex items-center justify-center pl-0.5 group-hover:scale-110 transition-transform duration-300 backdrop-blur-sm bg-white/10">
@@ -182,12 +184,13 @@ foreach ($posts as $post_obj) :
             <div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors z-10"></div>
 
             <?php if ($thumbnail_url) : ?>
-              <img src="<?php echo esc_url($thumbnail_url); ?>" 
-                   class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                   <?php if ($fallback_url) echo 'onerror="this.src=\'' . esc_url($fallback_url) . '\'; this.onerror=null;"'; ?>>
+              <img src="<?php echo esc_url($thumbnail_url); ?>"
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                <?php if ($fallback_url) echo 'onerror="this.src=\'' . esc_url($fallback_url) . '\'; this.onerror=null;"'; ?>>
             <?php else : ?>
               <div class="w-full h-full opacity-60 transition-opacity duration-500 group-hover:opacity-40 pointer-events-none [&_iframe]:w-full [&_iframe]:h-full [&_video]:w-full [&_video]:h-full [&_video]:object-cover">
-                <?php if ($source === 'external') echo $v_data['embed_external_video'] ?? ''; else echo do_shortcode($v_data['self_hosted_video'] ?? ''); ?>
+                <?php if ($source === 'external') echo $v_data['embed_external_video'] ?? '';
+                else echo do_shortcode($v_data['self_hosted_video'] ?? ''); ?>
               </div>
             <?php endif; ?>
           </a>
@@ -201,7 +204,7 @@ foreach ($posts as $post_obj) :
     $images = $settings['image_gallery'] ?? [];
     if (empty($images)) continue;
   ?>
-    <div id="<?php echo esc_attr($item_id); ?>" class="gallery-image-grid grid <?php echo esc_attr($grid_cols_class); ?> gap-4 my-6 lg:my-8 <?php echo esc_attr($class); ?>">
+    <div id="<?php echo esc_attr($item_id); ?>" class="gallery-image-grid grid <?php echo esc_attr($grid_cols_class); ?> gap-4 mb-6 lg:mb-8 <?php echo esc_attr($class); ?>">
       <?php foreach ($images as $image) : ?>
         <a href="<?php echo esc_url($image['url']); ?>"
           data-fancybox="gallery-<?php echo $post_id; ?>"

@@ -48,7 +48,7 @@ $style_class = $style_map[$style_key] ?? '';
 
 ?>
 
-<div id="<?php echo esc_attr($table_id_attr); ?>" class="table-component-wrapper overflow-x-auto my-6 lg:my-8 <?php echo esc_attr($class); ?>">
+<div id="<?php echo esc_attr($table_id_attr); ?>" class="table-component-wrapper overflow-x-auto mb-6 lg:mb-8 <?php echo esc_attr($class); ?>">
 
   <?php if (!empty($table_title)) : ?>
     <div class="mb-4">
