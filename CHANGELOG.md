@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.32.0] - 2026-02-17
+### Added
+- **Social Media Icon Helper:** Added `civ_get_social_icon()` in `inc/template-tags.php` to provide consistent SVG icons for major platforms.
+### Changed
+- **Dynamic Site Footer:**
+    - Fully refactored `site-footer.php` to pull data from the "Site Settings" options page.
+    - Integrated dynamic About section, Navigation repeater, Contacts, and Social Links.
+    - Added support for dynamic footer styles (text and background colors) via ACF.
+    - Optimized copyright area with dynamic site name and supplemental links.
+
 ## [1.31.0] - 2026-02-09
 ### Added
 - **New Modular Sections:**

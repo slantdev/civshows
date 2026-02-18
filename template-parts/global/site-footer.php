@@ -4,86 +4,152 @@
  * Template part for displaying the site footer
  */
 
+$footer_about     = get_field('about', 'option');
+$footer_nav       = get_field('navigation', 'option');
+$footer_contacts  = get_field('contacts', 'option');
+$footer_search    = get_field('search', 'option');
+$footer_social    = get_field('social_links', 'option');
+$footer_copyright = get_field('copyright_info', 'option'); // Cloned group
+$footer_style     = get_field('footer_style', 'option');
+
+// Styles
+$text_color         = $footer_style['text_color'] ?? '#3374B8';
+$bg_color           = $footer_style['background_color'] ?? '#FFFFFF';
+$copyright_bg_color = $footer_style['copyright_bg_color'] ?? '#3374B8';
+
+$footer_styles = "background-color: {$bg_color}; color: {$text_color};";
+
 ?>
 
-<footer class="bg-white border-t border-gray-200">
+<footer class="border-t border-gray-200" style="<?php echo esc_attr($footer_styles); ?>">
   <div class="container mx-auto py-16 px-4 xl:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
 
+      <!-- About -->
       <div class="lg:col-span-5 flex flex-col sm:flex-row gap-6 items-start xl:gap-8">
-        <div class="shrink-0">
-          <div class="w-42 h-42 flex items-center justify-center">
-            <img src="<?php echo get_stylesheet_directory_uri() . "/assets/images/logo.png" ?>" alt=" Caravan Industry Victoria" class="w-full h-full object-cover">
+        <?php if (!empty($footer_about['logo'])) : ?>
+          <div class="shrink-0">
+            <div class="w-42 h-42 flex items-center justify-center">
+              <?php echo wp_get_attachment_image($footer_about['logo']['id'], 'medium', false, ['class' => 'w-full h-full object-contain']); ?>
+            </div>
           </div>
-        </div>
+        <?php endif; ?>
 
-        <div class="text-civ-blue-900 pr-6">
-          <h3 class="font-bold text-base mb-4 leading-tight text-civ-blue-500">
-            Caravan Industry Victoria - the team behind your favourite Caravan & Camping Shows, plus loads more you may not know.
-          </h3>
-          <p class="text-sm leading-relaxed text-slate-600">
-            In 1952 the Caravan Trades and Industries Association of Victoria, trading as Caravan Industry Victoria, has been the peak industry body representing and supplying services to the caravan and camping industry right here in Victoria.
-          </p>
+        <div class="footer-about-content pr-6 prose prose-sm max-w-none" style="color: inherit;">
+          <?php if (!empty($footer_about['about_civ'])) : ?>
+            <div class="[&_h3]:text-civ-blue-500 [&_h3]:font-bold [&_h3]:text-base [&_h3]:mb-4 [&_h3]:leading-tight [&_p]:text-sm [&_p]:leading-relaxed [&_p]:text-slate-600">
+              <?php echo $footer_about['about_civ']; ?>
+            </div>
+          <?php endif; ?>
         </div>
       </div>
 
+      <!-- Navigation -->
       <div class="lg:col-span-2">
-        <h3 class="font-bold text-lg text-civ-blue-500 mb-6">Navigation</h3>
-        <ul class="space-y-2 text-civ-blue-500 text-sm">
-          <li><a href="#" class="text-civ-blue-500 hover:text-civ-blue-700 hover:underline transition-colors">About CIV</a></li>
-          <li><a href="#" class="text-civ-blue-500 hover:text-civ-blue-700 hover:underline transition-colors">Contact Us</a></li>
-          <li><a href="#" class="text-civ-blue-500 hover:text-civ-blue-700 hover:underline transition-colors">Privacy Policy</a></li>
-          <li><a href="#" class="text-civ-blue-500 hover:text-civ-blue-700 hover:underline transition-colors">Terms of Service</a></li>
-        </ul>
+        <?php if (!empty($footer_nav['heading'])) : ?>
+          <h3 class="font-bold text-lg mb-6" style="color: inherit; opacity: 0.8;"><?php echo esc_html($footer_nav['heading']); ?></h3>
+        <?php endif; ?>
+
+        <?php if (!empty($footer_nav['links'])) : ?>
+          <ul class="space-y-2 text-sm">
+            <?php foreach ($footer_nav['links'] as $item) : 
+              $link = $item['link'] ?? [];
+              if ($link) :
+            ?>
+              <li>
+                <a href="<?php echo esc_url($link['url']); ?>" 
+                   target="<?php echo esc_attr($link['target'] ?: '_self'); ?>"
+                   class="hover:opacity-70 transition-colors">
+                  <?php echo esc_html($link['title']); ?>
+                </a>
+              </li>
+            <?php endif; endforeach; ?>
+          </ul>
+        <?php endif; ?>
       </div>
 
+      <!-- Contacts -->
       <div class="lg:col-span-2">
-        <h3 class="font-bold text-lg text-civ-blue-500 mb-6">Contacts</h3>
-        <div class="space-y-2 text-civ-blue-500 text-sm">
-          <p class="leading-relaxed">
-            Unit 8 / 88 Dynon Road,<br />
-            West Melbourne, VIC, 3003
-          </p>
-          <p>
-            <a href="tel:1300762545" class="hover:text-civ-blue-700 hover:underline transition-colors">1300 762 545</a>
-          </p>
+        <?php if (!empty($footer_contacts['heading'])) : ?>
+          <h3 class="font-bold text-lg mb-6" style="color: inherit; opacity: 0.8;"><?php echo esc_html($footer_contacts['heading']); ?></h3>
+        <?php endif; ?>
+
+        <div class="space-y-4 text-sm">
+          <?php if (!empty($footer_contacts['address'])) : ?>
+            <p class="leading-relaxed">
+              <?php echo nl2br(esc_html($footer_contacts['address'])); ?>
+            </p>
+          <?php endif; ?>
+
+          <?php if (!empty($footer_contacts['phone'])) : ?>
+            <p>
+              <a href="tel:<?php echo esc_attr(str_replace(' ', '', $footer_contacts['phone'])); ?>" class="hover:opacity-70 transition-colors font-medium">
+                <?php echo esc_html($footer_contacts['phone']); ?>
+              </a>
+            </p>
+          <?php endif; ?>
         </div>
       </div>
 
+      <!-- Search & Social -->
       <div class="lg:col-span-3">
-        <h3 class="font-bold text-lg text-civ-blue-500 mb-6">Quick Search</h3>
+        <?php if (!empty($footer_search['enable_search_form'])) : ?>
+          <h3 class="font-bold text-lg mb-6" style="color: inherit; opacity: 0.8;">Quick Search</h3>
 
-        <form class="flex gap-2 mb-8">
-          <input type="text" placeholder="Enter keyword" class="w-full bg-gray-200 border-none rounded px-4 py-2 text-sm text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-civ-blue-500">
-          <button type="button" class="bg-civ-blue-500 hover:bg-civ-blue-600 text-white text-sm font-medium py-2 px-6 rounded transition-colors">
-            Search
-          </button>
-        </form>
+          <form role="search" method="get" class="flex gap-2 mb-8" action="<?php echo esc_url(home_url('/')); ?>">
+            <input type="search" name="s" placeholder="Enter keyword" class="w-full bg-gray-100 border-none rounded px-4 py-2 text-sm text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-civ-blue-500">
+            <button type="submit" class="bg-civ-blue-500 hover:bg-civ-blue-600 text-white text-sm font-medium py-2 px-6 rounded transition-colors">
+              Search
+            </button>
+          </form>
+        <?php endif; ?>
 
-        <div class="flex items-center gap-6">
-          <a href="#" class="text-civ-blue-500 hover:text-civ-blue-600 transition-colors">
-            <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-            </svg>
-          </a>
-          <a href="#" class="text-civ-blue-500 hover:text-civ-blue-600 transition-colors">
-            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
-            </svg>
-          </a>
-          <a href="#" class="text-civ-blue-500 hover:text-civ-blue-600 transition-colors">
-            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.468 2.373c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
-            </svg>
-          </a>
-        </div>
+        <?php if (!empty($footer_social['social_media'])) : ?>
+          <div class="flex items-center gap-6">
+            <?php foreach ($footer_social['social_media'] as $social) : 
+              $platform = $social['social_media'] ?? '';
+              $link     = $social['link'] ?? [];
+              if ($link && $platform) :
+            ?>
+              <a href="<?php echo esc_url($link['url']); ?>" 
+                 target="<?php echo esc_attr($link['target'] ?: '_blank'); ?>"
+                 class="hover:opacity-70 transition-colors"
+                 title="<?php echo esc_attr($link['title'] ?: ucfirst($platform)); ?>">
+                <?php echo civ_get_social_icon($platform, 'w-7 h-7'); ?>
+              </a>
+            <?php endif; endforeach; ?>
+          </div>
+        <?php endif; ?>
       </div>
 
     </div>
   </div>
-  <div class="py-3 w-full bg-civ-blue-500 text-white">
-    <div class="container mx-auto px-4 xl:px-8 text-sm font-medium">
-      &copy; 2026. Caravan Industry Victoria. All rights reserved.
+
+  <!-- Copyright -->
+  <?php 
+  $site_name  = $footer_copyright['copyright_site_name'] ?? get_bloginfo('name');
+  $copy_links = $footer_copyright['copyright_links'] ?? [];
+  ?>
+  <div class="py-4 w-full text-white" style="background-color: <?php echo esc_attr($copyright_bg_color); ?>;">
+    <div class="container mx-auto px-4 xl:px-8 text-sm font-medium flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>
+        &copy; <?php echo date('Y'); ?>. <?php echo esc_html($site_name); ?>. All rights reserved.
+      </div>
+
+      <?php if (!empty($copy_links)) : ?>
+        <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+          <?php foreach ($copy_links as $item) : 
+            $link = $item['link'] ?? [];
+            if ($link) :
+          ?>
+            <a href="<?php echo esc_url($link['url']); ?>" 
+               target="<?php echo esc_attr($link['target'] ?: '_self'); ?>"
+               class="hover:underline transition-all">
+              <?php echo esc_html($link['title']); ?>
+            </a>
+          <?php endif; endforeach; ?>
+        </nav>
+      <?php endif; ?>
     </div>
   </div>
 </footer>
