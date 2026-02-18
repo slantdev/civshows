@@ -213,9 +213,9 @@
                     "acfe_textarea_code": 0,
                     "maxlength": "",
                     "allow_in_bindings": 0,
-                    "rows": "",
+                    "rows": 3,
                     "placeholder": "",
-                    "new_lines": ""
+                    "new_lines": "br"
                 },
                 {
                     "key": "field_699510a14b045",
@@ -373,7 +373,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "71",
+                                "width": "70",
                                 "class": "",
                                 "id": ""
                             },
@@ -534,7 +534,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1771377350,
+    "modified": 1771378518,
     "acfe_categories": {
         "site-settings": "Site Settings"
     }
