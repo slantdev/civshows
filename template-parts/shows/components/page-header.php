@@ -68,6 +68,9 @@ if (empty($bg_desktop_url) && !empty($bg_mobile_url)) {
 $bg_color = $background_colors['background_color'] ?? '';
 $bg_overlay = $background_colors['background_overlay'] ?? 'rgba(0,0,0,0.5)';
 
+$child_navigation = $page_header_settings['child_navigation'] ?? [];
+$show_child_navigation = $child_navigation['show_child_navigation'] ?? false;
+
 // Generate Inline CSS for Backgrounds
 $style_attr = '';
 if ($bg_color) {
@@ -156,35 +159,36 @@ $child_query = new WP_Query($child_args);
     <?php endif; ?>
   </div>
 
-  <div class="w-full relative z-10">
-    <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row items-stretch md:items-center">
+  <?php if ($show_child_navigation): ?>
+    <div class="w-full relative z-10">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row items-stretch md:items-center">
 
-        <div class="text-white font-bold uppercase py-4 px-4 tracking-wide md:w-auto shrink-0 grow flex items-center justify-center md:justify-start">
-          <a href="<?php echo esc_url($parent_permalink); ?>" class="hover:underline"><?php echo wp_kses_post($parent_nav_label); ?></a>
+          <div class="text-white font-bold uppercase py-4 px-4 tracking-wide md:w-auto shrink-0 grow flex items-center justify-center md:justify-start">
+            <a href="<?php echo esc_url($parent_permalink); ?>" class="hover:underline"><?php echo wp_kses_post($parent_nav_label); ?></a>
+          </div>
+
+          <div class="overflow-x-auto">
+            <ul class="flex items-center whitespace-nowrap bg-gray-100 text-civ-blue-900 text-xs md:text-sm font-bold uppercase tracking-tight">
+
+              <?php if ($child_query->have_posts()) : ?>
+                <?php while ($child_query->have_posts()) : $child_query->the_post();
+                  $is_active = get_the_ID() === $current_id;
+                  $active_classes = $is_active ? 'bg-white text-civ-orange-500 border-b border-b-white border-r border-r-gray-300' : 'border-b border-r border-gray-300 hover:text-civ-orange-500 hover:bg-civ-orange-100';
+                ?>
+                  <li class="h-full">
+                    <a href="<?php the_permalink(); ?>" class="block py-4 xl:py-5 px-6 xl:px-8 2xl:px-10 transition-colors <?php echo $active_classes; ?>">
+                      <?php the_title(); ?>
+                    </a>
+                  </li>
+                <?php endwhile;
+                wp_reset_postdata(); ?>
+              <?php endif; ?>
+            </ul>
+          </div>
+
         </div>
-
-        <div class="overflow-x-auto">
-          <ul class="flex items-center whitespace-nowrap bg-gray-100 text-civ-blue-900 text-xs md:text-sm font-bold uppercase tracking-tight">
-
-            <?php if ($child_query->have_posts()) : ?>
-              <?php while ($child_query->have_posts()) : $child_query->the_post();
-                $is_active = get_the_ID() === $current_id;
-                $active_classes = $is_active ? 'bg-white text-civ-orange-500 border-b border-b-white border-r border-r-gray-300' : 'border-b border-r border-gray-300 hover:text-civ-orange-500 hover:bg-civ-orange-100';
-              ?>
-                <li class="h-full">
-                  <a href="<?php the_permalink(); ?>" class="block py-4 xl:py-5 px-6 xl:px-8 2xl:px-10 transition-colors <?php echo $active_classes; ?>">
-                    <?php the_title(); ?>
-                  </a>
-                </li>
-              <?php endwhile;
-              wp_reset_postdata(); ?>
-            <?php endif; ?>
-          </ul>
-        </div>
-
       </div>
     </div>
-  </div>
-
+  <?php endif; ?>
 </section>

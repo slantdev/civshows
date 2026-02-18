@@ -1,6 +1,6 @@
 {
     "key": "group_62a17b306405b",
-    "title": "Section - Page Header",
+    "title": "Section - Page Header [Our Shows]",
     "fields": [
         {
             "key": "field_6602f0ddfc33b",
@@ -259,7 +259,7 @@
                     "acfe_group_modal_size": "large"
                 },
                 {
-                    "key": "field_69770f81acef2",
+                    "key": "field_69952f7b5d291",
                     "label": "Show Logo",
                     "name": "show_logo",
                     "aria-label": "",
@@ -276,7 +276,7 @@
                     "acfe_seamless_style": 1,
                     "sub_fields": [
                         {
-                            "key": "field_69770f81acef3",
+                            "key": "field_69952f7b5d292",
                             "label": "Show Logo",
                             "name": "show_logo",
                             "aria-label": "",
@@ -297,7 +297,7 @@
                             "ui": 1
                         },
                         {
-                            "key": "field_69770f81acef4",
+                            "key": "field_69952f7b5d293",
                             "label": "Logo Image",
                             "name": "logo_image",
                             "aria-label": "",
@@ -307,7 +307,7 @@
                             "conditional_logic": [
                                 [
                                     {
-                                        "field": "field_69770f81acef3",
+                                        "field": "field_69952f7b5d292",
                                         "operator": "==",
                                         "value": "1"
                                     }
@@ -735,6 +735,50 @@
                             "acfe_group_modal_size": "large"
                         }
                     ]
+                },
+                {
+                    "key": "field_69952d860ba9e",
+                    "label": "Child Navigation",
+                    "name": "child_navigation",
+                    "aria-label": "",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "label-hidden",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "acfe_seamless_style": 1,
+                    "sub_fields": [
+                        {
+                            "key": "field_69952d950ba9f",
+                            "label": "Show Child Navigation",
+                            "name": "show_child_navigation",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 1,
+                            "allow_in_bindings": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": "",
+                            "ui": 1
+                        }
+                    ],
+                    "acfe_group_modal": 0,
+                    "acfe_group_modal_close": 0,
+                    "acfe_group_modal_button": "",
+                    "acfe_group_modal_size": "large"
                 }
             ]
         }
@@ -764,7 +808,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1770739638,
+    "modified": 1771385055,
     "acfe_categories": {
         "layout": "Layout"
     }

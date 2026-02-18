@@ -18,7 +18,7 @@ get_header();
   while (have_posts()) :
     the_post();
 
-    get_template_part('template-parts/pages/about/page-header');
+    get_template_part('template-parts/global/page-header');
 
     // Render the Page Builder
     civ_render_page_builder();

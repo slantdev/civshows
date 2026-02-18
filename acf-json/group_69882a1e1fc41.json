@@ -1,6 +1,6 @@
 {
     "key": "group_69882a1e1fc41",
-    "title": "Section - Our Shows Page Header",
+    "title": "Section - Page Header [Pages]",
     "fields": [
         {
             "key": "field_69882a1e372af",
@@ -255,86 +255,6 @@
                             "show_color_wheel": 1,
                             "custom_palette_source": "",
                             "palette_colors": ""
-                        }
-                    ]
-                },
-                {
-                    "key": "field_69882a1e3a289",
-                    "label": "Show Logo",
-                    "name": "show_logo",
-                    "aria-label": "",
-                    "type": "group",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "label-hidden",
-                        "id": ""
-                    },
-                    "layout": "block",
-                    "acfe_seamless_style": 1,
-                    "acfe_group_modal": 0,
-                    "acfe_group_modal_close": 0,
-                    "acfe_group_modal_button": "",
-                    "acfe_group_modal_size": "large",
-                    "sub_fields": [
-                        {
-                            "key": "field_69882a1e57ad9",
-                            "label": "Show Logo",
-                            "name": "show_logo",
-                            "aria-label": "",
-                            "type": "true_false",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "25",
-                                "class": "",
-                                "id": ""
-                            },
-                            "message": "",
-                            "default_value": 1,
-                            "allow_in_bindings": 1,
-                            "ui_on_text": "",
-                            "ui_off_text": "",
-                            "ui": 1
-                        },
-                        {
-                            "key": "field_69882a1e57aea",
-                            "label": "Logo Image",
-                            "name": "logo_image",
-                            "aria-label": "",
-                            "type": "image",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": [
-                                [
-                                    {
-                                        "field": "field_69882a1e57ad9",
-                                        "operator": "==",
-                                        "value": "1"
-                                    }
-                                ]
-                            ],
-                            "wrapper": {
-                                "width": "75",
-                                "class": "",
-                                "id": ""
-                            },
-                            "uploader": "",
-                            "return_format": "array",
-                            "library": "all",
-                            "acfe_thumbnail": 0,
-                            "min_width": "",
-                            "min_height": "",
-                            "min_size": "",
-                            "max_width": "",
-                            "max_height": "",
-                            "max_size": "",
-                            "mime_types": "",
-                            "allow_in_bindings": 0,
-                            "preview_size": "thumbnail"
                         }
                     ]
                 },
@@ -735,6 +655,50 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "key": "field_69952fcb297e7",
+                    "label": "Child Navigation",
+                    "name": "child_navigation",
+                    "aria-label": "",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "label-hidden",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "acfe_seamless_style": 1,
+                    "sub_fields": [
+                        {
+                            "key": "field_69952fcb297e8",
+                            "label": "Show Child Navigation",
+                            "name": "show_child_navigation",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 1,
+                            "allow_in_bindings": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": "",
+                            "ui": 1
+                        }
+                    ],
+                    "acfe_group_modal": 0,
+                    "acfe_group_modal_close": 0,
+                    "acfe_group_modal_button": "",
+                    "acfe_group_modal_size": "large"
                 }
             ]
         }
@@ -764,7 +728,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1770739646,
+    "modified": 1771384968,
     "acfe_categories": {
         "layout": "Layout"
     }

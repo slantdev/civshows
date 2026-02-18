@@ -1,9 +1,9 @@
 {
-    "key": "group_62a1ba6695675",
-    "title": "Settings - Shows Settings",
+    "key": "group_69953024c0607",
+    "title": "Settings - Page Settings",
     "fields": [
         {
-            "key": "field_62a1bb403e57e",
+            "key": "field_69953024c31cc",
             "label": "Page Header",
             "name": "",
             "aria-label": "",
@@ -21,7 +21,7 @@
             "selected": 0
         },
         {
-            "key": "field_62a1ba71ee99b",
+            "key": "field_69953024c31d5",
             "label": "Page Header Settings",
             "name": "page_header",
             "aria-label": "",
@@ -35,7 +35,7 @@
                 "id": ""
             },
             "clone": [
-                "group_62a17b306405b"
+                "group_69882a1e1fc41"
             ],
             "display": "seamless",
             "layout": "block",
@@ -48,7 +48,7 @@
             "acfe_clone_modal_size": "large"
         },
         {
-            "key": "field_653f06cf4a266",
+            "key": "field_69953024c31ea",
             "label": "Footer Settings",
             "name": "",
             "aria-label": "",
@@ -66,7 +66,7 @@
             "selected": 0
         },
         {
-            "key": "field_653f06f34a267",
+            "key": "field_69953024c31f1",
             "label": "Disable Subscribe",
             "name": "disable_subscribe",
             "aria-label": "",
@@ -91,7 +91,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "shows"
+                "value": "page"
             }
         ]
     ],
@@ -111,8 +111,5 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1771384937,
-    "acfe_categories": {
-        "pages": "Pages"
-    }
+    "modified": 1771384912
 }
