@@ -86,7 +86,7 @@ $parent_nav_label = $title_text;
 
 // Fetch Children Posts (Custom Post Type 'shows')
 $child_args = [
-  'post_type'      => 'pages',
+  'post_type'      => 'page',
   'post_parent'    => $parent_id,
   'posts_per_page' => -1,
   'orderby'        => 'menu_order',
