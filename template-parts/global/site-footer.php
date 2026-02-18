@@ -37,7 +37,7 @@ $footer_styles = "background-color: {$bg_color}; color: {$text_color};";
 
         <div class="footer-about-content pr-6 prose prose-sm max-w-none" style="color: inherit;">
           <?php if (!empty($footer_about['about_civ'])) : ?>
-            <div class="[&_h3]:text-civ-blue-500 [&_h3]:font-bold [&_h3]:text-base [&_h3]:mb-4 [&_h3]:leading-tight [&_p]:text-sm [&_p]:leading-relaxed [&_p]:text-slate-600">
+            <div class="[&_h3]:font-semibold [&_h3]:text-base [&_h3]:text-inherit [&_h3]:mb-4 [&_h3]:mt-0 [&_h3]:leading-tight [&_p]:text-sm [&_p]:leading-relaxed">
               <?php echo $footer_about['about_civ']; ?>
             </div>
           <?php endif; ?>
@@ -52,18 +52,19 @@ $footer_styles = "background-color: {$bg_color}; color: {$text_color};";
 
         <?php if (!empty($footer_nav['links'])) : ?>
           <ul class="space-y-2 text-sm">
-            <?php foreach ($footer_nav['links'] as $item) : 
+            <?php foreach ($footer_nav['links'] as $item) :
               $link = $item['link'] ?? [];
               if ($link) :
             ?>
-              <li>
-                <a href="<?php echo esc_url($link['url']); ?>" 
-                   target="<?php echo esc_attr($link['target'] ?: '_self'); ?>"
-                   class="hover:opacity-70 transition-colors">
-                  <?php echo esc_html($link['title']); ?>
-                </a>
-              </li>
-            <?php endif; endforeach; ?>
+                <li>
+                  <a href="<?php echo esc_url($link['url']); ?>"
+                    target="<?php echo esc_attr($link['target'] ?: '_self'); ?>"
+                    class="hover:opacity-70 transition-colors">
+                    <?php echo esc_html($link['title']); ?>
+                  </a>
+                </li>
+            <?php endif;
+            endforeach; ?>
           </ul>
         <?php endif; ?>
       </div>
@@ -106,18 +107,19 @@ $footer_styles = "background-color: {$bg_color}; color: {$text_color};";
 
         <?php if (!empty($footer_social['social_media'])) : ?>
           <div class="flex items-center gap-6">
-            <?php foreach ($footer_social['social_media'] as $social) : 
+            <?php foreach ($footer_social['social_media'] as $social) :
               $platform = $social['social_media'] ?? '';
               $link     = $social['link'] ?? [];
               if ($link && $platform) :
             ?>
-              <a href="<?php echo esc_url($link['url']); ?>" 
-                 target="<?php echo esc_attr($link['target'] ?: '_blank'); ?>"
-                 class="hover:opacity-70 transition-colors"
-                 title="<?php echo esc_attr($link['title'] ?: ucfirst($platform)); ?>">
-                <?php echo civ_get_social_icon($platform, 'w-7 h-7'); ?>
-              </a>
-            <?php endif; endforeach; ?>
+                <a href="<?php echo esc_url($link['url']); ?>"
+                  target="<?php echo esc_attr($link['target'] ?: '_blank'); ?>"
+                  class="hover:opacity-70 transition-colors"
+                  title="<?php echo esc_attr($link['title'] ?: ucfirst($platform)); ?>">
+                  <?php echo civ_get_social_icon($platform, 'w-7 h-7'); ?>
+                </a>
+            <?php endif;
+            endforeach; ?>
           </div>
         <?php endif; ?>
       </div>
@@ -126,28 +128,29 @@ $footer_styles = "background-color: {$bg_color}; color: {$text_color};";
   </div>
 
   <!-- Copyright -->
-  <?php 
+  <?php
   $site_name  = $footer_copyright['copyright_site_name'] ?? get_bloginfo('name');
   $copy_links = $footer_copyright['copyright_links'] ?? [];
   ?>
   <div class="py-4 w-full text-white" style="background-color: <?php echo esc_attr($copyright_bg_color); ?>;">
     <div class="container mx-auto px-4 xl:px-8 text-sm font-medium flex flex-col md:flex-row justify-between items-center gap-4">
       <div>
-        &copy; <?php echo date('Y'); ?>. <?php echo esc_html($site_name); ?>. All rights reserved.
+        &copy; <?php echo date('Y'); ?>. <?php echo esc_html($site_name); ?>
       </div>
 
       <?php if (!empty($copy_links)) : ?>
         <nav class="flex flex-wrap justify-center gap-x-6 gap-y-2">
-          <?php foreach ($copy_links as $item) : 
+          <?php foreach ($copy_links as $item) :
             $link = $item['link'] ?? [];
             if ($link) :
           ?>
-            <a href="<?php echo esc_url($link['url']); ?>" 
-               target="<?php echo esc_attr($link['target'] ?: '_self'); ?>"
-               class="hover:underline transition-all">
-              <?php echo esc_html($link['title']); ?>
-            </a>
-          <?php endif; endforeach; ?>
+              <a href="<?php echo esc_url($link['url']); ?>"
+                target="<?php echo esc_attr($link['target'] ?: '_self'); ?>"
+                class="hover:underline transition-all">
+                <?php echo esc_html($link['title']); ?>
+              </a>
+          <?php endif;
+          endforeach; ?>
         </nav>
       <?php endif; ?>
     </div>
