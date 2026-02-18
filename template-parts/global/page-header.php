@@ -78,9 +78,9 @@ $parent_permalink = get_permalink($parent_id);
 $parent_nav_label = $title_text;
 
 
-// Fetch Children Posts (Custom Post Type 'shows')
+// Fetch Children Posts
 $child_args = [
-  'post_type'      => 'shows',
+  'post_type'      => 'pages',
   'post_parent'    => $parent_id,
   'posts_per_page' => -1,
   'orderby'        => 'menu_order',
