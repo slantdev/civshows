@@ -32,7 +32,7 @@ $parent_terms = get_terms([
 </script>
 
 <section class="w-full bg-white py-16 md:py-24">
-  <div class="container mx-auto px-4">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
     <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
 
@@ -126,7 +126,7 @@ $parent_terms = get_terms([
         <?php wp_reset_postdata(); ?>
       <?php else : ?>
         <div class="col-span-full text-center py-12 text-gray-500">
-          <p class="text-xl">No exhibitors found.</p>
+          <p class="text-base md:text-xl xl:text-xl">No exhibitors found.</p>
         </div>
       <?php endif; ?>
 

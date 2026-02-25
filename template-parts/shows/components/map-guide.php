@@ -7,7 +7,7 @@
 ?>
 
 <section class="w-full bg-white py-16 md:py-24">
-  <div class="container mx-auto px-4 xl:px-8">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-8">
 
     <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 mb-20 lg:mb-32">
 

@@ -13,7 +13,7 @@
     <div class="absolute inset-0 bg-black/50"></div>
   </div>
 
-  <div class="container mx-auto px-4 md:px-8 relative z-10 max-w-6xl">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 md:px-8 relative z-10 max-w-6xl">
     <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16 xl:gap-24">
 
       <div class="w-full md:w-1/3 flex justify-center md:justify-start">

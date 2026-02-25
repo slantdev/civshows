@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.33.0] - 2026-02-26
+### Added
+- **Mobile Menu Integration:** 
+  - Created `template-parts/global/mobile-menu.php` for a slide-out navigation drawer.
+  - Implemented accordion-style submenus for Megamenus and Dropdowns.
+  - Integrated mobile menu drawer trigger and close logic in `src/main.js`.
+
+### Fixed
+- **Tailwind CSS v4 Configuration:** 
+  - Resolved "Unknown at rule @theme" error by removing redundant `postcss-nested` from `postcss.config.js`.
+  - Optimized the PostCSS pipeline for Tailwind v4 compatibility.
+
+### Changed
+- **Responsive Layout Enhancements:**
+  - Standardized container padding across multiple show components (`win.php`, `whats_on.php`, `visitor-information.php`, etc.) for better mobile and tablet display.
+  - Refactored site header and navigation logic into `src/main.js` for centralized asset management.
+
 ## [1.32.0] - 2026-02-17
 ### Added
 - **Social Media Icon Helper:** Added `civ_get_social_icon()` in `inc/template-tags.php` to provide consistent SVG icons for major platforms.

@@ -9,7 +9,7 @@
 <div class="w-full font-sans text-gray-900">
 
   <section class="w-full bg-white py-16 md:py-24">
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col lg:flex-row gap-12 lg:gap-20">
 
         <div class="w-full lg:w-1/2 order-2 lg:order-1">
@@ -68,7 +68,7 @@
   </section>
 
   <section class="w-full bg-gray-100 py-16 md:py-24">
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
         <div class="w-full lg:w-1/2 flex justify-center lg:justify-start">
@@ -96,7 +96,7 @@
   </section>
 
   <section class="w-full bg-white py-16 md:py-24">
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
         <div class="w-full lg:w-1/2 order-2 lg:order-1">
@@ -126,7 +126,7 @@
   </section>
 
   <section class="w-full bg-gray-100 py-16 md:py-24">
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
 
         <div class="w-full lg:w-1/2 flex justify-center lg:justify-start">
@@ -162,7 +162,7 @@
   </section>
 
   <section class="w-full bg-black py-12 md:py-20">
-    <div class="container mx-auto px-4">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
 
       <div class="bg-[#E68C3A] rounded-xl p-8 md:p-16 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16 shadow-lg">
 

@@ -1,6 +1,5 @@
-@import "tailwindcss/theme" layer(theme);
-@import "tailwindcss/utilities";
-@import "theme.css";
+@import "tailwindcss";
+@import "./theme.css";
 
 /* body {
   height: initial;

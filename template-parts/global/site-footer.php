@@ -22,7 +22,7 @@ $footer_styles = "background-color: {$bg_color}; color: {$text_color};";
 ?>
 
 <footer class="border-t border-gray-200" style="<?php echo esc_attr($footer_styles); ?>">
-  <div class="container mx-auto py-16 px-4 xl:px-8">
+  <div class="container mx-auto py-16 px-4 sm:px-6 lg:px-8 xl:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
 
       <!-- About -->
@@ -47,7 +47,7 @@ $footer_styles = "background-color: {$bg_color}; color: {$text_color};";
       <!-- Navigation -->
       <div class="lg:col-span-2">
         <?php if (!empty($footer_nav['heading'])) : ?>
-          <h3 class="font-bold text-lg mb-6" style="color: inherit; opacity: 0.8;"><?php echo esc_html($footer_nav['heading']); ?></h3>
+          <h3 class="font-bold text-base md:text-lg xl:text-lg mb-6" style="color: inherit; opacity: 0.8;"><?php echo esc_html($footer_nav['heading']); ?></h3>
         <?php endif; ?>
 
         <?php if (!empty($footer_nav['links'])) : ?>
@@ -72,7 +72,7 @@ $footer_styles = "background-color: {$bg_color}; color: {$text_color};";
       <!-- Contacts -->
       <div class="lg:col-span-2">
         <?php if (!empty($footer_contacts['heading'])) : ?>
-          <h3 class="font-bold text-lg mb-6" style="color: inherit; opacity: 0.8;"><?php echo esc_html($footer_contacts['heading']); ?></h3>
+          <h3 class="font-bold text-base md:text-lg xl:text-lg mb-6" style="color: inherit; opacity: 0.8;"><?php echo esc_html($footer_contacts['heading']); ?></h3>
         <?php endif; ?>
 
         <div class="space-y-4 text-sm">
@@ -95,7 +95,7 @@ $footer_styles = "background-color: {$bg_color}; color: {$text_color};";
       <!-- Search & Social -->
       <div class="lg:col-span-3">
         <?php if (!empty($footer_search['enable_search_form'])) : ?>
-          <h3 class="font-bold text-lg mb-6" style="color: inherit; opacity: 0.8;">Quick Search</h3>
+          <h3 class="font-bold text-base md:text-lg xl:text-lg mb-6" style="color: inherit; opacity: 0.8;">Quick Search</h3>
 
           <form role="search" method="get" class="flex gap-2 mb-8" action="<?php echo esc_url(home_url('/')); ?>">
             <input type="search" name="s" placeholder="Enter keyword" class="w-full bg-gray-100 border-none rounded px-4 py-2 text-sm text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-civ-blue-500">

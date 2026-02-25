@@ -113,7 +113,7 @@ $child_query = new WP_Query($child_args);
     <div class="absolute inset-0" style="background-color: <?php echo esc_attr($bg_overlay); ?>;"></div>
   </div>
 
-  <div class="container mx-auto px-4 pt-32 pb-24 md:pt-40 md:pb-32 xl:pb-16 xl:px-8 xl:pt-72 relative z-10">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 md:pt-40 md:pb-32 xl:pb-16 xl:px-8 xl:pt-72 relative z-10">
     <div class="flex flex-col md:flex-row items-end justify-between gap-12">
       <div class="w-full md:w-1/2">
         <?php if ($show_title): ?>
@@ -161,7 +161,7 @@ $child_query = new WP_Query($child_args);
 
   <?php if ($show_child_navigation): ?>
     <div class="w-full relative z-10">
-      <div class="container mx-auto px-4">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col md:flex-row items-stretch md:items-center">
 
           <div class="text-white font-bold uppercase py-4 px-4 tracking-wide md:w-auto shrink-0 grow flex items-center justify-center md:justify-start">

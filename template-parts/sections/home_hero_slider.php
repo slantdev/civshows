@@ -48,7 +48,7 @@ if (empty($slides)) return;
           </div>
           <div class="container mx-auto px-4 xl:px-8 relative z-10 grid grid-cols-1 md:grid-cols-12 h-full items-center">
             <div class="hidden md:block md:col-span-4 xl:col-span-5"></div>
-            <div class="col-span-1 md:col-span-8 xl:col-span-7 text-white pl-8 md:pl-16">
+            <div class="col-span-1 md:col-span-8 xl:col-span-7 text-white md:pl-16">
               <?php if ($title) : ?>
                 <h1 class="text-4xl md:text-6xl font-bold mb-4" data-swiper-parallax="-400"><?php echo esc_html($title); ?></h1>
               <?php endif; ?>

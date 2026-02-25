@@ -12,5 +12,6 @@
   <div id="page" class="site flex flex-col min-h-screen">
 
     <?php get_template_part('template-parts/global/site-header'); ?>
+    <?php get_template_part('template-parts/global/mobile-menu'); ?>
 
     <div id="content" class="site-content grow">

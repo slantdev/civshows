@@ -27,7 +27,7 @@ get_header();
     // Only show if Page Builder is empty (optional logic, but good for safety)
     if (! have_rows('section_builder') && get_the_content()) {
   ?>
-      <div class="container mx-auto px-4 py-12 prose lg:prose-xl">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 prose lg:prose-xl">
         <h1><?php the_title(); ?></h1>
         <?php the_content(); ?>
       </div>

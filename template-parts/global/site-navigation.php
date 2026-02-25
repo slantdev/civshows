@@ -55,7 +55,7 @@ $menu_items = $menu_data['menu_items'] ?? [];
                   <?php endif; ?>
                   <div class="absolute inset-0 bg-linear-to-t from-black/90 to-transparent"></div>
                   <div class="relative z-10 p-10 h-full flex flex-col justify-center text-white">
-                    <?php if ($heading) : ?><h2 class="text-3xl font-bold mb-4"><?php echo esc_html($heading); ?></h2><?php endif; ?>
+                    <?php if ($heading) : ?><h2 class="text-xl md:text-3xl xl:text-3xl font-bold mb-4"><?php echo esc_html($heading); ?></h2><?php endif; ?>
                     <?php if ($desc) : ?><p class="text-sm leading-relaxed text-gray-200"><?php echo esc_html($desc); ?></p><?php endif; ?>
                   </div>
                 </div>
@@ -73,8 +73,8 @@ $menu_items = $menu_data['menu_items'] ?? [];
                           class="megamenu-link flex items-center justify-between w-full py-4 pl-6 pr-4 border-b border-gray-100 text-sm font-bold uppercase text-gray-700 hover:text-civ-orange-500 hover:bg-gray-50 transition-all group/link"
                           data-target="<?php echo $target_id; ?>">
                           <?php echo esc_html($sub_link_title); ?>
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 opacity-0 group-hover/link:opacity-100 transition-opacity text-civ-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 opacity-0 group-hover/link:opacity-100 transition-opacity text-civ-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
                           </svg>
                         </a>
                       </li>
@@ -97,7 +97,7 @@ $menu_items = $menu_data['menu_items'] ?? [];
                       <?php if ($f_img) : ?>
                         <img src="<?php echo esc_url($f_img); ?>" alt="<?php echo esc_attr($f_title); ?>" class="w-full h-auto mb-6">
                       <?php endif; ?>
-                      <h3 class="text-2xl font-semibold text-civ-orange-500 mb-2"><?php echo esc_html($f_title); ?></h3>
+                      <h3 class="text-xl md:text-2xl xl:text-2xl font-semibold text-civ-orange-500 mb-2"><?php echo esc_html($f_title); ?></h3>
                       <p class="font-medium text-gray-900 mb-6"><?php echo esc_html($f_desc); ?></p>
                       <?php if ($f_link && !empty($f_link['url'])) : ?>
                         <a href="<?php echo esc_url($f_link['url']); ?>" class="inline-flex items-center font-medium text-black border-b border-black hover:text-civ-orange-500 hover:border-civ-orange-500 transition-colors">
@@ -148,10 +148,10 @@ $menu_items = $menu_data['menu_items'] ?? [];
 
   </nav>
 
-  <!-- Mobile Menu Toggle (Placeholder) -->
-  <div class="md:hidden">
-    <button class="text-gray-700 focus:outline-none">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <!-- Mobile Menu Toggle -->
+  <div class="md:hidden flex items-center">
+    <button id="mobile-menu-toggle" class="text-white focus:outline-none p-2" aria-label="Toggle Mobile Menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
     </button>
@@ -160,90 +160,6 @@ $menu_items = $menu_data['menu_items'] ?? [];
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-
-    // Mega Menu Logic
-    const links = document.querySelectorAll('.megamenu-link');
-    const contents = document.querySelectorAll('.megamenu-content');
-
-    links.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        // Find the specific container (right col) for this mega menu instance
-        // But since IDs are unique globally, we can just hide all contents?
-        // Wait, multiple mega menus might exist.
-        // The previous logic:
-        // contents.forEach(content => content.classList.add('hidden'));
-        // This hides content in ALL mega menus. That's fine if only one is open at a time (which is true for hover).
-        // But cleaner would be to find the closest wrapper.
-        // However, the original logic works fine as long as IDs are unique.
-
-        const targetId = link.getAttribute('data-target');
-        const targetContent = document.getElementById(targetId);
-
-        if (targetContent) {
-          // Hide only siblings in the same container?
-          // The simplest way that matches original logic:
-          // Hide ALL megamenu-contents.
-          // Since we are hovering, only one mega menu is visible anyway.
-          // Actually, if we have multiple mega menus, 'contents' selects ALL of them across the page.
-          // This might be slightly buggy if we hover one mega menu, it hides content in another (invisible) one.
-          // But effectively it doesn't matter.
-          // Better approach: Hide content *within the same container*.
-
-          const parentContainer = link.closest('.grid').querySelector('.col-span-5');
-          const siblingContents = parentContainer.querySelectorAll('.megamenu-content');
-          siblingContents.forEach(c => c.classList.add('hidden'));
-
-          targetContent.classList.remove('hidden');
-
-          // Handle active link state
-          const siblingLinks = link.closest('ul').querySelectorAll('.megamenu-link');
-          siblingLinks.forEach(l => l.classList.remove('text-civ-orange-500'));
-          link.classList.add('text-civ-orange-500');
-        }
-      });
-    });
-
-    // Scroll Logic
-    const header = document.getElementById('site-header');
-    const topbar = document.getElementById('topbar');
-    const mainHeader = document.getElementById('main-header');
-    const logoContainer = document.getElementById('logo-container');
-    const headerInner = document.getElementById('header-inner');
-    const mainNavWrapper = document.getElementById('main-nav-wrapper');
-
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        // Scrolled State
-        topbar.style.height = '0.5rem'; // Shrink topbar
-        mainHeader.classList.remove('bg-transparent');
-        mainHeader.classList.add('bg-black/80', 'backdrop-blur-sm', 'shadow-md');
-
-        logoContainer.classList.remove('w-24', 'h-24', 'md:w-32', 'md:h-32', 'xl:w-40', 'xl:h-40');
-        logoContainer.classList.add('w-16', 'h-16', 'md:w-20', 'md:h-20');
-
-        headerInner.classList.remove('py-4', 'xl:py-6');
-        headerInner.classList.add('py-2');
-
-        mainNavWrapper.classList.remove('-translate-y-1/2', 'border-b', 'border-white/40');
-
-      } else {
-        // Original State
-        topbar.style.height = ''; // Revert to CSS default (h-10)
-        mainHeader.classList.add('bg-transparent');
-        mainHeader.classList.remove('bg-black/90', 'backdrop-blur-sm', 'shadow-md');
-
-        logoContainer.classList.add('w-24', 'h-24', 'md:w-32', 'md:h-32', 'xl:w-40', 'xl:h-40');
-        logoContainer.classList.remove('w-16', 'h-16', 'md:w-20', 'md:h-20');
-
-        headerInner.classList.add('py-4', 'xl:py-6');
-        headerInner.classList.remove('py-2');
-
-        mainNavWrapper.classList.add('-translate-y-1/2', 'border-b', 'border-white/40');
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check on load
-  });
+  // Note: Most logic moved to main.js, keeping only theme-specific inline interactions if required.
+  // Actually, I'll move this script to main.js to follow the project standards.
 </script>

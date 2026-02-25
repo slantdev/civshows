@@ -11,7 +11,7 @@ $gallery_id_prefix = 'gallery-' . get_the_ID() . '-' . $gallery_count;
 
 ?>
 <section class="py-24 bg-white">
-  <div class="container mx-auto px-4 max-w-7xl">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
 
     <h2 class="text-3xl md:text-4xl font-semibold text-civ-blue-900 mb-10">
       Featured Gallery:

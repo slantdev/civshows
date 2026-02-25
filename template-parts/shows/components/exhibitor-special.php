@@ -7,7 +7,7 @@
 ?>
 
 <section class="w-full bg-civ-blue-500 py-16 md:py-24">
-  <div class="container mx-auto px-4 max-w-5xl">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
 
     <div class="swiper specials-slider rounded-xl overflow-hidden shadow-2xl relative group">
 
