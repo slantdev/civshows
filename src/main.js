@@ -423,33 +423,32 @@ const initNavigation = () => {
   // --- 1. Scroll Effect ---
   const handleScroll = () => {
     if (window.scrollY > 50) {
-      topbar.style.height = '0.5rem';
+      // Scrolled State
+      topbar.style.height = '0.5rem'; // Shrink topbar
       mainHeader.classList.remove('bg-transparent');
-      mainHeader.classList.add('bg-black/90', 'backdrop-blur-sm', 'shadow-md');
-      
-      logoContainer.classList.remove('w-24', 'h-24', 'md:w-32', 'md:h-32', 'xl:w-40', 'xl:h-40');
-      logoContainer.classList.add('w-16', 'h-16', 'md:w-20', 'md:h-20');
-      
-      headerInner.classList.remove('py-4', 'xl:py-6');
-      headerInner.classList.add('py-2');
-      
-      if (mainNavWrapper) {
-        mainNavWrapper.classList.remove('-translate-y-1/2', 'border-b', 'border-white/40');
-      }
+      mainHeader.classList.add('bg-black/80', 'backdrop-blur-sm', 'shadow-md');
+
+      logoContainer.classList.remove('w-20', 'h-20', 'md:w-32', 'md:h-32', 'xl:w-40', 'xl:h-40');
+      logoContainer.classList.add('w-16', 'h-16', 'md:w-20', 'md:h-20', 'lg:w-24', 'lg:h-24');
+
+      headerInner.classList.remove('md:py-4', 'xl:py-6');
+      //headerInner.classList.add();
+
+      mainNavWrapper.classList.remove('lg:-translate-y-1/2', 'lg:border-b', 'lg:border-white/20');
+
     } else {
-      topbar.style.height = '';
+      // Original State
+      topbar.style.height = ''; // Revert to CSS default (h-10)
       mainHeader.classList.add('bg-transparent');
       mainHeader.classList.remove('bg-black/90', 'backdrop-blur-sm', 'shadow-md');
-      
-      logoContainer.classList.add('w-24', 'h-24', 'md:w-32', 'md:h-32', 'xl:w-40', 'xl:h-40');
-      logoContainer.classList.remove('w-16', 'h-16', 'md:w-20', 'md:h-20');
-      
-      headerInner.classList.add('py-4', 'xl:py-6');
-      headerInner.classList.remove('py-2');
-      
-      if (mainNavWrapper) {
-        mainNavWrapper.classList.add('-translate-y-1/2', 'border-b', 'border-white/40');
-      }
+
+      logoContainer.classList.add('w-20', 'h-20', 'md:w-32', 'md:h-32', 'xl:w-40', 'xl:h-40');
+      logoContainer.classList.remove('w-16', 'h-16', 'md:w-20', 'md:h-20', 'lg:w-24', 'lg:h-24');
+
+      headerInner.classList.add('md:py-4', 'xl:py-6');
+      //headerInner.classList.remove();
+
+      mainNavWrapper.classList.add('lg:-translate-y-1/2', 'lg:border-b', 'lg:border-white/20');
     }
   };
 

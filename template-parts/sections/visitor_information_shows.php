@@ -47,7 +47,7 @@ $components = $right_column['components'] ?? [];
   <!-- Right Column: Components -->
   <div class="w-full lg:w-7/12 relative">
 
-    <div class="section-container relative z-10 px-6 md:px-12 lg:px-20 <?php echo esc_attr($section_container_class); ?>">
+    <div class="section-container relative z-10 px-6 lg:px-12 xl:px-20 <?php echo esc_attr($section_container_class); ?>">
       <div class="section-content">
         <?php get_template_part('template-parts/components/components', '', array('field' => $components)); ?>
       </div>

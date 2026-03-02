@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.34.0] - 2026-03-02
+### Changed
+- **Design System & Layout Refinements:**
+  - Header & Navigation: Extended transition duration to `1000ms`, adjusted sticky header scroll states (shrinking logo, topbar height), and refined responsive padding and gaps in `site-header.php` and `site-navigation.php`.
+  - Footer: Adjusted grid columns layout and spacing for improved tablet viewing, updated `site-footer.php`.
+  - Mobile Menu: Increased close button margin, decreased menu icon stroke width, and integrated dynamic social media links using `civ_get_social_icon`.
+  - Page Headers & Components: Adjusted vertical padding (`pt`/`pb`), margins, and gap sizes in `page-header.php` and `visitor_information_shows.php` for better responsive harmony.
+  - Typography: Refined extreme sizes (`default`, `4xl`, `5xl`) in `heading.php` to use `rem` values instead of arbitrary text sizes.
+
 ## [1.33.0] - 2026-02-26
 ### Added
 - **Mobile Menu Integration:** 
