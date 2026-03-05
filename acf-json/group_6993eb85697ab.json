@@ -203,6 +203,58 @@
                             "acfe_clone_modal_size": "large"
                         }
                     ]
+                },
+                {
+                    "key": "field_69a9c6ebcf61c",
+                    "label": "Shows Settings",
+                    "name": "shows_settings",
+                    "aria-label": "",
+                    "type": "group",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "acfe_seamless_style": 1,
+                    "sub_fields": [
+                        {
+                            "key": "field_69a9c73ecf61d",
+                            "label": "Event Category",
+                            "name": "event_category",
+                            "aria-label": "",
+                            "type": "taxonomy",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "taxonomy": "tribe_events_cat",
+                            "add_term": 0,
+                            "save_terms": 0,
+                            "load_terms": 0,
+                            "return_format": "object",
+                            "field_type": "checkbox",
+                            "acfe_bidirectional": {
+                                "acfe_bidirectional_enabled": "0"
+                            },
+                            "allow_in_bindings": 0,
+                            "bidirectional": 0,
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "bidirectional_target": []
+                        }
+                    ],
+                    "acfe_group_modal": 0,
+                    "acfe_group_modal_close": 0,
+                    "acfe_group_modal_button": "",
+                    "acfe_group_modal_size": "large"
                 }
             ],
             "acfe_group_modal": 0,
@@ -283,7 +335,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1771303446,
+    "modified": 1772734744,
     "acfe_categories": {
         "layout": "Layout"
     }

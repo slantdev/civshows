@@ -85,67 +85,36 @@ $wo_image   = $intro['image'] ?? [];
 
       </div>
 
-      <!-- Events List (Placeholder/Hardcoded for now as per design) -->
-      <div class="space-y-6 relative z-30">
+      <!-- Events List -->
+      <div class="events-list-wrapper mt-8 relative z-30">
+        <?php
+        $shows_settings = $whats_on['shows_settings'] ?? [];
+        $event_category = $shows_settings['event_category'] ?? '';
 
-        <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex flex-col md:flex-row gap-6 md:gap-8 shadow-sm hover:shadow-md transition-shadow">
-          <div class="w-full md:w-1/3 shrink-0 relative rounded-md overflow-hidden aspect-video md:aspect-auto">
-            <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/04.jpg" alt="Event Image" class="w-full h-full object-cover">
-            <div class="absolute bottom-0 left-4 bg-white text-civ-blue-600 font-bold text-[10px] sm:text-xs uppercase py-2 px-4 rounded-t-md">
-              18 October 2025: 3:00 PM
-            </div>
-          </div>
+        $category_slug = '';
+        if (!empty($event_category)) {
+            if (is_object($event_category)) {
+                $category_slug = $event_category->slug ?? '';
+            } elseif (is_array($event_category) && !empty($event_category['slug'])) {
+                $category_slug = $event_category['slug'];
+            } elseif (is_numeric($event_category)) {
+                $term = get_term($event_category);
+                if ($term && !is_wp_error($term)) {
+                    $category_slug = $term->slug;
+                }
+            } elseif (is_string($event_category)) {
+                $category_slug = $event_category;
+            }
+        }
 
-          <div class="flex flex-col justify-center w-full">
-            <h3 class="text-xl xl:text-3xl font-bold text-black mb-3 leading-tight">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </h3>
-            <p class="text-gray-600 text-sm leading-relaxed mb-6">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-            </p>
-
-            <div class="flex flex-wrap gap-3">
-              <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold uppercase text-xs py-2 px-6 rounded-sm transition-colors shadow-sm">
-                Register
-              </button>
-              <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold uppercase text-xs py-2 px-6 rounded-sm transition-colors flex items-center gap-2 shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                Add iCal or Outlook
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Additional placeholder items... -->
-        <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex flex-col md:flex-row gap-6 md:gap-8 shadow-sm hover:shadow-md transition-shadow">
-          <div class="w-full md:w-1/3 shrink-0 relative rounded-md overflow-hidden aspect-video md:aspect-auto">
-            <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/03-scaled.jpg" alt="Event Image" class="w-full h-full object-cover">
-            <div class="absolute bottom-0 left-4 bg-white text-civ-blue-600 font-bold text-[10px] sm:text-xs uppercase py-2 px-4 rounded-t-md">
-              18 October 2025: 5:00 PM
-            </div>
-          </div>
-
-          <div class="flex flex-col justify-center w-full">
-            <h3 class="text-xl xl:text-3xl font-bold text-black mb-3 leading-tight">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </h3>
-            <p class="text-gray-600 text-sm leading-relaxed mb-6">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-            </p>
-
-            <div class="flex flex-wrap gap-3">
-              <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold uppercase text-xs py-2 px-6 rounded-sm transition-colors flex items-center gap-2 shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                Add iCal or Outlook
-              </button>
-            </div>
-          </div>
-        </div>
-
+        if (!empty($category_slug)) {
+            // Replaced [civ_shows] with [civ_events] since that was the built shortcode. Let me know if you strictly meant "shows"!
+            echo do_shortcode('[civ_events category="' . esc_attr($category_slug) . '"]');
+        } else {
+            // Fallback shortcode if no category is picked
+            echo do_shortcode('[civ_events]');
+        }
+        ?>
       </div>
 
     </div>
