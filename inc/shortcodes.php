@@ -18,7 +18,7 @@ add_filter('tribe_events_views_v2_assets_should_enqueue_frontend', function($sho
         $has_shortcode_in_meta = $wpdb->get_var( $wpdb->prepare(
             "SELECT COUNT(*) FROM {$wpdb->postmeta} WHERE post_id = %d AND meta_value LIKE %s",
             $post->ID,
-            '%[civ_events]%'
+            '%[civ_events%'
         ) );
 
         if ( $has_shortcode_in_meta > 0 ) {
