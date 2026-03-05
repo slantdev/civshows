@@ -32,9 +32,11 @@ $args = array(
   'post_status'    => 'publish',
 );
 
+$shows_ids = [];
 if (!empty($selected_shows)) {
   $meta_query = array('relation' => 'OR');
   foreach ($selected_shows as $show) {
+    $shows_ids[] = $show->ID;
     // ACF relationship fields store data as serialized arrays, so we use LIKE
     $meta_query[] = array(
       'key'     => 'exhibitor_shows',
@@ -44,6 +46,7 @@ if (!empty($selected_shows)) {
   }
   $args['meta_query'] = $meta_query;
 }
+$shows_json = esc_attr(json_encode($shows_ids));
 
 $exhibitors_query = new WP_Query($args);
 
@@ -175,7 +178,7 @@ $parent_terms = get_terms([
       </div>
 
       <!-- Results Grid -->
-      <div id="exhibitors-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+      <div id="exhibitors-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16" data-shows="<?php echo $shows_json; ?>">
         <?php if ($exhibitors_query->have_posts()) : ?>
           <?php while ($exhibitors_query->have_posts()) : $exhibitors_query->the_post(); ?>
             <?php get_template_part('template-parts/shows/components/card', 'exhibitor'); ?>

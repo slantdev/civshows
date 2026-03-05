@@ -39,6 +39,8 @@ function civ_load_more_exhibitors()
   $search = isset($_POST['search']) ? sanitize_text_field($_POST['search']) : '';
   $is_new = isset($_POST['is_new']) && $_POST['is_new'] === 'true';
   $has_special = isset($_POST['has_special']) && $_POST['has_special'] === 'true';
+  $shows_post = isset($_POST['shows']) ? stripslashes($_POST['shows']) : '';
+  $shows_array = json_decode($shows_post, true);
 
   $args = array(
     'post_type'      => 'exhibitors',
@@ -68,7 +70,7 @@ function civ_load_more_exhibitors()
   }
 
   // Meta Query for Checkboxes (ACF field 'exhibitor_tags')
-  $meta_query = array();
+  $meta_query = array('relation' => 'AND');
 
   if ($is_new) {
     $meta_query[] = array(
@@ -84,6 +86,19 @@ function civ_load_more_exhibitors()
       'value'   => '"specials"', // Serialized ACF checkbox value
       'compare' => 'LIKE'
     );
+  }
+
+  // Shows Filter
+  if (!empty($shows_array) && is_array($shows_array)) {
+    $shows_meta = array('relation' => 'OR');
+    foreach ($shows_array as $show_id) {
+      $shows_meta[] = array(
+        'key'     => 'exhibitor_shows',
+        'value'   => '"' . intval($show_id) . '"',
+        'compare' => 'LIKE'
+      );
+    }
+    $meta_query[] = $shows_meta;
   }
 
   if (!empty($meta_query)) {

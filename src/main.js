@@ -328,6 +328,7 @@ const initExhibitorFilters = () => {
     formData.append('search', searchInput ? searchInput.value : '');
     formData.append('is_new', filterNew && filterNew.checked ? 'true' : 'false');
     formData.append('has_special', filterSpecial && filterSpecial.checked ? 'true' : 'false');
+    formData.append('shows', grid ? grid.getAttribute('data-shows') : '');
 
     if (loadMoreBtn) {
       loadMoreBtn.textContent = 'Loading...';
