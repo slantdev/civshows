@@ -24,7 +24,7 @@
 		href="<?php echo esc_url( $event->permalink ); ?>"
 		title="<?php echo esc_attr( $event->title ); ?>"
 		rel="bookmark"
-		class="hover:underline font-bold!"
+		class="hover:underline! font-bold!"
 	>
 		<?php
 		// phpcs:ignore

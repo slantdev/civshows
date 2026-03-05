@@ -43,14 +43,13 @@ $event_classes = tribe_get_post_class( [ 'tribe-events-calendar-list__event', 't
 					href="<?php echo esc_url( $event->permalink ); ?>"
 					title="<?php echo esc_attr( $event->title ); ?>"
 					rel="bookmark"
-					class="inline-block bg-civ-orange-500! hover:bg-civ-orange-600! text-white! font-bold uppercase text-xs py-2! px-6! rounded-sm transition-colors shadow-sm"
+					class="inline-block bg-civ-orange-500! hover:bg-civ-orange-600! text-white! font-bold! uppercase! text-xs! py-2! px-6! rounded-sm! transition-colors shadow-sm"
 				>
 				More Details
 				</a>			
 			</div>
 		</div>
 	</div>
-
 
 </li>
 

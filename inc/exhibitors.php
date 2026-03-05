@@ -215,6 +215,15 @@ function civ_exhibitor_process_csv()
   $success_count = 0;
   set_time_limit(300);
 
+  // Pre-fetch all shows
+  $all_shows = get_posts([
+    'post_type'      => 'shows',
+    'post_parent'    => 0,
+    'posts_per_page' => -1,
+    'post_status'    => 'publish',
+  ]);
+  $show_columns = ['Border', 'Melbourne', 'Bendigo', 'Geelong', 'Victorian', 'Cranbourne'];
+
   while (($data = fgetcsv($handle, 0, ";")) !== FALSE) {
     $row = array_combine($headers, array_pad($data, count($headers), ''));
     $title = $row['Exhibitor_Name'] ?? '';
@@ -237,17 +246,36 @@ function civ_exhibitor_process_csv()
     }
     wp_set_object_terms($post_id, array_unique($term_ids), 'exhibitor-category');
 
+    // Shows Mapping
+    $show_ids_to_add = [];
+    foreach ($show_columns as $col) {
+      if (isset($row[$col]) && $row[$col] == '1') {
+        foreach ($all_shows as $show) {
+          if (stripos($show->post_title, $col) !== false) {
+            $show_ids_to_add[] = $show->ID;
+            break;
+          }
+        }
+      }
+    }
+
     // ACF Updates
     if (function_exists('update_field')) {
       $logo_id = ($logo_url = trim($row['Logo_URL'] ?? '')) ? civ_exhibitor_sideload_logo($logo_url, $post_id) : null;
       update_field('exhibitor_identity', ['exhibitor_id' => $csv_id, 'exhibitor_logo' => $logo_id], $post_id);
-      update_field('exhibitor_description', ['exhibitor_bio' => $row['Bio'] ?? '', 'exhibitor_headline' => $row['Exhibitor_Headline'] ?? ''], $post_id);
+      update_field('exhibitor_description', ['exhibitor_bio' => $row['Company_Bio'] ?? '', 'exhibitor_headline' => $row['Exhibitor_Headline'] ?? ''], $post_id);
       update_field('exhibitor_contact', [
         'phone_number'   => $row['Phone'] ?? '',
         'website_link'   => civ_exhibitor_format_url($row['Website'] ?? ''),
         'instagram_link' => civ_exhibitor_format_url($row['Instagram'] ?? ''),
         'facebook_link'  => civ_exhibitor_format_url($row['Facebook'] ?? ''),
       ], $post_id);
+
+      if (!empty($show_ids_to_add)) {
+          update_field('exhibitor_shows', $show_ids_to_add, $post_id);
+      } else {
+          update_field('exhibitor_shows', [], $post_id);
+      }
     }
     $success_count++;
   }
