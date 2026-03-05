@@ -18,6 +18,8 @@ $section_class   = 'section-exhibitors-shows-' . uniqid();
 $exhibitors = get_sub_field('exhibitors');
 $intro      = $exhibitors['intro'] ?? [];
 $ex_image   = $intro['image'] ?? [];
+$list_settings = $exhibitors['exhibitor_list_settings'] ?? [];
+$selected_shows = $list_settings['exhibitor_shows'] ?? [];
 
 //preint_r($exhibitors);
 
@@ -29,6 +31,20 @@ $args = array(
   'order'          => 'ASC',
   'post_status'    => 'publish',
 );
+
+if (!empty($selected_shows)) {
+  $meta_query = array('relation' => 'OR');
+  foreach ($selected_shows as $show) {
+    // ACF relationship fields store data as serialized arrays, so we use LIKE
+    $meta_query[] = array(
+      'key'     => 'exhibitor_shows',
+      'value'   => '"' . $show->ID . '"',
+      'compare' => 'LIKE'
+    );
+  }
+  $args['meta_query'] = $meta_query;
+}
+
 $exhibitors_query = new WP_Query($args);
 
 // Fetch Categories for Filter (Top Level Only)
