@@ -15,12 +15,10 @@ get_header();
   while (have_posts()) :
     the_post();
 
-    get_template_part('template-parts/shows/components/page-header');
+    get_template_part('template-parts/global/page-header-shows');
 
     // Render the Page Builder
     civ_render_page_builder();
-
-    //get_template_part('template-parts/shows/content', 'single');
 
     // Fallback for default content editor
     // Only show if Page Builder is empty (optional logic, but good for safety)

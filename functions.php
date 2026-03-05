@@ -39,3 +39,8 @@ require get_theme_file_path('/inc/gallery.php');
  * Load Exhibitors Import.
  */
 require get_theme_file_path('/inc/exhibitors.php');
+
+/**
+ * Load Custom Shortcodes.
+ */
+require get_theme_file_path('/inc/shortcodes.php');
