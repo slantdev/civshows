@@ -32,18 +32,18 @@ $has_breadcrumbs  = ! empty( $breadcrumbs );
 <header <?php tec_classes( $header_classes ); ?>>
 	<?php
 	// Primary title should always render first (H1).
-	if ( $has_header_title ) {
-		$this->template( 'components/header-title' );
-	} else {
-		$this->template( 'components/content-title' );
-	}
+	// if ( $has_header_title ) {
+	// 	$this->template( 'components/header-title' );
+	// } else {
+	// 	$this->template( 'components/content-title' );
+	// }
 
 	// Navigation should render directly after the primary title.
-	if ( $has_backlink ) {
-		$this->template( 'components/backlink' );
-	} elseif ( $has_breadcrumbs ) {
-		$this->template( 'components/breadcrumbs' );
-	}
+	// if ( $has_backlink ) {
+	// 	$this->template( 'components/backlink' );
+	// } elseif ( $has_breadcrumbs ) {
+	// 	$this->template( 'components/breadcrumbs' );
+	// }
 
 	// If header-title was the primary title, render content-title as a secondary title.
 	if ( $has_header_title ) {

@@ -19,12 +19,12 @@
  * @see tribe_get_event() For the format of the event object.
  */
 ?>
-<h4 class="tribe-events-calendar-list__event-title tribe-common-h6 tribe-common-h4--min-medium">
+<h4 class="text-xl xl:text-3xl font-bold! text-black mb-3! leading-tight">
 	<a
 		href="<?php echo esc_url( $event->permalink ); ?>"
 		title="<?php echo esc_attr( $event->title ); ?>"
 		rel="bookmark"
-		class="tribe-events-calendar-list__event-title-link tribe-common-anchor-thin"
+		class="hover:underline font-bold!"
 	>
 		<?php
 		// phpcs:ignore

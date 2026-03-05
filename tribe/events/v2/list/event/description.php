@@ -20,6 +20,6 @@ if ( empty( (string) $event->excerpt ) ) {
 	return;
 }
 ?>
-<div class="tribe-events-calendar-list__event-description tribe-common-b2 tribe-common-a11y-hidden">
+<div class="text-gray-600 text-sm leading-relaxed mb-6!">
 	<?php echo (string) $event->excerpt; ?>
 </div>

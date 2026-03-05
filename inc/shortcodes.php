@@ -39,6 +39,11 @@ add_shortcode('civ_events', function($atts) {
         'category' => '',
     ], $atts, 'civ_events');
 
+    // Return a placeholder in the admin area
+    if ( is_admin() ) {
+        return '<div style="padding: 20px; background: #f0f0f1; border: 1px dashed #8c8f94; text-align: center; font-weight: bold; color: #1d2327;">[civ_events] - Events List View</div>';
+    }
+
     // Temporarily inject category into request to trick TEC V2 Context
     $original_request = $_REQUEST;
     if ( ! empty( $atts['category'] ) ) {

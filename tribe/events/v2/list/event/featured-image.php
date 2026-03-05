@@ -24,9 +24,9 @@ if ( ! $event->thumbnail->exists ) {
 }
 
 ?>
-<div class="tribe-events-calendar-list__event-featured-image-wrapper tribe-common-g-col">
+<div class="w-full shrink-0 rounded-md overflow-hidden aspect-video md:aspect-auto">
 	<img
-		class="tribe-events-calendar-list__event-featured-image"
+		class="w-full h-full object-cover"
 		src="<?php echo esc_url( $event->thumbnail->full->url ); ?>"
 		<?php if ( ! empty( $event->thumbnail->srcset ) ) : ?>
 			srcset="<?php echo esc_attr( $event->thumbnail->srcset ); ?>"
@@ -39,7 +39,6 @@ if ( ! $event->thumbnail->exists ) {
 		<?php if ( ! empty( $event->thumbnail->title ) ) : ?>
 			title="<?php echo esc_attr( $event->thumbnail->title ); ?>"
 		<?php endif; ?>
-		class="tribe-events-calendar-list__event-featured-image"
 		<?php if ( ! empty( $event->thumbnail->full->width ) && ! empty( $event->thumbnail->full->height ) ) : ?>
 			width="<?php echo esc_attr( $event->thumbnail->full->width ); ?>"
 			height="<?php echo esc_attr( $event->thumbnail->full->height ); ?>"

@@ -21,28 +21,36 @@ $container_classes['tribe-events-calendar-list__event-row--featured'] = $event->
 
 $event_classes = tribe_get_post_class( [ 'tribe-events-calendar-list__event', 'tribe-common-g-row', 'tribe-common-g-row--gutters' ], $event->ID );
 ?>
+
 <li <?php tec_classes( $container_classes ); ?>>
 
-	<?php $this->template( 'list/event/date-tag', [ 'event' => $event ] ); ?>
-
-	<div class="tribe-events-calendar-list__event-wrapper tribe-common-g-col">
-		<article <?php tec_classes( $event_classes ); ?>>
+	<div class="bg-white border! border-gray-200! rounded-lg p-4! md:p-6! flex flex-col md:flex-row gap-6 md:gap-8 shadow-sm hover:shadow-md transition-shadow">
+		<div class="w-full md:w-1/3 shrink-0 relative rounded-md overflow-hidden aspect-video md:aspect-auto">
 			<?php $this->template( 'list/event/featured-image', [ 'event' => $event ] ); ?>
-
-			<div class="tribe-events-calendar-list__event-details tribe-common-g-col">
-
-				<header class="tribe-events-calendar-list__event-header">
-					<?php $this->template( 'list/event/title', [ 'event' => $event ] ); ?>
-					<?php $this->template( 'list/event/date', [ 'event' => $event ] ); ?>
-					<?php $this->template( 'list/event/venue', [ 'event' => $event ] ); ?>
-					<?php $this->template( 'list/event/category', [ 'event' => $event ] ); ?>
-				</header>
-
-				<?php $this->template( 'list/event/description', [ 'event' => $event ] ); ?>
-				<?php $this->template( 'list/event/cost', [ 'event' => $event ] ); ?>
-
+			<div class="absolute bottom-0 left-4 bg-white text-civ-blue-600 font-bold text-[10px] sm:text-xs uppercase py-2! px-4! rounded-t-md">
+				<?php $this->template( 'list/event/date', [ 'event' => $event ] ); ?>
 			</div>
-		</article>
+		</div>
+
+		<div class="flex flex-col justify-center w-full">
+
+			<?php $this->template( 'list/event/title', [ 'event' => $event ] ); ?>
+
+			<?php $this->template( 'list/event/description', [ 'event' => $event ] ); ?>
+
+			<div class="flex flex-wrap gap-3">
+				<a
+					href="<?php echo esc_url( $event->permalink ); ?>"
+					title="<?php echo esc_attr( $event->title ); ?>"
+					rel="bookmark"
+					class="inline-block bg-civ-orange-500! hover:bg-civ-orange-600! text-white! font-bold uppercase text-xs py-2! px-6! rounded-sm transition-colors shadow-sm"
+				>
+				More Details
+				</a>			
+			</div>
+		</div>
 	</div>
 
+
 </li>
+
