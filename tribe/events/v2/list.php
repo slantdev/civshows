@@ -56,7 +56,6 @@ if ( empty( $disable_event_search ) ) {
 		<?php $this->template( 'components/header' ); ?>
 
 		<?php $this->template( 'components/filter-bar' ); ?>
-
 		<ul
 			class="tribe-events-calendar-list"
 			aria-label="

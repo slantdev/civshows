@@ -55,7 +55,7 @@ $has_breadcrumbs  = ! empty( $breadcrumbs );
 
 	<?php $this->template( 'components/messages', [ 'classes' => [ 'tribe-events-header__messages--mobile' ] ] ); ?>
 
-	<?php $this->template( 'components/events-bar' ); ?>
+	<!-- <?php $this->template( 'components/events-bar' ); ?> -->
 
 	<?php $this->template( [ $this->get_view_slug(), 'top-bar' ] ); ?>
 </header>
