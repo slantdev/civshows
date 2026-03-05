@@ -5,3 +5,10 @@ hot
 *copy*
 .vite
 *.log
+node_modules/
+/assets/dist/
+/.vscode/
+.DS_Store
+npm-debug.log*
+yarn-error.log*
+plugins/
