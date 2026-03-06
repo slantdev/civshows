@@ -77,9 +77,9 @@ $footer_styles = "background-color: {$bg_color}; color: {$text_color};";
 
         <div class="space-y-4 text-sm">
           <?php if (!empty($footer_contacts['address'])) : ?>
-            <p class="leading-relaxed">
-              <?php echo nl2br(esc_html($footer_contacts['address'])); ?>
-            </p>
+            <div class="leading-relaxed">
+              <?php echo $footer_contacts['address']; ?>
+            </div>
           <?php endif; ?>
 
           <?php if (!empty($footer_contacts['phone'])) : ?>
