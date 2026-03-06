@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.38.0] - 2026-03-06
+
+### Fixed
+
+- **Events List:** Disabled URL history manipulation during Tribe Events Calendar AJAX pagination by setting `data-view-manage-url` to 0, ensuring page refreshes maintain the expected context.
+
 ## [1.37.0] - 2026-03-06
 
 ### Added
