@@ -16,15 +16,15 @@
  * @see tribe_get_event() For the format of the event object.
  */
 
-$container_classes = [ 'tribe-common-g-row', 'tribe-events-calendar-list__event-row' ];
+$container_classes = [];
 $container_classes['tribe-events-calendar-list__event-row--featured'] = $event->featured;
 
 $event_classes = tribe_get_post_class( [ 'tribe-events-calendar-list__event', 'tribe-common-g-row', 'tribe-common-g-row--gutters' ], $event->ID );
 ?>
 
-<li <?php tec_classes( $container_classes ); ?>>
+<li>
 
-	<div class="bg-white border! border-gray-200! rounded-lg p-4! md:p-6! flex flex-col md:flex-row gap-6 md:gap-8 shadow-sm hover:shadow-md transition-shadow">
+	<div class="bg-white border! border-gray-200! rounded-lg p-4! md:p-6! flex flex-col md:flex-row gap-6 md:gap-8 shadow-sm hover:shadow-md transition-shadow my-6! xl:my-8!">
 		<div class="w-full md:w-1/3 shrink-0 relative rounded-md overflow-hidden aspect-video md:aspect-auto">
 			<?php $this->template( 'list/event/featured-image', [ 'event' => $event ] ); ?>
 			<div class="absolute bottom-0 left-4 bg-white text-civ-blue-600 font-bold text-[10px] sm:text-xs uppercase py-2! px-4! rounded-t-md">

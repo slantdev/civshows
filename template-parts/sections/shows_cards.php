@@ -88,17 +88,6 @@ $cards_repeater    = $shows_cards_group['cards_repeater'] ?? [];
 
       <?php endforeach; ?>
 
-      <!-- Hardcoded Last Card -->
-      <div class="relative aspect-5/4 rounded-2xl overflow-hidden shadow-md flex items-center justify-center p-6 text-center">
-        <div class="absolute inset-0 bg-[linear-gradient(135deg,var(--color-civ-green-500)_50%,var(--color-civ-blue-600)_50%)]"></div>
-
-        <div class="relative z-10 text-white">
-          <h3 class="text-3xl md:text-4xl font-semibold uppercase leading-none drop-shadow-md">
-            New Show<br>Coming Soon
-          </h3>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
