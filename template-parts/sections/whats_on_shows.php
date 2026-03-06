@@ -45,26 +45,6 @@ $wo_image   = $intro['image'] ?? [];
             </div>
           <?php endif; ?>
 
-          <div class="flex items-center gap-4">
-            <button class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-400 hover:border-civ-orange-500 hover:text-civ-orange-500 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-
-            <button class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-civ-blue-500 hover:border-civ-orange-500 hover:text-civ-orange-500 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-
-            <div class="flex items-center gap-2 cursor-pointer group ml-4">
-              <span class="font-bold text-black uppercase text-sm group-hover:text-civ-orange-500 transition-colors">Thursday 18th October</span>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-civ-blue-500 group-hover:text-civ-orange-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </div>
         </div>
 
         <?php
@@ -93,26 +73,26 @@ $wo_image   = $intro['image'] ?? [];
 
         $category_slug = '';
         if (!empty($event_category)) {
-            if (is_object($event_category)) {
-                $category_slug = $event_category->slug ?? '';
-            } elseif (is_array($event_category) && !empty($event_category['slug'])) {
-                $category_slug = $event_category['slug'];
-            } elseif (is_numeric($event_category)) {
-                $term = get_term($event_category);
-                if ($term && !is_wp_error($term)) {
-                    $category_slug = $term->slug;
-                }
-            } elseif (is_string($event_category)) {
-                $category_slug = $event_category;
+          if (is_object($event_category)) {
+            $category_slug = $event_category->slug ?? '';
+          } elseif (is_array($event_category) && !empty($event_category['slug'])) {
+            $category_slug = $event_category['slug'];
+          } elseif (is_numeric($event_category)) {
+            $term = get_term($event_category);
+            if ($term && !is_wp_error($term)) {
+              $category_slug = $term->slug;
             }
+          } elseif (is_string($event_category)) {
+            $category_slug = $event_category;
+          }
         }
 
         if (!empty($category_slug)) {
-            // Replaced [civ_shows] with [civ_events] since that was the built shortcode. Let me know if you strictly meant "shows"!
-            echo do_shortcode('[civ_events category="' . esc_attr($category_slug) . '"]');
+          // Replaced [civ_shows] with [civ_events] since that was the built shortcode. Let me know if you strictly meant "shows"!
+          echo do_shortcode('[civ_events category="' . esc_attr($category_slug) . '"]');
         } else {
-            // Fallback shortcode if no category is picked
-            echo do_shortcode('[civ_events]');
+          // Fallback shortcode if no category is picked
+          echo do_shortcode('[civ_events]');
         }
         ?>
       </div>
