@@ -5,31 +5,43 @@
  */
 
 // Force The Events Calendar to load its assets on pages that contain the [civ_events] shortcode.
-add_filter('tribe_events_views_v2_assets_should_enqueue_frontend', function($should_enqueue) {
+add_filter('tribe_events_views_v2_assets_should_enqueue_frontend', function ($should_enqueue) {
     global $post, $wpdb;
-    
-    if ( is_a( $post, 'WP_Post' ) ) {
+
+    if (is_a($post, 'WP_Post')) {
         // 1. Check standard WordPress content
-        if ( has_shortcode( $post->post_content, 'civ_events') ) {
+        if (has_shortcode($post->post_content, 'civ_events')) {
             return true;
         }
-        
+
         // 2. Check ACF/Meta fields (since pages use the Page Builder)
-        $has_shortcode_in_meta = $wpdb->get_var( $wpdb->prepare(
+        $has_shortcode_in_meta = $wpdb->get_var($wpdb->prepare(
             "SELECT COUNT(*) FROM {$wpdb->postmeta} WHERE post_id = %d AND meta_value LIKE %s",
             $post->ID,
             '%[civ_events%'
-        ) );
+        ));
 
-        if ( $has_shortcode_in_meta > 0 ) {
+        if ($has_shortcode_in_meta > 0) {
+            return true;
+        }
+
+        // 3. Check if the 'whats_on_shows' layout is used (which hardcodes the shortcode)
+        $has_whats_on_layout = $wpdb->get_var($wpdb->prepare(
+            "SELECT COUNT(*) FROM {$wpdb->postmeta} WHERE post_id = %d AND (meta_value = %s OR meta_value LIKE %s)",
+            $post->ID,
+            'whats_on_shows',
+            '%"whats_on_shows"%'
+        ));
+
+        if ($has_whats_on_layout > 0) {
             return true;
         }
     }
-    
+
     return $should_enqueue;
 });
 
-add_shortcode('civ_events', function($atts) {
+add_shortcode('civ_events', function ($atts) {
     // Check if The Events Calendar is active
     if (!class_exists('\Tribe\Events\Views\V2\Template_Bootstrap')) {
         return '';
@@ -40,29 +52,29 @@ add_shortcode('civ_events', function($atts) {
     ], $atts, 'civ_events');
 
     // Return a placeholder in the admin area
-    if ( is_admin() ) {
+    if (is_admin()) {
         return '<div style="padding: 20px; background: #f0f0f1; border: 1px dashed #8c8f94; text-align: center; font-weight: bold; color: #1d2327;">[civ_events] - Events List View</div>';
     }
 
     // Temporarily inject category into request to trick TEC V2 Context
     $original_request = $_REQUEST;
-    if ( ! empty( $atts['category'] ) ) {
-        $_REQUEST['tribe_events_cat'] = sanitize_title( $atts['category'] );
+    if (! empty($atts['category'])) {
+        $_REQUEST['tribe_events_cat'] = sanitize_title($atts['category']);
         // Also add to query vars so tribe_get_global_query_object() or context picks it up
-        set_query_var( 'tribe_events_cat', sanitize_title( $atts['category'] ) );
+        set_query_var('tribe_events_cat', sanitize_title($atts['category']));
     }
 
     ob_start();
     // Programmatically render the "list" view
-    echo tribe( \Tribe\Events\Views\V2\Template_Bootstrap::class )->get_view_html( [
+    echo tribe(\Tribe\Events\Views\V2\Template_Bootstrap::class)->get_view_html([
         'view' => 'list'
-    ] );
+    ]);
     $html = ob_get_clean();
 
     // Restore original request state
     $_REQUEST = $original_request;
-    if ( ! empty( $atts['category'] ) ) {
-        set_query_var( 'tribe_events_cat', null );
+    if (! empty($atts['category'])) {
+        set_query_var('tribe_events_cat', null);
     }
 
     return $html;
