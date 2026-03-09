@@ -32,9 +32,18 @@ $icon_bg_color   = $icon_settings['icon_bg_color'] ?? 'rgba(255,255,255,0)';
 $title_settings = $more_settings['title_settings'] ?? [];
 $title_color = $title_settings['title_color'] ?? '#374151';
 $title_font_style = $title_settings['title_font_style'] ?? '';
+// Remove bold from $font_style_map
+//
+// Add Title Font Weight
+$title_font_weight = $title_settings['title_font_weight'] ?? 'regular';
 
 $description_settings = $more_settings['description_settings'] ?? [];
 $description_color = $description_settings['description_color'] ?? '#374151';
+
+// Add HR settings
+$hr_settings = $more_settings['hr_settings'] ?? [];
+$horizontal_line = $hr_settings['horizontal_line'] ?? false;
+$hr_color = $hr_settings['hr_color'] ?? '#d1d5db';
 
 
 // Icon Size Mapping (px)
@@ -57,11 +66,20 @@ $padding_class = $padding_map[$size_key] ?? $padding_map['default'];
 
 // Font Style Mapping for title
 $font_style_map = [
-  'bold'   => 'font-bold',
   'italic' => 'italic',
   'underline'  => 'underline',
 ];
 $title_font_style_class = $font_style_map[$title_font_style] ?? '';
+
+// Font Weight Mapping for title
+$font_weight_map = [
+  'regular'   => 'font-normal',
+  'medium'    => 'font-medium',
+  'semi-bold' => 'font-semibold',
+  'bold'      => 'font-bold',
+  'black'     => 'font-black',
+];
+$title_font_weight_class = $font_weight_map[$title_font_weight] ?? 'font-normal';
 
 // CSS Variables
 $list_vars = [];
@@ -69,13 +87,14 @@ if ($icon_color) $list_vars[] = "--icon-color: {$icon_color}";
 if ($title_color) $list_vars[] = "--title-color: {$title_color}";
 if ($icon_bg_color)   $list_vars[] = "--icon-bg: {$icon_bg_color}";
 if ($description_color)   $list_vars[] = "--description-color: {$description_color}";
+if ($horizontal_line && $hr_color) $list_vars[] = "--hr-color: {$hr_color}";
 
 $inline_style = !empty($list_vars) ? 'style="' . esc_attr(implode('; ', $list_vars)) . '"' : '';
 
 if ($repeater) : ?>
   <div id="<?php echo esc_attr($icons_list_id); ?>" class="icons-list-component relative <?php echo esc_attr($class); ?>" <?php echo $inline_style; ?>>
-    <div class="space-y-4">
-      <?php foreach ($repeater as $item) :
+    <div class="<?php echo $horizontal_line ? '' : 'space-y-4'; ?>">
+      <?php foreach ($repeater as $index => $item) :
         $icon_data   = $item['icon'] ?? [];
         $icon_name   = $icon_data['value'] ?? '';
         $icon_group  = $icon_data['type'] ?? 'utility';
@@ -90,7 +109,7 @@ if ($repeater) : ?>
           $style_key === 'circled' ? 'rounded-full bg-(--icon-bg) ' . $padding_class : '',
         ]);
       ?>
-        <div class="flex items-start gap-3 lg:gap-4 group">
+        <div class="flex items-start gap-3 lg:gap-4 group <?php echo $horizontal_line ? 'py-4' : ''; ?>">
 
           <?php if ($icon_name) : ?>
             <div class="<?php echo esc_attr(implode(' ', $icon_container_classes)); ?>">
@@ -106,7 +125,7 @@ if ($repeater) : ?>
           <?php if ($title || $description) : ?>
             <div class="content-wrapper text-left">
               <?php if ($title) : ?>
-                <div class="prose max-w-none pt-0.5 text-(--title-color) <?php echo esc_attr($title_font_style_class); ?>"><?php echo esc_html($title); ?></div>
+                <div class="prose max-w-none pt-0.5 text-(--title-color) <?php echo esc_attr($title_font_style_class . ' ' . $title_font_weight_class); ?>"><?php echo esc_html($title); ?></div>
               <?php endif; ?>
               <?php if ($description) : ?>
                 <div class="prose max-w-none mt-2 text-(--description-color)">
@@ -117,6 +136,10 @@ if ($repeater) : ?>
           <?php endif; ?>
 
         </div>
+
+        <?php if ($horizontal_line && $index < count($repeater) - 1) : ?>
+          <hr class="border-(--hr-color) m-0" />
+        <?php endif; ?>
       <?php endforeach; ?>
     </div>
   </div>

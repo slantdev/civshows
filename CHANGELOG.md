@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.39.0] - 2026-03-10
+
+### Added
+
+- **Logo Carousel:** Created modular component driven by ACF Gallery field, featuring responsive Swiper integration with bullet pagination.
+- **Icons List:** Added support for dynamic Title Font Weight and an optional Horizontal Line separator.
+
+### Changed
+
+- **Two Columns:** Simplified conditional HTML wrapper for the active Card Style, resolving IDE indentation issues.
+- **WP Config:** Increased PHP Memory Limit to 512MB (Max 1024MB) to resolve out-of-memory fatal errors.
+
 ## [1.38.0] - 2026-03-06
 
 ### Fixed
