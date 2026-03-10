@@ -1,0 +1,118 @@
+{
+    "key": "group_69af5408dfc82",
+    "title": "Component - Posts",
+    "fields": [
+        {
+            "key": "field_69af5408e134f",
+            "label": "Posts",
+            "name": "posts",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "label-hidden",
+                "id": ""
+            },
+            "layout": "block",
+            "acfe_seamless_style": 1,
+            "sub_fields": [
+                {
+                    "key": "field_69af5408e22e5",
+                    "label": "Post Categories",
+                    "name": "post_categories",
+                    "aria-label": "",
+                    "type": "acfe_taxonomy_terms",
+                    "instructions": "Leave blank to show posts from all categories",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "taxonomy": [
+                        "category"
+                    ],
+                    "allow_terms": "",
+                    "allow_level": "",
+                    "field_type": "select",
+                    "default_value": [],
+                    "return_format": "id",
+                    "ui": 1,
+                    "allow_null": 1,
+                    "placeholder": "",
+                    "multiple": 1,
+                    "ajax": 0,
+                    "save_terms": 0,
+                    "load_terms": 0,
+                    "allow_in_bindings": 0,
+                    "choices": [],
+                    "search_placeholder": "",
+                    "layout": "",
+                    "toggle": 0,
+                    "allow_custom": 0,
+                    "other_choice": 0
+                },
+                {
+                    "key": "field_69af54925bde6",
+                    "label": "Posts Per Page",
+                    "name": "posts_per_page",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "Leave blank to show posts from all categories",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": ""
+                }
+            ],
+            "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "acfe_autosync": [
+        "json"
+    ],
+    "acfe_form": 0,
+    "acfe_meta": "",
+    "acfe_note": "",
+    "modified": 1773098682,
+    "acfe_categories": {
+        "components": "Components"
+    }
+}

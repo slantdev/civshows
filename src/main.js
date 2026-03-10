@@ -611,6 +611,93 @@ const initNavigation = () => {
   });
 };
 
+const initPostsPagination = () => {
+  document.addEventListener("click", function (e) {
+    const link = e.target.closest(".posts-pagination a.page-numbers");
+    if (!link) return;
+
+    e.preventDefault();
+    const paginationContainer = link.closest(".posts-pagination");
+    if (!paginationContainer) return;
+
+    const targetSelector = paginationContainer.getAttribute("data-target");
+    const targetContainer = document.querySelector(targetSelector);
+    if (!targetContainer) return;
+
+    // Extract page number from href. URL formats: ?paged=2 or /page/2/
+    const href = link.getAttribute("href");
+    let page = 1;
+    let pageMatch = href.match(/\/page\/(\d+)/);
+    if (pageMatch) {
+      page = parseInt(pageMatch[1], 10);
+    } else {
+      const url = new URL(href, window.location.origin);
+      if (url.searchParams.has("paged")) {
+        page = parseInt(url.searchParams.get("paged"), 10);
+      } else if (url.searchParams.has("page")) {
+        page = parseInt(url.searchParams.get("page"), 10);
+      }
+    }
+
+    const categories = targetContainer.getAttribute("data-categories");
+    const ppp = targetContainer.getAttribute("data-ppp");
+
+    // Prevent multiple clicks
+    if (paginationContainer.classList.contains("opacity-50")) return;
+
+    paginationContainer.classList.add("opacity-50", "pointer-events-none");
+    targetContainer.classList.add("opacity-50");
+
+    const formData = new FormData();
+    formData.append("action", "civ_load_more_posts");
+    formData.append("nonce", window.civAjax.posts_nonce);
+    formData.append("page", page);
+    formData.append("posts_per_page", ppp);
+    formData.append("categories", categories);
+    formData.append("current_url", window.location.href);
+
+    // Extract just the ID from the targetSelector (e.g. from "#posts-list... .posts-grid" to "posts-list...")
+    const targetIdMatch = targetSelector.match(/#([^\s]+)/);
+    const targetId = targetIdMatch ? targetIdMatch[1] : "";
+    formData.append("target_id", targetId);
+
+    fetch(window.civAjax.url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((res) => {
+        if (res.success && res.data.html) {
+          // REPLACE items instead of appending
+          targetContainer.innerHTML = res.data.html;
+
+          // Update pagination HTML
+          if (res.data.pagination) {
+            paginationContainer.innerHTML = res.data.pagination;
+          }
+
+          // Scroll smoothly to the top of the target container minus header padding
+          const yOffset = -120; // 120px offset for fixed header
+          const y =
+            targetContainer.getBoundingClientRect().top +
+            window.scrollY +
+            yOffset;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      })
+      .catch((error) => {
+        console.error("Error loading posts:", error);
+      })
+      .finally(() => {
+        paginationContainer.classList.remove(
+          "opacity-50",
+          "pointer-events-none",
+        );
+        targetContainer.classList.remove("opacity-50");
+      });
+  });
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   initNavigation();
   initHomeHero();
@@ -620,6 +707,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initGoogleMaps();
   initExhibitorFilters();
   initLogoCarousel();
+  initPostsPagination();
 
   // Fancybox initialization
   Fancybox.bind("[data-fancybox]", {

@@ -3,5 +3,5 @@
 * See webpack.mix.js
 */
 
-@import "tailwindcss";
+@import "tailwindcss" important;
 @import "./theme.css";

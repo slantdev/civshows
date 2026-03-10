@@ -6,7 +6,7 @@
 } */
 
 table.fixed {
-  position: static!important;
+  position: static !important;
 }
 
 #poststuff {
@@ -15,16 +15,28 @@ table.fixed {
     h2 {
       @apply p-0;
     }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: inherit;
+      margin: 0;
+    }
     p {
-      @apply text-[16px] leading-normal;
+      @apply text-[16px] leading-normal mt-0;
     }
     .container {
       @apply w-auto;
     }
-    .prose :where(p):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    .prose :where(p):not(:where([class~="not-prose"], [class~="not-prose"] *)) {
       @apply my-[1.5em];
     }
-    .prose :where(.prose > :first-child):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+    .prose
+      :where(.prose > :first-child):not(
+        :where([class~="not-prose"], [class~="not-prose"] *)
+      ) {
       @apply mt-0;
     }
   }
@@ -32,7 +44,11 @@ table.fixed {
 
 .layout {
   > .acfe-fc-placeholder {
-    *, ::after, ::before, ::backdrop, ::file-selector-button {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
       @apply box-border;
     }
     > a {
@@ -78,13 +94,13 @@ table.fixed {
     }
     &.br-1 {
       border-right: 1px solid #eeeeee;
-    }        
+    }
     &.bb-1 {
       border-bottom: 1px solid #eeeeee;
     }
     &.bl-1 {
       border-left: 1px solid #eeeeee;
-    }    
+    }
     &.bt-0 {
       @apply border-t-0!;
       &.acfe-field-group-layout-row {
@@ -161,7 +177,8 @@ table.fixed {
           height: 20px;
           border: none;
           border-radius: 100px;
-          box-shadow: 0px 1px 3px rgba(16, 24, 40, 0.1),
+          box-shadow:
+            0px 1px 3px rgba(16, 24, 40, 0.1),
             0px 1px 2px rgba(16, 24, 40, 0.06);
           left: 2px;
         }
@@ -293,8 +310,7 @@ table.fixed {
 }
 
 .acf-flexible-content {
-  .acf-flexible-content .layout
-  .layout {
+  .acf-flexible-content .layout .layout {
     .acf-fc-layout-handle {
       @apply bg-[#f9f9f9];
       .acf-fc-layout-order {

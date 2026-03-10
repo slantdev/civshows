@@ -134,3 +134,60 @@ function civ_load_more_exhibitors()
 }
 add_action('wp_ajax_civ_load_more_exhibitors', 'civ_load_more_exhibitors');
 add_action('wp_ajax_nopriv_civ_load_more_exhibitors', 'civ_load_more_exhibitors');
+
+// Load More Posts List Component
+function civ_load_more_posts()
+{
+  check_ajax_referer('civ_posts_nonce', 'nonce');
+
+  $paged = isset($_POST['page']) ? max(1, intval($_POST['page'])) : 1;
+  $posts_per_page = isset($_POST['posts_per_page']) ? intval($_POST['posts_per_page']) : 10;
+  $categories_post = isset($_POST['categories']) ? stripslashes($_POST['categories']) : '';
+  $categories_array = json_decode($categories_post, true);
+  $current_url = isset($_POST['current_url']) ? esc_url_raw($_POST['current_url']) : home_url('/');
+  $target_id = isset($_POST['target_id']) ? sanitize_text_field($_POST['target_id']) : '';
+
+  $args = array(
+    'post_type'      => 'post',
+    'post_status'    => 'publish',
+    'posts_per_page' => $posts_per_page,
+    'paged'          => $paged
+  );
+
+  // Category Filter
+  if (!empty($categories_array) && is_array($categories_array)) {
+    $args['category__in'] = $categories_array;
+  }
+
+  $query = new WP_Query($args);
+
+  ob_start();
+
+  if ($query->have_posts()) {
+    while ($query->have_posts()) {
+      $query->the_post();
+      get_template_part('template-parts/components/card-post-row');
+    }
+    wp_reset_postdata();
+  }
+
+  $html = ob_get_clean();
+  $base_url = explode('?', $current_url)[0];
+
+  $pagination_html = paginate_links([
+    'base'      => trailingslashit($base_url) . '%_%',
+    'total'     => $query->max_num_pages,
+    'current'   => $paged,
+    'format'    => '?paged=%#%',
+    'prev_text' => '&laquo; Prev',
+    'next_text' => 'Next &raquo;',
+  ]);
+
+  wp_send_json_success(array(
+    'html'       => $html,
+    'pagination' => $pagination_html,
+    'max_pages'  => $query->max_num_pages,
+  ));
+}
+add_action('wp_ajax_civ_load_more_posts', 'civ_load_more_posts');
+add_action('wp_ajax_nopriv_civ_load_more_posts', 'civ_load_more_posts');

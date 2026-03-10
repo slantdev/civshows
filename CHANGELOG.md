@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.40.0] - 2026-03-10
+
+### Added
+
+- **Single Post Template:** Built a dedicated `single.php` responsive template that utilizes Featured Images as the hero banner background and structures the content cleanly using the Tailwind Typography extension.
+- **Posts List:** Created a new module specifically designed for standard WP Posts, complete with native WordPress taxonomy querying and category filtering.
+- **AJAX Pagination:** Replaced the "Load More" button with numbered `paginate_links` that utilizes Javascript fetch to accurately load list data seamlessly without page reloads. included horizontal separator design requirements.
+
+### Changed
+
+- **Admin CSS:** Modified `admin-style.css` to reset typography formatting inside the editor and ensured `acf-layouts.css` forces Tailwind declarations (`!important`).
+- **Post Components Layout:** Adjusted `max-w-prose` width restraints on single post articles to cap character width efficiently.
+
 ## [1.39.0] - 2026-03-10
 
 ### Added

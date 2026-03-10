@@ -51,6 +51,13 @@ function civ_enqueue_scripts()
       wp_enqueue_script('civ-main', $js_file, ['google-maps'], $theme_version, true);
     }
   }
+
+  // Localize AJAX Object and Nonces for Frontend
+  wp_localize_script('civ-main', 'civAjax', array(
+    'url'   => admin_url('admin-ajax.php'),
+    'nonce' => wp_create_nonce('civ_exhibitors_nonce'),
+    'posts_nonce' => wp_create_nonce('civ_posts_nonce'),
+  ));
 }
 add_action('wp_enqueue_scripts', 'civ_enqueue_scripts');
 
