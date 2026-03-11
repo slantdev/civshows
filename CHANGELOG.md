@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.41.0] - 2026-03-11
+
+### Added
+
+- **Exhibitor Single Page:** Discontinued inline Fancybox modal displays in favor of a dedicated `single-exhibitors.php` template. Features edge-to-edge branding, fluid grid content mapping, and a dedicated contact card.
+- **Exhibitor Media Gallery:** Introduced a `gallery_slider` ACF layout block specifically for Exhibitors, directly injecting the reusable Swiper media component beneath their biography section.
+
+### Changed
+
+- **Exhibitor Cards:** Modified grid cards to use standard `<a>` hyperlink navigation routes instead of triggering inline modal popups.
+- **Responsive Layout Adjustments:** Updated max-width constraints across template containers to enhance desktop readability.
+
 ## [1.40.0] - 2026-03-10
 
 ### Added
