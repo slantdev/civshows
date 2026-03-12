@@ -131,7 +131,7 @@ $child_query = new WP_Query($child_args);
 
       <div class="w-full lg:w-2/5 2xl:w-1/2 flex items-start justify-start lg:items-center lg:justify-center">
         <?php if ($show_logo && $logo_url): ?>
-          <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr($title_text); ?>" class="max-w-96 h-auto">
+          <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr($title_text); ?>" class="max-w-full lg:max-w-96 h-auto">
         <?php endif; ?>
       </div>
     </div>
@@ -160,7 +160,7 @@ $child_query = new WP_Query($child_args);
   </div>
 
   <?php if ($show_child_navigation): ?>
-    <?php if ($child_query->have_posts()) : ?>    
+    <?php if ($child_query->have_posts()) : ?>
       <div class="w-full relative z-10">
         <div class="container mx-auto xl:px-8">
           <div class="flex flex-col md:flex-row items-stretch md:items-center">
@@ -169,28 +169,28 @@ $child_query = new WP_Query($child_args);
               <a href="<?php echo esc_url($parent_permalink); ?>" class="hover:underline"><?php echo wp_kses_post($parent_nav_label); ?></a>
             </div>
 
-            <div class="overflow-x-auto bg-gray-100">
+            <div class="overflow-x-auto overflow-y-hidden bg-gray-100">
               <ul class="flex items-center whitespace-nowrap text-civ-blue-900 text-xs md:text-sm font-bold uppercase tracking-tight">
 
 
-                  <?php while ($child_query->have_posts()) : $child_query->the_post();
-                    $is_active = get_the_ID() === $current_id;
-                    $active_classes = $is_active ? 'bg-white text-civ-orange-500 border-b border-b-white border-r border-r-gray-300' : 'border-b border-r border-gray-300 hover:text-civ-orange-500 hover:bg-civ-orange-100';
-                  ?>
-                    <li class="h-full">
-                      <a href="<?php the_permalink(); ?>" class="block py-4 xl:py-5 px-6 xl:px-8 2xl:px-10 transition-colors <?php echo $active_classes; ?>">
-                        <?php the_title(); ?>
-                      </a>
-                    </li>
-                  <?php endwhile; ?>
+                <?php while ($child_query->have_posts()) : $child_query->the_post();
+                  $is_active = get_the_ID() === $current_id;
+                  $active_classes = $is_active ? 'bg-white text-civ-orange-500 border-b border-b-white border-r border-r-gray-300' : 'border-b border-r border-gray-300 hover:text-civ-orange-500 hover:bg-civ-orange-100';
+                ?>
+                  <li class="h-full">
+                    <a href="<?php the_permalink(); ?>" class="block py-4 xl:py-5 px-6 xl:px-8 2xl:px-10 transition-colors <?php echo $active_classes; ?>">
+                      <?php the_title(); ?>
+                    </a>
+                  </li>
+                <?php endwhile; ?>
               </ul>
             </div>
 
           </div>
         </div>
       </div>
-    <?php           
-    wp_reset_postdata(); ?>
-    <?php endif; ?>  
+      <?php
+      wp_reset_postdata(); ?>
     <?php endif; ?>
+  <?php endif; ?>
 </section>

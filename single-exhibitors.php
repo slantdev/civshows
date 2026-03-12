@@ -62,6 +62,13 @@ if ($terms && !is_wp_error($terms)) {
         <?php if ($categories) : ?>
           <p class="text-sm lg:text-lg text-white/80 font-semibold uppercase tracking-widest mt-2"><?php echo esc_html($categories); ?></p>
         <?php endif; ?>
+
+        <button onclick="history.back()" class="mt-4 flex items-center justify-center gap-2 text-white hover:text-civ-orange-500 transition-colors font-semibold text-sm uppercase tracking-wider group cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back
+        </button>
       </div>
     </div>
 

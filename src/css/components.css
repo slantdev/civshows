@@ -8,7 +8,7 @@
   }
   .swiper-slide-thumb-active & {
     @apply opacity-100 bg-black/80;
-    
+
     .slide-thumb-indicator {
       @apply bg-civ-orange-500;
     }
@@ -25,55 +25,62 @@
 }
 
 /* --- Fancybox --- */
-  
-  /* 1. Backdrop: Make it semi-transparent black */
-  .f-backdrop {
-    background: rgba(0, 0, 0, 0.85);
-  }
 
-  /* 2. Navigation Arrows: Blue Circles at the bottom */
-  .f-button.is-prev, 
-  .f-button.is-next {
-    background-color: var(--color-civ-blue-500); /* Use your Tailwind blue */
-    color: white;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    top: auto;        /* Unset default top positioning */
-    bottom: 40px;     /* Move to bottom */
-    transform: none;  /* Remove default Y-translation */
-    opacity: 1;
-    border: 2px solid white; /* Optional: White border like screenshot */
-    transition: background-color 0.3s;
-  }
-  
-  .f-button.is-prev:hover, 
-  .f-button.is-next:hover {
-    background-color: var(--color-civ-blue-600);
-  }
+/* 1. Backdrop: Make it semi-transparent black */
+.f-backdrop {
+  background: rgba(0, 0, 0, 0.85);
+}
 
-  /* Position Left/Right arrows specifically */
-  .f-button.is-prev { left: calc(50% - 70px); }
-  .f-button.is-next { right: calc(50% - 70px); }
+/* 2. Navigation Arrows: Blue Circles at the bottom */
+.f-button.is-prev,
+.f-button.is-next {
+  background-color: var(--color-civ-blue-500); /* Use your Tailwind blue */
+  color: white;
+  border-radius: 50%;
+  top: auto; /* Unset default top positioning */
+  bottom: 40px; /* Move to bottom */
+  transform: none; /* Remove default Y-translation */
+  opacity: 1;
+  border: 2px solid white; /* Optional: White border like screenshot */
+  transition: background-color 0.3s;
+  @apply w-5 h-5 md:w-8 md:h-8 xl:w-12 xl:h-12;
+}
 
-  /* 3. Counter (Infobar): Position it between the arrows */
-  .fancybox__infobar {
-    top: auto;
-    bottom: 52px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: white;
-    background: transparent;
-  }
+.f-button.is-prev:hover,
+.f-button.is-next:hover {
+  background-color: var(--color-civ-blue-600);
+}
 
-  /* 4. Caption: Centered above the arrows */
-  .fancybox__caption {
-    text-align: center;
-    bottom: 110px; /* Push it up above the buttons */
-    padding-bottom: 0;
-  }
+/* Position Left/Right arrows specifically */
+.f-button.is-prev {
+  left: calc(50% - 70px);
+}
+.f-button.is-next {
+  right: calc(50% - 70px);
+}
+
+.f-button svg {
+  @apply w-4 h-4 lg:w-6 lg:h-6;
+}
+
+/* 3. Counter (Infobar): Position it between the arrows */
+.fancybox__infobar {
+  top: auto;
+  bottom: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+  background: transparent;
+}
+
+/* 4. Caption: Centered above the arrows */
+.fancybox__caption {
+  text-align: center;
+  bottom: 110px; /* Push it up above the buttons */
+  padding-bottom: 0;
+}
 
 /* --- Fade In Animation --- */
 @keyframes fade-in-up {
