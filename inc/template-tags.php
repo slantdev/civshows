@@ -261,43 +261,78 @@ function preint_r($data)
 
 /**
  * Display Breadcrumbs
+ * 
+ * @param array $args Settings for breadcrumbs.
  */
-function civ_breadcrumbs()
+function civ_breadcrumbs($args = [])
 {
-  $home = '<a href="' . home_url() . '" class="civ-breadcrumb-home no-underline text-body inline-block hover:text-red transition-colors">' . __('Home', 'civ-shows') . '</a>';
-  $separator = '<span class="civ-breadcrumb-separator inline-block mx-2 text-gray-400">/</span>';
-  $parent = '';
-  $current_page = '<span class="civ-breadcrumb-current inline-block font-medium text-body">' . get_the_title() . '</span>';
+  $defaults = [
+    'text_color' => '',
+    'wrap'       => false,
+  ];
+  $args = wp_parse_args($args, $defaults);
 
-  if (is_tax(['service_category', 'service_tag'])) {
-    $term = get_queried_object();
-    $term_name =  $term->name;
-    $parent = '<span class="civ-breadcrumb-parent inline-block">' . __('Our Services', 'civ-shows') . '</span>';
-    $current_page = '<span class="civ-breadcrumb-current inline-block text-red">' . $term_name . '</span>';
-  } else if (is_singular('services')) {
-    $parent = '<span class="civ-breadcrumb-parent inline-block">' . __('Our Services', 'civ-shows') . '</span>';
-  } else if (is_singular('jobs')) {
-    $parent = '<span class="civ-breadcrumb-parent inline-block">' . __('Get Involved', 'civ-shows') . '</span>' . $separator . '<span class="civ-breadcrumb-link inline-block"><a class="text-body no-underline hover:text-red transition-colors" href="/careers-with-us/">' . __('Careers with Us', 'civ-shows') . '</a></span>';
-  } else if (is_page_template('page-templates/media-coverage.php')) {
-    $parent = '<span class="civ-breadcrumb-parent inline-block">' . __('News and Events', 'civ-shows') . '</span>';
-  } else if (is_singular('publications')) {
-    $current_page = '<span class="civ-breadcrumb-current inline-block">' . __('Our Research', 'civ-shows') . '</span>';
-  } else if (is_singular('events')) {
-    $parent = '<span class="civ-breadcrumb-parent inline-block">' . __('Events', 'civ-shows') . '</span>';
-  } else if (is_singular('media_coverage')) {
-    $parent = '<span class="civ-breadcrumb-parent inline-block">' . __('Media Releases', 'civ-shows') . '</span>';
+  $style_attr = $args['text_color'] ? ' style="color: ' . esc_attr($args['text_color']) . ';"' : '';
+  $ul_class = $args['wrap'] ? 'flex flex-wrap items-center space-x-2 *:whitespace-nowrap' : 'flex items-center space-x-2';
+
+  $home_text = __('Home', 'civ-shows');
+  $separator = '<li><span class="civ-breadcrumb-separator">/</span></li>';
+
+  $items = [];
+  $items[] = '<li><a href="' . home_url('/') . '" class="civ-page-header-breadcrumb-link hover:underline">' . $home_text . '</a></li>';
+
+  if (is_singular('tribe_events') || is_post_type_archive('tribe_events')) {
+    $events_link = function_exists('tribe_get_events_link') ? tribe_get_events_link() : home_url('/events/');
+    $items[] = '<li><a href="' . esc_url($events_link) . '" class="civ-page-header-breadcrumb-link hover:underline">Events</a></li>';
+    if (is_singular('tribe_events')) {
+      $items[] = '<li><span class="font-bold civ-breadcrumb-current">' . get_the_title() . '</span></li>';
+    }
+  } elseif (is_singular('shows')) {
+    $items[] = '<li>Our Shows</li>';
+    $current_id = get_the_ID();
+    $parent_id = wp_get_post_parent_id($current_id);
+    if ($parent_id && $parent_id !== $current_id) {
+      $items[] = '<li><a href="' . get_permalink($parent_id) . '" class="civ-page-header-breadcrumb-link hover:underline">' . get_the_title($parent_id) . '</a></li>';
+    }
+    $items[] = '<li><span class="font-bold civ-breadcrumb-current">' . get_the_title() . '</span></li>';
+  } elseif (is_page()) {
+    $current_id = get_the_ID();
+    $parent_id = wp_get_post_parent_id($current_id);
+    if ($parent_id && $parent_id !== $current_id) {
+      $ancestors = get_post_ancestors($current_id);
+      $ancestors = array_reverse($ancestors);
+      foreach ($ancestors as $ancestor) {
+        $items[] = '<li><a href="' . get_permalink($ancestor) . '" class="civ-page-header-breadcrumb-link hover:underline">' . get_the_title($ancestor) . '</a></li>';
+      }
+    }
+    $items[] = '<li><span class="font-bold civ-breadcrumb-current">' . get_the_title() . '</span></li>';
+  } elseif (is_home() || is_singular('post')) {
+    $blog_page_id = get_option('page_for_posts');
+    if ($blog_page_id) {
+      $items[] = '<li><a href="' . get_permalink($blog_page_id) . '" class="civ-page-header-breadcrumb-link hover:underline">' . get_the_title($blog_page_id) . '</a></li>';
+    }
+
+    if (is_singular('post')) {
+      $categories = get_the_category();
+      if (!empty($categories)) {
+        $items[] = '<li><a href="' . get_category_link($categories[0]->term_id) . '" class="civ-page-header-breadcrumb-link hover:underline">' . $categories[0]->name . '</a></li>';
+      }
+      $items[] = '<li><span class="font-bold civ-breadcrumb-current">' . get_the_title() . '</span></li>';
+    }
+  } elseif (is_archive()) {
+    $items[] = '<li><span class="font-bold civ-breadcrumb-current">' . get_the_archive_title() . '</span></li>';
+  } elseif (is_search()) {
+    $items[] = '<li><span class="font-bold civ-breadcrumb-current">Search Results</span></li>';
+  } elseif (is_404()) {
+    $items[] = '<li><span class="font-bold civ-breadcrumb-current">404</span></li>';
+  } else {
+    $items[] = '<li><span class="font-bold civ-breadcrumb-current">' . get_the_title() . '</span></li>';
   }
 
-  $output = '<nav aria-label="Breadcrumb" class="civ-breadcrumbs breadcrumbs text-lg">';
-  $output .= $home;
-  $output .= $separator;
-
-  if ($parent) {
-    $output .= $parent;
-    $output .= $separator;
-  }
-
-  $output .= $current_page;
+  $output = '<nav aria-label="Breadcrumb" class="civ-breadcrumbs text-sm md:text-base font-medium opacity-90"' . $style_attr . '>';
+  $output .= '<ul class="' . esc_attr($ul_class) . '">';
+  $output .= implode($separator, $items);
+  $output .= '</ul>';
   $output .= '</nav>';
 
   echo $output;

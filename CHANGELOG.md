@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.42.0] - 2026-03-13
 ## [1.43.0] - 2026-03-14
 ## [1.44.0] - $(date +%Y-%m-%d)
+## [1.45.0] - $(date +%Y-%m-%d)
+
+### Changed
+
+- **Breadcrumbs Refactor:** Redesigned the `civ_breadcrumbs()` helper function in `inc/template-tags.php` to dynamically generate breadcrumb navigation based on the current page context (Pages, Shows, Events, and Posts).
+- **Page Headers:** Replaced hardcoded, duplicated breadcrumb markup in `page-header.php`, `page-header-shows.php`, and `page-header-events.php` with the centralized `civ_breadcrumbs()` function hook to improve structural maintainability.
+
 
 ### Changed
 

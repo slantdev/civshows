@@ -141,19 +141,7 @@ $child_query = new WP_Query($child_args);
         <div class="w-full lg:w-3/5 2xl:w-1/2">
           <div class="h-0.5 w-full bg-white/40 my-6" style="background-color: <?php echo esc_attr($separator_color); ?>; opacity: 0.4;"></div>
 
-          <nav class="text-sm md:text-base font-medium opacity-90" style="color: <?php echo esc_attr($breadcrumbs_text_color); ?>;">
-            <ul class="flex flex-wrap items-center space-x-2 *:whitespace-nowrap">
-              <li><a href="<?php echo home_url(); ?>" class="civ-page-header-breadcrumb-link hover:underline">Home</a></li>
-              <li>/</li>
-              <li>Our Shows</li>
-              <li>/</li>
-              <?php if ($parent_id !== $current_id) : ?>
-                <li><a href="<?php echo get_permalink($parent_id); ?>" class="civ-page-header-breadcrumb-link hover:underline"><?php echo get_the_title($parent_id); ?></a></li>
-                <li>/</li>
-              <?php endif; ?>
-              <li><span class="font-bold"><?php echo get_the_title(); ?></span></li>
-            </ul>
-          </nav>
+          <?php civ_breadcrumbs(['text_color' => $breadcrumbs_text_color, 'wrap' => true]); ?>
         </div>
       </div>
     <?php endif; ?>

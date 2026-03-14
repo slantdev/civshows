@@ -24,15 +24,7 @@ $event_id = Tribe__Events__Main::postIdHelper(get_the_ID());
     <div class="civ-page-header-breadcrumbs flex">
       <div class="w-full lg:w-3/5 2xl:w-1/2">
         <div class="h-0.25 w-full bg-white/40 my-6"></div>
-        <nav class="text-sm md:text-base font-medium opacity-90">
-          <ul class="flex items-center space-x-2">
-            <li><a href="<?php echo home_url(); ?>" class="civ-page-header-breadcrumb-link hover:underline">Home</a></li>
-            <li>/</li>
-            <li><a href="<?php echo esc_url(tribe_get_events_link()); ?>" class="civ-page-header-breadcrumb-link hover:underline">Events</a></li>
-            <li>/</li>
-            <li><span class="font-bold"><?php echo get_the_title(); ?></span></li>
-          </ul>
-        </nav>
+        <?php civ_breadcrumbs(['text_color' => '#ffffff', 'wrap' => false]); ?>
       </div>
     </div>
   </div>
