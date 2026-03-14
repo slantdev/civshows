@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.43.0] - 2026-03-14
 ## [1.44.0] - $(date +%Y-%m-%d)
 ## [1.45.0] - $(date +%Y-%m-%d)
+## [1.46.0] - $(date +%Y-%m-%d)
+
+### Changed
+
+- **Cards Grid Section:** Refactored `template-parts/sections/cards_grid.php` to integrate standard `section-settings.php` controls (backgrounds and padding). Also injected semantic `civ-` CSS classes on structural wrappers and interactive elements to maintain targeting consistency across the theme.
+
 
 ### Changed
 
