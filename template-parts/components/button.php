@@ -137,7 +137,7 @@ if (!empty($icon_settings['add_button_icon'])) {
 $inline_style = !empty($btn_vars) ? 'style="' . esc_attr(implode('; ', $btn_vars)) . '"' : '';
 
 $final_button_classes = array_filter([
-  'inline-flex items-center justify-center border-2 font-semibold transition-all duration-300 transform active:scale-95 hover:shadow-lg gap-2',
+  'civ-button inline-flex items-center justify-center border-2 font-semibold transition-all duration-300 transform active:scale-95 hover:shadow-lg gap-2',
   $size_data['px'],
   $size_data['text'],
   $rounded_class,

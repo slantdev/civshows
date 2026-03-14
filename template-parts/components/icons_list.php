@@ -92,8 +92,8 @@ if ($horizontal_line && $hr_color) $list_vars[] = "--hr-color: {$hr_color}";
 $inline_style = !empty($list_vars) ? 'style="' . esc_attr(implode('; ', $list_vars)) . '"' : '';
 
 if ($repeater) : ?>
-  <div id="<?php echo esc_attr($icons_list_id); ?>" class="icons-list-component relative <?php echo esc_attr($class); ?>" <?php echo $inline_style; ?>>
-    <div class="<?php echo $horizontal_line ? '' : 'space-y-4'; ?>">
+  <div id="<?php echo esc_attr($icons_list_id); ?>" class="civ-icons-list-component icons-list-component relative <?php echo esc_attr($class); ?>" <?php echo $inline_style; ?>>
+    <div class="civ-icons-list-wrapper <?php echo $horizontal_line ? '' : 'space-y-4'; ?>">
       <?php foreach ($repeater as $index => $item) :
         $icon_data   = $item['icon'] ?? [];
         $icon_name   = $icon_data['value'] ?? '';
@@ -109,7 +109,7 @@ if ($repeater) : ?>
           $style_key === 'circled' ? 'rounded-full bg-(--icon-bg) ' . $padding_class : '',
         ]);
       ?>
-        <div class="flex items-start gap-3 lg:gap-4 group <?php echo $horizontal_line ? 'py-4' : ''; ?>">
+        <div class="civ-icons-list-item flex items-start gap-3 lg:gap-4 group <?php echo $horizontal_line ? 'py-4' : ''; ?>">
 
           <?php if ($icon_name) : ?>
             <div class="<?php echo esc_attr(implode(' ', $icon_container_classes)); ?>">
@@ -123,12 +123,12 @@ if ($repeater) : ?>
           <?php endif; ?>
 
           <?php if ($title || $description) : ?>
-            <div class="content-wrapper text-left">
+            <div class="civ-icons-list-content content-wrapper text-left">
               <?php if ($title) : ?>
-                <div class="prose max-w-none pt-0.5 text-(--title-color) <?php echo esc_attr($title_font_style_class . ' ' . $title_font_weight_class); ?>"><?php echo esc_html($title); ?></div>
+                <div class="civ-icons-list-title prose max-w-none pt-0.5 text-(--title-color) <?php echo esc_attr($title_font_style_class . ' ' . $title_font_weight_class); ?>"><?php echo esc_html($title); ?></div>
               <?php endif; ?>
               <?php if ($description) : ?>
-                <div class="prose max-w-none mt-2 text-(--description-color)">
+                <div class="civ-icons-list-description prose max-w-none mt-2 text-(--description-color)">
                   <?php echo wp_kses_post($description); ?>
                 </div>
               <?php endif; ?>

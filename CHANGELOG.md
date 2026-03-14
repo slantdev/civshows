@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [1.42.0] - 2026-03-13
+## [1.43.0] - 2026-03-14
+
+### Changed
+
+- **Semantic CSS Classes:** Systematically added `civ-` prefixed CSS classes to all structural elements, interactive wrappers, and links across `/template-parts/global`, `/template-parts/components`, and `/template-parts/sections`. This standardization provides a clear and consistent targeting method for advanced CSS customization via the WordPress backend without conflicting with utility classes.
+- **Section & Component Standardization:** Ensured all major modular components (Accordions, Buttons, Headers, Footers, Galleries, Selects, Sliders, and custom Cards) posess unique identifier classes.
+
 
 ### Changed
 

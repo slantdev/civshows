@@ -22,17 +22,17 @@ $wo_image   = $intro['image'] ?? [];
 
 ?>
 
-<section <?php echo $section_id_attr; ?> class="<?php echo esc_attr($section_class); ?> section-wrapper relative" style="<?php echo esc_attr($section_style); ?>">
+<section <?php echo $section_id_attr; ?> class="civ-whats-on-shows-section <?php echo esc_attr($section_class); ?> section-wrapper relative" style="<?php echo esc_attr($section_style); ?>">
 
   <?php echo $section_overlay_markup; ?>
 
-  <div class="section-container relative z-10 <?php echo esc_attr($section_container_class); ?>">
+  <div class="civ-section-container section-container relative z-10 <?php echo esc_attr($section_container_class); ?>">
     <div class="container mx-auto px-4">
 
       <!-- Intro Area -->
-      <div class="flex flex-col lg:flex-row items-end justify-between gap-12 mb-12 lg:mb-24">
+      <div class="civ-whats-on-intro flex flex-col lg:flex-row items-end justify-between gap-12 mb-12 lg:mb-24">
 
-        <div class="w-full lg:w-1/2 relative z-10">
+        <div class="civ-whats-on-content w-full lg:w-1/2 relative z-10">
           <?php if (!empty($intro['title'])) : ?>
             <div class="mb-6">
               <?php get_template_part('template-parts/components/heading', null, ['field' => $intro['title']]); ?>
@@ -40,7 +40,7 @@ $wo_image   = $intro['image'] ?? [];
           <?php endif; ?>
 
           <?php if (!empty($intro['description'])) : ?>
-            <div class="mb-10">
+            <div class="civ-whats-on-desc mb-10">
               <?php get_template_part('template-parts/components/content_editor', null, ['field' => $intro['description']]); ?>
             </div>
           <?php endif; ?>
@@ -52,8 +52,8 @@ $wo_image   = $intro['image'] ?? [];
         $img_id   = $img_data['image_source']['id'] ?? '';
         if ($img_id) :
         ?>
-          <div class="w-full lg:w-5/12 flex justify-center lg:justify-end -mb-28 lg:-mb-32">
-            <div class="w-full max-w-xl aspect-square rounded-full overflow-hidden relative shadow-xl border-8 border-white">
+          <div class="civ-whats-on-image w-full lg:w-5/12 flex justify-center lg:justify-end -mb-28 lg:-mb-32">
+            <div class="civ-whats-on-image-inner w-full max-w-xl aspect-square rounded-full overflow-hidden relative shadow-xl border-8 border-white">
               <?php
               echo wp_get_attachment_image($img_id, 'large', false, [
                 'class' => 'absolute inset-0 w-full h-full object-cover'
@@ -66,7 +66,7 @@ $wo_image   = $intro['image'] ?? [];
       </div>
 
       <!-- Events List -->
-      <div class="events-list-wrapper mt-8 relative z-30">
+      <div class="civ-whats-on-events-list events-list-wrapper mt-8 relative z-30">
         <?php
         $shows_settings = $whats_on['shows_settings'] ?? [];
         $event_category = $shows_settings['event_category'] ?? '';

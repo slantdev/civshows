@@ -24,14 +24,14 @@ $slides = $hero_group['home_slider'] ?? [];
 if (empty($slides)) return;
 ?>
 
-<section <?php echo $section_id_attr; ?> class="relative w-full h-[600px] lg:h-[800px] xl:h-svh bg-civ-blue-950 overflow-hidden group section-home-hero-slider" style="<?php echo esc_attr($section_style); ?>">
+<section <?php echo $section_id_attr; ?> class="civ-home-hero-section relative w-full h-[600px] lg:h-[800px] xl:h-svh bg-civ-blue-950 overflow-hidden group section-home-hero-slider" style="<?php echo esc_attr($section_style); ?>">
 
   <?php echo $section_overlay_markup; ?>
 
   <div class="absolute left-0 h-full w-2 bg-black/50 z-30"></div>
   <div id="hero-progress-bar" class="absolute left-0 w-2 z-30 bg-civ-orange-500"></div>
 
-  <div class="swiper main-slider w-full h-full">
+  <div class="civ-hero-main-slider swiper main-slider w-full h-full">
     <div class="swiper-wrapper">
       <?php foreach ($slides as $slide) :
         $content = $slide['content'] ?? [];
@@ -46,9 +46,9 @@ if (empty($slides)) return;
           <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo esc_url($bg_image); ?>');">
             <div class="absolute inset-0" style="background-color: <?php echo esc_attr($bg_overlay); ?>;"></div>
           </div>
-          <div class="container mx-auto px-4 xl:px-8 relative z-10 grid grid-cols-1 md:grid-cols-12 h-full items-center">
+          <div class="civ-hero-content container mx-auto px-4 xl:px-8 relative z-10 grid grid-cols-1 md:grid-cols-12 h-full items-center">
             <div class="hidden md:block md:col-span-4 xl:col-span-5"></div>
-            <div class="col-span-1 md:col-span-8 xl:col-span-7 text-white md:pl-16">
+            <div class="civ-hero-text col-span-1 md:col-span-8 xl:col-span-7 text-white md:pl-16">
               <?php if ($title) : ?>
                 <h1 class="text-4xl md:text-6xl font-bold mb-4" data-swiper-parallax="-400"><?php echo esc_html($title); ?></h1>
               <?php endif; ?>
@@ -79,10 +79,10 @@ if (empty($slides)) return;
   </div>
 
   <!-- Thumbs Vertical Navigation -->
-  <div class="absolute top-0 bottom-0 left-0 z-20 container mx-auto px-4 xl:px-8 xl:pt-64 pointer-events-none">
+  <div class="civ-hero-thumbs absolute top-0 bottom-0 left-0 z-20 container mx-auto px-4 xl:px-8 xl:pt-64 pointer-events-none">
     <div class="h-full grid grid-cols-1 md:grid-cols-12 items-center">
       <div class="hidden md:flex md:col-span-4 lg:col-span-4 flex-col justify-center h-full pointer-events-auto pl-6">
-        <div class="swiper thumbs-slider w-full max-w-96 overflow-visible!">
+        <div class="civ-hero-thumbs-slider swiper thumbs-slider w-full max-w-96 overflow-visible!">
           <div class="swiper-wrapper flex-col">
             <?php foreach ($slides as $slide) :
               $content = $slide['content'] ?? [];

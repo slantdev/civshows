@@ -21,7 +21,7 @@ $footer_styles = "background-color: {$bg_color}; color: {$text_color};";
 
 ?>
 
-<footer class="border-t border-gray-200" style="<?php echo esc_attr($footer_styles); ?>">
+<footer class="civ-site-footer border-t border-gray-200" style="<?php echo esc_attr($footer_styles); ?>">
   <div class="container mx-auto py-16 px-4 md:px-6 lg:px-8 xl:px-8">
     <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-12 gap-x-4 gap-y-8 lg:gap-8">
 
@@ -35,7 +35,7 @@ $footer_styles = "background-color: {$bg_color}; color: {$text_color};";
           </div>
         <?php endif; ?>
 
-        <div class="footer-about-content pr-0 xl:pr-6 prose prose-sm xl:max-w-none" style="color: inherit;">
+        <div class="civ-footer-about-content footer-about-content pr-0 xl:pr-6 prose prose-sm xl:max-w-none" style="color: inherit;">
           <?php if (!empty($footer_about['about_civ'])) : ?>
             <div class="[&_h3]:font-semibold [&_h3]:text-base [&_h3]:text-inherit [&_h3]:mb-4 [&_h3]:mt-0 [&_h3]:leading-tight [&_p]:text-sm [&_p]:leading-relaxed">
               <?php echo $footer_about['about_civ']; ?>
@@ -45,7 +45,7 @@ $footer_styles = "background-color: {$bg_color}; color: {$text_color};";
       </div>
 
       <!-- Navigation -->
-      <div class="xl:col-span-2">
+      <div class="civ-footer-navigation xl:col-span-2">
         <?php if (!empty($footer_nav['heading'])) : ?>
           <h3 class="font-bold text-base md:text-lg xl:text-lg mb-4 lg:mb-6" style="color: inherit; opacity: 0.8;"><?php echo esc_html($footer_nav['heading']); ?></h3>
         <?php endif; ?>
@@ -59,7 +59,7 @@ $footer_styles = "background-color: {$bg_color}; color: {$text_color};";
                 <li>
                   <a href="<?php echo esc_url($link['url']); ?>"
                     target="<?php echo esc_attr($link['target'] ?: '_self'); ?>"
-                    class="hover:opacity-70 transition-colors">
+                    class="civ-footer-nav-link hover:opacity-70 transition-colors">
                     <?php echo esc_html($link['title']); ?>
                   </a>
                 </li>
@@ -70,7 +70,7 @@ $footer_styles = "background-color: {$bg_color}; color: {$text_color};";
       </div>
 
       <!-- Contacts -->
-      <div class="xl:col-span-2">
+      <div class="civ-footer-contacts xl:col-span-2">
         <?php if (!empty($footer_contacts['heading'])) : ?>
           <h3 class="font-bold text-base md:text-lg xl:text-lg mb-4 lg:mb-6" style="color: inherit; opacity: 0.8;"><?php echo esc_html($footer_contacts['heading']); ?></h3>
         <?php endif; ?>
@@ -84,7 +84,7 @@ $footer_styles = "background-color: {$bg_color}; color: {$text_color};";
 
           <?php if (!empty($footer_contacts['phone'])) : ?>
             <p>
-              <a href="tel:<?php echo esc_attr(str_replace(' ', '', $footer_contacts['phone'])); ?>" class="hover:opacity-70 transition-colors font-medium">
+              <a href="tel:<?php echo esc_attr(str_replace(' ', '', $footer_contacts['phone'])); ?>" class="civ-footer-phone-link hover:opacity-70 transition-colors font-medium">
                 <?php echo esc_html($footer_contacts['phone']); ?>
               </a>
             </p>
@@ -97,7 +97,7 @@ $footer_styles = "background-color: {$bg_color}; color: {$text_color};";
         <?php if (!empty($footer_search['enable_search_form'])) : ?>
           <h3 class="font-bold text-base md:text-lg xl:text-lg mb-4 lg:mb-6" style="color: inherit; opacity: 0.8;">Quick Search</h3>
 
-          <form role="search" method="get" class="flex gap-2 mb-8" action="<?php echo esc_url(home_url('/')); ?>">
+          <form role="search" method="get" class="civ-footer-search-form flex gap-2 mb-8" action="<?php echo esc_url(home_url('/')); ?>">
             <input type="search" name="s" placeholder="Enter keyword" class="w-full bg-gray-100 border-none rounded px-4 py-2 text-sm text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-civ-blue-500">
             <button type="submit" class="bg-civ-blue-500 hover:bg-civ-blue-600 text-white text-sm font-medium py-2 px-6 rounded transition-colors">
               Search
@@ -114,7 +114,7 @@ $footer_styles = "background-color: {$bg_color}; color: {$text_color};";
             ?>
                 <a href="<?php echo esc_url($link['url']); ?>"
                   target="<?php echo esc_attr($link['target'] ?: '_blank'); ?>"
-                  class="hover:opacity-70 transition-colors"
+                  class="civ-footer-social-link hover:opacity-70 transition-colors"
                   title="<?php echo esc_attr($link['title'] ?: ucfirst($platform)); ?>">
                   <?php echo civ_get_social_icon($platform, 'w-7 h-7'); ?>
                 </a>
@@ -132,7 +132,7 @@ $footer_styles = "background-color: {$bg_color}; color: {$text_color};";
   $site_name  = $footer_copyright['copyright_site_name'] ?? get_bloginfo('name');
   $copy_links = $footer_copyright['copyright_links'] ?? [];
   ?>
-  <div class="py-4 w-full text-white" style="background-color: <?php echo esc_attr($copyright_bg_color); ?>;">
+  <div class="civ-footer-copyright py-4 w-full text-white" style="background-color: <?php echo esc_attr($copyright_bg_color); ?>;">
     <div class="container mx-auto px-4 xl:px-8 text-sm font-medium flex flex-col md:flex-row justify-between items-center gap-4">
       <div>
         &copy; <?php echo date('Y'); ?>. <?php echo esc_html($site_name); ?>
@@ -146,7 +146,7 @@ $footer_styles = "background-color: {$bg_color}; color: {$text_color};";
           ?>
               <a href="<?php echo esc_url($link['url']); ?>"
                 target="<?php echo esc_attr($link['target'] ?: '_self'); ?>"
-                class="hover:underline transition-all">
+                class="civ-footer-copyright-link hover:underline transition-all">
                 <?php echo esc_html($link['title']); ?>
               </a>
           <?php endif;

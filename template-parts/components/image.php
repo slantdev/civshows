@@ -82,14 +82,14 @@ $max_width_class = $max_width_map[$max_width_key] ?? $max_width_map['default'];
 // Outputting image if URL exists
 if ($image_url) {
   $wrapper_classes = array_filter([
-    'image-component-wrapper mb-6',
+    'civ-image-wrapper image-component-wrapper mb-6',
     $max_width_class,
     $alignment_class,
     $class
   ]);
 
   $inner_classes = array_filter([
-    'relative overflow-hidden w-full h-full',
+    'civ-image-inner relative overflow-hidden w-full h-full',
     $aspect_class,
     $corner_class
   ]);
@@ -99,7 +99,7 @@ if ($image_url) {
     <div class="<?php echo esc_attr(implode(' ', $inner_classes)); ?>">
 
       <?php if ($link_url) : ?>
-        <a href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>" class="block w-full h-full">
+        <a href="<?php echo esc_url($link_url); ?>" target="<?php echo esc_attr($link_target); ?>" class="civ-image-link block w-full h-full">
         <?php endif; ?>
 
         <?php if ($image_attach_id) : ?>

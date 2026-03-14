@@ -124,7 +124,6 @@ $class_list = array_filter([
 ]);
 $final_classes = implode(' ', $class_list);
 
-// Outputting heading if heading text exists
 if ($heading_text) {
-  echo '<' . esc_attr($html_tag) . ' id="' . esc_attr($heading_id) . '" class="' . esc_attr($final_classes) . '" style="' . esc_attr($text_style) . '">' . wp_kses_post($heading_text) . '</' . esc_attr($html_tag) . '>';
+  echo '<' . esc_attr($html_tag) . ' id="' . esc_attr($heading_id) . '" class="civ-heading ' . esc_attr($final_classes) . '" style="' . esc_attr($text_style) . '">' . wp_kses_post($heading_text) . '</' . esc_attr($html_tag) . '>';
 }

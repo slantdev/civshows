@@ -31,9 +31,9 @@ $is_slider  = $item_count > 1;
 
 ?>
 
-<div id="<?php echo esc_attr($slider_id); ?>" class="media-slider-wrapper relative <?php echo esc_attr($class); ?>">
+<div id="<?php echo esc_attr($slider_id); ?>" class="civ-media-slider-wrapper media-slider-wrapper relative <?php echo esc_attr($class); ?>">
 
-  <div class="swiper media-slider rounded-xl overflow-hidden shadow-sm bg-gray-200 <?php echo $is_slider ? '' : 'swiper-no-swiping'; ?>">
+  <div class="civ-media-slider swiper media-slider rounded-xl overflow-hidden shadow-sm bg-gray-200 <?php echo $is_slider ? '' : 'swiper-no-swiping'; ?>">
     <div class="swiper-wrapper">
 
       <?php foreach ($repeater as $item) :
@@ -69,35 +69,38 @@ $is_slider  = $item_count > 1;
           $image_url   = $image_group['image']['url'] ?? '';
         }
       ?>
-        <div class="swiper-slide relative aspect-video group cursor-pointer bg-gray-900 overflow-hidden">
+        <div class="civ-media-slider-slide swiper-slide relative aspect-video group cursor-pointer bg-gray-900 overflow-hidden">
 
-          <a href="<?php echo esc_url($type === 'video' ? $video_url : $image_url); ?>" 
-             data-fancybox="<?php echo esc_attr($slider_id); ?>" 
-             class="w-full h-full block relative">
+          <a href="<?php echo esc_url($type === 'video' ? $video_url : $image_url); ?>"
+            data-fancybox="<?php echo esc_attr($slider_id); ?>"
+            class="civ-media-slider-link w-full h-full block relative">
 
             <?php if ($type === 'video') : ?>
               <!-- Play Button -->
               <div class="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
                 <div class="w-12 h-12 md:w-16 md:h-16 bg-civ-orange-500 rounded-full flex items-center justify-center text-white shadow-xl transition-transform duration-300 group-hover:scale-110">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:h-8 md:w-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
                 </div>
               </div>
 
               <?php if ($thumbnail_url) : ?>
-                <img src="<?php echo esc_url($thumbnail_url); ?>" 
-                     class="w-full h-full object-cover opacity-80 transition-all duration-500 group-hover:opacity-60 group-hover:scale-105"
-                     <?php if ($fallback_url) echo 'onerror="this.src=\'' . esc_url($fallback_url) . '\'; this.onerror=null;"'; ?>>
+                <img src="<?php echo esc_url($thumbnail_url); ?>"
+                  class="w-full h-full object-cover opacity-80 transition-all duration-500 group-hover:opacity-60 group-hover:scale-105"
+                  <?php if ($fallback_url) echo 'onerror="this.src=\'' . esc_url($fallback_url) . '\'; this.onerror=null;"'; ?>>
               <?php else : ?>
                 <div class="w-full h-full opacity-60 transition-opacity duration-500 group-hover:opacity-40 [&_iframe]:w-full [&_iframe]:h-full [&_video]:w-full [&_video]:h-full [&_video]:object-cover pointer-events-none">
-                  <?php if ($source === 'external') echo $video_group['embed_external_video'] ?? ''; else echo do_shortcode($video_group['self_hosted_video'] ?? ''); ?>
+                  <?php if ($source === 'external') echo $video_group['embed_external_video'] ?? '';
+                  else echo do_shortcode($video_group['self_hosted_video'] ?? ''); ?>
                 </div>
               <?php endif; ?>
 
             <?php else : ?>
               <?php if ($image_url) : ?>
-                <img src="<?php echo esc_url($image_url); ?>" 
-                     alt="<?php echo esc_attr($item['image_group']['image']['alt'] ?? ''); ?>" 
-                     class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                <img src="<?php echo esc_url($image_url); ?>"
+                  alt="<?php echo esc_attr($item['image_group']['image']['alt'] ?? ''); ?>"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
               <?php endif; ?>
             <?php endif; ?>
 

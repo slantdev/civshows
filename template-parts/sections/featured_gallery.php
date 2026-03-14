@@ -33,15 +33,15 @@ $section_id_attr = $section_id ? 'id="' . esc_attr($section_id) . '"' : '';
 $section_class = 'section-featured-gallery-' . uniqid();
 
 ?>
-<section <?php echo $section_id_attr; ?> class="<?php echo esc_attr($section_class); ?> section-wrapper relative" style="<?php echo esc_attr($section_style); ?>">
+<section <?php echo $section_id_attr; ?> class="civ-featured-gallery-section <?php echo esc_attr($section_class); ?> section-wrapper relative" style="<?php echo esc_attr($section_style); ?>">
 
   <?php echo $section_overlay_markup; ?>
 
-  <div class="section-container relative z-10 <?php echo esc_attr($section_container_class); ?>">
+  <div class="civ-section-container section-container relative z-10 <?php echo esc_attr($section_container_class); ?>">
     <div class="container mx-auto px-4 max-w-7xl">
 
       <?php if (!empty($intro['title'])) : ?>
-        <div class="mb-10">
+        <div class="civ-featured-gallery-intro mb-10">
           <?php get_template_part('template-parts/components/heading', null, [
             'field' => $intro['title'],
             'class' => 'text-civ-blue-900'
@@ -49,7 +49,7 @@ $section_class = 'section-featured-gallery-' . uniqid();
         </div>
       <?php endif; ?>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-18">
+      <div class="civ-featured-gallery-grid grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-18">
 
         <?php foreach ($gallery as $index => $post_obj) :
           $post_id = $post_obj->ID;
@@ -113,12 +113,12 @@ $section_class = 'section-featured-gallery-' . uniqid();
           $fancy_group = $gallery_id_prefix . '-' . $index;
         ?>
 
-          <div class="group flex flex-col">
+          <div class="civ-featured-gallery-card group flex flex-col">
             <!-- Main Card Trigger -->
             <a href="<?php echo esc_url($main_item['url']); ?>"
               data-fancybox="<?php echo esc_attr($fancy_group); ?>"
               data-caption="<?php echo esc_attr($main_item['title']); ?>"
-              class="relative w-full aspect-4/5 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 block cursor-zoom-in bg-gray-900">
+              class="civ-featured-gallery-card-link relative w-full aspect-4/5 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 block cursor-zoom-in bg-gray-900">
 
               <!-- Background Image -->
               <img src="<?php echo esc_url($main_item['thumb']); ?>"
@@ -171,8 +171,8 @@ $section_class = 'section-featured-gallery-' . uniqid();
             </div>
 
             <!-- Card Footer -->
-            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-6 gap-4 xl:gap-6">
-              <div class="text-civ-blue-900">
+            <div class="civ-featured-gallery-footer flex flex-col sm:flex-row items-start sm:items-center justify-between mt-6 gap-4 xl:gap-6">
+              <div class="civ-featured-gallery-desc text-civ-blue-900">
                 <?php if ($card_desc) : ?>
                   <p class="font-medium text-lg leading-tight xl:text-xl"><?php echo esc_html($card_desc); ?></p>
                 <?php endif; ?>
@@ -181,7 +181,7 @@ $section_class = 'section-featured-gallery-' . uniqid();
               <?php if (!empty($card_cta['url'])) : ?>
                 <a href="<?php echo esc_url($card_cta['url']); ?>"
                   target="<?php echo esc_attr($card_cta['target'] ?: '_self'); ?>"
-                  class="w-full sm:w-auto bg-civ-blue-500 hover:bg-civ-blue-600 text-white font-semibold text-lg uppercase py-4 px-8 rounded transition-colors text-center cursor-pointer whitespace-nowrap">
+                  class="civ-featured-gallery-btn w-full sm:w-auto bg-civ-blue-500 hover:bg-civ-blue-600 text-white font-semibold text-lg uppercase py-4 px-8 rounded transition-colors text-center cursor-pointer whitespace-nowrap">
                   <?php echo esc_html($card_cta['title'] ?: 'Learn More'); ?>
                 </a>
               <?php endif; ?>

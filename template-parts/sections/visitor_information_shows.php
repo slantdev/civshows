@@ -27,15 +27,15 @@ $components = $right_column['components'] ?? [];
 
 ?>
 
-<section <?php echo $section_id_attr; ?> class="section-visitor-information w-full flex flex-col lg:flex-row relative overflow-hidden" style="<?php echo esc_attr($section_style); ?>">
+<section <?php echo $section_id_attr; ?> class="civ-visitor-info-section section-visitor-information w-full flex flex-col lg:flex-row relative overflow-hidden" style="<?php echo esc_attr($section_style); ?>">
 
   <?php echo $section_overlay_markup; ?>
 
   <!-- Left Column: Google Map -->
-  <div class="w-full lg:w-5/12 relative min-h-[400px] lg:min-h-auto bg-gray-100">
+  <div class="civ-visitor-info-map-column w-full lg:w-5/12 relative min-h-[400px] lg:min-h-auto bg-gray-100">
     <?php if (!empty($google_map['lat']) && !empty($google_map['lng'])) : ?>
-      <div class="acf-map absolute inset-0 w-full h-full" data-zoom="<?php echo esc_attr($google_map['zoom'] ?? 14); ?>">
-        <div class="marker" data-lat="<?php echo esc_attr($google_map['lat']); ?>" data-lng="<?php echo esc_attr($google_map['lng']); ?>"></div>
+      <div class="civ-visitor-info-map acf-map absolute inset-0 w-full h-full" data-zoom="<?php echo esc_attr($google_map['zoom'] ?? 14); ?>">
+        <div class="civ-visitor-info-marker marker" data-lat="<?php echo esc_attr($google_map['lat']); ?>" data-lng="<?php echo esc_attr($google_map['lng']); ?>"></div>
       </div>
     <?php else : ?>
       <div class="flex items-center justify-center h-full text-gray-400 italic">
@@ -45,10 +45,10 @@ $components = $right_column['components'] ?? [];
   </div>
 
   <!-- Right Column: Components -->
-  <div class="w-full lg:w-7/12 relative">
+  <div class="civ-visitor-info-content-column w-full lg:w-7/12 relative">
 
-    <div class="section-container relative z-10 px-6 lg:px-12 xl:px-20 <?php echo esc_attr($section_container_class); ?>">
-      <div class="section-content">
+    <div class="civ-section-container section-container relative z-10 px-6 lg:px-12 xl:px-20 <?php echo esc_attr($section_container_class); ?>">
+      <div class="civ-section-content section-content">
         <?php get_template_part('template-parts/components/components', '', array('field' => $components)); ?>
       </div>
     </div>

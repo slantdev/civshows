@@ -65,7 +65,7 @@ if ($add_line) {
 
 <div
   id="<?php echo esc_attr($spacer_id_attr); ?>"
-  class="spacer-component w-full block transition-all <?php echo esc_attr($spacer_class); ?> <?php echo esc_attr($line_class); ?> <?php echo esc_attr($class); ?>"
+  class="civ-spacer-component spacer-component w-full block transition-all <?php echo esc_attr($spacer_class); ?> <?php echo esc_attr($line_class); ?> <?php echo esc_attr($class); ?>"
   style="<?php echo esc_attr($inline_style); ?>"
   aria-hidden="true">
 </div>

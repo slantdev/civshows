@@ -54,14 +54,14 @@ $accordion_id = 'accordion-' . $stable_id;
 
 // Outputting accordion if repeater exists
 if ($accordion_repeater) { ?>
-  <div id="<?php echo $accordion_id ?>" class="relative space-y-2 mb-6" <?php echo $style_attr; ?>>
+  <div id="<?php echo $accordion_id ?>" class="civ-accordion-wrapper relative space-y-2 mb-6" <?php echo $style_attr; ?>>
     <?php
     foreach ($accordion_repeater as $accordion) :
       $title = $accordion['title'] ?? '';
       $content = $accordion['content'] ?? '';
     ?>
       <details
-        class="group rounded-lg transition-all duration-400 border
+        class="civ-accordion-item group rounded-lg transition-all duration-400 border
           bg-(--acc-header-bg,var(--color-gray-100)) 
           border-(--acc-header-border,var(--color-gray-300)) 
           open:bg-(--acc-header-bg-open,var(--color-white)) 
@@ -70,13 +70,13 @@ if ($accordion_repeater) { ?>
         name="<?php echo esc_attr($accordion_id); ?>">
 
         <!-- Summary (Title) -->
-        <summary class="flex items-center justify-between cursor-pointer py-4 px-5 lg:py-5 lg:pl-8 lg:pr-8 text-xl font-semibold list-none marker:hidden focus:outline-none
+        <summary class="civ-accordion-header flex items-center justify-between cursor-pointer py-4 px-5 lg:py-5 lg:pl-8 lg:pr-8 text-xl font-semibold list-none marker:hidden focus:outline-none
           text-(--acc-header-text,var(--color-gray-900))
           group-open:text-(--acc-header-text-open,var(--color-gray-900))">
           <span><?php echo esc_html($title); ?></span>
 
           <!-- Icon (+ / -) -->
-          <span class="relative ml-4 h-6 w-6 shrink-0">
+          <span class="civ-accordion-icon-wrapper relative ml-4 h-6 w-6 shrink-0">
             <svg class="absolute inset-0 w-6 h-6 transition-transform duration-200 ease-out group-open:rotate-180 group-open:opacity-0
               text-(--acc-icon,var(--color-gray-900))" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
@@ -89,7 +89,7 @@ if ($accordion_repeater) { ?>
         </summary>
 
         <!-- Content -->
-        <div class="px-5 pb-6 lg:px-8 lg:pb-8 prose max-w-none border-t mt-2 pt-4
+        <div class="civ-accordion-content px-5 pb-6 lg:px-8 lg:pb-8 prose max-w-none border-t mt-2 pt-4
           text-(--acc-content-text,inherit)
           bg-(--acc-content-bg,transparent)
           border-(--acc-content-border,var(--color-gray-200))">

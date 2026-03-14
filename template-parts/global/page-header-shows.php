@@ -97,10 +97,10 @@ $child_query = new WP_Query($child_args);
 
 ?>
 
-<section class="w-full relative bg-cover bg-no-repeat" style="<?php echo esc_attr($style_attr); ?>">
+<section class="civ-page-header w-full relative bg-cover bg-no-repeat" style="<?php echo esc_attr($style_attr); ?>">
 
   <!-- Background Images -->
-  <div class="absolute inset-0 z-0">
+  <div class="civ-page-header-bg absolute inset-0 z-0">
     <!-- Desktop Image -->
     <div class="hidden md:block absolute inset-0 bg-cover bg-no-repeat"
       style="background-image: url('<?php echo esc_url($bg_desktop_url); ?>'); background-position: <?php echo esc_attr($bg_desktop_pos); ?>;">
@@ -113,17 +113,17 @@ $child_query = new WP_Query($child_args);
     <div class="absolute inset-0" style="background-color: <?php echo esc_attr($bg_overlay); ?>;"></div>
   </div>
 
-  <div class="container mx-auto px-4 md:px-6 lg:px-8 pt-40 pb-10 md:pt-48 md:pb-16 xl:px-8 xl:pt-72 relative z-10">
+  <div class="civ-page-header-content container mx-auto px-4 md:px-6 lg:px-8 pt-40 pb-10 md:pt-48 md:pb-16 xl:px-8 xl:pt-72 relative z-10">
     <div class="flex flex-col lg:flex-row items-end justify-between gap-6 lg:gap-10 2xl:gap-12">
       <div class="w-full lg:w-3/5 2xl:w-1/2">
         <?php if ($show_title): ?>
-          <h1 class="text-4xl md:text-5xl xl:text-6xl font-semibold leading-tight" style="color: <?php echo esc_attr($title_color); ?>;">
+          <h1 class="civ-page-header-title text-4xl md:text-5xl xl:text-6xl font-semibold leading-tight" style="color: <?php echo esc_attr($title_color); ?>;">
             <?php echo wp_kses_post($title_text); ?>
           </h1>
         <?php endif; ?>
 
         <?php if ($show_subtitle && $subtitle_text): ?>
-          <div class="text-lg md:text-xl xl:text-3xl" style="color: <?php echo esc_attr($subtitle_color); ?>;">
+          <div class="civ-page-header-subtitle text-lg md:text-xl xl:text-3xl" style="color: <?php echo esc_attr($subtitle_color); ?>;">
             <?php echo wp_kses_post($subtitle_text); ?>
           </div>
         <?php endif; ?>
@@ -137,18 +137,18 @@ $child_query = new WP_Query($child_args);
     </div>
 
     <?php if ($show_breadcrumbs): ?>
-      <div class="flex">
+      <div class="civ-page-header-breadcrumbs flex">
         <div class="w-full lg:w-3/5 2xl:w-1/2">
           <div class="h-0.5 w-full bg-white/40 my-6" style="background-color: <?php echo esc_attr($separator_color); ?>; opacity: 0.4;"></div>
 
           <nav class="text-sm md:text-base font-medium opacity-90" style="color: <?php echo esc_attr($breadcrumbs_text_color); ?>;">
             <ul class="flex flex-wrap items-center space-x-2 *:whitespace-nowrap">
-              <li><a href="<?php echo home_url(); ?>" class="hover:underline">Home</a></li>
+              <li><a href="<?php echo home_url(); ?>" class="civ-page-header-breadcrumb-link hover:underline">Home</a></li>
               <li>/</li>
               <li>Our Shows</li>
               <li>/</li>
               <?php if ($parent_id !== $current_id) : ?>
-                <li><a href="<?php echo get_permalink($parent_id); ?>" class="hover:underline"><?php echo get_the_title($parent_id); ?></a></li>
+                <li><a href="<?php echo get_permalink($parent_id); ?>" class="civ-page-header-breadcrumb-link hover:underline"><?php echo get_the_title($parent_id); ?></a></li>
                 <li>/</li>
               <?php endif; ?>
               <li><span class="font-bold"><?php echo get_the_title(); ?></span></li>
@@ -161,12 +161,12 @@ $child_query = new WP_Query($child_args);
 
   <?php if ($show_child_navigation): ?>
     <?php if ($child_query->have_posts()) : ?>
-      <div class="w-full relative z-10">
+      <div class="civ-page-header-child-nav w-full relative z-10">
         <div class="container mx-auto xl:px-8">
           <div class="flex flex-col md:flex-row items-stretch md:items-center">
 
             <div class="hidden lg:flex text-white font-bold uppercase py-4 px-4 lg:pl-8 xl:pl-0 tracking-wide md:w-auto shrink-0 grow items-center justify-center md:justify-start">
-              <a href="<?php echo esc_url($parent_permalink); ?>" class="hover:underline"><?php echo wp_kses_post($parent_nav_label); ?></a>
+              <a href="<?php echo esc_url($parent_permalink); ?>" class="civ-page-header-child-nav-parent-link hover:underline"><?php echo wp_kses_post($parent_nav_label); ?></a>
             </div>
 
             <div class="overflow-x-auto overflow-y-hidden bg-gray-100">
@@ -178,7 +178,7 @@ $child_query = new WP_Query($child_args);
                   $active_classes = $is_active ? 'bg-white text-civ-orange-500 border-b border-b-white border-r border-r-gray-300' : 'border-b border-r border-gray-300 hover:text-civ-orange-500 hover:bg-civ-orange-100';
                 ?>
                   <li class="h-full">
-                    <a href="<?php the_permalink(); ?>" class="block py-4 xl:py-5 px-6 xl:px-8 2xl:px-10 transition-colors <?php echo $active_classes; ?>">
+                    <a href="<?php the_permalink(); ?>" class="civ-page-header-child-nav-link block py-4 xl:py-5 px-6 xl:px-8 2xl:px-10 transition-colors <?php echo $active_classes; ?>">
                       <?php the_title(); ?>
                     </a>
                   </li>

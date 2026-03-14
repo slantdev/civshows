@@ -38,9 +38,9 @@ $posts_query = new WP_Query($query_args);
 
 ?>
 
-<div id="<?php echo esc_attr($component_id); ?>" class="posts-list-component relative <?php echo esc_attr($class); ?>">
+<div id="<?php echo esc_attr($component_id); ?>" class="civ-posts-list-component posts-list-component relative <?php echo esc_attr($class); ?>">
 
-  <div class="posts-grid flex flex-col gap-8 lg:gap-12" data-categories="<?php echo esc_attr(json_encode($categories)); ?>" data-ppp="<?php echo esc_attr($posts_per_page); ?>">
+  <div class="civ-posts-grid posts-grid flex flex-col gap-8 lg:gap-12" data-categories="<?php echo esc_attr(json_encode($categories)); ?>" data-ppp="<?php echo esc_attr($posts_per_page); ?>">
     <?php
     if ($posts_query->have_posts()) :
       while ($posts_query->have_posts()) : $posts_query->the_post();
@@ -55,7 +55,7 @@ $posts_query = new WP_Query($query_args);
 
   <!-- AJAX Numbered Pagination -->
   <?php if ($posts_query->max_num_pages > 1) : ?>
-    <div class="posts-pagination mt-8 pt-8 border-t border-gray-200 flex justify-center gap-1.5 items-center text-civ-blue-900 font-medium text-sm [&_.page-numbers]:px-3 [&_.page-numbers]:py-1.5 [&_.page-numbers]:border [&_.page-numbers]:border-gray-200 [&_.page-numbers]:rounded-md [&_.page-numbers]:transition-colors [&_a.page-numbers:hover]:bg-gray-100 [&_.current]:bg-civ-blue-600 [&_.current]:text-white [&_.current]:border-civ-blue-600"
+    <div class="civ-posts-pagination posts-pagination mt-8 pt-8 border-t border-gray-200 flex justify-center gap-1.5 items-center text-civ-blue-900 font-medium text-sm [&_.page-numbers]:px-3 [&_.page-numbers]:py-1.5 [&_.page-numbers]:border [&_.page-numbers]:border-gray-200 [&_.page-numbers]:rounded-md [&_.page-numbers]:transition-colors [&_a.page-numbers:hover]:bg-gray-100 [&_.current]:bg-civ-blue-600 [&_.current]:text-white [&_.current]:border-civ-blue-600"
       data-target="#<?php echo esc_attr($component_id); ?> .posts-grid"
       data-max-pages="<?php echo esc_attr($posts_query->max_num_pages); ?>">
       <?php

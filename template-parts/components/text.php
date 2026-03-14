@@ -97,7 +97,7 @@ $margin_bottom_class = $margin_bottom_classes[$margin_bottom] ?? 'mb-4 lg:mb-6';
 
 // Combining classes
 $final_classes = array_filter([
-  'text-component',
+  'civ-text-component text-component',
   $text_size_class,
   $text_align_class,
   $text_weight_class,

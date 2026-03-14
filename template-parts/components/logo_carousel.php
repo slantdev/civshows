@@ -24,7 +24,7 @@ $logo_carousel_id = 'logo-carousel-' . get_the_ID() . '-' . $logo_carousel_count
 
 ?>
 
-<div id="<?php echo esc_attr($logo_carousel_id); ?>" class="logo-carousel-component relative <?php echo esc_attr($class); ?>">
+<div id="<?php echo esc_attr($logo_carousel_id); ?>" class="civ-logo-carousel-component logo-carousel-component relative <?php echo esc_attr($class); ?>">
   <!-- Swiper -->
   <div class="logo-carousel-slider swiper overflow-hidden">
     <div class="swiper-wrapper items-center">

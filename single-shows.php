@@ -20,12 +20,6 @@ get_header();
     // Render the Page Builder
     civ_render_page_builder();
 
-    // Fallback for default content editor
-    // Only show if Page Builder is empty (optional logic, but good for safety)
-    if (! have_rows('section_builder') && get_the_content()) {
-      get_template_part('template-parts/shows/content', 'single');
-    }
-
   endwhile; // End of the loop.
   ?>
 

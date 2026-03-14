@@ -11,13 +11,13 @@ $logo_url = $logo_field['header_logo']['site_logo']['url'] ?? get_stylesheet_dir
 $footer_social = get_field('social_links', 'option');
 ?>
 
-<div id="mobile-menu-drawer" class="mobile-menu-drawer fixed inset-0 z-100 invisible pointer-events-none transition-all duration-300">
+<div id="mobile-menu-drawer" class="civ-mobile-menu-drawer mobile-menu-drawer fixed inset-0 z-100 invisible pointer-events-none transition-all duration-300">
   <!-- Backdrop -->
   <div id="mobile-menu-backdrop" class="absolute inset-0 bg-black/60 opacity-0 transition-opacity duration-300"></div>
 
   <!-- Content -->
   <div id="mobile-menu-content" class="absolute top-0 right-0 w-4/5 max-w-sm h-full bg-white translate-x-full transition-transform duration-300 shadow-2xl flex flex-col">
-    
+
     <div class="p-6 flex items-center justify-between border-b border-slate-100">
       <div class="w-20">
         <img src="<?php echo esc_url($logo_url); ?>" alt="Logo" class="w-full h-auto">
@@ -30,7 +30,7 @@ $footer_social = get_field('social_links', 'option');
     </div>
 
     <div class="grow overflow-y-auto py-6 px-6">
-      <nav class="mobile-nav flex flex-col gap-1">
+      <nav class="civ-mobile-nav mobile-nav flex flex-col gap-1">
         <?php if ($menu_items) : ?>
           <?php foreach ($menu_items as $index => $item) :
             $link = $item['menu_item'];
@@ -38,7 +38,7 @@ $footer_social = get_field('social_links', 'option');
             $title = $link['title'];
             $url = $link['url'];
             $has_children = ($type === 'megamenu' || $type === 'dropdown');
-            
+
             $sub_items = [];
             if ($type === 'megamenu') {
               $sub_items = $item['megamenu_items']['submenu_items'] ?? [];
@@ -48,10 +48,10 @@ $footer_social = get_field('social_links', 'option');
           ?>
             <div class="mobile-menu-item-wrapper border-b border-slate-100 last:border-0">
               <div class="flex items-center justify-between py-4">
-                <a href="<?php echo esc_url($url); ?>" class="text-lg font-bold uppercase text-gray-900 tracking-wide">
+                <a href="<?php echo esc_url($url); ?>" class="civ-mobile-nav-link text-lg font-bold uppercase text-gray-900 tracking-wide">
                   <?php echo esc_html($title); ?>
                 </a>
-                
+
                 <?php if ($has_children) : ?>
                   <button class="mobile-submenu-toggle p-2 text-gray-400" aria-label="Toggle Submenu">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -68,7 +68,7 @@ $footer_social = get_field('social_links', 'option');
                       $sub_link = $type === 'megamenu' ? $sub_item['submenu_item'] : $sub_item['submenu_link'];
                     ?>
                       <li>
-                        <a href="<?php echo esc_url($sub_link['url']); ?>" class="block py-3 font-medium text-gray-700 hover:text-civ-orange-500">
+                        <a href="<?php echo esc_url($sub_link['url']); ?>" class="civ-mobile-submenu-link block py-3 font-medium text-gray-700 hover:text-civ-orange-500">
                           <?php echo esc_html($sub_link['title']); ?>
                         </a>
                       </li>
@@ -89,14 +89,14 @@ $footer_social = get_field('social_links', 'option');
             $platform = $social['social_media'] ?? '';
             $link     = $social['link'] ?? [];
             if ($link && $platform) :
-            ?>
-                <a href="<?php echo esc_url($link['url']); ?>"
-                  target="<?php echo esc_attr($link['target'] ?: '_blank'); ?>"
-                  class="hover:opacity-70 transition-colors"
-                  title="<?php echo esc_attr($link['title'] ?: ucfirst($platform)); ?>">
-                  <?php echo civ_get_social_icon($platform, 'w-7 h-7'); ?>
-                </a>
-            <?php endif;
+          ?>
+              <a href="<?php echo esc_url($link['url']); ?>"
+                target="<?php echo esc_attr($link['target'] ?: '_blank'); ?>"
+                class="civ-mobile-social-link hover:opacity-70 transition-colors"
+                title="<?php echo esc_attr($link['title'] ?: ucfirst($platform)); ?>">
+                <?php echo civ_get_social_icon($platform, 'w-7 h-7'); ?>
+              </a>
+          <?php endif;
           endforeach; ?>
         </div>
       <?php endif; ?>
