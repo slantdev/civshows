@@ -47,14 +47,13 @@ $overlay_style = $bg_overlay ? "background-color: {$bg_overlay};" : "";
 
 ?>
 
-<div id="<?php echo esc_attr($bg_id_attr); ?>" class="absolute inset-0 pointer-events-none z-0 overflow-hidden <?php echo esc_attr($class); ?>" style="<?php echo esc_attr($wrapper_style); ?>">
-  
+<div id="<?php echo esc_attr($bg_id_attr); ?>" class="civ-background-wrapper absolute inset-0 pointer-events-none z-0 overflow-hidden <?php echo esc_attr($class); ?>" style="<?php echo esc_attr($wrapper_style); ?>">
+
   <?php if (!empty($bg_image['url'])) : ?>
-    <img 
-      src="<?php echo esc_url($bg_image['url']); ?>" 
-      alt="<?php echo esc_attr($bg_image['alt'] ?? ''); ?>" 
-      class="w-full h-full object-cover <?php echo esc_attr($pos_class); ?>"
-    >
+    <img
+      src="<?php echo esc_url($bg_image['url']); ?>"
+      alt="<?php echo esc_attr($bg_image['alt'] ?? ''); ?>"
+      class="w-full h-full object-cover <?php echo esc_attr($pos_class); ?>">
   <?php endif; ?>
 
   <?php if ($bg_overlay) : ?>

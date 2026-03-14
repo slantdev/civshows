@@ -27,6 +27,7 @@ $right_components = $two_columns['right_column_components_components'] ?? [];
 // Column Settings & Width Mapping
 $column_ratio  = $columns_settings['column_ratio'] ?? 'half';
 $max_width_key = $columns_settings['max_width'] ?? 'default';
+$column_style = $columns_settings['style'] ?? 'default';
 
 $ratio_map = [
   'half'             => ['w-full lg:w-1/2', 'w-full lg:w-1/2'],
@@ -60,6 +61,11 @@ $container_classes = array_filter([
 ]);
 $final_container_class = implode(' ', $container_classes);
 
+// Card Classes
+$card_classes = ($column_style === 'card')
+  ? ' p-4 rounded-lg bg-white shadow-md lg:p-8 lg:rounded-xl lg:shadow-lg xl:p-12 xl:rounded-2xl xl:shadow-xl'
+  : '';
+
 ?>
 
 <section <?php echo $section_id_attr; ?> class="section-two-columns section-wrapper relative <?php echo esc_attr($section_class_name); ?>" style="<?php echo esc_attr($section_style); ?>">
@@ -68,7 +74,8 @@ $final_container_class = implode(' ', $container_classes);
 
   <div class="section-container relative z-10 <?php echo esc_attr($section_container_class); ?>">
     <div class="<?php echo esc_attr($final_container_class); ?>">
-      <div class="section-content flex flex-col lg:flex-row gap-8 xl:gap-20">
+
+      <div class="section-content flex flex-col lg:flex-row gap-8 xl:gap-20<?php echo esc_attr($card_classes); ?>">
 
         <div class="column-left <?php echo esc_attr($col_left_width); ?>">
           <?php get_template_part('template-parts/components/components', '', array('field' => $left_components)); ?>
@@ -79,6 +86,7 @@ $final_container_class = implode(' ', $container_classes);
         </div>
 
       </div>
+
     </div>
   </div>
 

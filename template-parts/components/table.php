@@ -48,7 +48,7 @@ $style_class = $style_map[$style_key] ?? '';
 
 ?>
 
-<div id="<?php echo esc_attr($table_id_attr); ?>" class="table-component-wrapper overflow-x-auto mb-6 lg:mb-8 <?php echo esc_attr($class); ?>">
+<div id="<?php echo esc_attr($table_id_attr); ?>" class="civ-table-component-wrapper table-component-wrapper overflow-x-auto mb-6 lg:mb-8 <?php echo esc_attr($class); ?>">
 
   <?php if (!empty($table_title)) : ?>
     <div class="mb-4">
@@ -56,10 +56,10 @@ $style_class = $style_map[$style_key] ?? '';
     </div>
   <?php endif; ?>
 
-  <table class="w-full text-left border-collapse <?php echo esc_attr($style_class); ?>">
-    <tbody>
+  <table class="civ-table w-full text-left border-collapse <?php echo esc_attr($style_class); ?>">
+    <tbody class="civ-table-body">
       <?php foreach ($rows as $row) : ?>
-        <tr class="transition-colors">
+        <tr class="civ-table-row transition-colors">
 
           <?php
           // Loop through the columns based on the setting
@@ -74,7 +74,7 @@ $style_class = $style_map[$style_key] ?? '';
             $col_data = $row[$col_name] ?? [];
             $comp_type = $col_data["column_{$i}_component"] ?? 'empty';
           ?>
-            <td>
+            <td class="civ-table-cell">
               <?php
               if ($comp_type === 'text') {
                 get_template_part('template-parts/components/text', '', ['field' => $col_data["column_{$i}_text"]]);

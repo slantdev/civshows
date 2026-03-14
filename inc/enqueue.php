@@ -51,6 +51,13 @@ function civ_enqueue_scripts()
       wp_enqueue_script('civ-main', $js_file, ['google-maps'], $theme_version, true);
     }
   }
+
+  // Localize AJAX Object and Nonces for Frontend
+  wp_localize_script('civ-main', 'civAjax', array(
+    'url'   => admin_url('admin-ajax.php'),
+    'nonce' => wp_create_nonce('civ_exhibitors_nonce'),
+    'posts_nonce' => wp_create_nonce('civ_posts_nonce'),
+  ));
 }
 add_action('wp_enqueue_scripts', 'civ_enqueue_scripts');
 
@@ -66,7 +73,7 @@ function civ_admin_styles()
   $hot_file = get_theme_file_path('hot');
 
   // Admin Google Fonts
-  wp_enqueue_style('admin_gfonts', 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap', false, $theme_version);
+  wp_enqueue_style('admin_gfonts', 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap', [], $theme_version);
 
   // Admin Swiper (External)
   if (

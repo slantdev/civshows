@@ -22,17 +22,17 @@ $wo_image   = $intro['image'] ?? [];
 
 ?>
 
-<section <?php echo $section_id_attr; ?> class="<?php echo esc_attr($section_class); ?> section-wrapper relative" style="<?php echo esc_attr($section_style); ?>">
+<section <?php echo $section_id_attr; ?> class="civ-whats-on-shows-section <?php echo esc_attr($section_class); ?> section-wrapper relative" style="<?php echo esc_attr($section_style); ?>">
 
   <?php echo $section_overlay_markup; ?>
 
-  <div class="section-container relative z-10 <?php echo esc_attr($section_container_class); ?>">
+  <div class="civ-section-container section-container relative z-10 <?php echo esc_attr($section_container_class); ?>">
     <div class="container mx-auto px-4">
 
       <!-- Intro Area -->
-      <div class="flex flex-col lg:flex-row items-end justify-between gap-12 mb-12 lg:mb-24">
+      <div class="civ-whats-on-intro flex flex-col lg:flex-row items-end justify-between gap-12 mb-12 lg:mb-24">
 
-        <div class="w-full lg:w-1/2 relative z-10">
+        <div class="civ-whats-on-content w-full lg:w-1/2 relative z-10">
           <?php if (!empty($intro['title'])) : ?>
             <div class="mb-6">
               <?php get_template_part('template-parts/components/heading', null, ['field' => $intro['title']]); ?>
@@ -40,31 +40,11 @@ $wo_image   = $intro['image'] ?? [];
           <?php endif; ?>
 
           <?php if (!empty($intro['description'])) : ?>
-            <div class="mb-10">
+            <div class="civ-whats-on-desc mb-10">
               <?php get_template_part('template-parts/components/content_editor', null, ['field' => $intro['description']]); ?>
             </div>
           <?php endif; ?>
 
-          <div class="flex items-center gap-4">
-            <button class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-400 hover:border-civ-orange-500 hover:text-civ-orange-500 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-
-            <button class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-civ-blue-500 hover:border-civ-orange-500 hover:text-civ-orange-500 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-
-            <div class="flex items-center gap-2 cursor-pointer group ml-4">
-              <span class="font-bold text-black uppercase text-sm group-hover:text-civ-orange-500 transition-colors">Thursday 18th October</span>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-civ-blue-500 group-hover:text-civ-orange-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </div>
         </div>
 
         <?php
@@ -72,8 +52,8 @@ $wo_image   = $intro['image'] ?? [];
         $img_id   = $img_data['image_source']['id'] ?? '';
         if ($img_id) :
         ?>
-          <div class="w-full lg:w-5/12 flex justify-center lg:justify-end -mb-28 lg:-mb-32">
-            <div class="w-full max-w-xl aspect-square rounded-full overflow-hidden relative shadow-xl border-8 border-white">
+          <div class="civ-whats-on-image w-full lg:w-5/12 flex justify-center lg:justify-end -mb-28 lg:-mb-32">
+            <div class="civ-whats-on-image-inner w-full max-w-xl aspect-square rounded-full overflow-hidden relative shadow-xl border-8 border-white">
               <?php
               echo wp_get_attachment_image($img_id, 'large', false, [
                 'class' => 'absolute inset-0 w-full h-full object-cover'
@@ -85,67 +65,36 @@ $wo_image   = $intro['image'] ?? [];
 
       </div>
 
-      <!-- Events List (Placeholder/Hardcoded for now as per design) -->
-      <div class="space-y-6 relative z-30">
+      <!-- Events List -->
+      <div class="civ-whats-on-events-list events-list-wrapper mt-8 relative z-30">
+        <?php
+        $shows_settings = $whats_on['shows_settings'] ?? [];
+        $event_category = $shows_settings['event_category'] ?? '';
 
-        <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex flex-col md:flex-row gap-6 md:gap-8 shadow-sm hover:shadow-md transition-shadow">
-          <div class="w-full md:w-1/3 shrink-0 relative rounded-md overflow-hidden aspect-video md:aspect-auto">
-            <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/04.jpg" alt="Event Image" class="w-full h-full object-cover">
-            <div class="absolute bottom-0 left-4 bg-white text-civ-blue-600 font-bold text-[10px] sm:text-xs uppercase py-2 px-4 rounded-t-md">
-              18 October 2025: 3:00 PM
-            </div>
-          </div>
+        $category_slug = '';
+        if (!empty($event_category)) {
+          if (is_object($event_category)) {
+            $category_slug = $event_category->slug ?? '';
+          } elseif (is_array($event_category) && !empty($event_category['slug'])) {
+            $category_slug = $event_category['slug'];
+          } elseif (is_numeric($event_category)) {
+            $term = get_term($event_category);
+            if ($term && !is_wp_error($term)) {
+              $category_slug = $term->slug;
+            }
+          } elseif (is_string($event_category)) {
+            $category_slug = $event_category;
+          }
+        }
 
-          <div class="flex flex-col justify-center w-full">
-            <h3 class="text-xl xl:text-3xl font-bold text-black mb-3 leading-tight">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </h3>
-            <p class="text-gray-600 text-sm leading-relaxed mb-6">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-            </p>
-
-            <div class="flex flex-wrap gap-3">
-              <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold uppercase text-xs py-2 px-6 rounded-sm transition-colors shadow-sm">
-                Register
-              </button>
-              <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold uppercase text-xs py-2 px-6 rounded-sm transition-colors flex items-center gap-2 shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                Add iCal or Outlook
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Additional placeholder items... -->
-        <div class="bg-white border border-gray-200 rounded-lg p-4 md:p-6 flex flex-col md:flex-row gap-6 md:gap-8 shadow-sm hover:shadow-md transition-shadow">
-          <div class="w-full md:w-1/3 shrink-0 relative rounded-md overflow-hidden aspect-video md:aspect-auto">
-            <img src="https://civshows.slantstaging.com.au/wp-content/uploads/2026/01/03-scaled.jpg" alt="Event Image" class="w-full h-full object-cover">
-            <div class="absolute bottom-0 left-4 bg-white text-civ-blue-600 font-bold text-[10px] sm:text-xs uppercase py-2 px-4 rounded-t-md">
-              18 October 2025: 5:00 PM
-            </div>
-          </div>
-
-          <div class="flex flex-col justify-center w-full">
-            <h3 class="text-xl xl:text-3xl font-bold text-black mb-3 leading-tight">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            </h3>
-            <p class="text-gray-600 text-sm leading-relaxed mb-6">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-            </p>
-
-            <div class="flex flex-wrap gap-3">
-              <button class="bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold uppercase text-xs py-2 px-6 rounded-sm transition-colors flex items-center gap-2 shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                Add iCal or Outlook
-              </button>
-            </div>
-          </div>
-        </div>
-
+        if (!empty($category_slug)) {
+          // Replaced [civ_shows] with [civ_events] since that was the built shortcode. Let me know if you strictly meant "shows"!
+          echo do_shortcode('[civ_events category="' . esc_attr($category_slug) . '"]');
+        } else {
+          // Fallback shortcode if no category is picked
+          echo do_shortcode('[civ_events]');
+        }
+        ?>
       </div>
 
     </div>

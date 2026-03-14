@@ -55,19 +55,19 @@ foreach ($options_repeater as $index => $option) {
 ?>
 
 <section <?php echo $section_id_attr; ?>
-  class="section-interactive-select w-full bg-civ-blue-500 relative transition-all duration-500 ease-in-out"
+  class="civ-interactive-select-section section-interactive-select w-full bg-civ-blue-500 relative transition-all duration-500 ease-in-out"
   style="<?php echo esc_attr($section_style); ?>"
   data-interactive-content='<?php echo esc_attr(json_encode($interactive_data)); ?>'>
 
   <?php echo $section_overlay_markup; ?>
 
-  <div class="container mx-auto px-4 xl:px-8 relative z-20 <?php echo esc_attr($section_container_class); ?>">
+  <div class="civ-section-container container mx-auto px-4 xl:px-8 relative z-20 <?php echo esc_attr($section_container_class); ?>">
 
-    <div class="flex flex-col md:flex-row items-center justify-center text-3xl md:text-4xl font-light gap-3" style="color: <?php echo esc_attr($label_color); ?>;">
+    <div class="civ-interactive-heading flex flex-col md:flex-row items-center justify-center text-3xl md:text-4xl font-light gap-3" style="color: <?php echo esc_attr($label_color); ?>;">
 
       <span class="shrink-0"><?php echo esc_html($label_text); ?></span>
 
-      <div class="relative group dropdown-container">
+      <div class="civ-interactive-dropdown relative group dropdown-container">
 
         <button class="dropdown-trigger flex items-center gap-4 border-b-2 border-white/50 pb-1 hover:border-white transition-colors cursor-pointer text-left min-w-[300px] justify-between">
           <span class="selected-text font-normal"></span>
@@ -91,10 +91,10 @@ foreach ($options_repeater as $index => $option) {
 
     </div>
 
-    <div class="expanded-content max-h-0 opacity-0 overflow-hidden transition-all duration-700 ease-in-out mt-0">
+    <div class="civ-interactive-expanded-content expanded-content max-h-0 opacity-0 overflow-hidden transition-all duration-700 ease-in-out mt-0">
 
       <div class="pt-16 pb-4">
-        <div class="swiper card-slider relative pb-14!">
+        <div class="civ-interactive-card-slider swiper card-slider relative pb-14!">
           <div class="swiper-wrapper">
             <!-- Populated via JS -->
           </div>

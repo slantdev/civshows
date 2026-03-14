@@ -136,6 +136,37 @@
                             "save_options": 0,
                             "allow_custom": 0,
                             "search_placeholder": ""
+                        },
+                        {
+                            "key": "field_69af0cd658060",
+                            "label": "Style",
+                            "name": "style",
+                            "aria-label": "",
+                            "type": "select",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "field-inline-flex bt-0",
+                                "id": ""
+                            },
+                            "choices": {
+                                "default": "Default",
+                                "card": "Card"
+                            },
+                            "default_value": "default",
+                            "return_format": "value",
+                            "multiple": 0,
+                            "allow_null": 0,
+                            "allow_in_bindings": 0,
+                            "ui": 0,
+                            "ajax": 0,
+                            "placeholder": "",
+                            "create_options": 0,
+                            "save_options": 0,
+                            "allow_custom": 0,
+                            "search_placeholder": ""
                         }
                     ],
                     "acfe_group_modal": 0,
@@ -352,7 +383,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1770741078,
+    "modified": 1773080403,
     "acfe_categories": {
         "layout": "Layout"
     }

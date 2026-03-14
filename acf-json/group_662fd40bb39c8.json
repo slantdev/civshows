@@ -332,18 +332,52 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "50",
+                                        "width": "33.33",
                                         "class": "",
                                         "id": ""
                                     },
                                     "default_value": "#111827",
                                     "enable_opacity": 0,
-                                    "return_format": "",
+                                    "return_format": "string",
                                     "allow_in_bindings": 1,
                                     "show_custom_palette": 0,
                                     "show_color_wheel": 1,
                                     "custom_palette_source": "",
                                     "palette_colors": ""
+                                },
+                                {
+                                    "key": "field_69af276345363",
+                                    "label": "Font Weight",
+                                    "name": "title_font_weight",
+                                    "aria-label": "",
+                                    "type": "select",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "33.33",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "choices": {
+                                        "regular": "Regular (400)",
+                                        "medium": "Medium (500)",
+                                        "semi-bold": "Semi Bold (600)",
+                                        "bold": "Bold (700)",
+                                        "black": "Black (900)"
+                                    },
+                                    "default_value": "regular",
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "allow_in_bindings": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "create_options": 0,
+                                    "save_options": 0,
+                                    "allow_custom": 0,
+                                    "search_placeholder": ""
                                 },
                                 {
                                     "key": "field_698ea3666753c",
@@ -355,12 +389,11 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "50",
+                                        "width": "33.33",
                                         "class": "",
                                         "id": ""
                                     },
                                     "choices": {
-                                        "bold": "<span class=\"dashicons dashicons-editor-bold\"><\/span>",
                                         "italic": "<span class=\"dashicons dashicons-editor-italic\"><\/span>",
                                         "underline": "<span class=\"dashicons dashicons-editor-underline\"><\/span>"
                                     },
@@ -421,6 +454,73 @@
                             "acfe_group_modal_close": 0,
                             "acfe_group_modal_button": "",
                             "acfe_group_modal_size": "large"
+                        },
+                        {
+                            "key": "field_69af27ea45364",
+                            "label": "HR Settings",
+                            "name": "hr_settings",
+                            "aria-label": "",
+                            "type": "group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "acfe_seamless_style": 1,
+                            "sub_fields": [
+                                {
+                                    "key": "field_69af280545365",
+                                    "label": "Add Horizontal Line",
+                                    "name": "horizontal_line",
+                                    "aria-label": "",
+                                    "type": "true_false",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "message": "",
+                                    "default_value": 0,
+                                    "allow_in_bindings": 0,
+                                    "ui_on_text": "",
+                                    "ui_off_text": "",
+                                    "ui": 1
+                                },
+                                {
+                                    "key": "field_69af282645366",
+                                    "label": "HR Color",
+                                    "name": "hr_color",
+                                    "aria-label": "",
+                                    "type": "color_picker",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "#d1d5db",
+                                    "enable_opacity": 0,
+                                    "return_format": "string",
+                                    "allow_in_bindings": 0,
+                                    "show_custom_palette": 0,
+                                    "show_color_wheel": 1,
+                                    "custom_palette_source": "",
+                                    "palette_colors": ""
+                                }
+                            ],
+                            "acfe_group_modal": 0,
+                            "acfe_group_modal_close": 0,
+                            "acfe_group_modal_button": "",
+                            "acfe_group_modal_size": "large"
                         }
                     ],
                     "acfe_seamless_style": 0
@@ -453,7 +553,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1770957057,
+    "modified": 1773087237,
     "acfe_categories": {
         "components": "Components"
     }

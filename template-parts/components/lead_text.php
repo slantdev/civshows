@@ -38,9 +38,8 @@ $text_align_class   = $align ?: '';
 $text_leading_class = $leading ?: 'leading-relaxed';
 $text_weight_class  = $weight ?: 'font-normal';
 
-// Combining classes
 $final_classes = array_filter([
-  'lead-text-wrapper mb-6 max-w-none prose',
+  'civ-lead-text-wrapper lead-text-wrapper mb-6 max-w-none prose',
   $text_size_class,
   $text_align_class,
   $text_leading_class,

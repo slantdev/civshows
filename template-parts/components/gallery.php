@@ -26,9 +26,9 @@ if (empty($posts)) return;
 
 // Grid Column Mapping
 $cols_map = [
-  'two'   => 'grid-cols-1 md:grid-cols-2',
-  'three' => 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
-  'four'  => 'grid-cols-1 md:grid-cols-3 lg:grid-cols-4',
+  'two'   => 'grid-cols-1 sm:grid-cols-2',
+  'three' => 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
+  'four'  => 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4',
 ];
 $grid_cols_class = $cols_map[$columns] ?? $cols_map['three'];
 
@@ -53,7 +53,7 @@ foreach ($posts as $post_obj) :
 
     // Card Style for Videos
     if ($style === 'card') : ?>
-      <div id="<?php echo esc_attr($item_id); ?>" class="gallery-video-cards grid <?php echo esc_attr($grid_cols_class); ?> gap-4 lg:gap-8 mb-6 lg:mb-8 <?php echo esc_attr($class); ?>">
+      <div id="<?php echo esc_attr($item_id); ?>" class="civ-gallery-video-cards gallery-video-cards grid <?php echo esc_attr($grid_cols_class); ?> gap-4 lg:gap-8 mb-6 lg:mb-8 <?php echo esc_attr($class); ?>">
         <?php foreach ($videos as $v_item) :
           $v_data  = $v_item['video'] ?? [];
           $title   = $v_item['title'] ?? '';
@@ -84,11 +84,11 @@ foreach ($posts as $post_obj) :
             $video_url = $match[1] ?? '';
           }
         ?>
-          <div class="flex flex-col">
+          <div class="civ-gallery-card-item flex flex-col">
             <a href="<?php echo esc_url($video_url); ?>"
               data-fancybox="gallery-video-<?php echo $post_id; ?>"
               data-caption="<?php echo esc_attr($title); ?>"
-              class="aspect-video w-full rounded-xl overflow-hidden shadow-sm bg-gray-900 group relative block hover:shadow-xl transition-shadow duration-300">
+              class="civ-gallery-video-link aspect-video w-full rounded-xl overflow-hidden shadow-sm bg-gray-900 group relative block hover:shadow-xl transition-shadow duration-300">
 
               <!-- Play Button Overlay -->
               <div class="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
@@ -115,9 +115,9 @@ foreach ($posts as $post_obj) :
               <?php endif; ?>
             </a>
 
-            <div class="mt-4 text-left">
+            <div class="civ-gallery-card-content mt-4 text-left">
               <?php if ($title) : ?>
-                <h3 class="text-2xl font-bold mb-3"><?php echo esc_html($title); ?></h3>
+                <h3 class="civ-gallery-card-title text-2xl font-bold mb-3"><?php echo esc_html($title); ?></h3>
               <?php endif; ?>
 
               <?php if ($desc) : ?>
@@ -129,7 +129,7 @@ foreach ($posts as $post_obj) :
               <?php if (!empty($link['url'])) : ?>
                 <a href="<?php echo esc_url($link['url']); ?>"
                   target="<?php echo esc_attr($link['target'] ?: '_self'); ?>"
-                  class="inline-block bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold uppercase text-xs py-2.5 px-6 rounded-sm transition-colors shadow-sm">
+                  class="civ-gallery-card-button inline-block bg-civ-orange-500 hover:bg-civ-orange-600 text-white font-bold uppercase text-xs py-2.5 px-6 rounded-sm transition-colors shadow-sm">
                   <?php echo esc_html($link['title'] ?: 'View The Video'); ?>
                 </a>
               <?php endif; ?>
@@ -140,7 +140,7 @@ foreach ($posts as $post_obj) :
 
     <?php else : // Grid Style for Videos 
     ?>
-      <div id="<?php echo esc_attr($item_id); ?>" class="gallery-video-grid grid <?php echo esc_attr($grid_cols_class); ?> gap-4 lg:gap-8 mb-6 lg:mb-8 <?php echo esc_attr($class); ?>">
+      <div id="<?php echo esc_attr($item_id); ?>" class="civ-gallery-video-grid gallery-video-grid grid <?php echo esc_attr($grid_cols_class); ?> gap-4 lg:gap-8 mb-6 lg:mb-8 <?php echo esc_attr($class); ?>">
         <?php foreach ($videos as $v_item) :
           $v_data = $v_item['video'] ?? [];
           $source = $v_data['external_or_self_hosted'] ?? 'external';
@@ -169,7 +169,7 @@ foreach ($posts as $post_obj) :
         ?>
           <a href="<?php echo esc_url($video_url); ?>"
             data-fancybox="gallery-video-<?php echo $post_id; ?>"
-            class="aspect-video w-full rounded-lg overflow-hidden shadow-sm bg-gray-900 group relative block hover:shadow-xl transition-shadow duration-300">
+            class="civ-gallery-video-link aspect-video w-full rounded-lg overflow-hidden shadow-sm bg-gray-900 group relative block hover:shadow-xl transition-shadow duration-300">
 
             <!-- Play Button Overlay -->
             <div class="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
@@ -204,11 +204,11 @@ foreach ($posts as $post_obj) :
     $images = $settings['image_gallery'] ?? [];
     if (empty($images)) continue;
   ?>
-    <div id="<?php echo esc_attr($item_id); ?>" class="gallery-image-grid grid <?php echo esc_attr($grid_cols_class); ?> gap-4 mb-6 lg:mb-8 <?php echo esc_attr($class); ?>">
+    <div id="<?php echo esc_attr($item_id); ?>" class="civ-gallery-image-grid gallery-image-grid grid <?php echo esc_attr($grid_cols_class); ?> gap-4 mb-6 lg:mb-8 <?php echo esc_attr($class); ?>">
       <?php foreach ($images as $image) : ?>
         <a href="<?php echo esc_url($image['url']); ?>"
           data-fancybox="gallery-<?php echo $post_id; ?>"
-          class="aspect-square block rounded-xl overflow-hidden shadow-sm group bg-gray-100">
+          class="civ-gallery-image-link aspect-square block rounded-xl overflow-hidden shadow-sm group bg-gray-100">
           <?php echo wp_get_attachment_image($image['ID'], 'medium_large', false, [
             'class' => 'w-full h-full object-cover transition-transform duration-500 group-hover:scale-110'
           ]); ?>

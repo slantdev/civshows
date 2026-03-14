@@ -35,9 +35,8 @@ $alignment_class = $alignment_map[$alignment] ?? $alignment_map['left'];
 $buttons_repeater = $buttons_comp['buttons_repeater'] ?? [];
 
 if ($buttons_repeater) {
-  // Container class
   $container_classes = array_filter([
-    'flex flex-wrap gap-4 mb-6 items-center',
+    'civ-buttons-wrapper flex flex-wrap gap-4 mb-6 items-center',
     $alignment_class,
     $class
   ]);

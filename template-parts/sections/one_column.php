@@ -52,13 +52,13 @@ $final_container_class = implode(' ', $container_classes);
 
 ?>
 
-<section <?php echo $section_id_attr; ?> class="<?php echo esc_attr($section_class); ?> section-wrapper relative" style="<?php echo esc_attr($section_style); ?>">
+<section <?php echo $section_id_attr; ?> class="civ-onecolumn-section <?php echo esc_attr($section_class); ?> section-wrapper relative" style="<?php echo esc_attr($section_style); ?>">
 
   <?php echo $section_overlay_markup; ?>
 
-  <div class="section-container relative z-10 <?php echo esc_attr($section_container_class); ?>">
-    <div class="<?php echo esc_attr($final_container_class); ?>">
-      <div class="section-content">
+  <div class="civ-section-container section-container relative z-10 <?php echo esc_attr($section_container_class); ?>">
+    <div class="civ-section-content-wrapper <?php echo esc_attr($final_container_class); ?>">
+      <div class="civ-section-content section-content">
         <?php get_template_part('template-parts/components/components', '', array('field' => $components)); ?>
       </div>
     </div>

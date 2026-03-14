@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import tailwindcss from "@tailwindcss/vite";
 import browserSync from "browser-sync";
 import fs from "fs";
 import path from "path";
@@ -44,6 +45,7 @@ const writeHotFile = () => ({
 
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     writeHotFile(),
     {
       name: "browser-sync",

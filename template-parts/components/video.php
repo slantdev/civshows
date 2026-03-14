@@ -49,25 +49,28 @@ if ($source === 'external') {
 
 ?>
 
-<div id="<?php echo esc_attr($video_id_attr); ?>" class="video-component-wrapper relative <?php echo esc_attr($class); ?>">
-  <a href="<?php echo esc_url($video_url); ?>" 
-     data-fancybox="video-<?php echo get_the_ID(); ?>" 
-     class="aspect-video w-full rounded-xl overflow-hidden shadow-sm bg-gray-900 group relative block">
-    
+<div id="<?php echo esc_attr($video_id_attr); ?>" class="civ-video-component-wrapper video-component-wrapper relative <?php echo esc_attr($class); ?>">
+  <a href="<?php echo esc_url($video_url); ?>"
+    data-fancybox="video-<?php echo get_the_ID(); ?>"
+    class="civ-video-link aspect-video w-full rounded-xl overflow-hidden shadow-sm bg-gray-900 group relative block">
+
     <!-- Play Button Overlay -->
     <div class="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
       <div class="w-16 h-16 bg-civ-orange-500 rounded-full flex items-center justify-center text-white shadow-xl transition-transform duration-300 group-hover:scale-110">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M8 5v14l11-7z" />
+        </svg>
       </div>
     </div>
 
     <?php if ($thumbnail_url) : ?>
-      <img src="<?php echo esc_url($thumbnail_url); ?>" 
-           class="w-full h-full object-cover opacity-80 transition-all duration-500 group-hover:opacity-60 group-hover:scale-105"
-           <?php if ($fallback_url) echo 'onerror="this.src=\'' . esc_url($fallback_url) . '\'; this.onerror=null;"'; ?>>
+      <img src="<?php echo esc_url($thumbnail_url); ?>"
+        class="w-full h-full object-cover opacity-80 transition-all duration-500 group-hover:opacity-60 group-hover:scale-105"
+        <?php if ($fallback_url) echo 'onerror="this.src=\'' . esc_url($fallback_url) . '\'; this.onerror=null;"'; ?>>
     <?php else : ?>
       <div class="w-full h-full opacity-60 transition-opacity duration-500 group-hover:opacity-40 [&_iframe]:w-full [&_iframe]:h-full [&_video]:w-full [&_video]:h-full [&_video]:object-cover pointer-events-none">
-        <?php if ($source === 'external') echo $video_group['embed_external_video'] ?? ''; else echo do_shortcode($video_group['self_hosted_video'] ?? ''); ?>
+        <?php if ($source === 'external') echo $video_group['embed_external_video'] ?? '';
+        else echo do_shortcode($video_group['self_hosted_video'] ?? ''); ?>
       </div>
     <?php endif; ?>
   </a>

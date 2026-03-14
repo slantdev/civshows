@@ -55,7 +55,7 @@ $margin_bottom_class = 'mb-0';
 // Assigning classes based on advanced settings
 if ($text_size) {
   $text_size_classes = [
-    "default" => 'text-4xl xl:text-5xl',
+    "default" => 'text-[2rem] xl:text-5xl',
     "xs" => 'text-xs',
     "sm" => 'text-sm',
     "md" => 'text-base',
@@ -63,8 +63,8 @@ if ($text_size) {
     "xl" => 'text-lg xl:text-xl',
     "2xl" => 'text-xl xl:text-2xl',
     "3xl" => 'text-2xl xl:text-3xl',
-    "4xl" => 'text-3xl xl:text-4xl',
-    "5xl" => 'text-4xl xl:text-5xl'
+    "4xl" => 'text-[1.75rem] xl:text-4xl',
+    "5xl" => 'text-[2rem] xl:text-5xl'
   ];
   $text_size_class = $text_size_classes[$text_size] ?? $text_size_class;
 }
@@ -124,7 +124,6 @@ $class_list = array_filter([
 ]);
 $final_classes = implode(' ', $class_list);
 
-// Outputting heading if heading text exists
 if ($heading_text) {
-  echo '<' . esc_attr($html_tag) . ' id="' . esc_attr($heading_id) . '" class="' . esc_attr($final_classes) . '" style="' . esc_attr($text_style) . '">' . wp_kses_post($heading_text) . '</' . esc_attr($html_tag) . '>';
+  echo '<' . esc_attr($html_tag) . ' id="' . esc_attr($heading_id) . '" class="civ-heading ' . esc_attr($final_classes) . '" style="' . esc_attr($text_style) . '">' . wp_kses_post($heading_text) . '</' . esc_attr($html_tag) . '>';
 }
