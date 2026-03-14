@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.42.0] - 2026-03-13
 ## [1.43.0] - 2026-03-14
+## [1.44.0] - $(date +%Y-%m-%d)
+
+### Changed
+
+- **Semantic CSS Classes:** Analyzed the `/inc/` directory and injected semantic `civ-` prefixed CSS classes into helper functions within `template-tags.php` that produce frontend HTML, such as `civ_icon()` and `civ_breadcrumbs()`.
+
 
 ### Changed
 

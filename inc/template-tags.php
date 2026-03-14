@@ -153,7 +153,7 @@ function civ_icon($atts = array())
   $svg = $icon_cache[$cache_key];
 
   // Prepare instance-specific attributes
-  $classes = trim('svg-icon ' . $atts['class']);
+  $classes = trim('civ-svg-icon svg-icon ' . $atts['class']);
   $attrs   = sprintf(' class="%s" role="img" focusable="false"', esc_attr($classes));
 
   if ($atts['size']) {
@@ -264,31 +264,31 @@ function preint_r($data)
  */
 function civ_breadcrumbs()
 {
-  $home = '<a href="' . home_url() . '" class="no-underline text-body inline-block hover:text-red transition-colors">' . __('Home', 'goodshep-theme') . '</a>';
-  $separator = '<span class="inline-block mx-2 text-gray-400">/</span>';
+  $home = '<a href="' . home_url() . '" class="civ-breadcrumb-home no-underline text-body inline-block hover:text-red transition-colors">' . __('Home', 'civ-shows') . '</a>';
+  $separator = '<span class="civ-breadcrumb-separator inline-block mx-2 text-gray-400">/</span>';
   $parent = '';
-  $current_page = '<span class="inline-block font-medium text-body">' . get_the_title() . '</span>';
+  $current_page = '<span class="civ-breadcrumb-current inline-block font-medium text-body">' . get_the_title() . '</span>';
 
   if (is_tax(['service_category', 'service_tag'])) {
     $term = get_queried_object();
     $term_name =  $term->name;
-    $parent = '<span class="inline-block">' . __('Our Services', 'goodshep-theme') . '</span>';
-    $current_page = '<span class="inline-block text-red">' . $term_name . '</span>';
+    $parent = '<span class="civ-breadcrumb-parent inline-block">' . __('Our Services', 'civ-shows') . '</span>';
+    $current_page = '<span class="civ-breadcrumb-current inline-block text-red">' . $term_name . '</span>';
   } else if (is_singular('services')) {
-    $parent = '<span class="inline-block">' . __('Our Services', 'goodshep-theme') . '</span>';
+    $parent = '<span class="civ-breadcrumb-parent inline-block">' . __('Our Services', 'civ-shows') . '</span>';
   } else if (is_singular('jobs')) {
-    $parent = '<span class="inline-block">' . __('Get Involved', 'goodshep-theme') . '</span>' . $separator . '<span class="inline-block"><a class="text-body no-underline hover:text-red transition-colors" href="/careers-with-us/">' . __('Careers with Us', 'goodshep-theme') . '</a></span>';
+    $parent = '<span class="civ-breadcrumb-parent inline-block">' . __('Get Involved', 'civ-shows') . '</span>' . $separator . '<span class="civ-breadcrumb-link inline-block"><a class="text-body no-underline hover:text-red transition-colors" href="/careers-with-us/">' . __('Careers with Us', 'civ-shows') . '</a></span>';
   } else if (is_page_template('page-templates/media-coverage.php')) {
-    $parent = '<span class="inline-block">' . __('News and Events', 'goodshep-theme') . '</span>';
+    $parent = '<span class="civ-breadcrumb-parent inline-block">' . __('News and Events', 'civ-shows') . '</span>';
   } else if (is_singular('publications')) {
-    $current_page = '<span class="inline-block">' . __('Our Research', 'goodshep-theme') . '</span>';
+    $current_page = '<span class="civ-breadcrumb-current inline-block">' . __('Our Research', 'civ-shows') . '</span>';
   } else if (is_singular('events')) {
-    $parent = '<span class="inline-block">' . __('Events', 'goodshep-theme') . '</span>';
+    $parent = '<span class="civ-breadcrumb-parent inline-block">' . __('Events', 'civ-shows') . '</span>';
   } else if (is_singular('media_coverage')) {
-    $parent = '<span class="inline-block">' . __('Media Releases', 'goodshep-theme') . '</span>';
+    $parent = '<span class="civ-breadcrumb-parent inline-block">' . __('Media Releases', 'civ-shows') . '</span>';
   }
 
-  $output = '<nav aria-label="Breadcrumb" class="breadcrumbs text-lg">';
+  $output = '<nav aria-label="Breadcrumb" class="civ-breadcrumbs breadcrumbs text-lg">';
   $output .= $home;
   $output .= $separator;
 
