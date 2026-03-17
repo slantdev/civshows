@@ -33,7 +33,7 @@ $section_id_attr = $section_id ? 'id="' . esc_attr($section_id) . '"' : '';
 $section_class = 'section-featured-gallery-' . uniqid();
 
 ?>
-<section <?php echo $section_id_attr; ?> class="civ-featured-gallery-section <?php echo esc_attr($section_class); ?> section-wrapper relative" style="<?php echo esc_attr($section_style); ?>">
+<section <?php echo $section_id_attr; ?> class="civ-featured-gallery-section <?php echo esc_attr($section_class); ?> section-wrapper relative overflow-x-hidden" style="<?php echo esc_attr($section_style); ?>">
 
   <?php echo $section_overlay_markup; ?>
 
@@ -49,7 +49,7 @@ $section_class = 'section-featured-gallery-' . uniqid();
         </div>
       <?php endif; ?>
 
-      <div class="civ-featured-gallery-grid grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-18">
+      <div class="civ-featured-gallery-grid grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-8 xl:gap-14 2xl:gap-18">
 
         <?php foreach ($gallery as $index => $post_obj) :
           $post_id = $post_obj->ID;
@@ -129,20 +129,20 @@ $section_class = 'section-featured-gallery-' . uniqid();
               <div class="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent"></div>
 
               <?php if ($show_label) : ?>
-                <div class="absolute top-8 left-8 z-10">
+                <div class="absolute top-0 left-0 p-4 md:p-6 xl:p-10 z-10">
                   <p class="text-white font-medium uppercase tracking-wide leading-tight drop-shadow-md">
                     <?php echo wp_kses_post($show_label); ?>
                   </p>
                 </div>
               <?php endif; ?>
 
-              <div class="absolute bottom-8 left-8 right-8 z-10 xl:bottom-20 xl:left-10 xl:right-10">
-                <h3 class="text-white text-3xl xl:text-4xl font-medium leading-tight drop-shadow-md w-3/4">
+              <div class="absolute bottom-0 left-0 right-0 p-4 md:p-6 z-10 xl:p-10">
+                <h3 class="text-white text-[22px] lg:text-2xl xl:text-3xl 2xl:text-4xl font-medium leading-tight drop-shadow-md pr-14 lg:pr-18 xl:pr-20">
                   <?php echo esc_html($card_title); ?>
                 </h3>
               </div>
 
-              <div class="absolute bottom-8 right-8 z-10">
+              <div class="absolute bottom-4 right-4 md:bottom-6 md:right-6 xl:bottom-10 xl:right-10 z-10">
                 <div class="border-2 border-white rounded-md p-1 opacity-80 group-hover:opacity-100 group-hover:bg-white group-hover:text-civ-blue-900 text-white transition-all">
                   <?php if ($main_item['type'] === 'video') : ?>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -171,7 +171,7 @@ $section_class = 'section-featured-gallery-' . uniqid();
             </div>
 
             <!-- Card Footer -->
-            <div class="civ-featured-gallery-footer flex flex-col sm:flex-row items-start sm:items-center justify-between mt-6 gap-4 xl:gap-6">
+            <div class="civ-featured-gallery-footer flex flex-col lg:flex-row items-start lg:items-center justify-between mt-6 gap-4 xl:gap-6">
               <div class="civ-featured-gallery-desc text-civ-blue-900">
                 <?php if ($card_desc) : ?>
                   <p class="font-medium text-lg leading-tight xl:text-xl"><?php echo esc_html($card_desc); ?></p>
@@ -181,7 +181,7 @@ $section_class = 'section-featured-gallery-' . uniqid();
               <?php if (!empty($card_cta['url'])) : ?>
                 <a href="<?php echo esc_url($card_cta['url']); ?>"
                   target="<?php echo esc_attr($card_cta['target'] ?: '_self'); ?>"
-                  class="civ-featured-gallery-btn w-full sm:w-auto bg-civ-blue-500 hover:bg-civ-blue-600 text-white font-semibold text-lg uppercase py-4 px-8 rounded transition-colors text-center cursor-pointer whitespace-nowrap">
+                  class="civ-featured-gallery-btn w-auto bg-civ-blue-500 hover:bg-civ-blue-600 text-white font-semibold text-sm xl:text-lg uppercase py-3 px-6 xl:py-4 xl:px-8 rounded transition-colors text-center cursor-pointer whitespace-nowrap">
                   <?php echo esc_html($card_cta['title'] ?: 'Learn More'); ?>
                 </a>
               <?php endif; ?>

@@ -44,7 +44,7 @@ $align_class = $alignment_map[$align_key] ?? $alignment_map['center'];
 // Consolidate classes for the inner container
 $container_classes = array_filter([
   'container mx-auto',
-  'px-4 sm:px-6 lg:px-8',
+  'px-4 md:px-6 lg:px-8',
   $mw_class,
   $align_class
 ]);
@@ -52,7 +52,7 @@ $final_container_class = implode(' ', $container_classes);
 
 ?>
 
-<section <?php echo $section_id_attr; ?> class="civ-onecolumn-section <?php echo esc_attr($section_class); ?> section-wrapper relative" style="<?php echo esc_attr($section_style); ?>">
+<section <?php echo $section_id_attr; ?> class="civ-onecolumn-section <?php echo esc_attr($section_class); ?> section-wrapper relative overflow-x-hidden" style="<?php echo esc_attr($section_style); ?>">
 
   <?php echo $section_overlay_markup; ?>
 

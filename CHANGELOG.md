@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.47.0] - 2026-03-17
+
+### Added
+
+- **Overflow Protection:** Injected `overflow-x-hidden` across all major section templates to prevent unwanted horizontal scrolling on mobile and smaller viewports.
+
+### Changed
+
+- **Home Hero Slider:** Refined grid columns and responsive font sizes for titles. Optimized vertical thumbnail navigation sizing for better fit on various screen widths.
+- **Exhibitors Section:** Updated grid display to a more flexible column structure (`md:cols-2 to xl:cols-4`) to improve visual balance.
+- **Featured Gallery:** Enhanced padding, gaps, and absolute positioning for labels and titles to ensure content doesn't collide with card edges.
+- **Interactive Select:** Improved font sizes for dropdown triggers and menu items to enhance readability.
+- **Media Slider:** Repositioned navigation arrows to the bottom on mobile for better accessibility and moved them outside the container on larger screens.
+- **JavaScript:** Disabled autoplay for hero slider thumbnails to stop unexpected sliding during user interaction.
+
 ## [1.46.0] - 2026-03-17
 
 ### Added

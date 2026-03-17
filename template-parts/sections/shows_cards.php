@@ -24,7 +24,7 @@ $cards_repeater    = $shows_cards_group['cards_repeater'] ?? [];
 
 ?>
 
-<section <?php echo $section_id_attr; ?> class="civ-shows-cards-section section-shows-cards py-30 bg-white relative" style="<?php echo esc_attr($section_style); ?>">
+<section <?php echo $section_id_attr; ?> class="civ-shows-cards-section section-shows-cards py-30 relative overflow-x-hidden" style="<?php echo esc_attr($section_style); ?>">
 
   <?php echo $section_overlay_markup; ?>
 

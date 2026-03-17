@@ -27,7 +27,7 @@ $components = $right_column['components'] ?? [];
 
 ?>
 
-<section <?php echo $section_id_attr; ?> class="civ-visitor-info-section section-visitor-information w-full flex flex-col lg:flex-row relative overflow-hidden" style="<?php echo esc_attr($section_style); ?>">
+<section <?php echo $section_id_attr; ?> class="civ-visitor-info-section section-visitor-information w-full flex flex-col lg:flex-row relative overflow-x-hidden" style="<?php echo esc_attr($section_style); ?>">
 
   <?php echo $section_overlay_markup; ?>
 

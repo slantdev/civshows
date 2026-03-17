@@ -60,7 +60,7 @@ $parent_terms = get_terms([
 ?>
 
 <section <?php echo $section_id_attr; ?> class="
-  civ-exhibitors-shows-section <?php echo esc_attr($section_class); ?> section-wrapper relative" style="
+  civ-exhibitors-shows-section <?php echo esc_attr($section_class); ?> section-wrapper relative overflow-x-hidden" style="
   <?php echo esc_attr($section_style); ?>">
 
   <?php echo $section_overlay_markup; ?>
@@ -194,7 +194,7 @@ $parent_terms = get_terms([
       </div>
 
       <!-- Results Grid -->
-      <div id="exhibitors-grid" class="civ-exhibitors-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+      <div id="exhibitors-grid" class="civ-exhibitors-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16"
         data-shows="<?php echo $shows_json; ?>">
         <?php if ($exhibitors_query->have_posts()): ?>
           <?php while ($exhibitors_query->have_posts()):

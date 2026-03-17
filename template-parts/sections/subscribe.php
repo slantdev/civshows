@@ -24,7 +24,7 @@ $form_group      = $subscribe_group['form'] ?? [];
 
 ?>
 
-<section <?php echo $section_id_attr; ?> class="civ-subscribe-section section-subscribe flex flex-col md:flex-row w-full min-h-[500px] relative overflow-hidden" style="<?php echo esc_attr($section_style); ?>">
+<section <?php echo $section_id_attr; ?> class="civ-subscribe-section section-subscribe flex flex-col md:flex-row w-full min-h-[500px] relative overflow-x-hidden" style="<?php echo esc_attr($section_style); ?>">
 
   <?php echo $section_overlay_markup; ?>
 

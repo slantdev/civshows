@@ -22,7 +22,7 @@ $wo_image   = $intro['image'] ?? [];
 
 ?>
 
-<section <?php echo $section_id_attr; ?> class="civ-whats-on-shows-section <?php echo esc_attr($section_class); ?> section-wrapper relative" style="<?php echo esc_attr($section_style); ?>">
+<section <?php echo $section_id_attr; ?> class="civ-whats-on-shows-section <?php echo esc_attr($section_class); ?> section-wrapper relative overflow-x-hidden" style="<?php echo esc_attr($section_style); ?>">
 
   <?php echo $section_overlay_markup; ?>
 

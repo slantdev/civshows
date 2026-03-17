@@ -55,7 +55,7 @@ foreach ($options_repeater as $index => $option) {
 ?>
 
 <section <?php echo $section_id_attr; ?>
-  class="civ-interactive-select-section section-interactive-select w-full bg-civ-blue-500 relative transition-all duration-500 ease-in-out"
+  class="civ-interactive-select-section section-interactive-select w-full bg-civ-blue-500 relative transition-all duration-500 ease-in-out overflow-x-hidden"
   style="<?php echo esc_attr($section_style); ?>"
   data-interactive-content='<?php echo esc_attr(json_encode($interactive_data)); ?>'>
 
@@ -63,21 +63,21 @@ foreach ($options_repeater as $index => $option) {
 
   <div class="civ-section-container container mx-auto px-4 xl:px-8 relative z-20 <?php echo esc_attr($section_container_class); ?>">
 
-    <div class="civ-interactive-heading flex flex-col md:flex-row items-center justify-center text-3xl md:text-4xl font-light gap-3" style="color: <?php echo esc_attr($label_color); ?>;">
+    <div class="civ-interactive-heading flex flex-col md:flex-row items-center justify-center text-2xl md:text-3xl lg:text-4xl font-light gap-3" style="color: <?php echo esc_attr($label_color); ?>;">
 
       <span class="shrink-0"><?php echo esc_html($label_text); ?></span>
 
       <div class="civ-interactive-dropdown relative group dropdown-container">
 
         <button class="dropdown-trigger flex items-center gap-4 border-b-2 border-white/50 pb-1 hover:border-white transition-colors cursor-pointer text-left min-w-[300px] justify-between">
-          <span class="selected-text font-normal"></span>
+          <span class="selected-text font-normal text-lg md:text-3xl xl:text-4xl"></span>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" />
           </svg>
         </button>
 
         <div class="dropdown-menu absolute top-full left-0 w-full bg-white text-civ-blue-900 shadow-xl rounded-b-lg overflow-hidden opacity-0 invisible transform -translate-y-2 transition-all duration-200 z-50">
-          <ul class="py-2 text-lg">
+          <ul class="py-2 text-base lg:text-lg">
             <?php foreach ($interactive_data as $slug => $data) : ?>
               <li>
                 <button class="w-full text-left px-6 py-3 hover:bg-civ-blue-50 transition-colors option-btn" data-value="<?php echo esc_attr($slug); ?>">

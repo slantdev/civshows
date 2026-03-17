@@ -68,7 +68,7 @@ $card_classes = ($column_style === 'card')
 
 ?>
 
-<section <?php echo $section_id_attr; ?> class="section-two-columns section-wrapper relative <?php echo esc_attr($section_class_name); ?>" style="<?php echo esc_attr($section_style); ?>">
+<section <?php echo $section_id_attr; ?> class="section-two-columns section-wrapper relative overflow-x-hidden <?php echo esc_attr($section_class_name); ?>" style="<?php echo esc_attr($section_style); ?>">
 
   <?php echo $section_overlay_markup; ?>
 

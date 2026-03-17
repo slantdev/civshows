@@ -34,7 +34,7 @@ if (! $headline || ! $cards) {
 }
 ?>
 
-<section <?php echo $section_id_attr; ?> class="civ-cards-grid-section section-wrapper relative bg-white <?php echo esc_attr($section_class); ?>" style="<?php echo esc_attr($section_style); ?>">
+<section <?php echo $section_id_attr; ?> class="civ-cards-grid-section section-wrapper relative overflow-x-hidden <?php echo esc_attr($section_class); ?>" style="<?php echo esc_attr($section_style); ?>">
 
   <?php echo $section_overlay_markup; ?>
 
