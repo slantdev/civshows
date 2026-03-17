@@ -58,12 +58,6 @@ $parent_terms = get_terms([
 ]);
 
 ?>
-<script>
-  window.civAjax = {
-    url: "<?php echo admin_url('admin-ajax.php'); ?>",
-    nonce: "<?php echo wp_create_nonce('civ_exhibitors_nonce'); ?>"
-  };
-</script>
 
 <section <?php echo $section_id_attr; ?> class="
   civ-exhibitors-shows-section <?php echo esc_attr($section_class); ?> section-wrapper relative" style="
