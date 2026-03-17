@@ -5,38 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.42.0] - 2026-03-13
-## [1.43.0] - 2026-03-14
-## [1.44.0] - $(date +%Y-%m-%d)
-## [1.45.0] - $(date +%Y-%m-%d)
-## [1.46.0] - $(date +%Y-%m-%d)
+## [1.46.0] - 2026-03-17
+
+### Added
+
+- **Exhibitors Shows:** Corrected template path in `inc/ajax-handlers.php` to fix the "Load More" functionality.
+- **Exhibitors Shows:** Removed redundant inline AJAX script to prevent conflicts with global settings.
 
 ### Changed
 
 - **Cards Grid Section:** Refactored `template-parts/sections/cards_grid.php` to integrate standard `section-settings.php` controls (backgrounds and padding). Also injected semantic `civ-` CSS classes on structural wrappers and interactive elements to maintain targeting consistency across the theme.
-
-
-### Changed
-
 - **Breadcrumbs Refactor:** Redesigned the `civ_breadcrumbs()` helper function in `inc/template-tags.php` to dynamically generate breadcrumb navigation based on the current page context (Pages, Shows, Events, and Posts).
 - **Page Headers:** Replaced hardcoded, duplicated breadcrumb markup in `page-header.php`, `page-header-shows.php`, and `page-header-events.php` with the centralized `civ_breadcrumbs()` function hook to improve structural maintainability.
-
-
-### Changed
-
-- **Semantic CSS Classes:** Analyzed the `/inc/` directory and injected semantic `civ-` prefixed CSS classes into helper functions within `template-tags.php` that produce frontend HTML, such as `civ_icon()` and `civ_breadcrumbs()`.
-
-
-### Changed
-
-- **Semantic CSS Classes:** Systematically added `civ-` prefixed CSS classes to all structural elements, interactive wrappers, and links across `/template-parts/global`, `/template-parts/components`, and `/template-parts/sections`. This standardization provides a clear and consistent targeting method for advanced CSS customization via the WordPress backend without conflicting with utility classes.
-- **Section & Component Standardization:** Ensured all major modular components (Accordions, Buttons, Headers, Footers, Galleries, Selects, Sliders, and custom Cards) posess unique identifier classes.
-
-
-### Changed
-
+- **Semantic CSS Classes:** Systematically added `civ-` prefixed CSS classes to all structural elements, interactive wrappers, and links across `/template-parts/global`, `/template-parts/components`, and `/template-parts/sections`.
 - **UI & Navigation Enhancements:** Updated Fancybox arrow layout mappings within `components.css` to respect responsive configurations. Also implemented overflow restraints on sticky Page Headers to resolve horizontal scrolling.
-- **Gallery Loops:** Inserted hidden Fancybox `.swiper-slide` links directly beneath the Feature Show thumbnail block inside `featured_gallery.php` allowing multi-image swiping to function properly without requiring users to manually close the popup.
+- **Gallery Loops:** Inserted hidden Fancybox `.swiper-slide` links directly beneath the Feature Show thumbnail block inside `featured_gallery.php` allowing multi-image swiping to function properly.
+
+## [1.45.0] - 2026-03-14
+
+## [1.44.0] - 2026-03-14
+
+## [1.43.0] - 2026-03-14
+
+## [1.42.0] - 2026-03-13
 
 ## [1.41.0] - 2026-03-11
 

@@ -117,7 +117,7 @@ function civ_load_more_exhibitors()
   if ($query->have_posts()) {
     while ($query->have_posts()) {
       $query->the_post();
-      get_template_part('template-parts/shows/components/card', 'exhibitor');
+      get_template_part('template-parts/shows/card', 'exhibitor');
     }
     wp_reset_postdata();
   } else {
