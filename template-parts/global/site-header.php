@@ -20,8 +20,8 @@ $logo_url = $logo_field['header_logo']['site_logo']['url'] ?? get_stylesheet_dir
 
         <div class="civ-site-branding site-branding relative z-10 shrink-0">
           <a href="<?php echo esc_url(home_url('/')); ?>" class="civ-header-logo-link block">
-            <div id="logo-container" class="flex items-center justify-center overflow-hidden transition-all duration-1000 w-20 h-20 md:w-32 md:h-32 xl:w-40 xl:h-40">
-              <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="w-full h-full object-cover">
+            <div id="logo-container" class="flex items-center justify-center transition-all duration-1000 w-20 h-20 md:w-32 md:h-32 xl:w-40 xl:h-40">
+              <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="w-full h-full object-contain">
             </div>
           </a>
         </div>
