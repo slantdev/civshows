@@ -2,6 +2,7 @@
 
 /**
  * Template part for displaying the site header
+ * Push to WP-Engine
  */
 
 $logo_field = get_field('header_logo', 'option');
