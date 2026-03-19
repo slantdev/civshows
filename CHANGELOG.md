@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.48.0] - 2026-03-19
+
+### Changed
+
+- **Code Editor Component:** Refactored `template-parts/components/code_editor.php` to align with the simplified ACF field structure (direct `acfe_code_editor` field), removing obsolete nested group access and text color settings.
+
+### Fixed
+
+- **Git Synchronization:** Successfully resolved local branch divergence and rebase conflicts by synchronizing the local `main` branch with the remote `civshows/main` repository.
+
 ## [1.47.0] - 2026-03-17
 
 ### Added
