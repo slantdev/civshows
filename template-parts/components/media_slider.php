@@ -60,6 +60,15 @@ $is_slider  = $item_count > 1;
             } else {
               $video_url = $raw_url;
             }
+          } elseif ($source === 'iframe') {
+            $embed_code = $video_group['iframe_video'] ?? '';
+            preg_match('/src="([^"]+)"/', $embed_code, $match);
+            $video_url = $match[1] ?? '';
+            
+            // Selective autoplay injection for non-Facebook/Instagram iframes
+            if ($video_url && strpos($video_url, 'facebook.com') === false && strpos($video_url, 'instagram.com') === false) {
+              $video_url = add_query_arg(['autoplay' => 1, 'mute' => 0], $video_url);
+            }
           } else {
             preg_match('/src="([^"]+)"/', $video_group['self_hosted_video'] ?? '', $match);
             $video_url = $match[1] ?? '';
@@ -72,6 +81,10 @@ $is_slider  = $item_count > 1;
         <div class="civ-media-slider-slide swiper-slide relative aspect-video group cursor-pointer bg-gray-900 overflow-hidden">
 
           <a href="<?php echo esc_url($type === 'video' ? $video_url : $image_url); ?>"
+            <?php if ($type === 'video' && $source === 'iframe') : ?>
+              data-type="iframe" 
+              data-iframe='{"attr":{"allow":"autoplay; fullscreen"}}' 
+            <?php endif; ?>
             data-fancybox="<?php echo esc_attr($slider_id); ?>"
             class="civ-media-slider-link w-full h-full block relative">
 
@@ -91,8 +104,11 @@ $is_slider  = $item_count > 1;
                   <?php if ($fallback_url) echo 'onerror="this.src=\'' . esc_url($fallback_url) . '\'; this.onerror=null;"'; ?>>
               <?php else : ?>
                 <div class="w-full h-full opacity-60 transition-opacity duration-500 group-hover:opacity-40 [&_iframe]:w-full [&_iframe]:h-full [&_video]:w-full [&_video]:h-full [&_video]:object-cover pointer-events-none">
-                  <?php if ($source === 'external') echo $video_group['embed_external_video'] ?? '';
-                  else echo do_shortcode($video_group['self_hosted_video'] ?? ''); ?>
+                  <?php 
+                  if ($source === 'external') echo $video_group['embed_external_video'] ?? '';
+                  elseif ($source === 'iframe') echo $video_group['iframe_video'] ?? '';
+                  else echo do_shortcode($video_group['self_hosted_video'] ?? ''); 
+                  ?>
                 </div>
               <?php endif; ?>
 

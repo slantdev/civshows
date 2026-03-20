@@ -108,7 +108,8 @@
                                     },
                                     "choices": {
                                         "external": "External",
-                                        "self-hosted": "Self Hosted"
+                                        "self-hosted": "Self Hosted",
+                                        "iframe": "iFrame"
                                     },
                                     "default_value": "external",
                                     "return_format": "value",
@@ -170,6 +171,39 @@
                                     "toolbar": "basic",
                                     "media_upload": 1,
                                     "delay": 0
+                                },
+                                {
+                                    "key": "field_69bccdd5992fd_ms",
+                                    "label": "iFrame Video",
+                                    "name": "iframe_video",
+                                    "aria-label": "",
+                                    "type": "acfe_code_editor",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": [
+                                        [
+                                            {
+                                                "field": "field_698b8dc134989",
+                                                "operator": "==",
+                                                "value": "iframe"
+                                            }
+                                        ]
+                                    ],
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "label-hidden pad-t-15",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "placeholder": "",
+                                    "mode": "text\/html",
+                                    "lines": 1,
+                                    "indent_unit": 4,
+                                    "maxlength": "",
+                                    "rows": 4,
+                                    "max_rows": "",
+                                    "return_format": [],
+                                    "allow_in_bindings": 0
                                 }
                             ],
                             "acfe_group_modal": 0,

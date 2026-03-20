@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.49.0] - 2026-03-20
+
+### Added
+
+- **iFrame Video Support:** Introduced a new "iFrame" option for the `external_or_self_hosted` video source field in both `Media Slider` and `Video` components. This allows users to embed arbitrary video code (e.g., Facebook, TikTok, Instagram) using a dedicated ACF Code Editor field.
+- **Aspect Ratio Consistency:** Enforced the `aspect-video` Tailwind utility on all video embed types to ensure a uniform presentation across the site.
+
+### Changed
+
+- **Media Slider & Video Components:** Updated `media_slider.php` and `video.php` to handle extracted `src` URLs from custom iframe code and render them within the standard lightbox flow.
+- **ACF Configuration:** Updated `acf-json/group_65a18ddd8ff9c.json` to include the `iframe` source choice and its corresponding `iframe_video` field.
+
+### Fixed
+
+- **Smart Selective Autoplay:** Implemented a hybrid autoplay approach for custom iframes to prevent forced-muting by aggressive providers. Generic iframes receive `allow="autoplay"` permissions and URL parameters for unmuted auto-playback. However, Facebook and Instagram embeds are selectively excluded from automatic parameters, allowing them to remain unmuted for manual playback.
+
 ## [1.48.0] - 2026-03-19
 
 ### Changed

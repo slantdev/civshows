@@ -42,6 +42,15 @@ if ($source === 'external') {
   } else {
     $video_url = $raw_url;
   }
+} elseif ($source === 'iframe') {
+  $embed_code = $video_group['iframe_video'] ?? '';
+  preg_match('/src="([^"]+)"/', $embed_code, $match);
+  $video_url = $match[1] ?? '';
+  
+  // Selective autoplay injection for non-Facebook/Instagram iframes
+  if ($video_url && strpos($video_url, 'facebook.com') === false && strpos($video_url, 'instagram.com') === false) {
+    $video_url = add_query_arg(['autoplay' => 1, 'mute' => 0], $video_url);
+  }
 } else {
   preg_match('/src="([^"]+)"/', $video_group['self_hosted_video'] ?? '', $match);
   $video_url = $match[1] ?? '';
@@ -51,6 +60,10 @@ if ($source === 'external') {
 
 <div id="<?php echo esc_attr($video_id_attr); ?>" class="civ-video-component-wrapper video-component-wrapper relative <?php echo esc_attr($class); ?>">
   <a href="<?php echo esc_url($video_url); ?>"
+    <?php if ($source === 'iframe') : ?>
+      data-type="iframe"
+      data-iframe='{"attr":{"allow":"autoplay; fullscreen"}}'
+    <?php endif; ?>
     data-fancybox="video-<?php echo get_the_ID(); ?>"
     class="civ-video-link aspect-video w-full rounded-xl overflow-hidden shadow-sm bg-gray-900 group relative block">
 
@@ -69,8 +82,11 @@ if ($source === 'external') {
         <?php if ($fallback_url) echo 'onerror="this.src=\'' . esc_url($fallback_url) . '\'; this.onerror=null;"'; ?>>
     <?php else : ?>
       <div class="w-full h-full opacity-60 transition-opacity duration-500 group-hover:opacity-40 [&_iframe]:w-full [&_iframe]:h-full [&_video]:w-full [&_video]:h-full [&_video]:object-cover pointer-events-none">
-        <?php if ($source === 'external') echo $video_group['embed_external_video'] ?? '';
-        else echo do_shortcode($video_group['self_hosted_video'] ?? ''); ?>
+        <?php 
+        if ($source === 'external') echo $video_group['embed_external_video'] ?? '';
+        elseif ($source === 'iframe') echo $video_group['iframe_video'] ?? '';
+        else echo do_shortcode($video_group['self_hosted_video'] ?? ''); 
+        ?>
       </div>
     <?php endif; ?>
   </a>

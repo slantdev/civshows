@@ -29,10 +29,10 @@ const initHomeHero = () => {
     thumbs: {
       swiper: thumbsSwiper,
     },
-    // autoplay: {
-    //   delay: 6000,
-    //   disableOnInteraction: false,
-    // },
+    autoplay: {
+      delay: 6000,
+      disableOnInteraction: false,
+    },
     on: {
       slideChangeTransitionStart: function () {
         isGrowPhase = !isGrowPhase;
