@@ -17,6 +17,11 @@ if (!$section_id) {
 
 $section_id_attr = 'id="' . esc_attr($section_id) . '"';
 
+$section_class = '';
+if (!is_admin()) {
+  $section_class = 'xl:-mt-[152px]';
+}
+
 // Data
 $interactive_group = get_sub_field('interactive_select');
 $select_label      = $interactive_group['select_label'] ?? [];
@@ -55,7 +60,7 @@ foreach ($options_repeater as $index => $option) {
 ?>
 
 <section <?php echo $section_id_attr; ?>
-  class="civ-interactive-select-section section-interactive-select w-full bg-civ-blue-500 relative transition-all duration-500 ease-in-out"
+  class="civ-interactive-select-section section-interactive-select w-full bg-civ-blue-500 relative z-40 transition-all duration-500 ease-in-out <?php echo esc_attr($section_class); ?>"
   style="<?php echo esc_attr($section_style); ?>"
   data-interactive-content='<?php echo esc_attr(json_encode($interactive_data)); ?>'>
 

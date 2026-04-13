@@ -37,12 +37,12 @@ if (empty($slides)) return;
         $content = $slide['content'] ?? [];
         $title = $content['title'] ?? '';
         $description = $content['description'] ?? '';
-        $button = $content['button'] ?? [];
+        $buttons = $content['buttons'] ?? [];
         $bg_group = $slide['background_image'] ?? [];
         $bg_image = $bg_group['background_image']['url'] ?? '';
         $bg_overlay = $bg_group['background_overlay'] ?? 'rgba(0,0,0,0.6)';
       ?>
-        <div class="swiper-slide relative flex items-center justify-center xl:pt-64">
+        <div class="swiper-slide relative flex items-center justify-center xl:pt-28">
           <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo esc_url($bg_image); ?>');">
             <div class="absolute inset-0" style="background-color: <?php echo esc_attr($bg_overlay); ?>;"></div>
           </div>
@@ -60,15 +60,13 @@ if (empty($slides)) return;
               <?php endif; ?>
 
               <?php
-              // Handle Button
-              if (!empty($button)) {
-                get_template_part('template-parts/components/button', '', [
-                  'field' => $button,
-                  'class' => 'py-4 px-10 uppercase tracking-widest transition-all hover:scale-105 text-sm',
-                  'attributes' => [
-                    'data-swiper-parallax' => '-1000'
-                  ]
+              // Handle Buttons
+              if (!empty($buttons)) {
+                echo '<div data-swiper-parallax="-1000">';
+                get_template_part('template-parts/components/buttons', '', [
+                  'field' => $buttons
                 ]);
+                echo '</div>';
               }
               ?>
             </div>
@@ -76,10 +74,12 @@ if (empty($slides)) return;
         </div>
       <?php endforeach; ?>
     </div>
+    <!-- Mobile Pagination -->
+    <div class="swiper-pagination lg:hidden mb-4"></div>
   </div>
 
   <!-- Thumbs Vertical Navigation -->
-  <div class="civ-hero-thumbs absolute top-0 bottom-0 left-0 z-20 container mx-auto px-4 xl:px-8 xl:pt-64 pointer-events-none">
+  <div class="civ-hero-thumbs absolute top-0 bottom-0 left-0 z-20 container mx-auto px-4 xl:px-8 xl:pt-28 pointer-events-none">
     <div class="h-full grid grid-cols-1 md:grid-cols-12 items-center">
       <div class="hidden lg:flex lg:col-span-4 flex-col justify-center h-full pointer-events-auto pl-4 xl:pl-6">
         <div class="civ-hero-thumbs-slider swiper thumbs-slider w-full ml-0! xl:ml-auto! max-w-64 xl:max-w-96 overflow-visible!">

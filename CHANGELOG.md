@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.50.0] - 2026-04-14
+
+### Added
+
+- **Multi-Column Layouts:** Added dynamic flexible content `three_columns` and `four_columns` sections fully integrated with `components.php` rendering wrappers.
+- **Dynamic Box Layouts:** Created new `Flip Box` and `Custom Box` ACF layouts providing standardized 3D flip card animations, column configurations, background injections (`section_settings`), and uniform border-radius control options.
+- **Icon Component:** Developed a new flexible icon component mapped directly to Heroicons Solid, powered by an explicit SVG width/height class generator array mapped to Tailwind typography standards for fluid scaling.
+- **Mobile Header Ticket Action:** Inserted a sticky `buy_ticket_button` strictly on Mobile configurations for `Shows` and dynamically hooked it into standard Show Parent ID resolution so sub-pages automatically inherit the button action configured on the parent.
+
+### Changed
+
+- **Custom Search Output Display:** Restructured the search results loop to display custom result structures for non-post query items (omitting dates and featured images if the source query doesn't match standard blog posts).
+- **Home Hero Slider Pagination:** Injected a conditional tailwind query to surface Swiper bullet pagination points on smaller screens (`< lg`).
+- **Data Remediation for ACF Extrapolations:** Executed `$btn_data` array reconstructions and `array_filter` background object re-wrapping to forcefully fix null index warnings caused by ACF clone field configurations stripping depth layers (`prefix_name: 1`).
+
 ## [1.49.0] - 2026-03-20
 
 ### Added

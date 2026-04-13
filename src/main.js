@@ -29,6 +29,10 @@ const initHomeHero = () => {
     thumbs: {
       swiper: thumbsSwiper,
     },
+    pagination: {
+      el: ".civ-home-hero-section .swiper-pagination",
+      clickable: true,
+    },
     autoplay: {
       delay: 6000,
       disableOnInteraction: false,
@@ -160,6 +164,18 @@ const initInteractiveSelect = () => {
         cardSwiper.slideTo(0);
         expandedContent.classList.remove("max-h-0", "opacity-0");
         expandedContent.classList.add("max-h-[800px]", "opacity-100");
+
+        // Scroll to the section smoothly right under the site header (with a slight delay for better transition syncing)
+        setTimeout(() => {
+          const yOffset = -120;
+          const y = section.getBoundingClientRect().top + window.scrollY + yOffset;
+          
+          if (typeof jQuery !== 'undefined') {
+            jQuery('html, body').animate({ scrollTop: y }, 600);
+          } else {
+            window.scrollTo({ top: y, behavior: "smooth" });
+          }
+        }, 100);
       });
     });
   });
@@ -608,6 +624,37 @@ const initNavigation = () => {
         icon.classList.remove("rotate-180");
       }
     });
+  });
+
+  // --- 5. Search Toggle Logic ---
+  const searchToggleBtn = document.getElementById("nav-search-toggle");
+  const searchForm = document.getElementById("nav-search-form");
+  const searchCloseBtn = document.getElementById("nav-search-close");
+
+  const openSearch = (e) => {
+    e.preventDefault();
+    searchForm.classList.remove("w-0", "opacity-0", "invisible");
+    searchForm.classList.add("w-[300px]", "opacity-100", "visible");
+    setTimeout(() => {
+      searchForm.querySelector("input").focus();
+    }, 300);
+  };
+
+  const closeSearch = () => {
+    searchForm.classList.remove("w-[300px]", "opacity-100", "visible");
+    searchForm.classList.add("w-0", "opacity-0", "invisible");
+    searchForm.querySelector("input").blur();
+  };
+
+  if (searchToggleBtn) searchToggleBtn.addEventListener("click", openSearch);
+  if (searchCloseBtn) searchCloseBtn.addEventListener("click", closeSearch);
+  
+  document.addEventListener("click", (e) => {
+    if (searchForm && !searchForm.classList.contains("invisible")) {
+      if (!searchForm.contains(e.target) && !searchToggleBtn.contains(e.target)) {
+        closeSearch();
+      }
+    }
   });
 };
 

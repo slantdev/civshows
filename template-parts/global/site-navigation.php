@@ -140,13 +140,51 @@ $menu_items = $menu_data['menu_items'] ?? [];
 
     <span class="text-white/60">|</span>
 
-    <button class="text-white hover:text-civ-orange-500 transition-colors p-1">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 font-bold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-      </svg>
-    </button>
+    <div class="relative flex items-center h-full ml-1" id="nav-search-container">
+      <button id="nav-search-toggle" class="text-white hover:text-civ-orange-500 transition-colors p-1 relative z-10 cursor-pointer" aria-label="Toggle Search">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 font-bold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </button>
+
+      <form id="nav-search-form" action="<?php echo esc_url(home_url('/')); ?>" method="get" class="absolute right-0 top-1/2 -translate-y-1/2 flex items-center bg-white rounded-full shadow-lg overflow-hidden origin-right transition-all duration-300 ease-in-out w-0 opacity-0 invisible z-20" style="height: 52px;">
+        <input type="text" name="s" placeholder="Search..." class="w-full h-full border-none bg-transparent px-4 py-2 text-gray-700 outline-none focus:ring-0 min-w-[200px]" required>
+        <button type="button" id="nav-search-close" class="text-gray-400 hover:text-gray-700 px-3 h-full cursor-pointer transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </form>
+    </div>
 
   </nav>
+
+  <?php
+  if (get_post_type() === 'shows') :
+    $current_id = get_the_ID();
+    $parent_id = wp_get_post_parent_id($current_id);
+    if (!$parent_id) {
+      $parent_id = $current_id;
+    }
+
+    $buy_ticket_settings = get_field('buy_ticket_settings', $parent_id);
+    if (!empty($buy_ticket_settings)) {
+      // Reconstruct the prefixed clone output back into the array shape expected by button.php
+      $btn_data = [
+        'button_link' => $buy_ticket_settings['buy_ticket_button_button_link'] ?? [],
+        'settings'    => $buy_ticket_settings['buy_ticket_button_settings'] ?? [],
+      ];
+
+      if (!empty($btn_data['button_link']['url'])) {
+        echo '<div class="lg:hidden flex items-center pr-2 md:pr-4">';
+        get_template_part('template-parts/components/button', '', [
+          'field' => $btn_data
+        ]);
+        echo '</div>';
+      }
+    }
+  endif;
+  ?>
 
   <!-- Mobile Menu Toggle -->
   <div class="lg:hidden flex items-center">

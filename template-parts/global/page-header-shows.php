@@ -113,23 +113,34 @@ $child_query = new WP_Query($child_args);
     <div class="absolute inset-0" style="background-color: <?php echo esc_attr($bg_overlay); ?>;"></div>
   </div>
 
-  <div class="civ-page-header-content container mx-auto px-4 md:px-6 lg:px-8 pt-40 pb-10 md:pt-48 md:pb-16 xl:px-8 xl:pt-72 relative z-10">
-    <div class="flex flex-col lg:flex-row items-end justify-between gap-6 lg:gap-10 2xl:gap-12">
-      <div class="w-full lg:w-3/5 2xl:w-1/2">
+  <div class="civ-page-header-content container mx-auto px-4 md:px-6 lg:px-8 pt-28 pb-6 md:pt-44 md:pb-8 lg:pb-10 xl:pb-12 xl:px-8 xl:pt-60 2xl:pt-62 relative z-10">
+
+    <?php if ($show_breadcrumbs): ?>
+      <div class="civ-page-header-breadcrumbs flex justify-center mb-6 md:hidden">
+        <?php civ_breadcrumbs(['text_color' => $breadcrumbs_text_color, 'wrap' => true]); ?>
+      </div>
+    <?php endif; ?>
+
+    <div class="flex flex-col md:flex-row items-end justify-between gap-6 lg:gap-10 2xl:gap-12">
+      <div class="w-full md:w-3/5">
+        <?php if ($show_logo && $logo_url): ?>
+          <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr($title_text); ?>" class="max-w-[86%] mx-auto h-auto mb-4 md:hidden">
+        <?php endif; ?>
+
         <?php if ($show_title): ?>
-          <h1 class="civ-page-header-title text-4xl md:text-5xl xl:text-6xl font-semibold leading-tight" style="color: <?php echo esc_attr($title_color); ?>;">
+          <h1 class="civ-page-header-title text-4xl lg:text-5xl 2xl:text-5xl font-semibold leading-tight hidden md:block" style="color: <?php echo esc_attr($title_color); ?>;">
             <?php echo wp_kses_post($title_text); ?>
           </h1>
         <?php endif; ?>
 
         <?php if ($show_subtitle && $subtitle_text): ?>
-          <div class="civ-page-header-subtitle text-lg md:text-xl xl:text-3xl" style="color: <?php echo esc_attr($subtitle_color); ?>;">
+          <div class="civ-page-header-subtitle text-lg lg:text-xl 2xl:text-2xl text-center md:text-left" style="color: <?php echo esc_attr($subtitle_color); ?>;">
             <?php echo wp_kses_post($subtitle_text); ?>
           </div>
         <?php endif; ?>
       </div>
 
-      <div class="w-full lg:w-2/5 2xl:w-1/2 flex items-start justify-start lg:items-center lg:justify-center">
+      <div class="w-full hidden md:flex md:w-2/5 items-start justify-start md:items-center md:justify-center">
         <?php if ($show_logo && $logo_url): ?>
           <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr($title_text); ?>" class="max-w-full lg:max-w-96 h-auto">
         <?php endif; ?>
@@ -137,8 +148,8 @@ $child_query = new WP_Query($child_args);
     </div>
 
     <?php if ($show_breadcrumbs): ?>
-      <div class="civ-page-header-breadcrumbs flex">
-        <div class="w-full lg:w-3/5 2xl:w-1/2">
+      <div class="civ-page-header-breadcrumbs hidden md:flex">
+        <div class="w-full lg:w-3/5">
           <div class="h-0.5 w-full bg-white/40 my-6" style="background-color: <?php echo esc_attr($separator_color); ?>; opacity: 0.4;"></div>
 
           <?php civ_breadcrumbs(['text_color' => $breadcrumbs_text_color, 'wrap' => true]); ?>

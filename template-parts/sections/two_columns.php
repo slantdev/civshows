@@ -63,7 +63,7 @@ $final_container_class = implode(' ', $container_classes);
 
 // Card Classes
 $card_classes = ($column_style === 'card')
-  ? ' p-4 rounded-lg bg-white shadow-md lg:p-8 lg:rounded-xl lg:shadow-lg xl:p-12 xl:rounded-2xl xl:shadow-xl'
+  ? 'p-4 rounded-lg bg-white shadow-md lg:p-8 lg:rounded-xl lg:shadow-lg xl:p-12 xl:rounded-2xl xl:shadow-xl'
   : '';
 
 ?>
@@ -75,13 +75,13 @@ $card_classes = ($column_style === 'card')
   <div class="section-container relative z-10 <?php echo esc_attr($section_container_class); ?>">
     <div class="<?php echo esc_attr($final_container_class); ?>">
 
-      <div class="section-content flex flex-col lg:flex-row gap-8 xl:gap-20<?php echo esc_attr($card_classes); ?>">
+      <div class="section-content flex flex-col lg:flex-row gap-8 xl:gap-20">
 
-        <div class="column-left <?php echo esc_attr($col_left_width); ?>">
+        <div class="column-left <?php echo esc_attr($col_left_width); ?><?php echo esc_attr($card_classes); ?>">
           <?php get_template_part('template-parts/components/components', '', array('field' => $left_components)); ?>
         </div>
 
-        <div class="column-right <?php echo esc_attr($col_right_width); ?>">
+        <div class="column-right <?php echo esc_attr($col_right_width); ?><?php echo esc_attr($card_classes); ?>">
           <?php get_template_part('template-parts/components/components', '', array('field' => $right_components)); ?>
         </div>
 
