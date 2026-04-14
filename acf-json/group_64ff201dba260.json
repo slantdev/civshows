@@ -245,50 +245,6 @@
             "acfe_group_modal_size": "large"
         },
         {
-            "key": "field_699512281e9d5",
-            "label": "Search",
-            "name": "search",
-            "aria-label": "",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "acfe_seamless_style": 1,
-            "sub_fields": [
-                {
-                    "key": "field_699512341e9d6",
-                    "label": "Enable Search Form",
-                    "name": "enable_search_form",
-                    "aria-label": "",
-                    "type": "true_false",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "message": "",
-                    "default_value": 1,
-                    "allow_in_bindings": 0,
-                    "ui_on_text": "",
-                    "ui_off_text": "",
-                    "ui": 1
-                }
-            ],
-            "acfe_group_modal": 0,
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
-        },
-        {
             "key": "field_699511481e9d0",
             "label": "Social Links",
             "name": "social_links",
@@ -382,6 +338,152 @@
                             "parent_repeater": "field_699511561e9d1"
                         }
                     ]
+                }
+            ],
+            "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large"
+        },
+        {
+            "key": "field_699512281e9d5",
+            "label": "Search",
+            "name": "search",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "acfe_seamless_style": 1,
+            "sub_fields": [
+                {
+                    "key": "field_699512341e9d6",
+                    "label": "Enable Search Form",
+                    "name": "enable_search_form",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 1,
+                    "allow_in_bindings": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1
+                }
+            ],
+            "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large"
+        },
+        {
+            "key": "field_69de94c0c4d38",
+            "label": "Subscribe",
+            "name": "footer_subscribe",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "acfe_seamless_style": 1,
+            "sub_fields": [
+                {
+                    "key": "field_69de94c0c4d39",
+                    "label": "Enable Subscribe",
+                    "name": "enable_subscribe",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 1,
+                    "allow_in_bindings": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1
+                },
+                {
+                    "key": "field_69de94f7c4d3b",
+                    "label": "Subscribe Heading",
+                    "name": "subscribe_heading",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_69de94c0c4d39",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Subscribe Now",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69de94dcc4d3a",
+                    "label": "Subscribe Form Shortcode",
+                    "name": "subscribe_form_shortcode",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_69de94c0c4d39",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 }
             ],
             "acfe_group_modal": 0,
@@ -534,7 +636,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1771378518,
+    "modified": 1776195229,
     "acfe_categories": {
         "site-settings": "Site Settings"
     }

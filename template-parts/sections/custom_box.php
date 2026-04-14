@@ -37,6 +37,61 @@ $grid_class = match ($column_ratio) {
   default         => 'grid-cols-1 md:grid-cols-3', // three_columns
 };
 
+// More Settings (Paddings, Borders, Shadows)
+$more_settings = $columns_settings['more_settings'] ?? [];
+
+// Paddings
+$box_paddings = $more_settings['box_paddings'] ?? [];
+$padding_size = $box_paddings['padding_size'] ?? 'default';
+
+$padding_map = [
+  'tighter' => 'p-4',
+  'tight'   => 'p-6',
+  'default' => 'p-8',
+  'wide'    => 'p-10',
+  'wider'   => 'p-12',
+];
+$padding_class = $padding_map[strtolower($padding_size)] ?? 'p-8';
+
+// Shadows
+$box_shadow_settings = $more_settings['box_shadow'] ?? [];
+$box_shadow = $box_shadow_settings['box_shadow'] ?? 'none';
+
+$shadow_map = [
+  'none' => 'shadow-none',
+  'sm'   => 'shadow-sm',
+  'md'   => 'shadow-md',
+  'lg'   => 'shadow-lg',
+  'xl'   => 'shadow-xl',
+  '2xl'  => 'shadow-2xl',
+];
+$shadow_class = $shadow_map[$box_shadow] ?? 'shadow-none';
+
+// Borders
+$border_settings = $more_settings['border'] ?? [];
+$border_style = $border_settings['border_style'] ?? 'none';
+$border_color = $border_settings['border_color'] ?? '#d1d5db';
+
+$box_classes = [
+  'group block relative w-full h-full min-h-[300px] flex flex-col overflow-hidden transition-all duration-300',
+  $rounded_class,
+  $shadow_class
+];
+
+$box_styles = [];
+if ($border_style !== 'none') {
+  $box_classes[] = 'border';
+  if ($border_style === 'solid') {
+    $box_classes[] = 'border-solid';
+  }
+  if (!empty($border_color)) {
+    $box_styles[] = "border-color: {$border_color}";
+  }
+}
+
+$final_box_class = implode(' ', $box_classes);
+$final_box_style_attr = !empty($box_styles) ? 'style="' . esc_attr(implode('; ', $box_styles)) . '"' : '';
+
 // Max Width
 $max_width_map = [
   'none'    => 'max-w-none',
@@ -101,7 +156,7 @@ $final_container_class = implode(' ', $container_classes);
               ? sprintf('href="%s" target="%s"', esc_url($link['url']), esc_attr($link['target'] ?: '_self'))
               : '';
           ?>
-            <<?php echo $wrapper_tag; ?> <?php echo $wrapper_attrs; ?> class="group relative w-full h-full min-h-[300px] flex flex-col overflow-hidden <?php echo esc_attr($rounded_class); ?>">
+            <<?php echo $wrapper_tag; ?> <?php echo $wrapper_attrs; ?> class="<?php echo esc_attr($final_box_class); ?>" <?php echo $final_box_style_attr; ?>>
 
               <?php if (!empty(array_filter($bg_data))) : ?>
                 <div class="absolute inset-0 z-0">
@@ -109,7 +164,7 @@ $final_container_class = implode(' ', $container_classes);
                 </div>
               <?php endif; ?>
 
-              <div class="relative z-10 h-full p-8 flex flex-col justify-center <?php echo esc_attr($align_class); ?>">
+              <div class="relative z-10 h-full <?php echo esc_attr($padding_class); ?> flex flex-col justify-center <?php echo esc_attr($align_class); ?>">
                 <?php get_template_part('template-parts/components/components', '', ['field' => $components]); ?>
               </div>
 

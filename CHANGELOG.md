@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.51.0] - 2026-04-14
+
+### Added
+
+- **Stats Slider Section:** Engineered a new flexible section (`stats_slider.php`) powered by Swiper integration and a bespoke Intersection Observer, allowing automatic counting interpolations (`js-counter`) when statistics scroll into view.
+- **Alphabetical Filtering Ribbon:** Designed and built a horizontal carousel with conditional back-end validation to disable alphanumeric characters with no exhibitor results, elevating UX for directory browsing.
+- **Dynamic Footer Subscriptions:** Refactored static `site-footer.php` forms into fully fledged ACF Global Site Settings integrations using dynamic form shortcodes.
+
+### Changed
+
+- **Hero Slider Logo Integration:** Parsed and linked discrete attachment variables to seamlessly fade ACF `logo_image` overlays onto slide hero backgrounds.
+- **Improved Disabled Button States:** Swapped hidden (`opacity-0`) rules for ghosted opacity styles to maintain interface consistency across swiper constraints.
+
 ## [1.50.0] - 2026-04-14
 
 ### Added

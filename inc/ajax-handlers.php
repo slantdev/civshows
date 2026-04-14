@@ -29,6 +29,24 @@ function civ_title_search_filter($search, $wp_query)
   return " AND " . implode(" AND ", $search) . " ";
 }
 
+/**
+ * Filter to restrict search to Post Title starting letter
+ */
+function civ_alphabet_filter($where, $wp_query)
+{
+  global $wpdb;
+  if ($letter = $wp_query->get('civ_starting_letter')) {
+    if ($letter === '#') {
+      $where .= " AND $wpdb->posts.post_title REGEXP '^[0-9]' ";
+    } else {
+      $safe_letter = esc_sql($wpdb->esc_like($letter));
+      $where .= " AND $wpdb->posts.post_title LIKE '{$safe_letter}%' ";
+    }
+  }
+  return $where;
+}
+add_filter('posts_where', 'civ_alphabet_filter', 10, 2);
+
 // Load More Exhibitors
 function civ_load_more_exhibitors()
 {
@@ -39,12 +57,14 @@ function civ_load_more_exhibitors()
   $search = isset($_POST['search']) ? sanitize_text_field($_POST['search']) : '';
   $is_new = isset($_POST['is_new']) && $_POST['is_new'] === 'true';
   $has_special = isset($_POST['has_special']) && $_POST['has_special'] === 'true';
+  $is_product_release = isset($_POST['is_product_release']) && $_POST['is_product_release'] === 'true';
+  $letter = isset($_POST['letter']) ? sanitize_text_field($_POST['letter']) : '';
   $shows_post = isset($_POST['shows']) ? stripslashes($_POST['shows']) : '';
   $shows_array = json_decode($shows_post, true);
 
   $args = array(
     'post_type'      => 'exhibitors',
-    'posts_per_page' => 12,
+    'posts_per_page' => 40,
     'paged'          => $paged,
     'orderby'        => 'title',
     'order'          => 'ASC',
@@ -53,11 +73,13 @@ function civ_load_more_exhibitors()
 
   // Taxonomy Filter
   if (!empty($category)) {
+    $category_array = explode(',', $category);
+    
     $args['tax_query'] = array(
       array(
         'taxonomy' => 'exhibitor-category',
         'field'    => 'slug',
-        'terms'    => $category,
+        'terms'    => $category_array,
       ),
     );
   }
@@ -67,6 +89,11 @@ function civ_load_more_exhibitors()
     $args['s'] = $search;
     // Apply title-only filter
     add_filter('posts_search', 'civ_title_search_filter', 10, 2);
+  }
+
+  // Alphabet Filter
+  if (!empty($letter)) {
+    $args['civ_starting_letter'] = $letter;
   }
 
   // Meta Query for Checkboxes (ACF field 'exhibitor_tags')
@@ -84,6 +111,14 @@ function civ_load_more_exhibitors()
     $meta_query[] = array(
       'key'     => 'exhibitor_tags',
       'value'   => '"specials"', // Serialized ACF checkbox value
+      'compare' => 'LIKE'
+    );
+  }
+
+  if ($is_product_release) {
+    $meta_query[] = array(
+      'key'     => 'exhibitor_tags',
+      'value'   => '"product_release"', // Serialized ACF checkbox value
       'compare' => 'LIKE'
     );
   }

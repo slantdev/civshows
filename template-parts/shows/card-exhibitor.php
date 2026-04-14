@@ -15,6 +15,7 @@ $facebook = $exhibitor_contact['facebook_link'] ?? '';
 $exhibitor_identity = get_field('exhibitor_identity');
 $logo_array = $exhibitor_identity['exhibitor_logo'] ?? [];
 $exhibitor_id_val = $exhibitor_identity['exhibitor_id'] ?? '';
+$site_number = $exhibitor_identity['site_number'] ?? '';
 
 $exhibitor_description = get_field('exhibitor_description');
 $headline = $exhibitor_description['exhibitor_headline'] ?? '';
@@ -52,7 +53,7 @@ $excerpt = wp_trim_words($content, 20, '...');
 
   <div class="civ-exhibitor-card-content p-6 flex flex-col grow">
     <h3 class="civ-exhibitor-card-title font-bold text-lg leading-snug text-civ-blue-900 mb-1 group-hover:text-civ-orange-500 transition-colors">
-      <a href="<?php the_permalink(); ?>" class="civ-exhibitor-card-link before:absolute before:inset-0 before:z-0"><?php the_title(); ?></a>
+      <a href="<?php the_permalink(); ?>" class="civ-exhibitor-card-link before:absolute before:inset-0 before:z-0" target="_blank"><?php the_title(); ?></a>
     </h3>
     <?php if ($categories) : ?>
       <p class="civ-exhibitor-card-categories text-xs text-gray-500 italic mb-3"><?php echo esc_html($categories); ?></p>
@@ -63,13 +64,17 @@ $excerpt = wp_trim_words($content, 20, '...');
     </p>
 
     <div class="civ-exhibitor-card-contact space-y-1 mt-auto pb-4 relative z-10">
+      <?php if ($site_number) : ?>
+        <p class="civ-exhibitor-card-phone text-xs font-bold text-black">Site Number: <span class="font-normal text-gray-600"><?php echo esc_html($site_number); ?></span></p>
+      <?php endif; ?>
+
       <?php if ($phone) : ?>
         <p class="civ-exhibitor-card-phone text-xs font-bold text-black">Phone: <span class="font-normal text-gray-600"><?php echo esc_html($phone); ?></span></p>
       <?php endif; ?>
 
       <?php if ($website) : ?>
         <p class="civ-exhibitor-card-website text-xs font-bold text-black">
-          Site:
+          Website:
           <a href="<?php echo esc_url($website); ?>" target="_blank" rel="noopener noreferrer" class="civ-exhibitor-card-website-link font-normal text-civ-orange-500 hover:underline break-all relative z-10">
             <?php echo esc_html(parse_url($website, PHP_URL_HOST) ?: 'Visit Website'); ?>
           </a>

@@ -23,6 +23,7 @@ $facebook = $exhibitor_contact['facebook_link'] ?? '';
 
 $exhibitor_identity = get_field('exhibitor_identity');
 $logo_array = $exhibitor_identity['exhibitor_logo'] ?? [];
+$site_number = $exhibitor_identity['site_number'] ?? '';
 
 $exhibitor_description = get_field('exhibitor_description');
 $headline = $exhibitor_description['exhibitor_headline'] ?? '';
@@ -110,16 +111,22 @@ if ($terms && !is_wp_error($terms)) {
             <?php endif; ?>
 
             <!-- Bio -->
-            <div class="prose md:prose-lg lg:prose-xl max-w-none text-gray-700 prose-a:text-civ-orange-500 hover:prose-a:text-civ-orange-600 prose-headings:text-civ-blue-900">
-              <?php if ($content) : ?>
+            <?php if ($content) : ?>
+              <div class="prose md:prose-lg lg:prose-xl max-w-none text-gray-700 prose-a:text-civ-orange-500 hover:prose-a:text-civ-orange-600 prose-headings:text-civ-blue-900">
                 <?php echo wp_kses_post($content); ?>
-              <?php else: ?>
-                <p class="text-gray-500 italic">No description provided for this exhibitor.</p>
-              <?php endif; ?>
-            </div>
+              </div>
+            <?php endif; ?>
+
+            <!-- Site Number Output -->
+            <?php if ($site_number) : ?>
+              <div class="mt-8 mb-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+                <span class="text-sm uppercase font-bold text-gray-500 tracking-wider">Site Number:</span>
+                <span class="text-xl md:text-2xl font-bold text-civ-orange-500"><?php echo esc_html($site_number); ?></span>
+              </div>
+            <?php endif; ?>
 
             <!-- Contact Block -->
-            <div class="space-y-6 pt-6 lg:pt-8 xl:pt-12">
+            <div class="space-y-6 pt-6 lg:pt-8 xl:pt-10">
               <h3 class="text-lg font-bold text-civ-blue-900 border-b border-gray-200 pb-3 mb-4">Contact Information</h3>
 
               <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 xl:gap-16">

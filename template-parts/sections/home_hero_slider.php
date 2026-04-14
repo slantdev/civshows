@@ -24,7 +24,7 @@ $slides = $hero_group['home_slider'] ?? [];
 if (empty($slides)) return;
 ?>
 
-<section <?php echo $section_id_attr; ?> class="civ-home-hero-section relative w-full h-[600px] lg:h-[800px] xl:h-svh bg-civ-blue-950 overflow-x-hidden group section-home-hero-slider" style="<?php echo esc_attr($section_style); ?>">
+<section <?php echo $section_id_attr; ?> class="civ-home-hero-section relative w-full h-[600px] md:h-[800px] xl:h-svh bg-civ-blue-950 overflow-x-hidden group section-home-hero-slider" style="<?php echo esc_attr($section_style); ?>">
 
   <?php echo $section_overlay_markup; ?>
 
@@ -38,23 +38,33 @@ if (empty($slides)) return;
         $title = $content['title'] ?? '';
         $description = $content['description'] ?? '';
         $buttons = $content['buttons'] ?? [];
+        $logo_img = $content['logo_image'] ?? '';
         $bg_group = $slide['background_image'] ?? [];
         $bg_image = $bg_group['background_image']['url'] ?? '';
         $bg_overlay = $bg_group['background_overlay'] ?? 'rgba(0,0,0,0.6)';
       ?>
-        <div class="swiper-slide relative flex items-center justify-center xl:pt-28">
+        <div class="swiper-slide relative flex items-center justify-center pt-20 md:pt-28">
           <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo esc_url($bg_image); ?>');">
             <div class="absolute inset-0" style="background-color: <?php echo esc_attr($bg_overlay); ?>;"></div>
           </div>
           <div class="civ-hero-content container mx-auto px-8 xl:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 h-full items-center">
             <div class="hidden lg:block lg:col-span-3 xl:col-span-4 2xl:col-span-5"></div>
             <div class="civ-hero-text lg:col-span-9 xl:col-span-8 2xl:col-span-7 text-white lg:pl-16">
+
+              <?php if (!empty($logo_img)):
+                $l_id = is_array($logo_img) ? $logo_img['ID'] : $logo_img;
+              ?>
+                <div class="mb-6 md:mb-8" data-swiper-parallax="-300">
+                  <?php echo wp_get_attachment_image($l_id, 'large', false, ['class' => 'max-h-20 md:max-h-28 w-auto object-contain object-left']); ?>
+                </div>
+              <?php endif; ?>
+
               <?php if ($title) : ?>
                 <h1 class="text-4xl md:text-5xl xl:text-6xl font-bold mb-4" data-swiper-parallax="-400"><?php echo esc_html($title); ?></h1>
               <?php endif; ?>
 
               <?php if ($description) : ?>
-                <p class="text-lg md:text-xl mb-8 max-w-2xl font-light" data-swiper-parallax="-700">
+                <p class="text-sm md:text-xl mb-8 max-w-2xl font-light" data-swiper-parallax="-700">
                   <?php echo wp_kses_post($description); ?>
                 </p>
               <?php endif; ?>

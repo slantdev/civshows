@@ -330,11 +330,13 @@ const initGoogleMaps = () => {
  * Exhibitor Filters & Load More
  */
 const initExhibitorFilters = () => {
-  const categorySelect = document.getElementById("filter-category");
+  const categoryContainer = document.getElementById("filter-category-container");
   const searchInput = document.getElementById("filter-search");
   const searchBtn = document.getElementById("btn-search");
   const filterNew = document.getElementById("filter-new");
   const filterSpecial = document.getElementById("filter-special");
+  const filterProductRelease = document.getElementById("filter-product-release");
+  const alphaBtns = document.querySelectorAll(".civ-alpha-btn");
   const grid = document.getElementById("exhibitors-grid");
   const loadMoreBtn = document.getElementById("load-more-exhibitors");
 
@@ -346,13 +348,136 @@ const initExhibitorFilters = () => {
 
   const resetBtn = document.getElementById("btn-reset-filters");
 
+  let selectedCategories = [];
+
+  if (categoryContainer) {
+    const header = categoryContainer.querySelector(".civ-multiselect-header");
+    const dropdown = categoryContainer.querySelector(".civ-multiselect-dropdown");
+    const icon = categoryContainer.querySelector(".civ-multiselect-icon");
+    const label = categoryContainer.querySelector(".civ-multiselect-label");
+    const checkboxes = categoryContainer.querySelectorAll(".civ-multiselect-checkbox");
+
+    const toggleDropdown = () => {
+      dropdown.classList.toggle("hidden");
+      icon.classList.toggle("-rotate-180");
+    };
+
+    const updateLabel = () => {
+      selectedCategories = Array.from(checkboxes)
+        .filter((cb) => cb.checked)
+        .map((cb) => cb.value);
+
+      if (selectedCategories.length === 0) {
+        label.textContent = "All Categories";
+        label.classList.remove("text-black", "font-bold");
+      } else if (selectedCategories.length === 1) {
+        const text = Array.from(checkboxes).find(cb => cb.checked).nextElementSibling.textContent;
+        label.textContent = text;
+        label.classList.add("text-black", "font-bold");
+      } else {
+        label.textContent = `${selectedCategories.length} Categories Selected`;
+        label.classList.add("text-black", "font-bold");
+      }
+    };
+
+    header.addEventListener("click", toggleDropdown);
+    header.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggleDropdown();
+      }
+    });
+
+    checkboxes.forEach((cb) => {
+      cb.addEventListener("change", () => {
+        updateLabel();
+        fetchExhibitors(true);
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!categoryContainer.contains(e.target) && !dropdown.classList.contains("hidden")) {
+        dropdown.classList.add("hidden");
+        icon.classList.remove("-rotate-180");
+      }
+    });
+  }
+
+  let selectedLetter = "";
+  if (alphaBtns.length) {
+    alphaBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        
+        // Toggle if currently selected
+        if (btn.classList.contains("bg-civ-orange-500")) {
+          btn.classList.remove("bg-civ-orange-500", "text-white", "border-civ-orange-500");
+          btn.classList.add("bg-white", "text-gray-500", "border-gray-200");
+          selectedLetter = "";
+        } else {
+           // Reset others
+          alphaBtns.forEach((b) => {
+            b.classList.remove("bg-civ-orange-500", "text-white", "border-civ-orange-500");
+            b.classList.add("bg-white", "text-gray-500", "border-gray-200");
+          });
+          // Set active
+          btn.classList.remove("bg-white", "text-gray-500", "border-gray-200");
+          btn.classList.add("bg-civ-orange-500", "text-white", "border-civ-orange-500");
+          selectedLetter = btn.getAttribute("data-letter");
+        }
+        
+        fetchExhibitors(true);
+      });
+    });
+
+    // Carousel Ribbon Interactions
+    const track = document.getElementById("civ-alpha-track");
+    const scrollLeftBtn = document.querySelector(".civ-alpha-scroll-left");
+    const scrollRightBtn = document.querySelector(".civ-alpha-scroll-right");
+
+    if (track && scrollLeftBtn && scrollRightBtn) {
+      const scrollAmount = 250;
+
+      const updateArrows = () => {
+        // Evaluate if track overflows its container width
+        if (track.scrollWidth > track.clientWidth) {
+          scrollLeftBtn.style.display = 'flex';
+          scrollRightBtn.style.display = 'flex';
+          
+          scrollLeftBtn.disabled = track.scrollLeft <= 5;
+          scrollRightBtn.disabled = track.scrollLeft >= (track.scrollWidth - track.clientWidth) - 5;
+        } else {
+          // Disable completely if no overflow exists visually
+          scrollLeftBtn.style.display = 'none';
+          scrollRightBtn.style.display = 'none';
+        }
+      };
+
+      scrollLeftBtn.addEventListener("click", () => {
+        track.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+      });
+
+      scrollRightBtn.addEventListener("click", () => {
+        track.scrollBy({ left: scrollAmount, behavior: "smooth" });
+      });
+
+      track.addEventListener("scroll", updateArrows);
+      window.addEventListener("resize", updateArrows);
+      
+      // Init arrows timeout
+      setTimeout(updateArrows, 150);
+    }
+  }
+
   const checkFiltersState = () => {
     if (!resetBtn) return;
     const hasFilter =
-      (categorySelect && categorySelect.value !== "") ||
+      (selectedCategories.length > 0) ||
       (searchInput && searchInput.value !== "") ||
       (filterNew && filterNew.checked) ||
-      (filterSpecial && filterSpecial.checked);
+      (filterSpecial && filterSpecial.checked) ||
+      (filterProductRelease && filterProductRelease.checked) ||
+      (selectedLetter !== "");
 
     if (hasFilter) {
       resetBtn.classList.remove("hidden");
@@ -376,7 +501,7 @@ const initExhibitorFilters = () => {
     formData.append("action", "civ_load_more_exhibitors");
     formData.append("nonce", window.civAjax.nonce);
     formData.append("page", reset ? 0 : currentPage);
-    formData.append("category", categorySelect ? categorySelect.value : "");
+    formData.append("category", selectedCategories.join(","));
     formData.append("search", searchInput ? searchInput.value : "");
     formData.append(
       "is_new",
@@ -386,6 +511,11 @@ const initExhibitorFilters = () => {
       "has_special",
       filterSpecial && filterSpecial.checked ? "true" : "false",
     );
+    formData.append(
+      "is_product_release",
+      filterProductRelease && filterProductRelease.checked ? "true" : "false",
+    );
+    formData.append("letter", selectedLetter);
     formData.append("shows", grid ? grid.getAttribute("data-shows") : "");
 
     if (loadMoreBtn) {
@@ -434,9 +564,6 @@ const initExhibitorFilters = () => {
   };
 
   // Event Listeners
-  if (categorySelect) {
-    categorySelect.addEventListener("change", () => fetchExhibitors(true));
-  }
 
   if (searchBtn && searchInput) {
     searchBtn.addEventListener("click", () => fetchExhibitors(true));
@@ -453,20 +580,122 @@ const initExhibitorFilters = () => {
     filterSpecial.addEventListener("change", () => fetchExhibitors(true));
   }
 
+  if (filterProductRelease) {
+    filterProductRelease.addEventListener("change", () => fetchExhibitors(true));
+  }
+
   if (loadMoreBtn) {
     loadMoreBtn.addEventListener("click", () => fetchExhibitors(false));
   }
 
   if (resetBtn) {
     resetBtn.addEventListener("click", () => {
-      if (categorySelect) categorySelect.value = "";
+      if (categoryContainer) {
+        const checkboxes = categoryContainer.querySelectorAll(".civ-multiselect-checkbox");
+        checkboxes.forEach(cb => cb.checked = false);
+        selectedCategories = [];
+        const label = categoryContainer.querySelector(".civ-multiselect-label");
+        if (label) {
+          label.textContent = "All Categories";
+          label.classList.remove("text-black", "font-bold");
+        }
+      }
       if (searchInput) searchInput.value = "";
       if (filterNew) filterNew.checked = false;
       if (filterSpecial) filterSpecial.checked = false;
+      if (filterProductRelease) filterProductRelease.checked = false;
+      
+      selectedLetter = "";
+      alphaBtns.forEach((b) => {
+        b.classList.remove("bg-civ-orange-500", "text-white", "border-civ-orange-500");
+        b.classList.add("bg-white", "text-gray-500", "border-gray-200");
+      });
+
       fetchExhibitors(true);
       checkFiltersState();
     });
   }
+};
+
+/**
+ * Stats Slider
+ */
+const initStatsSlider = () => {
+  const statsSliders = document.querySelectorAll(".stats-slider");
+  if (!statsSliders.length) return;
+
+  statsSliders.forEach((elm) => {
+    new Swiper(elm, {
+      loop: true,
+      pagination: {
+        el: elm.querySelector(".swiper-pagination"),
+        clickable: true,
+      },
+      navigation: {
+        nextEl: elm.querySelector(".swiper-button-next"),
+        prevEl: elm.querySelector(".swiper-button-prev"),
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+          spaceBetween: 0
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 0,
+          slidesPerGroup: 3
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 0,
+          slidesPerGroup: 4
+        },
+      },
+    });
+  });
+
+  // Stats Counter Animation
+  const counters = document.querySelectorAll(".js-counter");
+  const counterObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const counter = entry.target;
+          const target = parseFloat(counter.getAttribute("data-target"));
+
+          if (!isNaN(target)) {
+            const duration = 2000; // 2 seconds
+            const startTime = performance.now();
+
+            const updateCounter = (currentTime) => {
+              const elapsed = currentTime - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+
+              // Ease-out cubic
+              const ease = 1 - Math.pow(1 - progress, 3);
+
+              const current = Math.floor(ease * target);
+              counter.innerText = current.toLocaleString("en-AU");
+
+              if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+              } else {
+                counter.innerText = target.toLocaleString("en-AU");
+              }
+            };
+
+            requestAnimationFrame(updateCounter);
+          }
+
+          observer.unobserve(counter);
+        }
+      });
+    }, {
+      threshold: 0.5
+    }
+  );
+
+  counters.forEach((counter) => counterObserver.observe(counter));
 };
 
 /**
@@ -755,6 +984,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initExhibitorFilters();
   initLogoCarousel();
   initPostsPagination();
+  initStatsSlider();
 
   // Fancybox initialization
   Fancybox.bind("[data-fancybox]", {

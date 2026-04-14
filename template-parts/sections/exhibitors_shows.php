@@ -26,7 +26,7 @@ $selected_shows = $list_settings['exhibitor_shows'] ?? [];
 // Exhibitors Query (Initial Load)
 $args = array(
   'post_type' => 'exhibitors',
-  'posts_per_page' => 12,
+  'posts_per_page' => 40,
   'orderby' => 'title',
   'order' => 'ASC',
   'post_status' => 'publish',
@@ -47,6 +47,31 @@ if (!empty($selected_shows)) {
   $args['meta_query'] = $meta_query;
 }
 $shows_json = esc_attr(json_encode($shows_ids));
+
+// Find active letters globally for this section
+global $wpdb;
+$active_letters = [];
+$has_numbers = false;
+
+$all_args = $args;
+$all_args['posts_per_page'] = -1;
+$all_args['fields'] = 'ids';
+$all_ids = get_posts($all_args);
+
+if (!empty($all_ids)) {
+  $id_list = implode(',', array_map('intval', $all_ids));
+  $sql = "SELECT DISTINCT UPPER(LEFT(post_title, 1)) as letter FROM {$wpdb->posts} WHERE ID IN ($id_list)";
+  $letters_query = $wpdb->get_results($sql);
+  foreach ($letters_query as $row) {
+    if (is_numeric($row->letter)) {
+      $has_numbers = true;
+    } else {
+      if (ctype_alpha($row->letter)) {
+        $active_letters[] = $row->letter;
+      }
+    }
+  }
+}
 
 $exhibitors_query = new WP_Query($args);
 
@@ -120,24 +145,26 @@ $parent_terms = get_terms([
 
           <div class="civ-filter-category w-full lg:w-5/12 space-y-2">
             <label class="font-bold text-sm uppercase text-black block mb-1">Find By Category</label>
-            <div class="relative">
-              <select id="filter-category"
-                class="civ-select-input w-full bg-white border border-gray-300 text-gray-700 text-sm rounded px-4 py-3 appearance-none focus:outline-none focus:border-civ-orange-500 cursor-pointer">
-                <option value="">All Categories</option>
-                <?php if (!is_wp_error($parent_terms)): ?>
-                  <?php foreach ($parent_terms as $term): ?>
-                    <option value="<?php echo esc_attr($term->slug); ?>">
-                      <?php echo esc_html($term->name); ?>
-                    </option>
-                  <?php
-                  endforeach; ?>
-                <?php
-                endif; ?>
-              </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
-                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+            <div class="relative civ-custom-multiselect" id="filter-category-container">
+              <div class="civ-multiselect-header w-full bg-white border border-gray-300 text-gray-700 text-sm rounded px-4 py-3 cursor-pointer flex justify-between items-center focus:border-civ-orange-500 focus:outline-none" tabindex="0">
+                <span class="civ-multiselect-label truncate pr-4">All Categories</span>
+                <svg class="civ-multiselect-icon fill-current h-4 w-4 text-gray-500 shrink-0 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                   <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                 </svg>
+              </div>
+              <div class="civ-multiselect-dropdown absolute top-full left-0 w-full bg-white border border-gray-200 mt-2 rounded-md shadow-xl max-h-60 overflow-y-auto hidden z-40 transform origin-top transition-all">
+                <div class="p-2 space-y-1">
+                  <?php if (!is_wp_error($parent_terms)): ?>
+                    <?php foreach ($parent_terms as $term): ?>
+                      <label class="flex items-center px-3 py-2.5 cursor-pointer hover:bg-gray-50 rounded-md select-none group transition-colors">
+                        <input type="checkbox" value="<?php echo esc_attr($term->slug); ?>" class="civ-multiselect-checkbox w-4 h-4 text-civ-orange-500 border-gray-300 rounded cursor-pointer focus:ring-civ-orange-500 focus:ring-offset-0">
+                        <span class="ml-3 text-sm text-gray-700 group-hover:text-black font-medium"><?php echo esc_html($term->name); ?></span>
+                      </label>
+                    <?php
+                    endforeach; ?>
+                  <?php
+                  endif; ?>
+                </div>
               </div>
             </div>
           </div>
@@ -170,8 +197,8 @@ $parent_terms = get_terms([
                 class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-civ-orange-500">
               </div>
             </div>
-            <span class="text-sm font-semibold text-black group-hover:text-civ-orange-500 transition-colors">New To The
-              Show</span>
+            <span class="text-sm font-semibold text-black group-hover:text-civ-orange-500 transition-colors">New to the
+              show</span>
           </label>
 
           <label class="civ-filter-toggle flex items-center gap-3 cursor-pointer group">
@@ -185,12 +212,65 @@ $parent_terms = get_terms([
               specials!</span>
           </label>
 
+          <label class="civ-filter-toggle flex items-center gap-3 cursor-pointer group">
+            <div class="relative">
+              <input type="checkbox" id="filter-product-release" class="sr-only peer">
+              <div
+                class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-civ-orange-500">
+              </div>
+            </div>
+            <span class="text-sm font-semibold text-black group-hover:text-civ-orange-500 transition-colors">New product release at the show</span>
+          </label>
+
           <button id="btn-reset-filters"
             class="civ-reset-filters-btn text-sm font-semibold text-gray-500 hover:text-civ-orange-500 transition-colors uppercase ml-auto cursor-pointer hidden">
             Reset Filters
           </button>
 
         </div>
+
+        <!-- Alphabet Filter Ribbon -->
+        <div class="civ-alphabet-filter mt-8 pt-6 border-t border-gray-200">
+          <div class="relative flex items-center group w-full">
+
+            <!-- Left Arrow -->
+            <button type="button" class="civ-alpha-scroll-left hidden md:flex absolute left-0 md:left-1 z-20 w-6 h-6 md:w-8 md:h-8 items-center justify-center bg-white shadow-sm border border-gray-200 rounded-full text-gray-600 hover:text-white hover:bg-civ-orange-500 hover:border-civ-orange-500 hover:shadow-md transition-all duration-200 cursor-pointer disabled:opacity-40 disabled:pointer-events-none disabled:shadow-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+              </svg>
+            </button>
+
+            <!-- Scrollable Track -->
+            <div id="civ-alpha-track" class="overflow-x-auto w-full mx-8 md:mx-12 civ-custom-scrollbar scroll-smooth flex-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              <ul class="flex gap-1 md:gap-2 min-w-max items-center uppercase text-sm font-bold" id="filter-alphabet">
+                <?php
+                $is_disabled = !$has_numbers;
+                $btn_classes = $is_disabled ? 'opacity-40 cursor-not-allowed bg-gray-100 text-gray-400' : 'cursor-pointer hover:bg-civ-orange-500 hover:text-white hover:border-civ-orange-500 transition-colors bg-white text-gray-600';
+                ?>
+                <li>
+                  <button type="button" data-letter="#" class="civ-alpha-btn w-10 h-10 flex items-center justify-center rounded border border-gray-200 <?php echo esc_attr($btn_classes); ?>" <?php echo $is_disabled ? 'disabled' : ''; ?>>#</button>
+                </li>
+                <?php foreach (range('A', 'Z') as $letter):
+                  $is_disabled = !in_array($letter, $active_letters);
+                  $btn_classes = $is_disabled ? 'opacity-40 cursor-not-allowed bg-gray-100 text-gray-400' : 'cursor-pointer hover:bg-civ-orange-500 hover:text-white hover:border-civ-orange-500 transition-colors bg-white text-gray-600';
+                ?>
+                  <li>
+                    <button type="button" data-letter="<?php echo esc_attr($letter); ?>" class="civ-alpha-btn w-10 h-10 flex items-center justify-center rounded border border-gray-200 <?php echo esc_attr($btn_classes); ?>" <?php echo $is_disabled ? 'disabled' : ''; ?>><?php echo esc_html($letter); ?></button>
+                  </li>
+                <?php endforeach; ?>
+              </ul>
+            </div>
+
+            <!-- Right Arrow -->
+            <button type="button" class="civ-alpha-scroll-right hidden md:flex absolute right-0 md:right-1 z-20 w-6 h-6 md:w-8 md:h-8 items-center justify-center bg-white shadow-sm border border-gray-200 rounded-full text-gray-600 hover:text-white hover:bg-civ-orange-500 hover:border-civ-orange-500 hover:shadow-md transition-all duration-200 cursor-pointer disabled:opacity-40 disabled:pointer-events-none disabled:shadow-none">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+              </svg>
+            </button>
+
+          </div>
+        </div>
+
       </div>
 
       <!-- Results Grid -->

@@ -29,7 +29,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "33.33",
                         "class": "br-1",
                         "id": ""
                     },
@@ -57,7 +57,28 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "49",
+                        "width": "33.33",
+                        "class": "br-1 bl-0",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69de8093bfa47",
+                    "label": "Site Number",
+                    "name": "site_number",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33.33",
                         "class": "bl-0",
                         "id": ""
                     },
@@ -253,7 +274,8 @@
             },
             "choices": {
                 "new": "New to the show",
-                "specials": "Has show specials"
+                "specials": "Has show specials",
+                "product_release": "New product release at the show"
             },
             "default_value": [],
             "return_format": "value",
@@ -354,7 +376,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1773216651,
+    "modified": 1776189696,
     "acfe_categories": {
         "cpt": "CPT"
     }
