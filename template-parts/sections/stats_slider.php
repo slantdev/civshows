@@ -30,7 +30,7 @@ if (empty($slides)) {
 }
 ?>
 
-<section <?php echo $section_id_attr; ?> class="civ-stats-slider-section relative w-full overflow-hidden py-16 md:py-24 <?php echo esc_attr($section_class); ?>" style="<?php echo $inline_style; ?>">
+<section <?php echo $section_id_attr; ?> class="civ-stats-slider-section relative w-full overflow-hidden <?php echo esc_attr($section_class); ?>" style="<?php echo $inline_style; ?>">
   <?php echo $section_overlay_markup; ?>
 
   <div class="civ-section-container section-container relative z-10 <?php echo esc_attr($section_container_class); ?>">
