@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.52.0] - 2026-04-15
+
+### Changed
+
+- **Logo Carousel Section:** Refactored the core template to migrate from standard galleries to an ACF `logo_carousel_repeater` block, injecting support for unique hyperlink paths per logo. Architected a dynamic data passing pattern through HTML `data-config` attributes to support distinct Swiper breakpoints and configurable autoplay toggles without polluting the global `window` scope.
+
 ## [1.51.0] - 2026-04-14
 
 ### Added

@@ -229,40 +229,7 @@ const initMediaSlider = () => {
   });
 };
 
-/**
- * Logo Carousel
- */
-const initLogoCarousel = () => {
-  const sliders = document.querySelectorAll(".logo-carousel-slider");
-  if (!sliders.length) return;
 
-  sliders.forEach((slider) => {
-    new Swiper(slider, {
-      loop: true,
-      watchOverflow: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: slider.querySelector(".logo-carousel-pagination"),
-        clickable: true,
-      },
-      slidesPerView: 2,
-      breakpoints: {
-        768: {
-          slidesPerView: 4,
-        },
-        1024: {
-          slidesPerView: 5,
-        },
-        1280: {
-          slidesPerView: 6,
-        },
-      },
-    });
-  });
-};
 
 /**
  * Google Maps
@@ -615,6 +582,53 @@ const initExhibitorFilters = () => {
       checkFiltersState();
     });
   }
+};
+
+/**
+ * Logo Carousel
+ */
+const initLogoCarousel = () => {
+  const sliders = document.querySelectorAll(".logo-carousel-slider");
+  if (!sliders.length) return;
+
+  sliders.forEach((slider) => {
+    let conf = { spdefault: 2, spmd: 3, splg: 4, spxl: 5, sp2xl: 6, autoplay: true, delay: 6000 };
+    try {
+      const configData = slider.getAttribute('data-config');
+      if (configData) {
+        conf = Object.assign(conf, JSON.parse(configData));
+      }
+    } catch (e) {
+      console.error(e);
+    }
+
+    let swiperOpts = {
+      loop: true,
+      watchOverflow: true,
+      pagination: {
+        el: slider.querySelector(".logo-carousel-pagination"),
+        clickable: true,
+      },
+      slidesPerView: conf.spdefault,
+      breakpoints: {
+        768: { slidesPerView: conf.spmd },
+        1024: { slidesPerView: conf.splg },
+        1280: { slidesPerView: conf.spxl },
+        1536: { slidesPerView: conf.sp2xl },
+      },
+    };
+
+    if (conf.autoplay) {
+      swiperOpts.autoplay = {
+        delay: conf.delay,
+        disableOnInteraction: false,
+      };
+    } else {
+      swiperOpts.autoplay = false;
+    }
+
+    new Swiper(slider, swiperOpts);
+  });
 };
 
 /**
