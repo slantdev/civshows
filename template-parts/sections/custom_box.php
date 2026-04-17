@@ -140,14 +140,24 @@ $final_container_class = implode(' ', $container_classes);
             $bg_data    = $settings['background_background'] ?? ($settings['background'] ?? []);
             $background = ['background' => $bg_data];
 
-            $link      = $settings['link'] ?? '';
-            $alignment = $settings['alignment'] ?? '';
+            $link       = $settings['link'] ?? '';
+            $alignments = $settings['alignments'] ?? [];
+            $text_align = $alignments['text_align'] ?? 'center';
+            $vert_align = $alignments['vertical_align'] ?? 'top';
 
-            // Alignment mapping
-            $align_class = match ($alignment) {
-              'center' => 'items-center text-center',
-              'right'  => 'items-end text-right',
-              default  => 'items-start text-left', // left
+            // Text Alignment mapping
+            $text_align_class = match ($text_align) {
+              'left'  => 'text-left',
+              'right' => 'text-right',
+              'center' => 'text-center',
+              default => 'text-left',
+            };
+
+            // Vertical Alignment mapping
+            $vert_align_class = match ($vert_align) {
+              'center', 'middle' => 'justify-center',
+              'bottom'           => 'justify-end',
+              default            => '', // top
             };
 
             $is_link = is_array($link) && !empty($link['url']);
@@ -164,7 +174,7 @@ $final_container_class = implode(' ', $container_classes);
                 </div>
               <?php endif; ?>
 
-              <div class="relative z-10 h-full <?php echo esc_attr($padding_class); ?> flex flex-col justify-center <?php echo esc_attr($align_class); ?>">
+              <div class="relative z-10 h-full <?php echo esc_attr($padding_class); ?> flex flex-col <?php echo esc_attr($vert_align_class); ?> <?php echo esc_attr($text_align_class); ?>">
                 <?php get_template_part('template-parts/components/components', '', ['field' => $components]); ?>
               </div>
 

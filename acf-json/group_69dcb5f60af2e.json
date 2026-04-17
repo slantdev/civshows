@@ -533,7 +533,7 @@
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "",
+                                        "width": "50",
                                         "class": "",
                                         "id": ""
                                     },
@@ -541,29 +541,84 @@
                                     "allow_in_bindings": 0
                                 },
                                 {
-                                    "key": "field_69dcb69f1825d",
-                                    "label": "Alignment",
-                                    "name": "alignment",
+                                    "key": "field_69e1cd6e4f01e",
+                                    "label": "Alignments",
+                                    "name": "alignments",
                                     "aria-label": "",
-                                    "type": "button_group",
+                                    "type": "group",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "",
-                                        "class": "",
+                                        "width": "50",
+                                        "class": "label-hidden",
                                         "id": ""
                                     },
-                                    "choices": {
-                                        "left": "<span class=\"dashicons dashicons-editor-alignleft\"><\/span>",
-                                        "center": "<span class=\"dashicons dashicons-editor-aligncenter\"><\/span>",
-                                        "right": "<span class=\"dashicons dashicons-editor-alignright\"><\/span>"
-                                    },
-                                    "default_value": "",
-                                    "return_format": "value",
-                                    "allow_null": 0,
-                                    "allow_in_bindings": 0,
-                                    "layout": "horizontal"
+                                    "layout": "block",
+                                    "acfe_seamless_style": 1,
+                                    "sub_fields": [
+                                        {
+                                            "key": "field_69dcb69f1825d",
+                                            "label": "Text Align",
+                                            "name": "text_align",
+                                            "aria-label": "",
+                                            "type": "button_group",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "50",
+                                                "class": "br-1",
+                                                "id": ""
+                                            },
+                                            "choices": {
+                                                "left": "<span class=\"dashicons dashicons-editor-alignleft\"><\/span>",
+                                                "center": "<span class=\"dashicons dashicons-editor-aligncenter\"><\/span>",
+                                                "right": "<span class=\"dashicons dashicons-editor-alignright\"><\/span>"
+                                            },
+                                            "default_value": "",
+                                            "return_format": "value",
+                                            "allow_null": 1,
+                                            "allow_in_bindings": 0,
+                                            "layout": "horizontal"
+                                        },
+                                        {
+                                            "key": "field_69e1cd8e4f01f",
+                                            "label": "Vertical Align",
+                                            "name": "vertical_align",
+                                            "aria-label": "",
+                                            "type": "select",
+                                            "instructions": "",
+                                            "required": 0,
+                                            "conditional_logic": 0,
+                                            "wrapper": {
+                                                "width": "50",
+                                                "class": "bl-0",
+                                                "id": ""
+                                            },
+                                            "choices": {
+                                                "top": "Align Top",
+                                                "middle": "Align Middle",
+                                                "bottom": "Align Bottom"
+                                            },
+                                            "default_value": "top",
+                                            "return_format": "value",
+                                            "multiple": 0,
+                                            "allow_null": 0,
+                                            "allow_in_bindings": 0,
+                                            "ui": 0,
+                                            "ajax": 0,
+                                            "placeholder": "",
+                                            "create_options": 0,
+                                            "save_options": 0,
+                                            "allow_custom": 0,
+                                            "search_placeholder": ""
+                                        }
+                                    ],
+                                    "acfe_group_modal": 0,
+                                    "acfe_group_modal_close": 0,
+                                    "acfe_group_modal_button": "",
+                                    "acfe_group_modal_size": "large"
                                 }
                             ],
                             "acfe_group_modal": 0,
@@ -651,7 +706,7 @@
     "acfe_form": 0,
     "acfe_meta": "",
     "acfe_note": "",
-    "modified": 1776196515,
+    "modified": 1776406662,
     "acfe_categories": {
         "sections": "Sections"
     }
