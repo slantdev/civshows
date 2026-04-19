@@ -19,7 +19,7 @@ $section_id_attr = 'id="' . esc_attr($section_id) . '"';
 
 $section_class = '';
 if (!is_admin()) {
-  $section_class = 'xl:-mt-[152px]';
+  $section_class = 'lg:-mt-[86px] 2xl:-mt-[152px]';
 }
 
 // Data
@@ -66,16 +66,16 @@ foreach ($options_repeater as $index => $option) {
 
   <?php echo $section_overlay_markup; ?>
 
-  <div class="civ-section-container container mx-auto px-4 xl:px-8 relative z-20 <?php echo esc_attr($section_container_class); ?>">
+  <div class="civ-section-container container mx-auto px-4 xl:px-8 relative z-20 py-4 lg:py-6 2xl:py-14">
 
-    <div class="civ-interactive-heading flex flex-col md:flex-row items-center justify-center text-2xl md:text-3xl lg:text-4xl font-light gap-3" style="color: <?php echo esc_attr($label_color); ?>;">
+    <div class="civ-interactive-heading flex flex-col md:flex-row items-center justify-center text-2xl 2xl:text-4xl font-light gap-3" style="color: <?php echo esc_attr($label_color); ?>;">
 
       <span class="shrink-0"><?php echo esc_html($label_text); ?></span>
 
       <div class="civ-interactive-dropdown relative group dropdown-container">
 
         <button class="dropdown-trigger flex items-center gap-4 border-b-2 border-white/50 pb-1 hover:border-white transition-colors cursor-pointer text-left min-w-[300px] justify-between">
-          <span class="selected-text font-normal text-lg md:text-3xl xl:text-4xl"></span>
+          <span class="selected-text font-normal text-lg md:text-2xl 2xl:text-4xl"></span>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" />
           </svg>

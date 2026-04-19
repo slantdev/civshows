@@ -12,7 +12,7 @@ $logo_url = $logo_field['header_logo']['site_logo']['url'] ?? get_stylesheet_dir
 
 <header id="site-header" class="civ-site-header site-header w-full fixed top-0 z-50 transition-all duration-1000">
 
-  <div id="topbar" class="civ-topbar topbar h-2 xl:h-10 w-full bg-civ-blue-500 transition-all duration-1000 overflow-hidden"></div>
+  <div id="topbar" class="civ-topbar topbar h-2 md:h-4 2xl:h-10 w-full bg-civ-blue-500 transition-all duration-1000 overflow-hidden"></div>
 
   <div id="main-header" class="civ-main-header main-header w-full transition-all duration-1000 bg-black/80">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,7 +21,7 @@ $logo_url = $logo_field['header_logo']['site_logo']['url'] ?? get_stylesheet_dir
 
         <div class="civ-site-branding site-branding relative z-10 shrink-0">
           <a href="<?php echo esc_url(home_url('/')); ?>" class="civ-header-logo-link block">
-            <div id="logo-container" class="flex items-center justify-center transition-all duration-1000 w-20 h-20 md:w-32 md:h-32 xl:w-40 xl:h-40">
+            <div id="logo-container" class="flex items-center justify-center transition-all duration-1000 w-20 h-20 md:w-32 md:h-32 2xl:w-40 2xl:h-40">
               <img src="<?php echo esc_url($logo_url); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>" class="w-full h-full object-contain">
             </div>
           </a>

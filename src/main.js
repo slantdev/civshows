@@ -120,15 +120,43 @@ const initInteractiveSelect = () => {
     });
 
     document.addEventListener("click", () => {
-      menu.classList.add("opacity-0", "invisible", "-translate-y-2");
+      if (!menu.classList.contains("invisible")) {
+        const translateClass = menu.classList.contains("bottom-0")
+          ? "translate-y-2"
+          : "-translate-y-2";
+        menu.classList.add("opacity-0", "invisible", translateClass);
+      }
     });
 
     function toggleMenu() {
       const isOpen = !menu.classList.contains("invisible");
+
+      if (!isOpen) {
+        const rect = trigger.getBoundingClientRect();
+        const spaceBelow = window.innerHeight - rect.bottom;
+        const requiredSpace = menu.scrollHeight + 20;
+
+        if (spaceBelow < requiredSpace) {
+          menu.classList.remove("top-full", "rounded-b-lg", "-translate-y-2");
+          menu.classList.add("bottom-0", "rounded-t-lg", "translate-y-2");
+        } else {
+          menu.classList.remove("bottom-0", "rounded-t-lg", "translate-y-2");
+          menu.classList.add("top-full", "rounded-b-lg", "-translate-y-2");
+        }
+      }
+
       if (isOpen) {
-        menu.classList.add("opacity-0", "invisible", "-translate-y-2");
+        const translateClass = menu.classList.contains("bottom-0")
+          ? "translate-y-2"
+          : "-translate-y-2";
+        menu.classList.add("opacity-0", "invisible", translateClass);
       } else {
-        menu.classList.remove("opacity-0", "invisible", "-translate-y-2");
+        menu.classList.remove(
+          "opacity-0",
+          "invisible",
+          "-translate-y-2",
+          "translate-y-2",
+        );
       }
     }
 
@@ -168,10 +196,11 @@ const initInteractiveSelect = () => {
         // Scroll to the section smoothly right under the site header (with a slight delay for better transition syncing)
         setTimeout(() => {
           const yOffset = -120;
-          const y = section.getBoundingClientRect().top + window.scrollY + yOffset;
-          
-          if (typeof jQuery !== 'undefined') {
-            jQuery('html, body').animate({ scrollTop: y }, 600);
+          const y =
+            section.getBoundingClientRect().top + window.scrollY + yOffset;
+
+          if (typeof jQuery !== "undefined") {
+            jQuery("html, body").animate({ scrollTop: y }, 600);
           } else {
             window.scrollTo({ top: y, behavior: "smooth" });
           }
@@ -228,8 +257,6 @@ const initMediaSlider = () => {
     });
   });
 };
-
-
 
 /**
  * Google Maps
@@ -297,12 +324,16 @@ const initGoogleMaps = () => {
  * Exhibitor Filters & Load More
  */
 const initExhibitorFilters = () => {
-  const categoryContainer = document.getElementById("filter-category-container");
+  const categoryContainer = document.getElementById(
+    "filter-category-container",
+  );
   const searchInput = document.getElementById("filter-search");
   const searchBtn = document.getElementById("btn-search");
   const filterNew = document.getElementById("filter-new");
   const filterSpecial = document.getElementById("filter-special");
-  const filterProductRelease = document.getElementById("filter-product-release");
+  const filterProductRelease = document.getElementById(
+    "filter-product-release",
+  );
   const alphaBtns = document.querySelectorAll(".civ-alpha-btn");
   const grid = document.getElementById("exhibitors-grid");
   const loadMoreBtn = document.getElementById("load-more-exhibitors");
@@ -319,10 +350,14 @@ const initExhibitorFilters = () => {
 
   if (categoryContainer) {
     const header = categoryContainer.querySelector(".civ-multiselect-header");
-    const dropdown = categoryContainer.querySelector(".civ-multiselect-dropdown");
+    const dropdown = categoryContainer.querySelector(
+      ".civ-multiselect-dropdown",
+    );
     const icon = categoryContainer.querySelector(".civ-multiselect-icon");
     const label = categoryContainer.querySelector(".civ-multiselect-label");
-    const checkboxes = categoryContainer.querySelectorAll(".civ-multiselect-checkbox");
+    const checkboxes = categoryContainer.querySelectorAll(
+      ".civ-multiselect-checkbox",
+    );
 
     const toggleDropdown = () => {
       dropdown.classList.toggle("hidden");
@@ -338,7 +373,8 @@ const initExhibitorFilters = () => {
         label.textContent = "All Categories";
         label.classList.remove("text-black", "font-bold");
       } else if (selectedCategories.length === 1) {
-        const text = Array.from(checkboxes).find(cb => cb.checked).nextElementSibling.textContent;
+        const text = Array.from(checkboxes).find((cb) => cb.checked)
+          .nextElementSibling.textContent;
         label.textContent = text;
         label.classList.add("text-black", "font-bold");
       } else {
@@ -363,7 +399,10 @@ const initExhibitorFilters = () => {
     });
 
     document.addEventListener("click", (e) => {
-      if (!categoryContainer.contains(e.target) && !dropdown.classList.contains("hidden")) {
+      if (
+        !categoryContainer.contains(e.target) &&
+        !dropdown.classList.contains("hidden")
+      ) {
         dropdown.classList.add("hidden");
         icon.classList.remove("-rotate-180");
       }
@@ -375,24 +414,36 @@ const initExhibitorFilters = () => {
     alphaBtns.forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
-        
+
         // Toggle if currently selected
         if (btn.classList.contains("bg-civ-orange-500")) {
-          btn.classList.remove("bg-civ-orange-500", "text-white", "border-civ-orange-500");
+          btn.classList.remove(
+            "bg-civ-orange-500",
+            "text-white",
+            "border-civ-orange-500",
+          );
           btn.classList.add("bg-white", "text-gray-500", "border-gray-200");
           selectedLetter = "";
         } else {
-           // Reset others
+          // Reset others
           alphaBtns.forEach((b) => {
-            b.classList.remove("bg-civ-orange-500", "text-white", "border-civ-orange-500");
+            b.classList.remove(
+              "bg-civ-orange-500",
+              "text-white",
+              "border-civ-orange-500",
+            );
             b.classList.add("bg-white", "text-gray-500", "border-gray-200");
           });
           // Set active
           btn.classList.remove("bg-white", "text-gray-500", "border-gray-200");
-          btn.classList.add("bg-civ-orange-500", "text-white", "border-civ-orange-500");
+          btn.classList.add(
+            "bg-civ-orange-500",
+            "text-white",
+            "border-civ-orange-500",
+          );
           selectedLetter = btn.getAttribute("data-letter");
         }
-        
+
         fetchExhibitors(true);
       });
     });
@@ -408,15 +459,16 @@ const initExhibitorFilters = () => {
       const updateArrows = () => {
         // Evaluate if track overflows its container width
         if (track.scrollWidth > track.clientWidth) {
-          scrollLeftBtn.style.display = 'flex';
-          scrollRightBtn.style.display = 'flex';
-          
+          scrollLeftBtn.style.display = "flex";
+          scrollRightBtn.style.display = "flex";
+
           scrollLeftBtn.disabled = track.scrollLeft <= 5;
-          scrollRightBtn.disabled = track.scrollLeft >= (track.scrollWidth - track.clientWidth) - 5;
+          scrollRightBtn.disabled =
+            track.scrollLeft >= track.scrollWidth - track.clientWidth - 5;
         } else {
           // Disable completely if no overflow exists visually
-          scrollLeftBtn.style.display = 'none';
-          scrollRightBtn.style.display = 'none';
+          scrollLeftBtn.style.display = "none";
+          scrollRightBtn.style.display = "none";
         }
       };
 
@@ -430,7 +482,7 @@ const initExhibitorFilters = () => {
 
       track.addEventListener("scroll", updateArrows);
       window.addEventListener("resize", updateArrows);
-      
+
       // Init arrows timeout
       setTimeout(updateArrows, 150);
     }
@@ -439,12 +491,12 @@ const initExhibitorFilters = () => {
   const checkFiltersState = () => {
     if (!resetBtn) return;
     const hasFilter =
-      (selectedCategories.length > 0) ||
+      selectedCategories.length > 0 ||
       (searchInput && searchInput.value !== "") ||
       (filterNew && filterNew.checked) ||
       (filterSpecial && filterSpecial.checked) ||
       (filterProductRelease && filterProductRelease.checked) ||
-      (selectedLetter !== "");
+      selectedLetter !== "";
 
     if (hasFilter) {
       resetBtn.classList.remove("hidden");
@@ -548,7 +600,9 @@ const initExhibitorFilters = () => {
   }
 
   if (filterProductRelease) {
-    filterProductRelease.addEventListener("change", () => fetchExhibitors(true));
+    filterProductRelease.addEventListener("change", () =>
+      fetchExhibitors(true),
+    );
   }
 
   if (loadMoreBtn) {
@@ -558,8 +612,10 @@ const initExhibitorFilters = () => {
   if (resetBtn) {
     resetBtn.addEventListener("click", () => {
       if (categoryContainer) {
-        const checkboxes = categoryContainer.querySelectorAll(".civ-multiselect-checkbox");
-        checkboxes.forEach(cb => cb.checked = false);
+        const checkboxes = categoryContainer.querySelectorAll(
+          ".civ-multiselect-checkbox",
+        );
+        checkboxes.forEach((cb) => (cb.checked = false));
         selectedCategories = [];
         const label = categoryContainer.querySelector(".civ-multiselect-label");
         if (label) {
@@ -571,10 +627,14 @@ const initExhibitorFilters = () => {
       if (filterNew) filterNew.checked = false;
       if (filterSpecial) filterSpecial.checked = false;
       if (filterProductRelease) filterProductRelease.checked = false;
-      
+
       selectedLetter = "";
       alphaBtns.forEach((b) => {
-        b.classList.remove("bg-civ-orange-500", "text-white", "border-civ-orange-500");
+        b.classList.remove(
+          "bg-civ-orange-500",
+          "text-white",
+          "border-civ-orange-500",
+        );
         b.classList.add("bg-white", "text-gray-500", "border-gray-200");
       });
 
@@ -592,9 +652,17 @@ const initLogoCarousel = () => {
   if (!sliders.length) return;
 
   sliders.forEach((slider) => {
-    let conf = { spdefault: 2, spmd: 3, splg: 4, spxl: 5, sp2xl: 6, autoplay: true, delay: 6000 };
+    let conf = {
+      spdefault: 2,
+      spmd: 3,
+      splg: 4,
+      spxl: 5,
+      sp2xl: 6,
+      autoplay: true,
+      delay: 6000,
+    };
     try {
-      const configData = slider.getAttribute('data-config');
+      const configData = slider.getAttribute("data-config");
       if (configData) {
         conf = Object.assign(conf, JSON.parse(configData));
       }
@@ -652,17 +720,17 @@ const initStatsSlider = () => {
       breakpoints: {
         0: {
           slidesPerView: 1,
-          spaceBetween: 0
+          spaceBetween: 0,
         },
         768: {
           slidesPerView: 3,
           spaceBetween: 0,
-          slidesPerGroup: 3
+          slidesPerGroup: 3,
         },
         1024: {
           slidesPerView: 4,
           spaceBetween: 0,
-          slidesPerGroup: 4
+          slidesPerGroup: 4,
         },
       },
     });
@@ -704,9 +772,10 @@ const initStatsSlider = () => {
           observer.unobserve(counter);
         }
       });
-    }, {
-      threshold: 0.5
-    }
+    },
+    {
+      threshold: 0.5,
+    },
   );
 
   counters.forEach((counter) => counterObserver.observe(counter));
@@ -736,8 +805,8 @@ const initNavigation = () => {
         "h-20",
         "md:w-32",
         "md:h-32",
-        "xl:w-40",
-        "xl:h-40",
+        "2xl:w-40",
+        "2xl:h-40",
       );
       logoContainer.classList.add(
         "w-16",
@@ -771,8 +840,8 @@ const initNavigation = () => {
         "h-20",
         "md:w-32",
         "md:h-32",
-        "xl:w-40",
-        "xl:h-40",
+        "2xl:w-40",
+        "2xl:h-40",
       );
       logoContainer.classList.remove(
         "w-16",
@@ -891,10 +960,13 @@ const initNavigation = () => {
 
   if (searchToggleBtn) searchToggleBtn.addEventListener("click", openSearch);
   if (searchCloseBtn) searchCloseBtn.addEventListener("click", closeSearch);
-  
+
   document.addEventListener("click", (e) => {
     if (searchForm && !searchForm.classList.contains("invisible")) {
-      if (!searchForm.contains(e.target) && !searchToggleBtn.contains(e.target)) {
+      if (
+        !searchForm.contains(e.target) &&
+        !searchToggleBtn.contains(e.target)
+      ) {
         closeSearch();
       }
     }

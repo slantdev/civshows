@@ -24,7 +24,7 @@ $slides = $hero_group['home_slider'] ?? [];
 if (empty($slides)) return;
 ?>
 
-<section <?php echo $section_id_attr; ?> class="civ-home-hero-section relative w-full h-[600px] md:h-[800px] xl:h-svh bg-civ-blue-950 overflow-x-hidden group section-home-hero-slider" style="<?php echo esc_attr($section_style); ?>">
+<section <?php echo $section_id_attr; ?> class="civ-home-hero-section relative w-full h-[600px] md:h-[700px] lg:h-svh bg-civ-blue-950 overflow-x-hidden group section-home-hero-slider" style="<?php echo esc_attr($section_style); ?>">
 
   <?php echo $section_overlay_markup; ?>
 
@@ -43,7 +43,7 @@ if (empty($slides)) return;
         $bg_image = $bg_group['background_image']['url'] ?? '';
         $bg_overlay = $bg_group['background_overlay'] ?? 'rgba(0,0,0,0.6)';
       ?>
-        <div class="swiper-slide relative flex items-center justify-center pt-20 md:pt-28">
+        <div class="swiper-slide relative flex items-center justify-center pt-20 lg:pt-36 lg:pb-[86px] 2xl:pt-28">
           <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('<?php echo esc_url($bg_image); ?>');">
             <div class="absolute inset-0" style="background-color: <?php echo esc_attr($bg_overlay); ?>;"></div>
           </div>
@@ -55,12 +55,12 @@ if (empty($slides)) return;
                 $l_id = is_array($logo_img) ? $logo_img['ID'] : $logo_img;
               ?>
                 <div class="mb-6 md:mb-8" data-swiper-parallax="-300">
-                  <?php echo wp_get_attachment_image($l_id, 'large', false, ['class' => 'max-h-20 md:max-h-28 w-auto object-contain object-left']); ?>
+                  <?php echo wp_get_attachment_image($l_id, 'large', false, ['class' => 'max-h-20 md:max-h-24 2xl:max-h-28 w-auto object-contain object-left']); ?>
                 </div>
               <?php endif; ?>
 
               <?php if ($title) : ?>
-                <h1 class="text-4xl md:text-5xl xl:text-6xl font-bold mb-4" data-swiper-parallax="-400"><?php echo esc_html($title); ?></h1>
+                <h2 class="text-4xl md:text-[42px] 2xl:text-6xl font-bold mb-4" data-swiper-parallax="-400"><?php echo esc_html($title); ?></h2>
               <?php endif; ?>
 
               <?php if ($description) : ?>
@@ -89,7 +89,7 @@ if (empty($slides)) return;
   </div>
 
   <!-- Thumbs Vertical Navigation -->
-  <div class="civ-hero-thumbs absolute top-0 bottom-0 left-0 z-20 container mx-auto px-4 xl:px-8 xl:pt-28 pointer-events-none">
+  <div class="civ-hero-thumbs absolute top-0 bottom-0 left-0 z-20 container mx-auto px-4 xl:px-8 lg:pt-36 lg:pb-[86px] 2xl:pt-28 pointer-events-none">
     <div class="h-full grid grid-cols-1 md:grid-cols-12 items-center">
       <div class="hidden lg:flex lg:col-span-4 flex-col justify-center h-full pointer-events-auto pl-4 xl:pl-6">
         <div class="civ-hero-thumbs-slider swiper thumbs-slider w-full ml-0! xl:ml-auto! max-w-64 xl:max-w-96 overflow-visible!">
@@ -100,11 +100,11 @@ if (empty($slides)) return;
               $description = $content['description'] ?? '';
             ?>
               <div class="swiper-slide h-auto! cursor-pointer transition-all duration-300">
-                <div class="slide-thumb-wrapper p-4 xl:p-6 relative transition-all duration-300">
+                <div class="slide-thumb-wrapper p-4 2xl:p-6 relative transition-all duration-300">
                   <div class="slide-thumb-indicator h-[3px]"></div>
                   <div class="pt-3">
-                    <h3 class="text-white font-bold text-lg xl:text-xl mb-2"><?php echo esc_html($title); ?></h3>
-                    <div class="text-gray-200 text-sm leading-relaxed font-light line-clamp-3">
+                    <h3 class="text-white font-bold text-base xl:text-xl mb-2"><?php echo esc_html($title); ?></h3>
+                    <div class="text-gray-200 text-xs 2xl:text-sm leading-relaxed font-light line-clamp-2 2xl:line-clamp-3">
                       <?php echo wp_kses_post($description); ?>
                     </div>
                   </div>
