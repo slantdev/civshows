@@ -651,11 +651,14 @@ const initExhibitorFilters = () => {
 
   const sectionToScroll = document.querySelector(".civ-exhibitors-shows-section[data-scroll-on-load='true']");
   if (sectionToScroll) {
-    setTimeout(() => {
-      const yOffset = -120; // Accounts for sticky header
-      const y = sectionToScroll.getBoundingClientRect().top + window.scrollY + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    }, 300); // Slight delay for rendering
+    const filterElement = sectionToScroll.querySelector(".civ-exhibitors-filters");
+    if (filterElement) {
+      setTimeout(() => {
+        const yOffset = -120; // Accounts for sticky header
+        const y = filterElement.getBoundingClientRect().top + window.scrollY + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }, 300); // Slight delay for rendering
+    }
   }
 };
 
