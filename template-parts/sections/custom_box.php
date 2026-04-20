@@ -140,7 +140,7 @@ $final_container_class = implode(' ', $container_classes);
             $bg_data    = $settings['background_background'] ?? ($settings['background'] ?? []);
             $background = ['background' => $bg_data];
 
-            $link       = $settings['link'] ?? '';
+            $link_type  = $settings['link_type'] ?? 'none';
             $alignments = $settings['alignments'] ?? [];
             $text_align = $alignments['text_align'] ?? 'center';
             $vert_align = $alignments['vertical_align'] ?? 'top';
@@ -160,11 +160,37 @@ $final_container_class = implode(' ', $container_classes);
               default            => '', // top
             };
 
-            $is_link = is_array($link) && !empty($link['url']);
-            $wrapper_tag = $is_link ? 'a' : 'div';
-            $wrapper_attrs = $is_link
-              ? sprintf('href="%s" target="%s"', esc_url($link['url']), esc_attr($link['target'] ?: '_self'))
-              : '';
+            $is_link = false;
+            $wrapper_tag = 'div';
+            $wrapper_attrs = '';
+
+            if ($link_type === 'show-exhibitor') {
+              $exhibitor_link = $settings['show_exhibitor_link'] ?? [];
+              $show_page = $exhibitor_link['select_show_page'] ?? '';
+              $cat_id = $exhibitor_link['exhibitor_category'] ?? '';
+
+              if ($show_page) {
+                $url = $show_page;
+                if ($url && $cat_id) {
+                  $term = get_term($cat_id, 'exhibitor-category');
+                  if ($term && !is_wp_error($term)) {
+                    $url = rtrim($url, '/') . '/?cat=' . esc_attr($term->slug);
+                  }
+                }
+                if ($url) {
+                  $is_link = true;
+                  $wrapper_tag = 'a';
+                  $wrapper_attrs = sprintf('href="%s"', esc_url($url));
+                }
+              }
+            } elseif ($link_type === 'custom') {
+              $custom_link = $settings['custom_link'] ?? '';
+              if (is_array($custom_link) && !empty($custom_link['url'])) {
+                $is_link = true;
+                $wrapper_tag = 'a';
+                $wrapper_attrs = sprintf('href="%s" target="%s"', esc_url($custom_link['url']), esc_attr($custom_link['target'] ?: '_self'));
+              }
+            }
           ?>
             <<?php echo $wrapper_tag; ?> <?php echo $wrapper_attrs; ?> class="<?php echo esc_attr($final_box_class); ?>" <?php echo $final_box_style_attr; ?>>
 

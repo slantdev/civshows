@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.54.0] - 2026-04-21
+
+### Added
+
+- **URL Query Exhibitor Filtering:** Embedded native `$_GET['cat']` query string detection into the Exhibitor Section's core WP_Query logic. Enabled front-end URL parameters (e.g. `?cat=some-category`) to immediately pre-filter grid results, inherently pre-checking multiselect components, restricting pagination/alphabet configurations without AJAX loops, and auto-scrolling the user to the anchor element cleanly on page load. 
+
+### Changed
+
+- **Custom Box Logic Refactoring:** Radically refactored the anchor tag wrapper logic within `custom_box.php` to parse native dropdown conditional logic (`show-exhibitor` and `custom`). The system translates designated `select_show_page` URLs and concatenates taxonomy slugs explicitly for native intra-site filtering routing.
+
 ## [1.53.0] - 2026-04-20
 
 ### Changed

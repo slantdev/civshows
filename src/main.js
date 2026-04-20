@@ -407,6 +407,9 @@ const initExhibitorFilters = () => {
         icon.classList.remove("-rotate-180");
       }
     });
+
+    // Initialize state on load based on any pre-checked boxes
+    updateLabel();
   }
 
   let selectedLetter = "";
@@ -641,6 +644,18 @@ const initExhibitorFilters = () => {
       fetchExhibitors(true);
       checkFiltersState();
     });
+  }
+
+  // Final initializations on load
+  checkFiltersState();
+
+  const sectionToScroll = document.querySelector(".civ-exhibitors-shows-section[data-scroll-on-load='true']");
+  if (sectionToScroll) {
+    setTimeout(() => {
+      const yOffset = -120; // Accounts for sticky header
+      const y = sectionToScroll.getBoundingClientRect().top + window.scrollY + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }, 300); // Slight delay for rendering
   }
 };
 

@@ -24,6 +24,8 @@ $selected_shows = $list_settings['exhibitor_shows'] ?? [];
 //preint_r($exhibitors);
 
 // Exhibitors Query (Initial Load)
+$requested_cat = isset($_GET['cat']) ? sanitize_text_field($_GET['cat']) : '';
+
 $args = array(
   'post_type' => 'exhibitors',
   'posts_per_page' => 40,
@@ -31,6 +33,16 @@ $args = array(
   'order' => 'ASC',
   'post_status' => 'publish',
 );
+
+if ($requested_cat) {
+  $args['tax_query'] = array(
+    array(
+      'taxonomy' => 'exhibitor-category',
+      'field'    => 'slug',
+      'terms'    => $requested_cat,
+    ),
+  );
+}
 
 $shows_ids = [];
 if (!empty($selected_shows)) {
@@ -86,7 +98,7 @@ $parent_terms = get_terms([
 
 <section <?php echo $section_id_attr; ?> class="
   civ-exhibitors-shows-section <?php echo esc_attr($section_class); ?> section-wrapper relative overflow-x-hidden" style="
-  <?php echo esc_attr($section_style); ?>">
+  <?php echo esc_attr($section_style); ?>" data-scroll-on-load="<?php echo $requested_cat ? 'true' : 'false'; ?>">
 
   <?php echo $section_overlay_markup; ?>
 
@@ -155,9 +167,11 @@ $parent_terms = get_terms([
               <div class="civ-multiselect-dropdown absolute top-full left-0 w-full bg-white border border-gray-200 mt-2 rounded-md shadow-xl max-h-60 overflow-y-auto hidden z-40 transform origin-top transition-all">
                 <div class="p-2 space-y-1">
                   <?php if (!is_wp_error($parent_terms)): ?>
-                    <?php foreach ($parent_terms as $term): ?>
+                    <?php foreach ($parent_terms as $term): 
+                      $is_checked = ($term->slug === $requested_cat) ? 'checked' : '';
+                    ?>
                       <label class="flex items-center px-3 py-2.5 cursor-pointer hover:bg-gray-50 rounded-md select-none group transition-colors">
-                        <input type="checkbox" value="<?php echo esc_attr($term->slug); ?>" class="civ-multiselect-checkbox w-4 h-4 text-civ-orange-500 border-gray-300 rounded cursor-pointer focus:ring-civ-orange-500 focus:ring-offset-0">
+                        <input type="checkbox" value="<?php echo esc_attr($term->slug); ?>" <?php echo $is_checked; ?> class="civ-multiselect-checkbox w-4 h-4 text-civ-orange-500 border-gray-300 rounded cursor-pointer focus:ring-civ-orange-500 focus:ring-offset-0">
                         <span class="ml-3 text-sm text-gray-700 group-hover:text-black font-medium"><?php echo esc_html($term->name); ?></span>
                       </label>
                     <?php
