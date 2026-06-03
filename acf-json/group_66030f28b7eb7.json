@@ -55,10 +55,11 @@
                         "id": ""
                     },
                     "default_value": "",
+                    "allow_in_bindings": 1,
                     "tabs": "all",
                     "toolbar": "full",
                     "media_upload": 1,
-                    "delay": 0
+                    "delay": 1
                 },
                 {
                     "key": "field_6605c84fcbf47",
@@ -145,13 +146,14 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "acfe_autosync": [
-        "json"
-    ],
-    "acfe_form": 0,
-    "acfe_meta": "",
-    "acfe_note": "",
-    "modified": 1770663644,
+    "allow_ai_access": false,
+    "ai_description": "",
+    "acfe": {
+        "autosync": [
+            "json"
+        ]
+    },
+    "modified": 1780444320,
     "acfe_categories": {
         "components": "Components"
     }

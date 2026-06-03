@@ -1,550 +1,548 @@
 {
-    "key": "group_66399ba9ecb25",
-    "title": "Component - Accordion",
-    "fields": [
+  "key": "group_66399ba9ecb25",
+  "title": "Component - Accordion",
+  "fields": [
+    {
+      "key": "field_66399baa753f5",
+      "label": "(Column 9\/12)",
+      "name": "",
+      "aria-label": "",
+      "type": "acfe_column",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "columns": "9\/12",
+      "endpoint": 0
+    },
+    {
+      "key": "field_66399baa75408",
+      "label": "Accordion",
+      "name": "accordion",
+      "aria-label": "",
+      "type": "repeater",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "acfe_repeater_stylised_button": 0,
+      "layout": "block",
+      "pagination": 0,
+      "min": 0,
+      "max": 0,
+      "collapsed": "field_66399bd7d08f1",
+      "button_label": "Add Item",
+      "rows_per_page": 20,
+      "sub_fields": [
         {
-            "key": "field_66399baa753f5",
-            "label": "(Column 9\/12)",
-            "name": "",
-            "aria-label": "",
-            "type": "acfe_column",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "columns": "9\/12",
-            "endpoint": 0
+          "key": "field_66399bd7d08f1",
+          "label": "Title",
+          "name": "title",
+          "aria-label": "",
+          "type": "text",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "maxlength": "",
+          "placeholder": "",
+          "prepend": "",
+          "append": "",
+          "parent_repeater": "field_66399baa75408"
         },
         {
-            "key": "field_66399baa75408",
-            "label": "Accordion",
-            "name": "accordion",
-            "aria-label": "",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
+          "key": "field_66399baa86998",
+          "label": "Content",
+          "name": "content",
+          "aria-label": "",
+          "type": "wysiwyg",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "",
+            "id": ""
+          },
+          "default_value": "",
+          "tabs": "all",
+          "toolbar": "full",
+          "media_upload": 1,
+          "delay": 1,
+          "parent_repeater": "field_66399baa75408"
+        }
+      ]
+    },
+    {
+      "key": "field_66399baa75414",
+      "label": "(Column 3\/12)",
+      "name": "",
+      "aria-label": "",
+      "type": "acfe_column",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "",
+        "id": ""
+      },
+      "columns": "3\/12",
+      "endpoint": 0
+    },
+    {
+      "key": "field_66399baa75420",
+      "label": "Settings",
+      "name": "settings",
+      "aria-label": "",
+      "type": "group",
+      "instructions": "",
+      "required": 0,
+      "conditional_logic": 0,
+      "wrapper": {
+        "width": "",
+        "class": "label-hidden fields-flex-row fields-flex-justify-end",
+        "id": ""
+      },
+      "layout": "block",
+      "acfe_seamless_style": 1,
+      "sub_fields": [
+        {
+          "key": "field_66399baa8cfc1",
+          "label": "Settings",
+          "name": "more_settings",
+          "aria-label": "",
+          "type": "group",
+          "instructions": "",
+          "required": 0,
+          "conditional_logic": 0,
+          "wrapper": {
+            "width": "",
+            "class": "field-modal bl-0",
+            "id": ""
+          },
+          "layout": "row",
+          "acfe_group_modal": 1,
+          "acfe_group_modal_close": 1,
+          "acfe_group_modal_button": "<span class=\"dashicons dashicons-admin-settings\"><\/span>",
+          "acfe_group_modal_size": "large",
+          "sub_fields": [
+            {
+              "key": "field_6989dda59cc72",
+              "label": "Accordion Header",
+              "name": "accordion_header",
+              "aria-label": "",
+              "type": "group",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "acfe_repeater_stylised_button": 0,
-            "layout": "block",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "field_66399bd7d08f1",
-            "button_label": "Add Item",
-            "rows_per_page": 20,
-            "sub_fields": [
+              },
+              "layout": "block",
+              "acfe_seamless_style": 1,
+              "sub_fields": [
                 {
-                    "key": "field_66399bd7d08f1",
-                    "label": "Title",
-                    "name": "title",
-                    "aria-label": "",
-                    "type": "text",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
+                  "key": "field_6989dfd905d9c",
+                  "label": "Default State",
+                  "name": "default_state",
+                  "aria-label": "",
+                  "type": "group",
+                  "instructions": "",
+                  "required": 0,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "layout": "block",
+                  "acfe_seamless_style": 1,
+                  "sub_fields": [
+                    {
+                      "key": "field_6989ddc59cc73",
+                      "label": "Text Color",
+                      "name": "text_color",
+                      "aria-label": "",
+                      "type": "color_picker",
+                      "instructions": "",
+                      "required": 0,
+                      "conditional_logic": 0,
+                      "wrapper": {
+                        "width": "25",
                         "class": "",
                         "id": ""
+                      },
+                      "default_value": "#111827",
+                      "enable_opacity": 0,
+                      "return_format": "string",
+                      "allow_in_bindings": 0,
+                      "show_custom_palette": 0,
+                      "show_color_wheel": 1,
+                      "custom_palette_source": "",
+                      "palette_colors": ""
                     },
-                    "default_value": "",
-                    "maxlength": "",
-                    "placeholder": "",
-                    "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_66399baa75408"
+                    {
+                      "key": "field_6989de009cc74",
+                      "label": "Background Color",
+                      "name": "background_color",
+                      "aria-label": "",
+                      "type": "color_picker",
+                      "instructions": "",
+                      "required": 0,
+                      "conditional_logic": 0,
+                      "wrapper": {
+                        "width": "25",
+                        "class": "bl-0",
+                        "id": ""
+                      },
+                      "default_value": "",
+                      "enable_opacity": 0,
+                      "return_format": "string",
+                      "allow_in_bindings": 0,
+                      "show_custom_palette": 0,
+                      "show_color_wheel": 1,
+                      "custom_palette_source": "",
+                      "palette_colors": ""
+                    },
+                    {
+                      "key": "field_6989e0c8b813a",
+                      "label": "Border Color",
+                      "name": "border_color",
+                      "aria-label": "",
+                      "type": "color_picker",
+                      "instructions": "",
+                      "required": 0,
+                      "conditional_logic": 0,
+                      "wrapper": {
+                        "width": "25",
+                        "class": "bl-0",
+                        "id": ""
+                      },
+                      "default_value": "",
+                      "enable_opacity": 0,
+                      "return_format": "string",
+                      "allow_in_bindings": 0,
+                      "show_custom_palette": 0,
+                      "show_color_wheel": 1,
+                      "custom_palette_source": "",
+                      "palette_colors": ""
+                    },
+                    {
+                      "key": "field_6989de2f9cc75",
+                      "label": "Icon Color",
+                      "name": "icon_color",
+                      "aria-label": "",
+                      "type": "color_picker",
+                      "instructions": "",
+                      "required": 0,
+                      "conditional_logic": 0,
+                      "wrapper": {
+                        "width": "25",
+                        "class": "bl-0",
+                        "id": ""
+                      },
+                      "default_value": "",
+                      "enable_opacity": 0,
+                      "return_format": "string",
+                      "allow_in_bindings": 0,
+                      "show_custom_palette": 0,
+                      "show_color_wheel": 1,
+                      "custom_palette_source": "",
+                      "palette_colors": ""
+                    }
+                  ],
+                  "acfe_group_modal": 0,
+                  "acfe_group_modal_close": 0,
+                  "acfe_group_modal_button": "",
+                  "acfe_group_modal_size": "large"
                 },
                 {
-                    "key": "field_66399baa86998",
-                    "label": "Content",
-                    "name": "content",
-                    "aria-label": "",
-                    "type": "wysiwyg",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
+                  "key": "field_6989e00a05d9e",
+                  "label": "Opened State",
+                  "name": "opened_state",
+                  "aria-label": "",
+                  "type": "group",
+                  "instructions": "",
+                  "required": 0,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "layout": "block",
+                  "acfe_seamless_style": 1,
+                  "sub_fields": [
+                    {
+                      "key": "field_6989e00a05d9f",
+                      "label": "Text Color",
+                      "name": "text_color",
+                      "aria-label": "",
+                      "type": "color_picker",
+                      "instructions": "",
+                      "required": 0,
+                      "conditional_logic": 0,
+                      "wrapper": {
+                        "width": "25",
+                        "class": "bl-0",
                         "id": ""
+                      },
+                      "default_value": "#111827",
+                      "enable_opacity": 0,
+                      "return_format": "string",
+                      "allow_in_bindings": 0,
+                      "show_custom_palette": 0,
+                      "show_color_wheel": 1,
+                      "custom_palette_source": "",
+                      "palette_colors": ""
                     },
-                    "default_value": "",
-                    "tabs": "all",
-                    "toolbar": "full",
-                    "media_upload": 1,
-                    "delay": 0,
-                    "parent_repeater": "field_66399baa75408"
+                    {
+                      "key": "field_6989e00a05da0",
+                      "label": "Background Color",
+                      "name": "background_color",
+                      "aria-label": "",
+                      "type": "color_picker",
+                      "instructions": "",
+                      "required": 0,
+                      "conditional_logic": 0,
+                      "wrapper": {
+                        "width": "25",
+                        "class": "bl-0",
+                        "id": ""
+                      },
+                      "default_value": "",
+                      "enable_opacity": 0,
+                      "return_format": "string",
+                      "allow_in_bindings": 0,
+                      "show_custom_palette": 0,
+                      "show_color_wheel": 1,
+                      "custom_palette_source": "",
+                      "palette_colors": ""
+                    },
+                    {
+                      "key": "field_6989e0e5b813b",
+                      "label": "Border Color",
+                      "name": "border_color",
+                      "aria-label": "",
+                      "type": "color_picker",
+                      "instructions": "",
+                      "required": 0,
+                      "conditional_logic": 0,
+                      "wrapper": {
+                        "width": "25",
+                        "class": "bl-0",
+                        "id": ""
+                      },
+                      "default_value": "",
+                      "enable_opacity": 0,
+                      "return_format": "string",
+                      "allow_in_bindings": 0,
+                      "show_custom_palette": 0,
+                      "show_color_wheel": 1,
+                      "custom_palette_source": "",
+                      "palette_colors": ""
+                    },
+                    {
+                      "key": "field_6989e00a05da1",
+                      "label": "Icon Color",
+                      "name": "icon_color",
+                      "aria-label": "",
+                      "type": "color_picker",
+                      "instructions": "",
+                      "required": 0,
+                      "conditional_logic": 0,
+                      "wrapper": {
+                        "width": "25",
+                        "class": "bl-0",
+                        "id": ""
+                      },
+                      "default_value": "",
+                      "enable_opacity": 0,
+                      "return_format": "string",
+                      "allow_in_bindings": 0,
+                      "show_custom_palette": 0,
+                      "show_color_wheel": 1,
+                      "custom_palette_source": "",
+                      "palette_colors": ""
+                    }
+                  ],
+                  "acfe_group_modal": 0,
+                  "acfe_group_modal_close": 0,
+                  "acfe_group_modal_button": "",
+                  "acfe_group_modal_size": "large"
                 }
-            ]
-        },
-        {
-            "key": "field_66399baa75414",
-            "label": "(Column 3\/12)",
-            "name": "",
-            "aria-label": "",
-            "type": "acfe_column",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
+              ],
+              "acfe_group_modal": 0,
+              "acfe_group_modal_close": 0,
+              "acfe_group_modal_button": "",
+              "acfe_group_modal_size": "large"
+            },
+            {
+              "key": "field_6989de6b9cc76",
+              "label": "Accordion Content",
+              "name": "accordion_content",
+              "aria-label": "",
+              "type": "group",
+              "instructions": "",
+              "required": 0,
+              "conditional_logic": 0,
+              "wrapper": {
                 "width": "",
                 "class": "",
                 "id": ""
-            },
-            "columns": "3\/12",
-            "endpoint": 0
-        },
-        {
-            "key": "field_66399baa75420",
-            "label": "Settings",
-            "name": "settings",
-            "aria-label": "",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "label-hidden fields-flex-row fields-flex-justify-end",
-                "id": ""
-            },
-            "layout": "block",
-            "acfe_seamless_style": 1,
-            "sub_fields": [
+              },
+              "layout": "block",
+              "acfe_seamless_style": 1,
+              "sub_fields": [
                 {
-                    "key": "field_66399baa8cfc1",
-                    "label": "Settings",
-                    "name": "more_settings",
-                    "aria-label": "",
-                    "type": "group",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "field-modal bl-0",
+                  "key": "field_6989e040b8132",
+                  "label": "Default State",
+                  "name": "default_state",
+                  "aria-label": "",
+                  "type": "group",
+                  "instructions": "",
+                  "required": 0,
+                  "conditional_logic": 0,
+                  "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                  },
+                  "layout": "block",
+                  "acfe_seamless_style": 1,
+                  "sub_fields": [
+                    {
+                      "key": "field_6989de6b9cc77",
+                      "label": "Text Color",
+                      "name": "text_color",
+                      "aria-label": "",
+                      "type": "color_picker",
+                      "instructions": "",
+                      "required": 0,
+                      "conditional_logic": 0,
+                      "wrapper": {
+                        "width": "25",
+                        "class": "bl-0",
                         "id": ""
+                      },
+                      "default_value": "#111827",
+                      "enable_opacity": 0,
+                      "return_format": "string",
+                      "allow_in_bindings": 0,
+                      "show_custom_palette": 0,
+                      "show_color_wheel": 1,
+                      "custom_palette_source": "",
+                      "palette_colors": ""
                     },
-                    "layout": "row",
-                    "acfe_group_modal": 1,
-                    "acfe_group_modal_close": 1,
-                    "acfe_group_modal_button": "<span class=\"dashicons dashicons-admin-settings\"><\/span>",
-                    "acfe_group_modal_size": "large",
-                    "sub_fields": [
-                        {
-                            "key": "field_6989dda59cc72",
-                            "label": "Accordion Header",
-                            "name": "accordion_header",
-                            "aria-label": "",
-                            "type": "group",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "layout": "block",
-                            "acfe_seamless_style": 1,
-                            "sub_fields": [
-                                {
-                                    "key": "field_6989dfd905d9c",
-                                    "label": "Default State",
-                                    "name": "default_state",
-                                    "aria-label": "",
-                                    "type": "group",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "layout": "block",
-                                    "acfe_seamless_style": 1,
-                                    "sub_fields": [
-                                        {
-                                            "key": "field_6989ddc59cc73",
-                                            "label": "Text Color",
-                                            "name": "text_color",
-                                            "aria-label": "",
-                                            "type": "color_picker",
-                                            "instructions": "",
-                                            "required": 0,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "25",
-                                                "class": "",
-                                                "id": ""
-                                            },
-                                            "default_value": "#111827",
-                                            "enable_opacity": 0,
-                                            "return_format": "string",
-                                            "allow_in_bindings": 0,
-                                            "show_custom_palette": 0,
-                                            "show_color_wheel": 1,
-                                            "custom_palette_source": "",
-                                            "palette_colors": ""
-                                        },
-                                        {
-                                            "key": "field_6989de009cc74",
-                                            "label": "Background Color",
-                                            "name": "background_color",
-                                            "aria-label": "",
-                                            "type": "color_picker",
-                                            "instructions": "",
-                                            "required": 0,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "25",
-                                                "class": "bl-0",
-                                                "id": ""
-                                            },
-                                            "default_value": "",
-                                            "enable_opacity": 0,
-                                            "return_format": "string",
-                                            "allow_in_bindings": 0,
-                                            "show_custom_palette": 0,
-                                            "show_color_wheel": 1,
-                                            "custom_palette_source": "",
-                                            "palette_colors": ""
-                                        },
-                                        {
-                                            "key": "field_6989e0c8b813a",
-                                            "label": "Border Color",
-                                            "name": "border_color",
-                                            "aria-label": "",
-                                            "type": "color_picker",
-                                            "instructions": "",
-                                            "required": 0,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "25",
-                                                "class": "bl-0",
-                                                "id": ""
-                                            },
-                                            "default_value": "",
-                                            "enable_opacity": 0,
-                                            "return_format": "string",
-                                            "allow_in_bindings": 0,
-                                            "show_custom_palette": 0,
-                                            "show_color_wheel": 1,
-                                            "custom_palette_source": "",
-                                            "palette_colors": ""
-                                        },
-                                        {
-                                            "key": "field_6989de2f9cc75",
-                                            "label": "Icon Color",
-                                            "name": "icon_color",
-                                            "aria-label": "",
-                                            "type": "color_picker",
-                                            "instructions": "",
-                                            "required": 0,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "25",
-                                                "class": "bl-0",
-                                                "id": ""
-                                            },
-                                            "default_value": "",
-                                            "enable_opacity": 0,
-                                            "return_format": "string",
-                                            "allow_in_bindings": 0,
-                                            "show_custom_palette": 0,
-                                            "show_color_wheel": 1,
-                                            "custom_palette_source": "",
-                                            "palette_colors": ""
-                                        }
-                                    ],
-                                    "acfe_group_modal": 0,
-                                    "acfe_group_modal_close": 0,
-                                    "acfe_group_modal_button": "",
-                                    "acfe_group_modal_size": "large"
-                                },
-                                {
-                                    "key": "field_6989e00a05d9e",
-                                    "label": "Opened State",
-                                    "name": "opened_state",
-                                    "aria-label": "",
-                                    "type": "group",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "layout": "block",
-                                    "acfe_seamless_style": 1,
-                                    "sub_fields": [
-                                        {
-                                            "key": "field_6989e00a05d9f",
-                                            "label": "Text Color",
-                                            "name": "text_color",
-                                            "aria-label": "",
-                                            "type": "color_picker",
-                                            "instructions": "",
-                                            "required": 0,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "25",
-                                                "class": "bl-0",
-                                                "id": ""
-                                            },
-                                            "default_value": "#111827",
-                                            "enable_opacity": 0,
-                                            "return_format": "string",
-                                            "allow_in_bindings": 0,
-                                            "show_custom_palette": 0,
-                                            "show_color_wheel": 1,
-                                            "custom_palette_source": "",
-                                            "palette_colors": ""
-                                        },
-                                        {
-                                            "key": "field_6989e00a05da0",
-                                            "label": "Background Color",
-                                            "name": "background_color",
-                                            "aria-label": "",
-                                            "type": "color_picker",
-                                            "instructions": "",
-                                            "required": 0,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "25",
-                                                "class": "bl-0",
-                                                "id": ""
-                                            },
-                                            "default_value": "",
-                                            "enable_opacity": 0,
-                                            "return_format": "string",
-                                            "allow_in_bindings": 0,
-                                            "show_custom_palette": 0,
-                                            "show_color_wheel": 1,
-                                            "custom_palette_source": "",
-                                            "palette_colors": ""
-                                        },
-                                        {
-                                            "key": "field_6989e0e5b813b",
-                                            "label": "Border Color",
-                                            "name": "border_color",
-                                            "aria-label": "",
-                                            "type": "color_picker",
-                                            "instructions": "",
-                                            "required": 0,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "25",
-                                                "class": "bl-0",
-                                                "id": ""
-                                            },
-                                            "default_value": "",
-                                            "enable_opacity": 0,
-                                            "return_format": "string",
-                                            "allow_in_bindings": 0,
-                                            "show_custom_palette": 0,
-                                            "show_color_wheel": 1,
-                                            "custom_palette_source": "",
-                                            "palette_colors": ""
-                                        },
-                                        {
-                                            "key": "field_6989e00a05da1",
-                                            "label": "Icon Color",
-                                            "name": "icon_color",
-                                            "aria-label": "",
-                                            "type": "color_picker",
-                                            "instructions": "",
-                                            "required": 0,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "25",
-                                                "class": "bl-0",
-                                                "id": ""
-                                            },
-                                            "default_value": "",
-                                            "enable_opacity": 0,
-                                            "return_format": "string",
-                                            "allow_in_bindings": 0,
-                                            "show_custom_palette": 0,
-                                            "show_color_wheel": 1,
-                                            "custom_palette_source": "",
-                                            "palette_colors": ""
-                                        }
-                                    ],
-                                    "acfe_group_modal": 0,
-                                    "acfe_group_modal_close": 0,
-                                    "acfe_group_modal_button": "",
-                                    "acfe_group_modal_size": "large"
-                                }
-                            ],
-                            "acfe_group_modal": 0,
-                            "acfe_group_modal_close": 0,
-                            "acfe_group_modal_button": "",
-                            "acfe_group_modal_size": "large"
-                        },
-                        {
-                            "key": "field_6989de6b9cc76",
-                            "label": "Accordion Content",
-                            "name": "accordion_content",
-                            "aria-label": "",
-                            "type": "group",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "layout": "block",
-                            "acfe_seamless_style": 1,
-                            "sub_fields": [
-                                {
-                                    "key": "field_6989e040b8132",
-                                    "label": "Default State",
-                                    "name": "default_state",
-                                    "aria-label": "",
-                                    "type": "group",
-                                    "instructions": "",
-                                    "required": 0,
-                                    "conditional_logic": 0,
-                                    "wrapper": {
-                                        "width": "",
-                                        "class": "",
-                                        "id": ""
-                                    },
-                                    "layout": "block",
-                                    "acfe_seamless_style": 1,
-                                    "sub_fields": [
-                                        {
-                                            "key": "field_6989de6b9cc77",
-                                            "label": "Text Color",
-                                            "name": "text_color",
-                                            "aria-label": "",
-                                            "type": "color_picker",
-                                            "instructions": "",
-                                            "required": 0,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "25",
-                                                "class": "bl-0",
-                                                "id": ""
-                                            },
-                                            "default_value": "#111827",
-                                            "enable_opacity": 0,
-                                            "return_format": "string",
-                                            "allow_in_bindings": 0,
-                                            "show_custom_palette": 0,
-                                            "show_color_wheel": 1,
-                                            "custom_palette_source": "",
-                                            "palette_colors": ""
-                                        },
-                                        {
-                                            "key": "field_6989de6b9cc78",
-                                            "label": "Background Color",
-                                            "name": "background_color",
-                                            "aria-label": "",
-                                            "type": "color_picker",
-                                            "instructions": "",
-                                            "required": 0,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "25",
-                                                "class": "bl-0",
-                                                "id": ""
-                                            },
-                                            "default_value": "",
-                                            "enable_opacity": 0,
-                                            "return_format": "string",
-                                            "allow_in_bindings": 0,
-                                            "show_custom_palette": 0,
-                                            "show_color_wheel": 1,
-                                            "custom_palette_source": "",
-                                            "palette_colors": ""
-                                        },
-                                        {
-                                            "key": "field_6989e09db8139",
-                                            "label": "Border Color",
-                                            "name": "border_color",
-                                            "aria-label": "",
-                                            "type": "color_picker",
-                                            "instructions": "",
-                                            "required": 0,
-                                            "conditional_logic": 0,
-                                            "wrapper": {
-                                                "width": "25",
-                                                "class": "bl-0",
-                                                "id": ""
-                                            },
-                                            "default_value": "",
-                                            "enable_opacity": 0,
-                                            "return_format": "string",
-                                            "allow_in_bindings": 0,
-                                            "show_custom_palette": 0,
-                                            "show_color_wheel": 1,
-                                            "custom_palette_source": "",
-                                            "palette_colors": ""
-                                        }
-                                    ],
-                                    "acfe_group_modal": 0,
-                                    "acfe_group_modal_close": 0,
-                                    "acfe_group_modal_button": "",
-                                    "acfe_group_modal_size": "large"
-                                }
-                            ],
-                            "acfe_group_modal": 0,
-                            "acfe_group_modal_close": 0,
-                            "acfe_group_modal_button": "",
-                            "acfe_group_modal_size": "large"
-                        }
-                    ],
-                    "acfe_seamless_style": 0
+                    {
+                      "key": "field_6989de6b9cc78",
+                      "label": "Background Color",
+                      "name": "background_color",
+                      "aria-label": "",
+                      "type": "color_picker",
+                      "instructions": "",
+                      "required": 0,
+                      "conditional_logic": 0,
+                      "wrapper": {
+                        "width": "25",
+                        "class": "bl-0",
+                        "id": ""
+                      },
+                      "default_value": "",
+                      "enable_opacity": 0,
+                      "return_format": "string",
+                      "allow_in_bindings": 0,
+                      "show_custom_palette": 0,
+                      "show_color_wheel": 1,
+                      "custom_palette_source": "",
+                      "palette_colors": ""
+                    },
+                    {
+                      "key": "field_6989e09db8139",
+                      "label": "Border Color",
+                      "name": "border_color",
+                      "aria-label": "",
+                      "type": "color_picker",
+                      "instructions": "",
+                      "required": 0,
+                      "conditional_logic": 0,
+                      "wrapper": {
+                        "width": "25",
+                        "class": "bl-0",
+                        "id": ""
+                      },
+                      "default_value": "",
+                      "enable_opacity": 0,
+                      "return_format": "string",
+                      "allow_in_bindings": 0,
+                      "show_custom_palette": 0,
+                      "show_color_wheel": 1,
+                      "custom_palette_source": "",
+                      "palette_colors": ""
+                    }
+                  ],
+                  "acfe_group_modal": 0,
+                  "acfe_group_modal_close": 0,
+                  "acfe_group_modal_button": "",
+                  "acfe_group_modal_size": "large"
                 }
-            ],
-            "acfe_group_modal": 0,
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
-        }
-    ],
-    "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
+              ],
+              "acfe_group_modal": 0,
+              "acfe_group_modal_close": 0,
+              "acfe_group_modal_button": "",
+              "acfe_group_modal_size": "large"
             }
-        ]
-    ],
-    "menu_order": 0,
-    "position": "normal",
-    "style": "default",
-    "label_placement": "left",
-    "instruction_placement": "label",
-    "hide_on_screen": "",
-    "active": false,
-    "description": "",
-    "show_in_rest": 0,
-    "display_title": "",
-    "acfe_autosync": [
-        "json"
-    ],
-    "acfe_form": 0,
-    "acfe_meta": "",
-    "acfe_note": "",
-    "modified": 1770652336,
-    "acfe_categories": {
-        "components": "Components"
+          ],
+          "acfe_seamless_style": 0
+        }
+      ],
+      "acfe_group_modal": 0,
+      "acfe_group_modal_close": 0,
+      "acfe_group_modal_button": "",
+      "acfe_group_modal_size": "large"
     }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "post"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "normal",
+  "style": "default",
+  "label_placement": "left",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": false,
+  "description": "",
+  "show_in_rest": 0,
+  "display_title": "",
+  "acfe_autosync": ["json"],
+  "acfe_form": 0,
+  "acfe_meta": "",
+  "acfe_note": "",
+  "modified": 1770652336,
+  "acfe_categories": {
+    "components": "Components"
+  }
 }

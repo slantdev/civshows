@@ -10,7 +10,7 @@ table.fixed {
 }
 
 #poststuff {
-  .acf-layout {
+  .acfe-fc-preview {
     @apply font-sans text-[16px] leading-normal;
     h2 {
       @apply p-0;
@@ -232,19 +232,6 @@ table.fixed {
       }
     }
   }
-  /* &.-left {
-    > .acf-field {
-      @apply before:hidden!;
-      &.label-hidden {
-        > .acf-label {
-          @apply hidden;
-        }
-        > .acf-input {
-          @apply float-none w-full;
-        }
-      }
-    }
-  } */
   > .acf-tab-wrap {
     overflow: initial;
   }
@@ -333,3 +320,29 @@ table.fixed {
 .column-exhibitor_id {
   width: 100px;
 }
+
+/* WP 7.x Compatibility */
+.acf-fields {
+  > .acf-field {
+    &.field-modal,
+    &.acf-field-group {
+      .acf-button {
+        .dashicons {
+          @apply p-0 leading-none;
+        }
+        &.button {
+          @apply min-h-[32px] px-2 py-0 leading-normal inline-flex items-center justify-center;
+        }
+      }
+    }
+  }
+}
+
+/* Debug */
+/* .layout {
+  > .acfe-fc-placeholder {
+    .acfe-fc-overlay {
+      @apply hidden;
+    }
+  }
+} */

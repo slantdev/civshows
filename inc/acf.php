@@ -5,7 +5,7 @@
  */
 
 // Prevent direct access
-if (! defined('ABSPATH')) {
+if (!defined('ABSPATH')) {
   exit;
 }
 
@@ -97,11 +97,11 @@ function civ_acf_input_admin_footer()
   $primary_palette = implode("', '", $primary_palette_array);
   $additional_palette = implode("', '", $additional_color_array);
 
-?>
+  ?>
   <script type="text/javascript">
-    (function($) {
+    (function ($) {
 
-      acf.add_filter('color_picker_args', function(args, $field) {
+      acf.add_filter('color_picker_args', function (args, $field) {
 
         args.palettes = ['#000000', '#FFFFFF', '<?php echo $primary_palette ?>', '<?php echo $additional_palette ?>']
 
@@ -111,7 +111,7 @@ function civ_acf_input_admin_footer()
 
     })(jQuery);
   </script>
-<?php
+  <?php
 }
 add_action('acf/input/admin_footer', 'civ_acf_input_admin_footer');
 
@@ -129,7 +129,7 @@ add_filter('acf/fields/icon_picker/tabs', 'civ_acf_icon_picker_tabs');
 function civ_add_heroicons_icons(array $icons): array
 {
   $icons_path = get_template_directory() . '/assets/icons/heroicons/solid/';
-  $base_url   = get_template_directory_uri() . '/assets/icons/heroicons/solid/';
+  $base_url = get_template_directory_uri() . '/assets/icons/heroicons/solid/';
 
   // Scan directory for SVG files
   $files = glob($icons_path . '*.svg');
@@ -137,12 +137,12 @@ function civ_add_heroicons_icons(array $icons): array
   if ($files) {
     foreach ($files as $file) {
       $filename = basename($file);
-      $key      = str_replace('.svg', '', $filename);
-      $label    = ucwords(str_replace(['-', '_'], ' ', $key));
+      $key = str_replace('.svg', '', $filename);
+      $label = ucwords(str_replace(['-', '_'], ' ', $key));
 
       $icons[] = [
-        'url'   => $base_url . $filename,
-        'key'   => $key,
+        'url' => $base_url . $filename,
+        'key' => $key,
         'label' => $label,
       ];
     }
@@ -151,3 +151,13 @@ function civ_add_heroicons_icons(array $icons): array
   return $icons;
 }
 add_filter('acf/fields/icon_picker/heroicons_solid/icons', 'civ_add_heroicons_icons');
+
+/**
+ * Activate ACFE modules
+ */
+add_action('acf/init', 'civ_acfe_modules');
+function civ_acfe_modules()
+{
+  acf_update_setting('acfe/modules/performance', true);
+  acf_update_setting('acfe/dev', true);
+}
