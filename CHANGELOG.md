@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.58.0] - 2026-06-12
+
+### Added
+
+- **Icon Blocks Section Layout:** Developed and registered a new flexible content layout `icon_blocks` in the Section Builder. Includes full integration with standard section settings, dynamic header layouts, and columns configurations (max-width and responsive column counts ranging from 1 to 4).
+- **Modular Cards Repeater:** Added recursive card layout within `icon_blocks.php` to render custom cloned icon, heading, and text components per repeater row.
+
 ## [1.57.0] - 2026-06-12
 
 ### Added
