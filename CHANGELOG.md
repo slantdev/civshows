@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.59.0] - 2026-06-12
+
+### Added
+
+- **Image Link Disabling**: Added support for a `disable_link` template argument in `template-parts/components/image.php` to prevent rendering nested anchor tags.
+
+### Changed
+
+- **Feature Cards Refactor**:
+  - Adjusted the `feature_cards.php` section template to support nested group cloned fields (`image` and `background`) instead of seamless clones.
+  - Moved the `card_settings` variable instantiation to the root level of the section, aligning it with the updated ACF JSON schema.
+  - Updated the card link logic to wrap the entire card with the image component's configured link (`$card['image']['image']['link']`) and passed `disable_link => true` to the image component to prevent duplicate anchors.
+
 ## [1.58.0] - 2026-06-12
 
 ### Added

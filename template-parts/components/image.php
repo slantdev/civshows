@@ -28,7 +28,8 @@ $image_url    = $image_source['url'] ?? '';
 $image_alt    = $image_source['alt'] ?? '';
 $image_attach_id = $image_source['ID'] ?? '';
 
-$link_url     = $image_link['url'] ?? '';
+$disable_link = $args['disable_link'] ?? false;
+$link_url     = (!$disable_link && !empty($image_link['url'])) ? $image_link['url'] : '';
 $link_target  = $image_link['target'] ?? '_self';
 
 // Settings

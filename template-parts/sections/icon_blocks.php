@@ -83,7 +83,7 @@ if (!$headline && !$cards) {
           <?php
           foreach ($cards as $card):
             ?>
-            <div class="civ-icon-blocks-card">
+            <div class="civ-icon-blocks-card p-4 xl:p-6">
 
               <div class="civ-icon-blocks-icon-wrapper mb-4">
                 <?php get_template_part('template-parts/components/icon', null, ['field' => $card]); ?>
