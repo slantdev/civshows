@@ -1,9 +1,9 @@
 {
-    "key": "group_68bf90e8e9899",
-    "title": "Section - Link Cards",
+    "key": "group_6a299c020a125",
+    "title": "Section - Product Cards",
     "fields": [
         {
-            "key": "field_6a2829cbfbd94",
+            "key": "field_6a299c0263584",
             "label": "Content Settings",
             "name": "",
             "aria-label": "",
@@ -21,9 +21,9 @@
             "selected": 0
         },
         {
-            "key": "field_68bf90e908f25",
-            "label": "Link Cards",
-            "name": "link_cards",
+            "key": "field_6a299c0263598",
+            "label": "Product Cards",
+            "name": "product_cards",
             "aria-label": "",
             "type": "group",
             "instructions": "",
@@ -38,7 +38,7 @@
             "acfe_seamless_style": 1,
             "sub_fields": [
                 {
-                    "key": "field_69b5143caa690",
+                    "key": "field_6a299c026d7d0",
                     "label": "Headline",
                     "name": "headline",
                     "aria-label": "",
@@ -65,9 +65,9 @@
                     "acfe_clone_modal_size": "large"
                 },
                 {
-                    "key": "field_68bf911d9ba09",
-                    "label": "Cards",
-                    "name": "cards",
+                    "key": "field_6a299c026d7d8",
+                    "label": "Product Cards",
+                    "name": "product_cards",
                     "aria-label": "",
                     "type": "repeater",
                     "instructions": "",
@@ -88,9 +88,9 @@
                     "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "key": "field_68bf91259ba0a",
-                            "label": "Card Title",
-                            "name": "card_title",
+                            "key": "field_6a299c0270660",
+                            "label": "Product Title",
+                            "name": "product_title",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -103,15 +103,16 @@
                             },
                             "default_value": "",
                             "maxlength": "",
+                            "allow_in_bindings": 1,
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "parent_repeater": "field_68bf911d9ba09"
+                            "parent_repeater": "field_6a299c026d7d8"
                         },
                         {
-                            "key": "field_68bf91359ba0b",
-                            "label": "Card Background",
-                            "name": "card_background",
+                            "key": "field_6a299fe47ffe9",
+                            "label": "Product Image Group",
+                            "name": "product_image_group",
                             "aria-label": "",
                             "type": "group",
                             "instructions": "",
@@ -119,23 +120,23 @@
                             "conditional_logic": 0,
                             "wrapper": {
                                 "width": "",
-                                "class": "",
+                                "class": "label-hidden",
                                 "id": ""
                             },
                             "layout": "block",
                             "acfe_seamless_style": 1,
                             "sub_fields": [
                                 {
-                                    "key": "field_68bf914b9ba0c",
-                                    "label": "BG Image",
-                                    "name": "background_image",
+                                    "key": "field_6a299fe47ffea",
+                                    "label": "Product Image",
+                                    "name": "product_image",
                                     "aria-label": "",
                                     "type": "image",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
                                     "wrapper": {
-                                        "width": "50",
+                                        "width": "30",
                                         "class": "",
                                         "id": ""
                                     },
@@ -151,14 +152,78 @@
                                     "max_size": "",
                                     "mime_types": "",
                                     "allow_in_bindings": 1,
-                                    "preview_size": "medium"
+                                    "preview_size": "thumbnail"
                                 },
                                 {
-                                    "key": "field_68bf91589ba0d",
-                                    "label": "BG Overlay",
-                                    "name": "background_overlay",
+                                    "key": "field_6a299c027067c",
+                                    "label": "Product Link",
+                                    "name": "product_link",
+                                    "aria-label": "",
+                                    "type": "link",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "69",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "return_format": "array",
+                                    "allow_in_bindings": 1
+                                }
+                            ],
+                            "acfe_group_modal": 0,
+                            "acfe_group_modal_close": 0,
+                            "acfe_group_modal_button": "",
+                            "acfe_group_modal_size": "large",
+                            "parent_repeater": "field_6a299c026d7d8"
+                        },
+                        {
+                            "key": "field_6a299c0270667",
+                            "label": "Card Background",
+                            "name": "card_background",
+                            "aria-label": "",
+                            "type": "group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "label-hidden",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "acfe_seamless_style": 1,
+                            "sub_fields": [
+                                {
+                                    "key": "field_6a299c0273ff3",
+                                    "label": "BG Color",
+                                    "name": "bg_color",
                                     "aria-label": "",
                                     "type": "color_picker",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "50",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "rgba(0,0,0,0.5)",
+                                    "enable_opacity": 1,
+                                    "return_format": "string",
+                                    "allow_in_bindings": 1,
+                                    "show_custom_palette": 0,
+                                    "show_color_wheel": 1,
+                                    "custom_palette_source": "",
+                                    "palette_colors": ""
+                                },
+                                {
+                                    "key": "field_6a29a0557ffec",
+                                    "label": "Rounded Corners",
+                                    "name": "rounded_corners",
+                                    "aria-label": "",
+                                    "type": "select",
                                     "instructions": "",
                                     "required": 0,
                                     "conditional_logic": 0,
@@ -167,38 +232,32 @@
                                         "class": "bl-0",
                                         "id": ""
                                     },
-                                    "default_value": "rgba(0,0,0,0)",
-                                    "enable_opacity": 1,
-                                    "return_format": "string",
-                                    "allow_in_bindings": 1,
-                                    "show_custom_palette": 0,
-                                    "show_color_wheel": 1,
-                                    "custom_palette_source": "",
-                                    "palette_colors": ""
+                                    "choices": {
+                                        "rounded_none": "None",
+                                        "rounded_md": "MD",
+                                        "rounded_lg": "LG",
+                                        "rounded_xl": "XL",
+                                        "rounded_2xl": "2XL"
+                                    },
+                                    "default_value": "rounded_md",
+                                    "return_format": "value",
+                                    "multiple": 0,
+                                    "allow_null": 0,
+                                    "allow_in_bindings": 0,
+                                    "ui": 0,
+                                    "ajax": 0,
+                                    "placeholder": "",
+                                    "create_options": 0,
+                                    "save_options": 0,
+                                    "allow_custom": 0,
+                                    "search_placeholder": ""
                                 }
                             ],
                             "acfe_group_modal": 0,
                             "acfe_group_modal_close": 0,
                             "acfe_group_modal_button": "",
                             "acfe_group_modal_size": "large",
-                            "parent_repeater": "field_68bf911d9ba09"
-                        },
-                        {
-                            "key": "field_68bf918f9ba0e",
-                            "label": "Card Link",
-                            "name": "card_link",
-                            "aria-label": "",
-                            "type": "link",
-                            "instructions": "",
-                            "required": 0,
-                            "conditional_logic": 0,
-                            "wrapper": {
-                                "width": "",
-                                "class": "",
-                                "id": ""
-                            },
-                            "return_format": "array",
-                            "parent_repeater": "field_68bf911d9ba09"
+                            "parent_repeater": "field_6a299c026d7d8"
                         }
                     ]
                 }
@@ -209,7 +268,7 @@
             "acfe_group_modal_size": "large"
         },
         {
-            "key": "field_6a28f690fe276",
+            "key": "field_6a299c02635a0",
             "label": "Columns Settings",
             "name": "",
             "aria-label": "",
@@ -227,7 +286,7 @@
             "selected": 0
         },
         {
-            "key": "field_6a28f6f3fe277",
+            "key": "field_6a299c02635a7",
             "label": "Columns Settings",
             "name": "columns_settings",
             "aria-label": "",
@@ -242,9 +301,13 @@
             },
             "layout": "row",
             "acfe_seamless_style": 1,
+            "acfe_group_modal": 0,
+            "acfe_group_modal_close": 0,
+            "acfe_group_modal_button": "",
+            "acfe_group_modal_size": "large",
             "sub_fields": [
                 {
-                    "key": "field_6a28f6fefe278",
+                    "key": "field_6a299c02975e3",
                     "label": "Max Width",
                     "name": "max_width",
                     "aria-label": "",
@@ -281,7 +344,7 @@
                     "save_options": 0
                 },
                 {
-                    "key": "field_6a28f72ffe279",
+                    "key": "field_6a299c02975ea",
                     "label": "Grid Columns",
                     "name": "grid_columns",
                     "aria-label": "",
@@ -313,14 +376,10 @@
                     "allow_custom": 0,
                     "search_placeholder": ""
                 }
-            ],
-            "acfe_group_modal": 0,
-            "acfe_group_modal_close": 0,
-            "acfe_group_modal_button": "",
-            "acfe_group_modal_size": "large"
+            ]
         },
         {
-            "key": "field_6a28298f71eba",
+            "key": "field_6a299c02635ae",
             "label": "Section Settings",
             "name": "",
             "aria-label": "",
@@ -338,7 +397,7 @@
             "selected": 0
         },
         {
-            "key": "field_6a28299471ebb",
+            "key": "field_6a299c02635b5",
             "label": "Section Settings",
             "name": "section_settings",
             "aria-label": "",
@@ -391,7 +450,7 @@
             "json"
         ]
     },
-    "modified": 1781069865,
+    "modified": 1781113305,
     "acfe_categories": {
         "sections": "Sections"
     }

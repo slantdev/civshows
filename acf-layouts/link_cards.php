@@ -10,6 +10,6 @@
 ?>
 <div class="acf-layout <?php echo ($is_preview) ? 'is-preview' : ''; ?>">
   <?php
-  include get_template_directory() . '/template-parts/sections/cards_grid.php';
+  include get_template_directory() . '/template-parts/sections/link_cards.php';
   ?>
 </div>

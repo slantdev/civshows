@@ -158,10 +158,64 @@ add_filter('acf/fields/icon_picker/heroicons_solid/icons', 'civ_add_heroicons_ic
 add_action('acf/init', 'civ_acfe_modules');
 function civ_acfe_modules()
 {
-  //acfe_update_setting('dev', true);
+  acfe_update_setting('dev', true);
   acfe_update_setting('modules/performance', array(
     'engine' => 'ultra',
     'ui' => true,
     'mode' => 'production',
   ));
 }
+
+/**
+ * Set ACFE Flexible Content Dynamic Render Layout Template file path.
+ * https://www.acf-extended.com/features/fields/flexible-content/dynamic-render
+ */
+add_filter('acfe/flexible/render/template', 'civ_acf_layout_template', 10, 4);
+function civ_acf_layout_template($file, $field, $layout, $is_preview)
+{
+  if ($is_preview && isset($layout['name'])) {
+    $layout_file = get_stylesheet_directory() . '/acf-layouts/' . $layout['name'] . '.php';
+    if (file_exists($layout_file)) {
+      return $layout_file;
+    }
+  }
+
+  return $file;
+}
+
+/**
+ * Dynamic migration of section_builder layout names from cards_grid to link_cards.
+ */
+function civ_migrate_section_builder_layout_names($value, $post_id, $field)
+{
+  if (is_array($value)) {
+    foreach ($value as $index => $layout) {
+      if ($layout === 'cards_grid') {
+        $value[$index] = 'link_cards';
+      }
+    }
+  }
+  return $value;
+}
+add_filter('acf/load_value/name=section_builder', 'civ_migrate_section_builder_layout_names', 10, 3);
+
+/**
+ * Dynamic migration of link_cards fields from cards_grid.
+ */
+function civ_migrate_link_cards_fields($value, $post_id, $field)
+{
+  if (strpos($field['name'], '_link_cards') !== false) {
+    // Only migrate if the layout hasn't been saved yet (i.e. 'section_builder' in DB still contains 'cards_grid')
+    $raw_layouts = get_post_meta($post_id, 'section_builder', true);
+    if (is_array($raw_layouts) && in_array('cards_grid', $raw_layouts, true)) {
+      $old_meta_key = str_replace('_link_cards', '_cards_grid', $field['name']);
+      $old_value = get_post_meta($post_id, $old_meta_key, true);
+
+      if ($old_value !== '' && $old_value !== null) {
+        return $old_value;
+      }
+    }
+  }
+  return $value;
+}
+add_filter('acf/load_value', 'civ_migrate_link_cards_fields', 10, 3);

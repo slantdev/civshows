@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.57.0] - 2026-06-12
+
+### Added
+
+- **Dynamic Columns & Width Options:** Integrated `columns_settings` block support into both `Link Cards` and `Product Cards` sections, allowing administrators to customize max container widths (`max_width`) and grid column counts (`grid_columns` ranging from 1 to 4 columns) dynamically in the admin panel.
+
+### Changed
+
+- **Layout Refactoring:** Renamed and fully refactored `cards_grid` layouts and assets to `link_cards`.
+- **Database-Less Field Migration:** Added custom `acf/load_value` filters in `acf.php` to map layout array items and nested child fields dynamically from legacy `cards_grid` identifiers to the new `link_cards` structure, eliminating the need for hard database migration operations.
+- **Conditional Link Card Elements:** Refactored `link_cards.php` and `product_cards.php` templates to conditionally render cards as standard `<div>` wrappers instead of `<a>` tags and hide the navigation chevron icon if no link is configured.
+
 ## [1.54.0] - 2026-04-21
 
 ### Added
