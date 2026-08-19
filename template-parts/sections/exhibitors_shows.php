@@ -44,18 +44,14 @@ if ($requested_cat) {
   );
 }
 
-echo '<pre style="display:none;">';
-var_dump($selected_shows);
-echo '</pre>';
-
 $shows_ids = [];
 if (!empty($selected_shows)) {
   $meta_query = array('relation' => 'OR');
   foreach ($selected_shows as $show) {
     $shows_ids[] = $show->ID;
-    // ACF relationship fields store data as serialized arrays, so we use LIKE
+    // ACFE Ultra mode stores all fields in the 'acf' meta key as a serialized array
     $meta_query[] = array(
-      'key' => 'exhibitor_shows',
+      'key' => 'acf',
       'value' => '"' . $show->ID . '"',
       'compare' => 'LIKE'
     );

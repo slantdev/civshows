@@ -101,7 +101,7 @@ function civ_load_more_exhibitors()
 
   if ($is_new) {
     $meta_query[] = array(
-      'key'     => 'exhibitor_tags',
+      'key'     => 'acf',
       'value'   => '"new"', // Serialized ACF checkbox value
       'compare' => 'LIKE'
     );
@@ -109,7 +109,7 @@ function civ_load_more_exhibitors()
 
   if ($has_special) {
     $meta_query[] = array(
-      'key'     => 'exhibitor_tags',
+      'key'     => 'acf',
       'value'   => '"specials"', // Serialized ACF checkbox value
       'compare' => 'LIKE'
     );
@@ -117,7 +117,7 @@ function civ_load_more_exhibitors()
 
   if ($is_product_release) {
     $meta_query[] = array(
-      'key'     => 'exhibitor_tags',
+      'key'     => 'acf',
       'value'   => '"product_release"', // Serialized ACF checkbox value
       'compare' => 'LIKE'
     );
@@ -128,7 +128,7 @@ function civ_load_more_exhibitors()
     $shows_meta = array('relation' => 'OR');
     foreach ($shows_array as $show_id) {
       $shows_meta[] = array(
-        'key'     => 'exhibitor_shows',
+        'key'     => 'acf',
         'value'   => '"' . intval($show_id) . '"',
         'compare' => 'LIKE'
       );
