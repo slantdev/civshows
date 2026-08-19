@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.60.2] - 2026-08-19
+
+### Added
+
+- **Exhibitors Import CSV**: Added a download link for the example `.csv` file directly on the Exhibitor Import page (`inc/exhibitors.php`) to streamline the import process for administrators.
+
 ## [1.60.1] - 2026-08-19
 
 ### Fixed

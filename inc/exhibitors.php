@@ -178,7 +178,7 @@ function civ_exhibitor_render_import_page()
     <?php if (isset($_POST['exhibitor_import_nonce']) && wp_verify_nonce($_POST['exhibitor_import_nonce'], 'import_exhibitors')) civ_exhibitor_process_csv(); ?>
 
     <div class="card" style="max-width: 600px; padding: 20px; margin-top: 20px; position: relative;">
-      <p>Upload a CSV file (delimiter: <strong>;</strong>) to import exhibitors.</p>
+      <p>Upload a CSV file (delimiter: <strong>;</strong>) to import exhibitors. <a href="<?php echo esc_url(get_template_directory_uri() . '/files/Exhibitors-import-example.csv'); ?>" download>Download example CSV</a>.</p>
       <p><strong>Required:</strong> <code>Exhibitor_Name</code>, <code>Main_Category_1</code></p>
       <form method="post" enctype="multipart/form-data" id="exhibitor-import-form">
         <?php wp_nonce_field('import_exhibitors', 'exhibitor_import_nonce'); ?>
