@@ -38,11 +38,15 @@ if ($requested_cat) {
   $args['tax_query'] = array(
     array(
       'taxonomy' => 'exhibitor-category',
-      'field'    => 'slug',
-      'terms'    => $requested_cat,
+      'field' => 'slug',
+      'terms' => $requested_cat,
     ),
   );
 }
+
+echo '<pre style="display:none;">';
+var_dump($selected_shows);
+echo '</pre>';
 
 $shows_ids = [];
 if (!empty($selected_shows)) {
@@ -97,7 +101,8 @@ $parent_terms = get_terms([
 ?>
 
 <section <?php echo $section_id_attr; ?> class="
-  civ-exhibitors-shows-section <?php echo esc_attr($section_class); ?> section-wrapper relative overflow-x-hidden" style="
+  civ-exhibitors-shows-section <?php echo esc_attr($section_class); ?> section-wrapper relative overflow-x-hidden"
+  style="
   <?php echo esc_attr($section_style); ?>" data-scroll-on-load="<?php echo $requested_cat ? 'true' : 'false'; ?>">
 
   <?php echo $section_overlay_markup; ?>
@@ -113,21 +118,21 @@ $parent_terms = get_terms([
             <div class="mb-6">
               <?php get_template_part('template-parts/components/heading', null, ['field' => $intro['title']]); ?>
             </div>
-          <?php
+            <?php
           endif; ?>
 
           <?php if (!empty($intro['description'])): ?>
             <div class="mb-8">
               <?php get_template_part('template-parts/components/content_editor', null, ['field' => $intro['description']]); ?>
             </div>
-          <?php
+            <?php
           endif; ?>
 
           <?php if (!empty($intro['buttons'])): ?>
             <div class="flex flex-wrap gap-4">
               <?php get_template_part('template-parts/components/buttons', null, ['field' => $intro['buttons']]); ?>
             </div>
-          <?php
+            <?php
           endif; ?>
         </div>
 
@@ -135,7 +140,7 @@ $parent_terms = get_terms([
         $img_data = $ex_image['image'] ?? [];
         $img_id = $img_data['image_source']['id'] ?? '';
         if ($img_id):
-        ?>
+          ?>
           <div class="civ-exhibitors-image w-full lg:w-5/12 flex justify-center lg:justify-end -mb-28 lg:-mb-32">
             <div
               class="w-full max-w-xl aspect-square rounded-full overflow-hidden relative shadow-xl border-8 border-white">
@@ -146,37 +151,47 @@ $parent_terms = get_terms([
               ?>
             </div>
           </div>
-        <?php
+          <?php
         endif; ?>
       </div>
 
       <!-- Filter Controls -->
-      <div class="civ-exhibitors-filters bg-gray-50 p-6 md:p-8 rounded-lg border border-gray-200 shadow-sm mb-12 z-30 relative">
+      <div
+        class="civ-exhibitors-filters bg-gray-50 p-6 md:p-8 rounded-lg border border-gray-200 shadow-sm mb-12 z-30 relative">
 
-        <div class="civ-filters-top flex flex-col lg:flex-row gap-6 items-end lg:items-center border-b border-gray-200 pb-8 mb-6">
+        <div
+          class="civ-filters-top flex flex-col lg:flex-row gap-6 items-end lg:items-center border-b border-gray-200 pb-8 mb-6">
 
           <div class="civ-filter-category w-full lg:w-5/12 space-y-2">
             <label class="font-bold text-sm uppercase text-black block mb-1">Find By Category</label>
             <div class="relative civ-custom-multiselect" id="filter-category-container">
-              <div class="civ-multiselect-header w-full bg-white border border-gray-300 text-gray-700 text-sm rounded px-4 py-3 cursor-pointer flex justify-between items-center focus:border-civ-orange-500 focus:outline-none" tabindex="0">
+              <div
+                class="civ-multiselect-header w-full bg-white border border-gray-300 text-gray-700 text-sm rounded px-4 py-3 cursor-pointer flex justify-between items-center focus:border-civ-orange-500 focus:outline-none"
+                tabindex="0">
                 <span class="civ-multiselect-label truncate pr-4">All Categories</span>
-                <svg class="civ-multiselect-icon fill-current h-4 w-4 text-gray-500 shrink-0 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <svg
+                  class="civ-multiselect-icon fill-current h-4 w-4 text-gray-500 shrink-0 transition-transform duration-200"
+                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                   <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                 </svg>
               </div>
-              <div class="civ-multiselect-dropdown absolute top-full left-0 w-full bg-white border border-gray-200 mt-2 rounded-md shadow-xl max-h-60 overflow-y-auto hidden z-40 transform origin-top transition-all">
+              <div
+                class="civ-multiselect-dropdown absolute top-full left-0 w-full bg-white border border-gray-200 mt-2 rounded-md shadow-xl max-h-60 overflow-y-auto hidden z-40 transform origin-top transition-all">
                 <div class="p-2 space-y-1">
                   <?php if (!is_wp_error($parent_terms)): ?>
-                    <?php foreach ($parent_terms as $term): 
+                    <?php foreach ($parent_terms as $term):
                       $is_checked = ($term->slug === $requested_cat) ? 'checked' : '';
-                    ?>
-                      <label class="flex items-center px-3 py-2.5 cursor-pointer hover:bg-gray-50 rounded-md select-none group transition-colors">
-                        <input type="checkbox" value="<?php echo esc_attr($term->slug); ?>" <?php echo $is_checked; ?> class="civ-multiselect-checkbox w-4 h-4 text-civ-orange-500 border-gray-300 rounded cursor-pointer focus:ring-civ-orange-500 focus:ring-offset-0">
-                        <span class="ml-3 text-sm text-gray-700 group-hover:text-black font-medium"><?php echo esc_html($term->name); ?></span>
+                      ?>
+                      <label
+                        class="flex items-center px-3 py-2.5 cursor-pointer hover:bg-gray-50 rounded-md select-none group transition-colors">
+                        <input type="checkbox" value="<?php echo esc_attr($term->slug); ?>" <?php echo $is_checked; ?>
+                          class="civ-multiselect-checkbox w-4 h-4 text-civ-orange-500 border-gray-300 rounded cursor-pointer focus:ring-civ-orange-500 focus:ring-offset-0">
+                        <span
+                          class="ml-3 text-sm text-gray-700 group-hover:text-black font-medium"><?php echo esc_html($term->name); ?></span>
                       </label>
-                    <?php
+                      <?php
                     endforeach; ?>
-                  <?php
+                    <?php
                   endif; ?>
                 </div>
               </div>
@@ -233,7 +248,8 @@ $parent_terms = get_terms([
                 class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-civ-orange-500">
               </div>
             </div>
-            <span class="text-sm font-semibold text-black group-hover:text-civ-orange-500 transition-colors">New product release at the show</span>
+            <span class="text-sm font-semibold text-black group-hover:text-civ-orange-500 transition-colors">New product
+              release at the show</span>
           </label>
 
           <button id="btn-reset-filters"
@@ -248,37 +264,48 @@ $parent_terms = get_terms([
           <div class="relative flex items-center group w-full">
 
             <!-- Left Arrow -->
-            <button type="button" class="civ-alpha-scroll-left hidden md:flex absolute left-0 md:left-1 z-20 w-6 h-6 md:w-8 md:h-8 items-center justify-center bg-white shadow-sm border border-gray-200 rounded-full text-gray-600 hover:text-white hover:bg-civ-orange-500 hover:border-civ-orange-500 hover:shadow-md transition-all duration-200 cursor-pointer disabled:opacity-40 disabled:pointer-events-none disabled:shadow-none">
+            <button type="button"
+              class="civ-alpha-scroll-left hidden md:flex absolute left-0 md:left-1 z-20 w-6 h-6 md:w-8 md:h-8 items-center justify-center bg-white shadow-sm border border-gray-200 rounded-full text-gray-600 hover:text-white hover:bg-civ-orange-500 hover:border-civ-orange-500 hover:shadow-md transition-all duration-200 cursor-pointer disabled:opacity-40 disabled:pointer-events-none disabled:shadow-none">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+                <path fill-rule="evenodd"
+                  d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                  clip-rule="evenodd" />
               </svg>
             </button>
 
             <!-- Scrollable Track -->
-            <div id="civ-alpha-track" class="overflow-x-auto w-full mx-8 md:mx-12 civ-custom-scrollbar scroll-smooth flex-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div id="civ-alpha-track"
+              class="overflow-x-auto w-full mx-8 md:mx-12 civ-custom-scrollbar scroll-smooth flex-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               <ul class="flex gap-1 md:gap-2 min-w-max items-center uppercase text-sm font-bold" id="filter-alphabet">
                 <?php
                 $is_disabled = !$has_numbers;
                 $btn_classes = $is_disabled ? 'opacity-40 cursor-not-allowed bg-gray-100 text-gray-400' : 'cursor-pointer hover:bg-civ-orange-500 hover:text-white hover:border-civ-orange-500 transition-colors bg-white text-gray-600';
                 ?>
                 <li>
-                  <button type="button" data-letter="#" class="civ-alpha-btn w-10 h-10 flex items-center justify-center rounded border border-gray-200 <?php echo esc_attr($btn_classes); ?>" <?php echo $is_disabled ? 'disabled' : ''; ?>>#</button>
+                  <button type="button" data-letter="#"
+                    class="civ-alpha-btn w-10 h-10 flex items-center justify-center rounded border border-gray-200 <?php echo esc_attr($btn_classes); ?>"
+                    <?php echo $is_disabled ? 'disabled' : ''; ?>>#</button>
                 </li>
                 <?php foreach (range('A', 'Z') as $letter):
                   $is_disabled = !in_array($letter, $active_letters);
                   $btn_classes = $is_disabled ? 'opacity-40 cursor-not-allowed bg-gray-100 text-gray-400' : 'cursor-pointer hover:bg-civ-orange-500 hover:text-white hover:border-civ-orange-500 transition-colors bg-white text-gray-600';
-                ?>
+                  ?>
                   <li>
-                    <button type="button" data-letter="<?php echo esc_attr($letter); ?>" class="civ-alpha-btn w-10 h-10 flex items-center justify-center rounded border border-gray-200 <?php echo esc_attr($btn_classes); ?>" <?php echo $is_disabled ? 'disabled' : ''; ?>><?php echo esc_html($letter); ?></button>
+                    <button type="button" data-letter="<?php echo esc_attr($letter); ?>"
+                      class="civ-alpha-btn w-10 h-10 flex items-center justify-center rounded border border-gray-200 <?php echo esc_attr($btn_classes); ?>"
+                      <?php echo $is_disabled ? 'disabled' : ''; ?>><?php echo esc_html($letter); ?></button>
                   </li>
                 <?php endforeach; ?>
               </ul>
             </div>
 
             <!-- Right Arrow -->
-            <button type="button" class="civ-alpha-scroll-right hidden md:flex absolute right-0 md:right-1 z-20 w-6 h-6 md:w-8 md:h-8 items-center justify-center bg-white shadow-sm border border-gray-200 rounded-full text-gray-600 hover:text-white hover:bg-civ-orange-500 hover:border-civ-orange-500 hover:shadow-md transition-all duration-200 cursor-pointer disabled:opacity-40 disabled:pointer-events-none disabled:shadow-none">
+            <button type="button"
+              class="civ-alpha-scroll-right hidden md:flex absolute right-0 md:right-1 z-20 w-6 h-6 md:w-8 md:h-8 items-center justify-center bg-white shadow-sm border border-gray-200 rounded-full text-gray-600 hover:text-white hover:bg-civ-orange-500 hover:border-civ-orange-500 hover:shadow-md transition-all duration-200 cursor-pointer disabled:opacity-40 disabled:pointer-events-none disabled:shadow-none">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                <path fill-rule="evenodd"
+                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  clip-rule="evenodd" />
               </svg>
             </button>
 
@@ -288,21 +315,22 @@ $parent_terms = get_terms([
       </div>
 
       <!-- Results Grid -->
-      <div id="exhibitors-grid" class="civ-exhibitors-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16"
+      <div id="exhibitors-grid"
+        class="civ-exhibitors-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16"
         data-shows="<?php echo $shows_json; ?>">
         <?php if ($exhibitors_query->have_posts()): ?>
           <?php while ($exhibitors_query->have_posts()):
             $exhibitors_query->the_post(); ?>
             <?php get_template_part('template-parts/shows/card', 'exhibitor'); ?>
-          <?php
+            <?php
           endwhile; ?>
           <?php wp_reset_postdata(); ?>
-        <?php
+          <?php
         else: ?>
           <div class="col-span-full text-center py-12 text-gray-500">
             <p class="text-xl">No exhibitors found.</p>
           </div>
-        <?php
+          <?php
         endif; ?>
       </div>
 
@@ -315,7 +343,7 @@ $parent_terms = get_terms([
             Load More
           </button>
         </div>
-      <?php
+        <?php
       endif; ?>
 
     </div>

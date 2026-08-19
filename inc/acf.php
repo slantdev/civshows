@@ -158,7 +158,7 @@ add_filter('acf/fields/icon_picker/heroicons_solid/icons', 'civ_add_heroicons_ic
 add_action('acf/init', 'civ_acfe_modules');
 function civ_acfe_modules()
 {
-  acfe_update_setting('dev', true);
+  acfe_update_setting('dev', false);
   acfe_update_setting('modules/performance', array(
     'engine' => 'ultra',
     'ui' => true,
